@@ -4,7 +4,7 @@ Linux Commands es un repositorio creado por [Nisamov](https://github.com/Nisamov
 
 ## Origen
 
-El origen del proyecto está reistrado sobre la fecha 01/03/2023, sin embargo, el origen oficial del documento, se sitúa a mediados del verano del año 2022, mientras Nisamov estaba comenzando a descubir el mundo de Linux y las posibilidades que traía consigo.
+El origen del proyecto está registrado sobre la fecha 01/03/2023, sin embargo, el origen oficial del documento, se sitúa a mediados del verano del año 2022, mientras Nisamov estaba comenzando a descubir el mundo de Linux y las posibilidades que traía consigo.
 
 ## Historia
 
@@ -19,60 +19,6 @@ En 22/11/2023, se creó el primer directorio en un USB portatil con la funcional
 
 Para  el 11/09/2025, ya había entrado en grado superior, aportando así tanto nuevo conocimiento, como actualizando el viejo contenido subido al repositorio.
 
-## Infromación
-
-El contenido de Linux commands ha hecho que a partir de si mismo, puedan crearse nuevos repositorios, como bien [SwitchCommands](https://github.com/NisamovOrg/SwitchCommands), estos, siendo una variante de LinuxCommands, cumplen con el mismo objetivo, proveer información y servir como hoja de apuntes completamente abierta.
-El lenguaje oficial de LinuxCommands es el Español, cualquier otro idioma que se muestre en el repositorio ha de ser tomado como una referencia o falta de traducción, es posible que a la larga puedan aparecer versiones específicas para ciertos idiomas, no obstante, el original es y siempre será el Español.
-
-Las tildes son restringidas, permitendo la búsqueda exacta de los comandos mediante 'Control + H'.
-
-## Recomendación
-
-> Recomendación de uso:
-Se recomienda clonar el repositorio para un mayor manejo y libre uso (siguiendo siempre, las restricciones impuestas).
-
-**Extensiones:**
-
-Cuando se use `Visual Studio Code`, se recomienda instalar las siguiente extensiones:
-```
-[Extensiones - Visual Studio Code]
-    ├── Open in New Window (Permite mostrar contendo en una nueva ventana)
-    ├── HTML Preview (Permite previsualizar documentos HTML)
-    └── MDX Preview (Permite previsualizar documentos MARKDOWN)
-```
-
-## Clonación de repositorio:
-### Clonar el repositorio: [Windows]
-
-Abrimos la terminal  y nos posicionamos en la ubicación donde queremos que se copie el repositorio:
-```
-Control + R
-cd /Desktop
-```
-Clonamos el repositorio:
-```
-git clone https://github.com/Nisamov/LinuxCommands
-```
-Este comando clonará el respositorio dentro de la localiación de escritorio, en caso de quererla en otra ubicación, ten en cuenta el idioma de tu sistema operativo y ambia los valores según tus preferencias:
-`/Desktop` = `/Escritorio`
-
-### Clonar el repositorio: [Linux]
-
-Abrimos la terminal y nos posicionamos en la ubicación donde queremos que se copie el repositorio:
-```
-Control + T
-cd /home/user
-```
-Instalamos git
-```
-sudo apt install git
-```
-Clonamos el respotiorio:
-```
-git clone https://github.com/Nisamov/LinuxCommands /home/user/Documents
-```
-Este comando clona el repositorio en la ruta indicada al final, si se elimina dicha ruta, el repositorio se clonará en la ruta donde se encuentre con la consola.
-
 ## Contribución
 
 Durante la creación de LinuxCommands, varias personas aportaron infromación de tal froma que a partir de sus Contribuciones, se pudieron crear nueva subcategorías, dando así lugar, a nuevas secciones y mayor contenido dentro del repositorio.
@@ -80,14 +26,15 @@ Durante la creación de LinuxCommands, varias personas aportaron infromación de
 Las personas que en los orígenes aportaron grandes cantidades de infromación al repositorio son:
 
 - ⥏﹅⥑ [Andrés Abadías](https://github.com/Nisamov) [Creador del repositorio y dueño de LinuxCommands]
-- ⥏﹆⥑ Unai Urrestarazu [Contribuidor en sección de ciberseguridad]
-- ⥏﹆⥑ Clara C. [Contribuidora en sección de gestión de ficheros y directorios]
-- ⥏﹆⥑ Juan P. [Contribuidor en sección de servicios servidor]
-- ⥏﹆⥑ Diego Gracía [Contribuidor en información del sistema]
+- ⥏﹆⥑ Unai Urrestarazu : Profesor [Grado Medio y Superior]
+- ⥏﹆⥑ Clara Cirac Nerín : Profesor [Grado Medio]
+- ⥏﹆⥑ Juan Palacios Perez : Profesor [Grado Medio]
+- ⥏﹆⥑ Diego Gracía : Compañero de Clase [Grado Medio]
+- ⥏﹆⥑ David Torralba : Profesor [Grado Superior]
 
 ## Licencia
 
 Licencia de uso [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es)
 
 > [ ! ] Repositorio creado por [Andrés Abadías](https://github.com/Nisamov).
-<!-- por y para -->
+<!-- por y para Nisamov-->

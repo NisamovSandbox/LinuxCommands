@@ -72,7 +72,7 @@ Todos los derechos pertenecientes a Andrés Ruslan Abadías Otal | Nisamov: gith
   </div>
 -->
 
-![Cartel Principal](.github/media/img.png)
+![Cartel Principal](.github/media/LinuxCommandsWhiteTheme.png)
 
 # LinuxCommands | Comandos y Servicios
 
@@ -83,124 +83,6 @@ Este repositorio está basado en los apuntes personales del creador [Andrés Rus
 El formato de comandos establecido en ficheros `commands.md`, está basado en el [Documento de Origen](.github/origins/LinuxCommandsOrigen.md) creado el 15/07/2022, siendo [document_gestion/commands.md](/document_gestion/commands.md) el producto definitivo de ese mismo fichero.
 
 ### Estructura del Repositorio:
-```sh
-.
-├── .github
-│   ├── media
-│   │   └── img.png
-│   ├── origins
-│   │   └── LinuxCommandsOrigen.md
-│   └── FUNDING.yml
-├── access_control_lists
-│   ├── commands.md
-│   └── theory.md
-├── backup_rsync
-│   ├── commands.md
-│   └── theory.md
-├── combination_keys
-│   └── combination.md
-├── cron_tasks
-│   ├── commands.md
-│   └── theory.md
-├── data_dump
-│   ├── commands.md
-│   └── theory.md
-├── document_gestion
-│   ├── commands.md
-│   ├── compression.md
-│   ├── main.md
-│   └── theory.md
-├── firewall_ufw
-│   ├── commands.md
-│   └── theory.md
-├── iptables
-│   ├── command-list.md
-│   ├── commands.md
-│   └── theory.md
-├── permission_gestion
-│   ├── permissions.md
-│   └── theory.md
-├── scripts
-│   └── bash
-│       ├── scripts_ejemplo
-│       │   ├── echo.sh
-│       │   └── for.sh
-│       └── theory.md
-├── secure_channel
-│   ├── secure_channel_ftp
-│   │   ├── commands.md
-│   │   └── theory.md
-│   └── secure_channel_ssh
-│       ├── commands.md
-│       └── theory.md
-├── security
-│   ├── backup
-│   │   ├── commands.md
-│   │   └── theory.md
-│   ├── proxy_squid
-│   │   └── documentation.md
-│   ├── raid
-│   │   ├── mount.md
-│   │   ├── process.sh
-│   │   └── theory.md
-│   ├── vpn_openvpn
-│   │   └── documentation.md
-│   └── audit.md
-├── services
-│   ├── commands.md
-│   └── theory.md
-├── software_gestion
-│   └── commands.md
-├── system_data
-│   ├── disk_partition
-│   │   ├── commands.md
-│   │   ├── theory.md
-│   │   └── virtualdisk.md
-│   ├── network_configuration
-│   │   ├── dhcp_failover
-│   │   │   ├── manual.md
-│   │   │   ├── serv1_01-network-manager-all.yaml
-│   │   │   ├── serv1_dhcpd.conf
-│   │   │   ├── serv2_01-network-manager-all.yaml
-│   │   │   ├── serv2_dhcpd.conf
-│   │   │   └── servers_isc-dhcp-server
-│   │   ├── dhcp_samba
-│   │   │   ├── smb.conf
-│   │   │   └── theory.md
-│   │   ├── interfaces_net
-│   │   │   ├── dynamic-network.conf
-│   │   │   ├── static-network.conf
-│   │   │   └── theory.md
-│   │   ├── netplan_net
-│   │   │   ├── dynamic-network.conf
-│   │   │   ├── static-network.conf
-│   │   │   └── theory.md
-│   │   ├── commands.md
-│   │   └── theory.md
-│   ├── system_data
-│   │   ├── packet_install_theory.md
-│   │   └── system_code.md
-│   └── system_structure
-│       └── linux-structure.md
-├── users_permissions
-│   ├── system_users.md
-│   └── user_gestion.md
-├── web_server
-│   ├── apache2
-│   │   └── documentation.md
-│   ├── nginx
-│   │   ├── GeoIP2
-│   │   │   └── documentation.md
-│   │   └── documentation.md
-│   └── wordpress
-│       └── documentation.md
-├── .gitignore
-├── CONTRIBUTING.md
-├── INFO.md
-├── KEYWORD.md
-├── LICENSE
-└── README.md
-```
-<!--
-</div>
--->
+
+<!-- AUTO-GENERATED-INDEX:START -->
+<!-- AUTO-GENERATED-INDEX:END -->
