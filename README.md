@@ -88,8 +88,9 @@ El formato de comandos establecido en ficheros `commands.md`, está basado en el
 ├── .github
 │   ├── media
 │   │   └── img.png
-│   └── origins
-│       └── LinuxCommandsOrigen.md
+│   ├── origins
+│   │   └── LinuxCommandsOrigen.md
+│   └── FUNDING.yml
 ├── access_control_lists
 │   ├── commands.md
 │   └── theory.md
@@ -136,11 +137,15 @@ El formato de comandos establecido en ficheros `commands.md`, está basado en el
 │   ├── backup
 │   │   ├── commands.md
 │   │   └── theory.md
+│   ├── proxy_squid
+│   │   └── documentation.md
 │   ├── raid
 │   │   ├── mount.md
-│   │   └── process.sh
-│   ├── audit.md
-│   └── theory.md
+│   │   ├── process.sh
+│   │   └── theory.md
+│   ├── vpn_openvpn
+│   │   └── documentation.md
+│   └── audit.md
 ├── services
 │   ├── commands.md
 │   └── theory.md
@@ -180,12 +185,12 @@ El formato de comandos establecido en ficheros `commands.md`, está basado en el
 ├── users_permissions
 │   ├── system_users.md
 │   └── user_gestion.md
-├── virtual_private_network_openvpn
-│   └── commands.md
 ├── web_server
 │   ├── apache2
 │   │   └── documentation.md
 │   ├── nginx
+│   │   ├── GeoIP2
+│   │   │   └── documentation.md
 │   │   └── documentation.md
 │   └── wordpress
 │       └── documentation.md
