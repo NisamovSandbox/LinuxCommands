@@ -87,5 +87,93 @@ El formato de comandos establecido en ficheros `commands.md`, está basado en el
 ### Estructura del Repositorio:
 
 <!-- AUTO-GENERATED-INDEX:START -->
-
+- document_management
+  - [commands.md](/document_management/commands.md)
+  - [compression.md](/document_management/compression.md)
+  - [main.md](/document_management/main.md)
+  - [theory.md](/document_management/theory.md)
+- fundamentals
+  - combination_keys
+    - [combination.md](/fundamentals/combination_keys/combination.md)
+  - system_structure
+    - [linux-structure.md](/fundamentals/system_structure/linux-structure.md)
+- networking
+  - [commands.md](/networking/commands.md)
+  - dhcp_failover
+    - [manual.md](/networking/dhcp_failover/manual.md)
+  - dhcp_samba
+    - [theory.md](/networking/dhcp_samba/theory.md)
+  - firewall_ufw
+    - [commands.md](/networking/firewall_ufw/commands.md)
+    - [theory.md](/networking/firewall_ufw/theory.md)
+  - interfaces_net
+    - [theory.md](/networking/interfaces_net/theory.md)
+  - iptables
+    - [command-list.md](/networking/iptables/command-list.md)
+    - [commands.md](/networking/iptables/commands.md)
+    - [theory.md](/networking/iptables/theory.md)
+  - netplan_net
+    - [theory.md](/networking/netplan_net/theory.md)
+  - [theory.md](/networking/theory.md)
+- permission_management
+  - access_control_lists
+    - [commands.md](/permission_management/access_control_lists/commands.md)
+    - [theory.md](/permission_management/access_control_lists/theory.md)
+  - [permissions.md](/permission_management/permissions.md)
+  - [theory.md](/permission_management/theory.md)
+- process_tasks
+  - cron
+    - [commands.md](/process_tasks/cron/commands.md)
+    - [theory.md](/process_tasks/cron/theory.md)
+- scripting
+  - bash
+    - example_scripts
+    - [theory.md](/scripting/bash/theory.md)
+- security
+  - [audit.md](/security/audit.md)
+  - proxy_squid
+    - [documentation.md](/security/proxy_squid/documentation.md)
+  - secure_channel
+    - secure_channel_ftp
+      - [documentation.md](/security/secure_channel/secure_channel_ftp/documentation.md)
+      - [theory.md](/security/secure_channel/secure_channel_ftp/theory.md)
+    - secure_channel_ssh
+      - [documentation.md](/security/secure_channel/secure_channel_ssh/documentation.md)
+      - [theory.md](/security/secure_channel/secure_channel_ssh/theory.md)
+  - vpn_openvpn
+    - [documentation.md](/security/vpn_openvpn/documentation.md)
+- services
+  - [commands.md](/services/commands.md)
+  - [theory.md](/services/theory.md)
+- software_management
+  - [commands.md](/software_management/commands.md)
+- storage
+  - backup
+    - [commands.md](/storage/backup/commands.md)
+    - data_dump
+      - [commands.md](/storage/backup/data_dump/commands.md)
+      - [theory.md](/storage/backup/data_dump/theory.md)
+    - [theory.md](/storage/backup/theory.md)
+  - partitions
+    - [commands.md](/storage/partitions/commands.md)
+    - [theory.md](/storage/partitions/theory.md)
+    - [virtualdisk.md](/storage/partitions/virtualdisk.md)
+  - raid
+    - [mount.md](/storage/raid/mount.md)
+    - [theory.md](/storage/raid/theory.md)
+- system_data
+  - [packet_installation.md](/system_data/packet_installation.md)
+  - [system_code.md](/system_data/system_code.md)
+- users_permissions
+  - [system_users.md](/users_permissions/system_users.md)
+  - [user_management.md](/users_permissions/user_management.md)
+- web_server
+  - apache2
+    - [documentation.md](/web_server/apache2/documentation.md)
+  - nginx
+    - GeoIP2
+      - [documentation.md](/web_server/nginx/GeoIP2/documentation.md)
+    - [documentation.md](/web_server/nginx/documentation.md)
+  - wordpress
+    - [documentation.md](/web_server/wordpress/documentation.md)
 <!-- AUTO-GENERATED-INDEX:END -->
