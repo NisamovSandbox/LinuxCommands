@@ -9,9 +9,9 @@ Clonación de Repositorio:
 `cp easy-rsa-old`
 
 Establecimiento de Red Estática:
-[Revisar apuntes de redes estáticas.](/system_data/network_configuration/netplan_net/static-network.conf)
+[Revisar apuntes de redes estáticas.](/networking/netplan_net/static-network.conf)
 `nano /etc/netplan/00-network-manager-all.yml`	(Los espacios son de 2uds)
-```
+```yaml
 └────network:
 	├──────version: 2
 	├──────renderer: networkd (por defecto está NetworkManager)
@@ -27,18 +27,17 @@ Aplicación de cambios en red: `netplan apply`
 
 Clonación de rsa:
 `cp -r ./easy-rsa-old/easy-rsa/2.0/ easy-rsa`
-```
+
 Información:
-build-ca			>>Crear certificado autorizado
-build-dh			>>Diff hellman (encripta todo el trayecto de comunicación)
-build-key-server	>>Crea llaves de certificados de servidor
-build-key			>>Crea llaves de certificado de cliente
-vars				>>Archivo donde se indica ubicación, cliente (por defecto Estados Unidos - San Francisco)
-```
+- `build-ca` Crear certificado autorizado
+- `build-dh` Diff hellman (encripta todo el trayecto de comunicación)
+- `build-key-server` Llaves de certificados de servidor
+- `build-key` Llaves de certificado de cliente
+- `vars` Archivo donde se indica ubicación, cliente (por defecto Estados Unidos - San Francisco)
 
 Archivo vars:
-`nano  vars`
-```
+`nano vars`
+```conf
 export KEY_COUNTRY=”Country”
 export KEY_PROVINCE=”Province”
 export KEY_CITY=”City”
@@ -53,7 +52,7 @@ export PKCS11_PIN=1234
 ```
 
 Crear VPN:
-```
+```sh
 mv openssl.1.0.0.cnf openssl.cnf
 . ./vars					>>Propiedades de certificado
 ./clean-all					>>Borrar certificados creados
@@ -63,20 +62,30 @@ mv openssl.1.0.0.cnf openssl.cnf
 ```
 
 Archivo Configuración VPN:
-```
+```sh
 cd /usr/share/doc/openvpn/examples/sample-config-files
 cp server.conf.gz /home/user/easy–rsa/keys
 cd /home/user/easy-rsa/keys
-gunzip  server.conf.gz	>>Comprimir y transformarlo en un archivo legible
+```
+Comprimir y transformarlo en un archivo legible
+```sh
+gunzip  server.conf.gz
+```
+```sh
 cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /home/user/easy-rsa/keys/
-nano /etc/vsftpd.conf >>Descomentar “write_enable=YES”
+```
+Descomentar “write_enable=YES”
+```sh
+nano /etc/vsftpd.conf
+```
+Reiniciar servicio
+```sh
 service vsftpd restart
 ```
-
 Conexión por FTP
-```
+```sh
 ftp usuario@ip
-contraseña
+calve de acceso
 put ca.crt
 put client.conf
 put cliente.key
@@ -85,25 +94,38 @@ put cliente.csr
 ```
 
 Información server.conf (servidor) - `nano /home/user/easy-rsa/keys/server.conf`
-```
-ca /home/user/easy-rsa/keys/ca.crt					>>Establecer dirección de los archivos en máquina servidor
-cert /home/user/easy-rsa/keys/servidor.crt			>>Establecer dirección de los archivos en máquina servidor
-key /home/user/easy-rsa/keys/servidor.key			>>Establecer dirección de los archivos en máquina servidor
-
+Establecer dirección de los archivos en máquina servidor
+```sh
+ca /home/user/easy-rsa/keys/ca.crt
+cert /home/user/easy-rsa/keys/servidor.crt
+key /home/user/easy-rsa/keys/servidor.key
 ifconfig-pool-persist /home/user/easy-rsa/keys/ipp.txt
-archivo ipp.txt										>>Archivo donde se almacenan las IPs que se le dan a los clientes
-
-tls-auth ta.key 0									>>Comentar esta linea
-status /home/user/easy-rsa/keys/openvpn-status.log	>>Registro de personas que se loguean
-
-openvpn server.conf									>>Iniciar VPN en el servidor
-
-
+```
+Archivo donde se almacenan las IPs que se le dan a los clientes
+```sh
+archivo ipp.txt
+```
+Comentar esta linea
+```sh
+tls-auth ta.key 0
+```
+Registro de personas que se loguean
+```sh
+status /home/user/easy-rsa/keys/openvpn-status.log
+```
+Iniciar VPN en el servidor
+```sh
+openvpn server.conf
 Información client.conf (cliente)
-ca /home/user/ca.crt								>>Establecer dirección de los archivos en máquina cliente
-cert /home/user/cliente.crt							>>Establecer dirección de los archivos en máquina cliente
-key /home/user/cliente.key							>>Establecer dirección de los archivos en máquina cliente
-
-tls-auth ta.key 0									>>Comentar esta linea
-openvpn user.conf									>>Iniciar VPN en el cliente
+```
+Establecer dirección de los archivos en máquina cliente
+```sh
+ca /home/user/ca.crt
+cert /home/user/cliente.crt
+key /home/user/cliente.key
+```
+Necesario comentar esta línea y contar con la siguiene
+```sh
+#tls-auth ta.key 0
+openvpn user.conf
 ```

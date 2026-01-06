@@ -28,17 +28,17 @@ La configuración y gestión del DHCP Failover se realiza a través de archivos 
 - Permite mantenimiento de servidores sin interrumpir la asignación de direcciones IP a los clientes.
 
 ### Servidor 1:
-- Configuracion de fichero `/etc/dhcp/dhcpd.conf` [dhcpd.conf](/system_data/network_configuration/dhcp_failover/serv1_dhcpd.conf)
-- Configuración de fichero `/etc/default/isc-dhcp-server` [isc-dhcp-server](/system_data/network_configuration/dhcp_failover/servers_isc-dhcp-server)
-- Configuración de fichero `/etc/netplan/01-network-manager-all.yaml` [network-manager-all.yaml](/system_data/network_configuration/dhcp_failover/serv1_01-network-manager-all.yaml)
+- Configuracion de fichero `/etc/dhcp/dhcpd.conf` [dhcpd.conf](/networking/dhcp_failover/serv1_dhcpd.conf)
+- Configuración de fichero `/etc/default/isc-dhcp-server` [isc-dhcp-server](/networking/dhcp_failover/servers_isc-dhcp-server)
+- Configuración de fichero `/etc/netplan/01-network-manager-all.yaml` [network-manager-all.yaml](/networking/dhcp_failover/serv1_01-network-manager-all.yaml)
 
   - Reinicio de servicio DHCP: `sudo service isc-dhcp-server restart`
   - Revisión de estado: `service isc-dhcp-server status`
 
 ### Servidor 2:
-- Configuracion de fichero `/etc/dhcp/dhcpd.conf` [dhcpd.conf](/system_data/network_configuration/dhcp_failover/serv2_dhcpd.conf)
-- Configuración de fichero `/etc/default/isc-dhcp-server` [isc-dhcp-server](/system_data/network_configuration/dhcp_failover/servers_isc-dhcp-server)
-- Configuración de fichero `/etc/netplan/01-network-manager-all.yaml` [network-manager-all.yaml](/system_data/network_configuration/dhcp_failover/serv2_01-network-manager-all.yaml)
+- Configuracion de fichero `/etc/dhcp/dhcpd.conf` [dhcpd.conf](/networking/dhcp_failover/serv2_dhcpd.conf)
+- Configuración de fichero `/etc/default/isc-dhcp-server` [isc-dhcp-server](/networking/dhcp_failover/servers_isc-dhcp-server)
+- Configuración de fichero `/etc/netplan/01-network-manager-all.yaml` [network-manager-all.yaml](/networking/dhcp_failover/serv2_01-network-manager-all.yaml)
 
   - Reinicio de servicio DHCP: `sudo service isc-dhcp-server restart`
   - Revisión de estado: `service isc-dhcp-server status`
