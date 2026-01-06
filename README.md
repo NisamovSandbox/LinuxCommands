@@ -119,10 +119,10 @@ El formato de comandos establecido en ficheros `commands.md`, está basado en el
     - [theory.md](/scripts/bash/theory.md)
 - secure_channel
   - secure_channel_ftp
-    - [commands.md](/secure_channel/secure_channel_ftp/commands.md)
+    - [documentation.md](/secure_channel/secure_channel_ftp/documentation.md)
     - [theory.md](/secure_channel/secure_channel_ftp/theory.md)
   - secure_channel_ssh
-    - [commands.md](/secure_channel/secure_channel_ssh/commands.md)
+    - [documentation.md](/secure_channel/secure_channel_ssh/documentation.md)
     - [theory.md](/secure_channel/secure_channel_ssh/theory.md)
 - security
   - [audit.md](/security/audit.md)
