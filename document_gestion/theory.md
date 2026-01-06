@@ -1,128 +1,127 @@
-# Teoría Gestion de Ficheros y Directorios:
-
-Los comandos cuentan con una sintaxis, siendoe sta la siguiente:
-- `comando <parametros> <argmentos>`
-No todos los comandos tienen que tener parámetros, ni todos los comandos han de tener argumentos.
-- Comando sin parámetros ni argumentos: `w`, `ll`
-
-La siguiente ifnromacion esta vinculada al documento practico de la gestion de documentos y directorios, [ver el documento](/document_gestion/commands.md).
-
-## Linea 7 | touch
-
-El comando touch permite al usuario crear un fichero, si no se especifica la extension, se genera de forma automatica, un fichero de texto `.txt`.
-La extension de un fichero, no condiciona su funcion, en todos los ficheros es posible ingresar contenido, debido a que el sistema operativo Linux, divide todo su contenido en dos categorias: ficheros y directorios.
-
-La creacion basica de un documento cuenta con una estructura que puede o no cumplirse:
-
+# Teoría: Gestión de Ficheros y Directorios en Linux
+## Sintaxis de comandos
+Los comandos en sistemas GNU/Linux siguen una sintaxis general:
 ```
-touch [nombre fichero] + [extension] + [direccion de salida]
+comando [opciones] [argumentos]
 ```
-
-El comando touch, nos permite crear el fichero.
-El nombre del fichero es necesario, solicita un nombre para el fichero creado.
-La extension permite distinguir en el formato del fichero, si la dejamos vacia, se quedara como un documento de texto, independientemente de la extension que tenga el fichero, este no cambiara su funcion y siempre sera posible escribir en el.
-La direccion de salida permite guardar el fichero tanto en la ubicacion actual, como en una direccion diferente.
-
-Ejemplo de uso segun los parametros dados anteriormente:
-
+- Comando: programa que se ejecuta.
+- Opciones (o flags): modifican el comportamiento del comando.
+- Argumentos: indican sobre qué elementos actúa el comando (archivos, directorios o rutas).
+No todos los comandos requieren opciones ni argumentos.
+## Modificación de metadatos
+En Linux, los ficheros disponen de metadatos almacenados en el inodo (permisos, propietario, fechas, etc.).
+### El comando `touch`
+El comando `touch` tiene como función principal modificar los metadatos temporales de un fichero:
+- atime: último acceso
+- mtime: última modificación del contenido
+Si el fichero no existe, `touch` lo crea como efecto secundario.
+#### Sintaxis
+```bash
+touch [ruta/]nombre_fichero
 ```
-touch file.txt /home/user/Documents
+#### Ejemplos
+Crear un fichero (si no existe):
+```bash
+touch file.txt
 ```
-
-En este caso, se crea el documento `file.txt` en la ruta `/home/user/Documents`.
-
-Es posible crear ficheros ocultos mediante la colocacion de un "." deltante de ellos, un ejemplo de esto seria:.
-
+Actualizar las fechas de un fichero existente:
+```bash
+touch file.txt
 ```
+Crear un fichero en una ruta concreta:
+```bash
+touch /home/user/Documents/file.txt
+```
+Asignar una fecha concreta:
+```bash
+touch -t 202601062130 file.txt
+```
+Copiar las marcas de tiempo de otro fichero:
+```bash
+touch -r origen.txt destino.txt
+```
+> En Linux, la extensión de un fichero no determina su función. El sistema solo distingue entre ficheros y directorios.
+### Ficheros ocultos
+Un fichero se considera oculto si su nombre comienza por un punto (`.`):
+```bash
 touch .hidden
 ```
-
-Esto permite que durante la busqueda de ficheros, este aparezca oculto y solo pueda ser visto mediante una opcion de busqueda.
-
-## Linea 8 | ls
-
-El comando ls permite listar el contenido de la actual ubicacion, mostrando todosu contenido.
-Este comando cuenta con varios opciones para hacer mas compacta o abierta el listado, las opciones registradas son:
-
+Estos ficheros no se muestran por defecto y requieren opciones específicas para ser listados.
+## Listado de contenido
+### El comando `ls`
+El comando `ls` permite listar el contenido de un directorio.
+#### Sintaxis
+```bash
+ls [opciones] [ruta]
 ```
--l - Permite hacer un listado detallado del contenido
--a - Permite mostrar los ficheros ocultos
--r - Mostrar ficheros del interior de disrectorios
- ? - Filtrar por caracteres
- * - Mostrar contenido relacionado
+#### Opciones comunes
+- `-l` listado detallado
+- `-a` muestra ficheros ocultos
+- `-R` listado recursivo
+- `-r` invierte el orden del listado
+- `-h` tamaños en formato legible
+### Comodines del shell
+Los comodines no son opciones de `ls`, sino del shell:
+- `*` > cualquier cadena de caracteres
+- `?` > un solo carácter
+Ejemplos:
+```bash
+ls *.txt
+ls file?.sh
 ```
-
-Este comando cuenta con una estructura que puede variar segun el objetivo que se tenga:
-
-```
-ls [opciones] + [ruta]
-```
-
-El comando ls nos permite listar el contenido.
-Las opciones permiten hacer un listado especifico de nuestros intereses.
-Cada opcion cuenta con su propia finalidad que segun lo que se quiera buscar, se podra utilizar una o varias de estas opciones, siendo asi que podemos tener varias dentro de un mismo mensaje de la siguiente forma:
-
-```
-ls -al
-```
-Esta orden nos permite listar de foma detallada mostrando todo el contenido incluyendo ficheros ocultos.
-
-### Output | ls
-
-La salida del comando ls está compuesta por una serie de carácteres con la siguiente estructura:
-
+> Nota: `ll` no es un comando estándar, sino un alias de `ls -l` presente en algunas distribuciones.
+### Salida de `ls -l`
 Ejemplo:
 ```
 -rwxr--r-- 1 root root 56 Jan 24 20:51 bucle.sh
 ```
-
-Estructura de salida:
+Estructura:
 ```
-[permisos] [número de enlaces] [propietario] [grupo] [tamaño] [fecha y hora de modificación] [nombre del archivo o directorio]
+[permisos] [nº enlaces] [propietario] [grupo] [tamaño] [fecha modificación] [nombre]
 ```
-Este método está creado con el obejtivo de ser sencillo y rápido de entender
-
-## Linea 14 | tree
-
-Tree es un comando que requiere ser instalado, para ello, se utiliza el comando `sudo apt install tree`.
-Este comando lista el contenido de la ruta en modo raíz, pemritiendo ver como es la estructura completa de la dirección.
-
-Este comando es similar a `ls` con la diferencia de la forma en la que muestran el contenido en el output.
-
-Este comando cuenta con varias opciones para mostrar únicamente lo que se desea:
-
+## Estructura en árbol
+### El comando `tree`
+El comando `tree` muestra la estructura de directorios en forma jerárquica.
+Instalación:
+```bash
+sudo apt install tree
 ```
--d -
--f -
--a -
--u -
--g -
--h -
+Opciones comunes:
+- `-d` > solo directorios
+- `-f` > ruta completa
+- `-a` > incluye ocultos
+- `-u` > usuario propietario
+- `-g` > grupo propietario
+- `-h` > tamaño legible
+## Enlaces
+### El comando `ln`
+Permite crear enlaces entre archivos o directorios.
+#### Enlaces duros
+```bash
+ln archivo_original enlace_duro
 ```
+Características:
+- Comparten el mismo inodo
+- No son copias
+- No se pueden crear sobre directorios
+- No atraviesan sistemas de archivos
+- El contenido persiste mientras exista al menos un enlace
+#### Enlaces simbólicos
+```bash
+ln -s archivo_original enlace_simbolico
+```
+Características:
+- Tienen su propio inodo
+- Apuntan a una ruta
+- Pueden enlazar directorios
+- Pueden cruzar sistemas de archivos
+- Se rompen si el destino desaparece
 
-## ln
-`ln` permite crear un enlace (tanto duro, como simbólico) en el sistema:
-Un enlace duro es un archivo que apunta al mismo contenido almacenado en disco que el archivo original, así como es una copia exacta del fichero original.
-- Los archivos originales y los enlaces duros dispondrán del mismo inodo y estarán apuntando al mismo contenido almacenado en disco.
-- Cualquier cambio al archivo original afecta a los dos, pues apuntan a la misma dirección de memoria.
-- No se pueden crear enlaces duros de directorios, unicamente de archivos.
-- Cambiar la ubicación del archivo original no rompe el enlace duro (pues sigue apuntando a la misma direccion de memoria).
-- Los metadatos de los dos son los mismos.
-- El contenido del disco no se borrará hasta que ambos sean eliminados.
-
-Un enlace simbólico (o blando) tiene más similitud con los accesos directos en windows.
-- Los enlaces simbólicos apuntan al nombre del archivo, el cual apunta al contenido almacenado en nuestro disco duro.
-- Cada enlace blando tiene su propio inodo y es diferente al del archivo original.
-- Podemos crear archivos blandos de archivos o carpetas aunque estén en discos duros o particiones diferentes.
-> Para eliminar un enlace simbólico, usamos el comando `unlink <Enlace Simbólico>` (Los enlaces duros se eliminan como ficheros normales).
-
-
-Para ver más información del comando, ejecute `man ln`
-
-<!--## En espera
-
-tar
-│   ├── -cvf                §; Integracion completa dentro del fichero tar                                                      §; tar -cvf
-│   ├── -tvf                §; Mostrar contenido comprimdo dentro de fichero tar                                                §; tar -twf
-│   └── -xvf                §; Extraccion de contenido comprimido de fichero tar                                                §; tar -xvf
--->
+Eliminar un enlace simbólico:
+```bash
+unlink enlace_simbolico
+```
+Para más información:
+```bash
+man ln
+```
