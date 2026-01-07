@@ -2,7 +2,7 @@
 import re
 from pathlib import Path
 EXCLUDED_DIRS = {'.git', '.github', '__pycache__'}
-EXCLUDED_FILES = {'README', 'CONTRIBUTING', 'INFO.md', 'KEYWORD.md', 'LICENSE'}
+EXCLUDED_FILES = {'README.md', 'CONTRIBUTING.md', 'INFO.md', 'KEYWORD.md', 'LICENSE'}
 ROOT = Path('.')
 def generate_index(path: Path, include_files=True, depth=0):
     lines = []
@@ -17,7 +17,7 @@ def generate_index(path: Path, include_files=True, depth=0):
             lines.append(f"{indent}- [{item.name}](/{item.as_posix()})")
     return lines
 def write_readme(path: Path, lines):
-    readme = path / 'README'
+    readme = path / 'README.md'
     start = '<!-- AUTO-GENERATED-INDEX:START -->'
     end = '<!-- AUTO-GENERATED-INDEX:END -->'
     tree_md = '\n'.join(lines)
