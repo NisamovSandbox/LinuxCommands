@@ -124,7 +124,19 @@ Este fichero actúa como **referencia canónica** del estándar utilizado en el 
 La organización del repositorio está pensada para facilitar la navegación y el crecimiento progresivo del contenido:
 
 <!-- AUTO-GENERATED-INDEX:START -->
-
+- [document_management](/document_management)
+- [fundamentals](/fundamentals)
+- [networking](/networking)
+- [permission_management](/permission_management)
+- [process_tasks](/process_tasks)
+- [scripting](/scripting)
+- [security](/security)
+- [services](/services)
+- [software_management](/software_management)
+- [storage](/storage)
+- [system_data](/system_data)
+- [users_permissions](/users_permissions)
+- [web_server](/web_server)
 <!-- AUTO-GENERATED-INDEX:END -->
 
 ---
