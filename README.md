@@ -135,7 +135,7 @@ La organización del repositorio está pensada para facilitar la navegación y e
 - [software_management](/software_management)
 - [storage](/storage)
 - [system_data](/system_data)
-- [users_permissions](/users_permissions)
+- [user_permissions](/user_permissions)
 - [web_server](/web_server)
 <!-- AUTO-GENERATED-INDEX:END -->
 
