@@ -1,0 +1,107 @@
+name: Generate PDF Documentation (Manual)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            pandoc \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-latex-extra
+
+      - name: Generate PDFs and release body
+        run: |
+          set -e
+
+          MODULES=(
+            document_management
+            fundamentals
+            networking
+            permission_management
+            process_tasks
+            scripting
+            security
+            services
+            software_management
+            storage
+            system_data
+            user_permissions
+            web_server
+          )
+
+          OUTPUT_DIR="output"
+          mkdir -p "$OUTPUT_DIR"
+
+          RELEASE_BODY="$OUTPUT_DIR/release_body.md"
+          echo "Documentación disponible en formato PDF:" > "$RELEASE_BODY"
+          echo "" >> "$RELEASE_BODY"
+
+          for module in "${MODULES[@]}"; do
+            echo "Processing module: $module"
+
+            TMP_MD="$OUTPUT_DIR/${module}.md"
+            : > "$TMP_MD"
+
+            # README.md como portada
+            if [ -f "$module/README.md" ]; then
+              cat "$module/README.md" >> "$TMP_MD"
+              echo -e "\n\n" >> "$TMP_MD"
+            fi
+
+            # Markdown en la raíz del módulo (excepto README.md)
+            find "$module" -maxdepth 1 -type f -name "*.md" ! -name "README.md" \
+              | sort | while read file; do
+                  cat "$file" >> "$TMP_MD"
+                  echo -e "\n\n" >> "$TMP_MD"
+              done
+
+            # Subdirectorios
+            find "$module" -mindepth 2 -type d | sort | while read dir; do
+              echo -e "\n\n# $(basename "$dir")\n\n" >> "$TMP_MD"
+
+              for ext in md yaml conf; do
+                find "$dir" -type f -name "*.$ext" | sort | while read file; do
+                  echo -e "\n\n## $(basename "$file")\n" >> "$TMP_MD"
+
+                  if [ "$ext" = "md" ]; then
+                    cat "$file" >> "$TMP_MD"
+                  else
+                    echo '```' >> "$TMP_MD"
+                    cat "$file" >> "$TMP_MD"
+                    echo '```' >> "$TMP_MD"
+                  fi
+
+                  echo -e "\n\n" >> "$TMP_MD"
+                done
+              done
+            done
+
+            PDF_NAME="$(echo "$module" | tr '[:lower:]' '[:upper:]').pdf"
+            pandoc "$TMP_MD" -o "$OUTPUT_DIR/$PDF_NAME"
+
+            echo "- $(echo "$module" | tr '[:lower:]' '[:upper:]')" >> "$RELEASE_BODY"
+          done
+
+      - name: Create or update release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Documentación Descargable PDF
+          body_path: output/release_body.md
+          files: |
+            output/*.pdf
+            .github/media/releases.png
