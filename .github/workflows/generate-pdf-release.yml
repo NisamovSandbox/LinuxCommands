@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️Clonar el repositorio
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️Instalar dependencias necesarias para Pandoc/XeLaTeX y emojis
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -24,129 +26,27 @@ jobs:
             texlive-latex-extra \
             texlive-xetex \
             fonts-noto \
-            fonts-noto-cjk \
             fonts-noto-color-emoji
 
-      - name: Generate PDFs and release body
+      # 3️Ejecutar el script Python que genera los PDFs
+      - name: Run PDF generation script
         run: |
-          set -e
+          python3 .github/scripts/generate-pdf-release.py
 
-          MODULES=(
-            document_management
-            fundamentals
-            networking
-            permission_management
-            process_tasks
-            scripting
-            security
-            services
-            software_management
-            storage
-            system_data
-            user_permissions
-            web_server
-          )
-
-          OUTPUT_DIR="output"
-          mkdir -p "$OUTPUT_DIR"
-
-          RELEASE_BODY="$OUTPUT_DIR/release_body.md"
+      # 4️Crear el release body con la imagen y lista de PDFs
+      - name: Generate release body
+        run: |
+          RELEASE_BODY="output/release_body.md"
           echo "![Release Image](.github/media/releases.png)" > "$RELEASE_BODY"
           echo "" >> "$RELEASE_BODY"
-          echo "Documentación disponible en formato PDF:" >> "$RELEASE_BODY"
+          echo "Documentación PDF generada automáticamente:" >> "$RELEASE_BODY"
           echo "" >> "$RELEASE_BODY"
 
-          for module in "${MODULES[@]}"; do
-            echo "Processing module: $module"
-
-            TMP_MD="$OUTPUT_DIR/${module}.md"
-            : > "$TMP_MD"
-
-            # README.md como portada
-            if [ -f "$module/README.md" ]; then
-              cat "$module/README.md" >> "$TMP_MD"
-              echo -e "\n\n" >> "$TMP_MD"
-            fi
-
-            # Markdown en la raíz del módulo (excepto README.md)
-            find "$module" -maxdepth 1 -type f -name "*.md" ! -name "README.md" | sort | while read file; do
-                if [[ "$(basename "$file")" == "commands.md" ]]; then
-                    # Generar PDF horizontal para commands.md
-                    echo "Generating horizontal PDF for $file"
-                    pandoc "$file" \
-                      --pdf-engine=xelatex \
-                      -V lang=es-ES \
-                      -V mainfont="Noto Sans" \
-                      -V sansfont="Noto Sans" \
-                      -V monofont="Noto Sans Mono" \
-                      -V CJKmainfont="Noto Sans CJK SC" \
-                      -V mainfontoptions="Renderer=Harfbuzz" \
-                      -V monofontoptions="Renderer=Harfbuzz" \
-                      -V geometry:margin=1.5cm \
-                      -V documentclass=article \
-                      -V classoption=landscape \
-                      -o "$OUTPUT_DIR/${module}_COMMANDS.pdf"
-                else
-                    cat "$file" >> "$TMP_MD"
-                    echo -e "\n\n" >> "$TMP_MD"
-                fi
-            done
-
-            # Subdirectorios
-            find "$module" -mindepth 2 -type d | sort | while read dir; do
-              echo -e "\n\n# $(basename "$dir")\n\n" >> "$TMP_MD"
-
-              for ext in md yaml conf; do
-                find "$dir" -type f -name "*.$ext" | sort | while read file; do
-                  echo -e "\n\n## $(basename "$file")\n" >> "$TMP_MD"
-
-                  if [ "$ext" = "md" ]; then
-                    if [[ "$(basename "$file")" == "commands.md" ]]; then
-                        echo "Generating horizontal PDF for $file"
-                        pandoc "$file" \
-                          --pdf-engine=xelatex \
-                          -V lang=es-ES \
-                          -V mainfont="Noto Sans" \
-                          -V sansfont="Noto Sans" \
-                          -V monofont="Noto Sans Mono" \
-                          -V CJKmainfont="Noto Sans CJK SC" \
-                          -V mainfontoptions="Renderer=Harfbuzz" \
-                          -V monofontoptions="Renderer=Harfbuzz" \
-                          -V geometry:margin=1.5cm \
-                          -V documentclass=article \
-                          -V classoption=landscape \
-                          -o "$OUTPUT_DIR/$(basename $(dirname "$file"))_COMMANDS.pdf"
-                    else
-                        cat "$file" >> "$TMP_MD"
-                    fi
-                  else
-                    echo '```' >> "$TMP_MD"
-                    cat "$file" >> "$TMP_MD"
-                    echo '```' >> "$TMP_MD"
-                  fi
-
-                  echo -e "\n\n" >> "$TMP_MD"
-                done
-              done
-            done
-
-            # Generar PDF vertical del módulo
-            PDF_NAME="$(echo "$module" | tr '[:lower:]' '[:upper:]').pdf"
-            pandoc "$TMP_MD" \
-              --pdf-engine=xelatex \
-              -V lang=es-ES \
-              -V mainfont="Noto Sans" \
-              -V sansfont="Noto Sans" \
-              -V monofont="Noto Sans Mono" \
-              -V CJKmainfont="Noto Sans CJK SC" \
-              -V mainfontoptions="Renderer=Harfbuzz" \
-              -V monofontoptions="Renderer=Harfbuzz" \
-              -V geometry:margin=1.5cm \
-              -o "$OUTPUT_DIR/$PDF_NAME"
-
-            echo "- $(echo "$module" | tr '[:lower:]' '[:upper:]')" >> "$RELEASE_BODY"
+          for pdf in output/*.pdf; do
+            echo "- $(basename "$pdf")" >> "$RELEASE_BODY"
           done
 
+      # 5️Crear o reemplazar release con todos los PDFs generados
       - name: Create or update release
         uses: softprops/action-gh-release@v2
         with:
