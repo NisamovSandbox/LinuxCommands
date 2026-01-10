@@ -20,6 +20,8 @@ Incluye ejemplos prácticos y fundamentos de scripting.
 <!-- AUTO-GENERATED-INDEX:START -->
 - [bash](/scripting/bash)
   - [bash/theory.md](/scripting/bash/theory.md)
+- [eBPF](/scripting/eBPF)
+  - [eBPF/theory.md](/scripting/eBPF/theory.md)
 <!-- AUTO-GENERATED-INDEX:END -->
 
 ---
