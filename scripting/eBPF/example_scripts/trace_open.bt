@@ -1,0 +1,6 @@
+#!/usr/bin/env bpftrace
+# Traza cada vez que un proceso abre un archivo
+tracepoint:syscalls:sys_enter_openat
+{
+    printf("PID %d (%s) abrió archivo: %s\n", pid, comm, str(args->filename));
+}

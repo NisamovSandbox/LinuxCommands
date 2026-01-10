@@ -1,3 +1,5 @@
+# Scripts - Shell Bash
+
 Un script es un fichero con sentencias para el intérprete Bash. El intérprete leerá y ejecutará cada sentencia del fichero.
 
 Un script en bash debe tener extensión .sh y de manera general permisos de ejecución.
@@ -7,11 +9,11 @@ Se puede ejecutar como:
 - user@localhost~: bash script.sh
 - user@localhost~: ./script.sh
 
-El que indica al interprete que shell usar, es el shi-bng `#!` seguido de la ruta de shell `/bin/bash`.
+El que indica al interprete que shell usar, es el shi-bng `#!` seguido de la ruta de shell `/bin/bash` o cualquier shell que se desee usar.
 
 **Shell Script** permite utilizar sentencias de control de flujo persistentes en lenguajes de programación de alto nivel.
 
-| Estructura         | Palabras Clave                     | Función Principal                                                                                  | Características Clave                                                             |
+| Estructura | Palabras Clave | Función Principal | Características Clave |
 | ------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | Condicional        | `if`, `then`, `elif`, `else`, `fi` | Ejecuta un bloque de comandos solo si se cumple una condición                                      | Permite múltiples ramas usando `elif` y `else`.                                   |
 | Bucle `for`        | `for`, `in`, `do`, `done`          | Itera sobre una lista de elementos                                                                 | Útil para recorrer listas de valores o archivos.                                  |
@@ -40,3 +42,16 @@ Las pipes o tuberias permiten usar la salida de un comando omo la entrada del si
 `:$ cat /etc/passwd | grep /bin/bash | wc -l`
 - Evitar falsos positivos recortando la ultima linea filtrando por ':':
 `cat /etc/passwd | cut -d ':' -f 7 | grep /bin/bash | wc -l`
+
+## Lista de Shells en Linux
+
+| Shell | Nombre completo | Características |
+| -------- | -------------------------- | ---------------------------------------------------------------------------------- |
+| **bash** | Bourne Again Shell         | Muy popular, compatible POSIX, scripting avanzado, historial, autocompletado       |
+| **sh**   | Bourne Shell               | Shell clásico de Unix, minimalista, base de POSIX                                  |
+| **dash** | Debian Almquist Shell      | Minimalista, muy rápida, usada en `/bin/sh` en Debian/Ubuntu                       |
+| **zsh**  | Z Shell                    | Mejor autocompletado, globbing avanzado, temas y plugins, muy popular en Oh My Zsh |
+| **ksh**  | Korn Shell                 | Compatible POSIX, scripting poderoso, arrays y funciones avanzadas                 |
+| **csh**  | C Shell                    | Sintaxis tipo C, soporta scripting pero menos portable                             |
+| **tcsh** | TENEX C Shell              | C Shell mejorada, autocompletado y historial extendido                             |
+| **fish** | Friendly Interactive Shell | Muy amigable, sintaxis simple, autocompletado y resaltado nativo                   |
