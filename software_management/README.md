@@ -20,4 +20,5 @@ Incluye comandos y prácticas habituales.
 <!-- AUTO-GENERATED-INDEX:START -->
 - [commands](/software_management/commands)
 - [commands.md](/software_management/commands.md)
+- [packet_installation.md](/software_management/packet_installation.md)
 <!-- AUTO-GENERATED-INDEX:END -->

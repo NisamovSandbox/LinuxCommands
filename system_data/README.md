@@ -18,6 +18,5 @@ Sirve como referencia para consultas y análisis.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
-- [packet_installation.md](/system_data/packet_installation.md)
 - [system_code.md](/system_data/system_code.md)
 <!-- AUTO-GENERATED-INDEX:END -->
