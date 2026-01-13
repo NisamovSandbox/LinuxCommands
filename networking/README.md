@@ -19,6 +19,7 @@ Incluye tanto conceptos teóricos como ejemplos prácticos.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
+- [commands](/networking/commands)
 - [dhcp_failover](/networking/dhcp_failover)
   - [dhcp_failover/manual.md](/networking/dhcp_failover/manual.md)
 - [dhcp_samba](/networking/dhcp_samba)
