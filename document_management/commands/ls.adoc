@@ -40,3 +40,5 @@ size:: `ls -l --sort=size` Ordenar por peso
 time:: `ls -l --sort=time` Ordenar por tiempo
 version:: `ls -l --sort=version` Ordenar por versión
 extension:: `ls -l --sort=extension` Ordenar por extensión
+
+====

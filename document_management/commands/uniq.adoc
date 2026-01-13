@@ -8,3 +8,5 @@ Eliminar lineas duplicadas consecutivas.
 -i:: `uniq -i` Considerar lineas iguales independientemente del case sensitive
 -f:: `uniq -f Nº` Ignorar las primeras X palabras
 -s:: `uniq -s Nº` Ignorar los primeros X carácteres
+
+====

@@ -5,3 +5,5 @@ Creación de enlaces duros/simbolicos.
 -s:: `ln -s` Creación de enlace simbólico
 -f:: `ln -f` Creación de enlace forzado al destino
 -i:: `ln -i` confirmación antes de sobreescribir un enlace ya existente
+
+====

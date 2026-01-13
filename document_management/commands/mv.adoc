@@ -5,3 +5,5 @@ Mover archivo entre rutas.
 -i:: `mv -i` Solicitar confirmación antes de sobreescribir archivos
 -v:: `mv -v` Mostrar archivos de origen y destino
 -f:: `mv -f` Forzar la acción
+
+====

@@ -7,3 +7,5 @@ Copiar archivos o directorios.
 -a:: `cp -a` Copiar archivos manteniendo sus atributos
 -b:: `cp -b` Copiar archivos como copia de seguridad
 -i:: `cp -i` Solicitar confirmacion antes de sobreescribir el destino
+
+====
