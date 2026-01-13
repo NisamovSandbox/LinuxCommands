@@ -18,5 +18,6 @@ Incluye comandos y prácticas habituales.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
+- [commands](/software_management/commands)
 - [commands.md](/software_management/commands.md)
 <!-- AUTO-GENERATED-INDEX:END -->
