@@ -86,3 +86,4 @@ cp --parents dir/a/b/file.txt /backup/
 # Intentar copia por referencia cuando sea posible
 cp --reflink=auto fichero.bin /ruta/destino/
 ----
+

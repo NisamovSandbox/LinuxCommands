@@ -6,7 +6,6 @@ Eliminar lineas duplicadas consecutivas.
 # Eliminar líneas duplicadas consecutivas
 uniq entrada.txt > salida.txt
 ----
-
 [unordered.stack]
 -c:: `uniq -c` Mostrar numero de repeticiones en columna
 +
@@ -15,7 +14,6 @@ uniq entrada.txt > salida.txt
 # Contar repeticiones de líneas consecutivas
 uniq -c entrada.txt
 ----
-
 [unordered.stack]
 -d:: `uniq -d` Mostrar lineas duplicadas
 +
@@ -24,7 +22,6 @@ uniq -c entrada.txt
 # Mostrar sólo las líneas duplicadas consecutivas
 uniq -d entrada.txt
 ----
-
 [unordered.stack]
 -u:: `uniq -u` Mostrar lineas no duplicadas
 +
@@ -33,7 +30,6 @@ uniq -d entrada.txt
 # Mostrar sólo líneas únicas
 uniq -u entrada.txt
 ----
-
 [unordered.stack]
 -i:: `uniq -i` Ignorar mayúsculas/minúsculas
 +
@@ -42,7 +38,6 @@ uniq -u entrada.txt
 # Ignorar case
 uniq -i entrada.txt
 ----
-
 [unordered.stack]
 -f:: `uniq -f N` Ignorar las primeras N columnas (palabras)
 +
@@ -51,7 +46,6 @@ uniq -i entrada.txt
 # Ignorar la primera columna al comparar
 uniq -f 1 entrada.txt
 ----
-
 [unordered.stack]
 -s:: `uniq -s N` Ignorar los primeros N caracteres
 +
@@ -60,3 +54,4 @@ uniq -f 1 entrada.txt
 # Ignorar primeros 3 caracteres
 uniq -s 3 entrada.txt
 ----
+
