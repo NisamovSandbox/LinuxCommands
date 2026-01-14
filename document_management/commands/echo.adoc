@@ -1,0 +1,40 @@
+
+[source,bash]
+----
+# Mostrar una cadena simple
+echo "Hola Mundo"
+----
+
+=== echo
+Mostrar una línea de texto o variables en la salida estándar.
+
+[unordered.stack]
+-n:: `echo -n` No añadir salto de línea final
+----
+[source,bash]
+----
+# No añadir salto de línea
+echo -n "Hola"
+----
+
+[unordered.stack]
+-e:: `echo -e` Interpretar escapes como \n, \t
+----
+[source,bash]
+----
+# Interpretar escapes
+echo -e "Linea1\nLinea2"
+----
+[source,bash]
+----
+# Imprimir texto sencillo
+echo "Hola Mundo"
+
+# Imprimir variable de entorno
+NOMBRE="Andres"
+echo "Hola $NOMBRE"
+
+# Redirigir la salida a un fichero
+echo "Registro" >> log.txt
+----
+

@@ -1,4 +1,54 @@
-*
-[::apper::]
-[::lower::]
-etc
+
+=== operadores
+Descripción breve de operadores y redirecciones en shell.
+
+[source,bash]
+----
+# Uso básico de operadores y redirecciones
+echo "hola" > fichero.txt
+----
+
+[unordered.stack]
+->:: `>` Redirigir salida estándar a un fichero (sobrescribe)
+----
+[source,bash]
+----
+# Redirigir stdout a fichero (sobrescribe)
+echo "hola" > fichero.txt
+----
+
+[unordered.stack]
+->>:: `>>` Redirigir salida estándar a un fichero (añadir)
+----
+[source,bash]
+----
+# Añadir al final de fichero
+echo "más" >> fichero.txt
+----
+
+[unordered.stack]
+->|:: `|` Pipe: enviar salida de un comando como entrada a otro
+----
+[source,bash]
+----
+# Pipear la salida de un comando a otro
+ls -l | grep "^d"
+----
+
+[unordered.stack]
+->&:: `&` Ejecutar en segundo plano
+----
+[source,bash]
+----
+# Ejecutar en segundo plano
+gedit archivo.txt &
+----
+
+[unordered.stack]
+->2>:: `2>` Redirigir salida de error (stderr)
+----
+[source,bash]
+----
+# Redirigir stderr a fichero
+ls /noexiste 2> errores.txt
+----

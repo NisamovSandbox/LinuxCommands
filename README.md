@@ -1,78 +1,6 @@
-<!--
-  _      _                     _____                                          _     
- | |    (_)                   / ____|                                        | |    
- | |     _ _ __  _   ___  __ | |     ___  _ __ ___  _ __ ___   __ _ _ __   __| |___ 
- | |    | | '_ \| | | \ \/ / | |    / _ \| '_ ` _ \| '_ ` _ \ / _` | '_ \ / _` / __|
- | |____| | | | | |_| |>  <  | |___| (_) | | | | | | | | | | | (_| | | | | (_| \__ \
- |______|_|_| |_|\__,_/_/\_\  \_____\___/|_| |_| |_|_| |_| |_|\__,_|_| |_|\__,_|___/
-                                                                                    
-Todos los derechos pertenecientes a Andrés Ruslan Abadías Otal | Nisamov: github.com/Nisamov
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2f3136;
-    color: #ffffff;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0px;
-  }
-  .doc-container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #36393f;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.5);
-  }
-  .doc-header {
-    text-align: left;
-    margin-bottom: 20px;
-  }
-  .doc-header div {
-    padding: 5px 0;
-    font-weight: bold;
-  }
-  .doc-header a {
-    color: #a69be9ff;
-    text-decoration: none;
-  }
-  .doc-header a:hover {
-    text-decoration: underline;
-  }
-  .separator {
-    border-top: 2px solid #bdcabbff;
-    border-radius: 2px;
-    margin: 10px 0 20px 0;
-  }
-  h1, h2, h3 {
-    color: #00b0f4;
-    margin-top: 30px;
-  }
-  p, li {
-    color: #ffffff;
-  }
-  a {
-    color: #00b0f4;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-    color: #00b0f4;
-  }
-</style>
-</head>
-<body>
-
-<div class="doc-container">
-  <div class="doc-header">
-    <div>Andrés Ruslan Abadías Otal</div>
-    <div>Página web: <a href="https://github.com/Nisamov">Github</a></div>
-    <div>Repositorio: <a href="https://github.com/Nisamov/LinuxCommands">Repositorio Origen</a></div>
-    <div class="separator"></div>
-  </div>
--->
-
 ![Cartel Principal](.github/media/LinuxCommandsWhiteTheme.png)
+
+[![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/commits) [![License](https://img.shields.io/static/v1?label=License&message=CC%20BY-NC-SA%204.0&color=000000&style=flat-square&labelColor=ffffff)](LICENSE) [![Stars](https://img.shields.io/github/stars/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/stargazers) [![Forks](https://img.shields.io/github/forks/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/network/members)
 
 # LinuxCommands  
 ### Estructura y referencia para documentar comandos y servicios en Linux
@@ -107,15 +35,41 @@ El formato utilizado está definido formalmente en un documento de origen y se a
 
 ## Formato de documentación
 
-El formato base de los comandos se define en el documento de origen:
+El formato base de los comandos se define en el [Documento de Origen](.github/origins/LinuxCommandsOrigen.md).
 
-- [Documento de Origen](.github/origins/LinuxCommandsOrigen.md)
-
-La versión más actual y aplicada del formato puede encontrarse en:
-
-- [`document_management/commands.md`](/document_management/commands.md)
+La versión más actual y aplicada del formato puede encontrarse en [`document_management/commands.md`](/document_management/commands.md).
 
 Este fichero actúa como **referencia canónica** del estándar utilizado en el repositorio.
+
+---
+
+## Generar HTML / PDF (manualmente)
+
+Instrucciones rápidas para generar la documentación localmente y comprobar la jerarquía y el índice.
+
+Prerequisitos:
+
+- `asciidoctor` para HTML.
+- `asciidoctor-pdf` para generar PDF directamente (opcional).
+
+Instalación (si dispone de Ruby/gems):
+
+```bash
+gem install asciidoctor
+gem install asciidoctor-pdf
+```
+
+Generar HTML:
+
+```bash
+asciidoctor -b html5 document_management/index.adoc -o document_management/index.html
+```
+
+Generar PDF (directo con `asciidoctor-pdf`):
+
+```bash
+asciidoctor-pdf document_management/index.adoc -o document_management/LinuxCommands.pdf
+```
 
 ---
 

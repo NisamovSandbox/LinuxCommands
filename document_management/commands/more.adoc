@@ -1,0 +1,19 @@
+
+=== more
+Ver ficheros de texto paginados en la terminal (similar a `less`).
+
+[source,bash]
+----
+# Mostrar un fichero con more
+more fichero.txt
+----
+
+[unordered.stack]
+- (uso):: `more <fichero>` Ver paginado básico
+----
+[source,bash]
+----
+# Avanzar página por página
+more fichero.txt
+----
+

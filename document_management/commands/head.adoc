@@ -1,0 +1,19 @@
+
+=== head
+Mostrar las primeras líneas de uno o varios ficheros.
+
+[source,bash]
+----
+# Mostrar las 10 primeras líneas (por defecto)
+head fichero.txt
+----
+
+[unordered.stack]
+-n:: `head -n <numero>` Mostrar las primeras N líneas
+----
+[source,bash]
+----
+# Mostrar las primeras 3 líneas
+head -n 3 fichero.txt
+----
+

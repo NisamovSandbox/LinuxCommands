@@ -1,0 +1,12 @@
+=== fortune
+Mostrar frases aleatorias (fortunes) desde una base de datos local.
+
+[source,bash]
+----
+# Mostrar una fortuna aleatoria
+fortune
+
+# Guardar una fortuna en un fichero
+fortune > cita.txt
+----
+

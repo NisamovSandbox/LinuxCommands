@@ -1,0 +1,15 @@
+=== export
+Establecer variables de entorno para la sesión actual o procesos hijos.
+
+[source,bash]
+----
+# Establecer una variable de entorno para la sesión actual
+export MI_VAR="valor"
+
+# Mostrar el valor de la variable
+echo $MI_VAR
+
+# Añadir una ruta al PATH
+export PATH="$PATH:/ruta/a/bin"
+----
+

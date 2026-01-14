@@ -1,0 +1,47 @@
+
+
+=== file
+Determinar el tipo de fichero según su contenido.
+
+[source,bash]
+----
+# Mostrar tipo de un fichero
+file fichero.txt
+----
+
+[unordered.stack]
+-b:: `file -b` Mostrar tipo sin el nombre del fichero
+----
+[source,bash]
+----
+# Mostrar sólo el tipo
+file -b fichero.txt
+----
+
+[unordered.stack]
+-i:: `file -i` Mostrar tipo MIME
+----
+[source,bash]
+----
+# Mostrar tipo MIME
+file -i fichero.txt
+----
+
+[unordered.stack]
+-L:: `file -L` Seguir enlaces simbólicos
+----
+[source,bash]
+----
+# Seguir enlace simbólico
+file -L enlace.txt
+----
+
+[unordered.stack]
+--mime-type:: `file --mime-type` Mostrar sólo MIME type
+----
+[source,bash]
+----
+# Mostrar sólo MIME type
+file --mime-type fichero.txt
+----
+

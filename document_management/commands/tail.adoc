@@ -1,0 +1,50 @@
+
+=== tail
+Mostrar las últimas líneas de uno o más ficheros.
+
+[source,bash]
+----
+# Mostrar las últimas 10 líneas (por defecto)
+tail fichero.txt
+----
+
+[unordered.stack]
+--lines, -n:: `tail -n <numero>` Mostrar las últimas N líneas
+----
+[source,bash]
+----
+tail -n 30 fichero.txt
+----
+
+[unordered.stack]
+-f:: `tail -f` Seguir un fichero conforme crece
+----
+[source,bash]
+----
+tail -f /var/log/syslog
+----
+
+[unordered.stack]
+-F:: `tail -F` Seguir fichero por nombre y reabrir si rota
+----
+[source,bash]
+----
+tail -F /var/log/syslog
+----
+
+[unordered.stack]
+-c:: `tail -c <bytes>` Mostrar por bytes en lugar de líneas
+----
+[source,bash]
+----
+tail -c 100 fichero.txt
+----
+
+[unordered.stack]
+-q:: `tail -q` Silenciar encabezados cuando se pasan varios ficheros
+----
+[source,bash]
+----
+tail -q fichero1.txt fichero2.txt
+----
+

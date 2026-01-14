@@ -1,0 +1,108 @@
+=== grep
+Buscar cadenas de texto en ficheros según patrones (expresiones regulares).
+
+[source,bash]
+----
+# Buscar una cadena en un fichero
+grep "Hola Mundo" fichero.txt
+----
+
+[unordered.stack]
+-i:: `grep -i` Buscar ignorando mayúsculas
+----
+[source,bash]
+----
+# Buscar sin distinguir mayúsculas
+grep -i "hola mundo" fichero.txt
+----
+
+[unordered.stack]
+-r:: `grep -r` Buscar recursivamente en directorios
+----
+[source,bash]
+----
+# Buscar recursivamente en proyecto
+grep -r "TODO" /ruta/proyecto/
+----
+
+[unordered.stack]
+-n:: `grep -n` Mostrar número de línea
+----
+[source,bash]
+----
+# Mostrar líneas con número
+grep -n "funcion" fichero.c
+----
+
+[unordered.stack]
+-v:: `grep -v` Mostrar líneas que NO coinciden
+----
+[source,bash]
+----
+# Excluir líneas que contengan 'DEBUG'
+grep -v "DEBUG" log.txt
+----
+
+[unordered.stack]
+-E:: `grep -E` Usar expresiones regulares extendidas
+----
+[source,bash]
+----
+# Usar regex extendida
+grep -E "error|warning" logfile.txt
+----
+
+[unordered.stack]
+-o:: `grep -o` Mostrar sólo la parte coincidente de cada línea
+----
+[source,bash]
+----
+# Mostrar sólo coincidencias
+grep -o "pattern" fichero.txt
+----
+
+[unordered.stack]
+-P:: `grep -P` Usar expresiones regulares Perl-compatible (PCRE)
+----
+[source,bash]
+----
+# Usar PCRE
+grep -P "\d{4}-\d{2}-\d{2}" logfile.txt
+----
+
+[unordered.stack]
+-l:: `grep -l` Mostrar sólo nombres de ficheros con coincidencias
+----
+[source,bash]
+----
+# Listar archivos que contienen la cadena
+grep -l "TODO" -r src/
+----
+
+[unordered.stack]
+-c:: `grep -c` Contar coincidencias por fichero
+----
+[source,bash]
+----
+# Contar coincidencias en fichero
+grep -c "import" script.py
+----
+
+[unordered.stack]
+-q:: `grep -q` Modo silencioso (devuelve código de salida)
+----
+[source,bash]
+----
+# Usar en scripts, sin salida
+if grep -q "pattern" fichero.txt; then echo "found"; fi
+----
+
+[unordered.stack]
+--color:: `grep --color=auto` Resaltar coincidencias
+----
+[source,bash]
+----
+# Resaltar coincidencias en la salida
+grep --color=auto "error" logfile.txt
+----
+

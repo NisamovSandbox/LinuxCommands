@@ -1,0 +1,34 @@
+
+=== mkdir
+Crear uno o varios directorios.
+
+[source,bash]
+----
+# Crear un directorio
+mkdir Documentos
+----
+
+[unordered.stack]
+-p:: `mkdir -p` Crear árbol de directorios (crea padres según sea necesario)
+----
+[source,bash]
+----
+# Crear árbol de directorios (padre e hijo)
+mkdir -p /ruta/principal/subcarpeta
+----
+
+[unordered.stack]
+-v:: `mkdir -v` Mostrar cada directorio creado (verbose)
+----
+[source,bash]
+----
+# Crear varios directorios y mostrar cada creación
+mkdir -v dir1 dir2 dir3
+----
+
+[source,bash]
+----
+# Crear varios directorios con brace expansion
+mkdir {1..5}
+----
+

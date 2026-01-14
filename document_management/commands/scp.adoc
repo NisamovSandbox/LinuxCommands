@@ -1,0 +1,84 @@
+=== scp
+Copiar ficheros de forma segura entre hosts usando SSH.
+
+=== scp
+Copiar ficheros de forma segura entre hosts usando SSH.
+
+[source,bash]
+----
+# Copiar un fichero a un host remoto
+scp fichero.txt usuario@192.168.1.10:/home/usuario/
+----
+
+[unordered.stack]
+-r:: `scp -r` Copiar directorios recursivamente
+----
+[source,bash]
+----
+# Copiar un directorio recursivamente
+scp -r proyecto/ usuario@servidor:/ruta/destino/
+----
+
+[unordered.stack]
+-P:: `scp -P <puerto>` Especificar puerto SSH
+----
+[source,bash]
+----
+# Copiar usando puerto 2222
+scp -P 2222 fichero.txt usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-p:: `scp -p` Mantener permisos y fechas
+----
+[source,bash]
+----
+# Copiar manteniendo permisos/fechas
+scp -p fichero.txt usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-C:: `scp -C` Comprimir datos durante la transferencia
+----
+[source,bash]
+----
+# Copiar con compresión
+scp -C fichero.iso usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-i:: `scp -i <clave>` Usar archivo de clave privada para autenticar
+----
+[source,bash]
+----
+# Usar clave privada
+scp -i ~/.ssh/id_rsa fichero.txt usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-B:: `scp -B` Modo batch (sin preguntas interactivas)
+----
+[source,bash]
+----
+# Usar en scripts sin interacción
+scp -B fichero.txt usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-l:: `scp -l` Limitar ancho de banda (KB/s)
+----
+[source,bash]
+----
+# Limitar ancho de banda a 100KB/s
+scp -l 100 fichero.txt usuario@servidor:/home/usuario/
+----
+
+[unordered.stack]
+-o:: `scp -o` Pasar opciones a SSH (ej: puerto, identidad)
+----
+[source,bash]
+----
+# Pasar opciones SSH (ejemplo: StrictHostKeyChecking=no)
+scp -o StrictHostKeyChecking=no fichero.txt usuario@servidor:/home/usuario/
+----
+

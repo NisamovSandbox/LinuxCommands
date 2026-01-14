@@ -1,12 +1,80 @@
 === sort
 Ordenar lineas de texto.
 
+[source,bash]
+----
+# Ordenar un fichero alfabéticamente
+sort entrada.txt
+----
+
 [unordered.stack]
 -n:: `sort -n` Ordenar lineas por valor numérico
--r:: `sort -r` Ordenar lineas por valor numérico invertido
--u:: `sort -u` Mostrar lineas individuales
--k:: `sort -k Nº` Ordenar por la clumna NºX
--t:: `sort -t` Ordenar con separador de campos
--f:: `sort -f` Ignorar mayúsculas y minúsculas
--h:: `sort -h` Ordenar peso detectado dentro de un archivo
--o:: `sort -o` Guardar salida dentro de un archivo
+----
+[source,bash]
+----
+# Ordenar numéricamente
+sort -n entrada.txt
+----
+
+[unordered.stack]
+-r:: `sort -r` Ordenar en orden inverso
+----
+[source,bash]
+----
+# Ordenar en orden descendente
+sort -r entrada.txt
+----
+
+[unordered.stack]
+-u:: `sort -u` Eliminar duplicados en la salida
+----
+[source,bash]
+----
+# Ordenar y eliminar duplicados
+sort -u entrada.txt
+----
+
+[unordered.stack]
+-k:: `sort -k N` Ordenar por la columna N
+----
+[source,bash]
+----
+# Ordenar por la segunda columna usando ':' como separador
+sort -t ':' -k 2 entrada.txt
+----
+
+[unordered.stack]
+-t:: `sort -t` Usar separador de campo
+----
+[source,bash]
+----
+# Ordenar usando separador ':'
+sort -t ':' -k 2 entrada.txt
+----
+
+[unordered.stack]
+-f:: `sort -f` Ignorar diferencias entre mayúsculas/minúsculas
+----
+[source,bash]
+----
+# Ignorar case
+sort -f entrada.txt
+----
+
+[unordered.stack]
+-h:: `sort -h` Ordenar por números con sufijos (1K, 2M)
+----
+[source,bash]
+----
+# Ordenar por tamaños legibles
+sort -h entrada.txt
+----
+
+[unordered.stack]
+-o:: `sort -o archivo` Guardar salida en archivo
+----
+[source,bash]
+----
+# Guardar resultado en 'salida.txt'
+sort entrada.txt -o salida.txt
+----

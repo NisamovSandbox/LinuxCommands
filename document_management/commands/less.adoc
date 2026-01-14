@@ -1,0 +1,12 @@
+=== less
+Ver ficheros de texto paginados en la terminal.
+
+[source,bash]
+----
+# Abrir un fichero con less
+less fichero.txt
+
+# Buscar dentro de less (presionar / e introducir texto)
+less fichero.txt
+----
+

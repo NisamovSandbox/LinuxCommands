@@ -1,42 +1,162 @@
+
 === ls
 Listar ficheros del directorio actual.
 
+[source,bash]
+----
+# Listar ficheros en el directorio actual
+ls
+----
+
 [unordered.stack]
--l:: `ls -l` Lista detallada
+-l:: `ls -l` Lista detallada (permisos, propietario, tamaño)
+----
+[source,bash]
+----
+# Listado detallado
+ls -l
+----
+
+[unordered.stack]
 -a:: `ls -a` Mostrar ficheros ocultos
--h:: `ls -h` Mostrar lectura para humanos
--t:: `ls -t` Ordenar ficheros por fecha de modificación
--i:: `ls -i` Mostrar el número de inodo
--S:: `ls -S` Ordenar ficheros por tamaño (mayor a menor)
--r:: `ls -r` Ordenar ficheros invirtiendo el orden actual
--R:: `ls -R` Mostrar recursivamente los archivos
--d:: `ls -d` Mostrar unicamente directorios
--F:: `ls -F` Clasificar archivos según el tipo
--1:: `ls -1` Mostrar un fichero por linea
--Q:: `ls -Q` Mostrar los nombres de ficheros entre comillas
--v:: `ls -v` Ordenar naturalmente los ficheros con valor numérico
--X:: `ls -X` Ordenar ficheros por extensión
---color:: `ls --color` Agregar color a los diferente tipos de ficheros
---block-size:: `ls --block-size=<criterio>` Mostrar peso de los archivos
+----
+[source,bash]
+----
+# Mostrar todo, incluidos ficheros ocultos
+ls -a
+----
 
 [unordered.stack]
-b:: `--block-size=b` Mostrar peso por Bytes
-k:: `--block-size=k` Mostrar peso por Kilobytes
-M:: `--block-size=M` Mostrar peso por Megabytes
-G:: `--block-size=G` Mostrar peso por Gigabytes
-T:: `--block-size=T` Mostrar peso por Terabytes
-P:: `--block-size=P` Mostrar peso por Petabytes
---time:: `ls --time=<valor>` Selecciona el campo de tiempo a usar
+-h:: `ls -h` Mostrar tamaños legibles por humanos
+----
+[source,bash]
+----
+# Listado con tamaños legibles
+ls -lh
+----
 
 [unordered.stack]
--atime:: Tiempo de último acceso
--mtime:: Tiempo de última modificación (por defecto)
--ctime:: Tiempo de último cambio de estado
--birth:: Tiempo de creación (si está soportado)
---sort:: `ls --sort=<criterio>` Ordenar ficheros según un criterio
+-t:: `ls -t` Ordenar por fecha de modificación
+----
+[source,bash]
+----
+# Ordenar por fecha
+ls -lt
+----
 
 [unordered.stack]
-size:: `ls -l --sort=size` Ordenar por peso
-time:: `ls -l --sort=time` Ordenar por tiempo
-version:: `ls -l --sort=version` Ordenar por versión
-extension:: `ls -l --sort=extension` Ordenar por extensión
+-S:: `ls -S` Ordenar por tamaño (mayor a menor)
+----
+[source,bash]
+----
+# Ordenar por tamaño
+ls -lS
+----
+
+[unordered.stack]
+-r:: `ls -r` Invertir orden
+----
+[source,bash]
+----
+# Invertir orden
+ls -lr
+----
+
+[unordered.stack]
+-R:: `ls -R` Mostrar recursivamente
+----
+[source,bash]
+----
+# Listar recursivamente
+ls -R
+----
+
+[unordered.stack]
+-d:: `ls -d` Mostrar directorios en sí, no su contenido
+----
+[source,bash]
+----
+# Mostrar directorio en sí en lugar de su contenido
+ls -d /etc
+----
+
+[unordered.stack]
+-F:: `ls -F` Añadir indicador de tipo a nombres
+----
+[source,bash]
+----
+# Añadir indicadores (/ para directorios, * para ejecutables)
+ls -F
+----
+
+[unordered.stack]
+-1:: `ls -1` Un elemento por línea
+----
+[source,bash]
+----
+# Un elemento por línea
+ls -1
+----
+
+[unordered.stack]
+-Q:: `ls -Q` Poner nombres entre comillas
+----
+[source,bash]
+----
+# Nombres entre comillas
+ls -Q
+----
+
+[unordered.stack]
+-v:: `ls -v` Orden natural (útil con números)
+----
+[source,bash]
+----
+# Orden natural
+ls -v
+----
+
+[unordered.stack]
+-X:: `ls -X` Ordenar por extensión
+----
+[source,bash]
+----
+# Ordenar por extensión
+ls -lX
+----
+
+[unordered.stack]
+---color:: `ls --color` Colorear la salida
+----
+[source,bash]
+----
+# Colorear salida
+ls --color=auto
+----
+
+[unordered.stack]
+-+-block-size:: `ls --block-size=<unidad>` Mostrar tamaños en unidad específica
+----
+[source,bash]
+----
+# Mostrar tamaños en kilobytes
+ls -l --block-size=K
+----
+
+[unordered.stack]
+-+-time:: `ls --time=<atime|ctime|mtime|birth>` Seleccionar campo de tiempo
+----
+[source,bash]
+----
+# Ordenar por tiempo de acceso
+ls -l --time=atime
+----
+
+[unordered.stack]
+-+-sort:: `ls --sort=<criterio>` Ordenar según criterio (size,time,version,extension)
+----
+[source,bash]
+----
+# Ordenar por tamaño usando --sort
+ls -l --sort=size
+----

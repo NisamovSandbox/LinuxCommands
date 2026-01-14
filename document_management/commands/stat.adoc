@@ -1,0 +1,67 @@
+=== stat
+Mostrar estado y metadatos de un fichero o directorio.
+
+[source,bash]
+----
+# Mostrar información completa
+stat fichero.txt
+----
+
+[unordered.stack]
+-c:: `stat -c` Formato personalizado con especificadores
+----
+[source,bash]
+----
+# Mostrar sólo nombre y tamaño usando formato
+stat -c "%n: %s bytes" fichero.txt
+----
+
+[unordered.stack]
+-f:: `stat -f` Información del sistema de ficheros
+----
+[source,bash]
+----
+# Información del sistema de ficheros
+stat -f /
+----
+
+[unordered.stack]
+-L:: `stat -L` Seguir enlaces simbólicos
+----
+[source,bash]
+----
+# Seguir enlaces simbólicos
+stat -L /usr/bin/python
+----
+
+[unordered.stack]
+-t:: `stat -t` Formato compacto
+----
+[source,bash]
+----
+# Formato compacto
+stat -t fichero.txt
+----
+
+[unordered.stack]
+--printf:: `stat --printf` Formato con printf
+----
+[source,bash]
+----
+# Usar printf para formato personalizado
+stat --printf="%n: %s bytes\n" *
+----
+--printf:: `stat --printf` Formato con printf
+
+[source,bash]
+----
+# Mostrar información completa
+stat fichero.txt
+
+# Mostrar sólo nombre y tamaño usando formato
+stat -c "%n: %s bytes" fichero.txt
+
+# Información del sistema de ficheros
+stat -f /
+----
+

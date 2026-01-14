@@ -1,0 +1,29 @@
+[source,bash]
+----
+# Eliminar un directorio vacio
+rmdir Documentos
+----
+
+=== rmdir
+Eliminar directorios vacíos.
+
+[unordered.stack]
+- (uso):: `rmdir <directorio>` Eliminar directorio vacío
+----
+[source,bash]
+----
+# Eliminar un directorio vacío
+rmdir Documentos
+
+# Intentar eliminar un directorio no vacío falla
+rmdir carpeta_con_contenido || echo "El directorio no está vacío"
+----
+[source,bash]
+----
+# Eliminar un directorio vacio
+rmdir Documentos
+
+# Intentar eliminar un directorio no vacío falla
+rmdir carpeta_con_contenido || echo "El directorio no está vacío"
+----
+

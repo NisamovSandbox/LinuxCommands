@@ -1,0 +1,18 @@
+
+=== unlink
+Eliminar el enlace a un fichero (equivalente a `rm` para ficheros simples). Acepta un único argumento: el nombre del fichero a eliminar.
+
+[source,bash]
+----
+# Eliminar un enlace simbólico o fichero
+unlink enlace_sim.txt
+----
+
+[unordered.stack]
+--help:: `unlink --help` Mostrar ayuda breve
+----
+[source,bash]
+----
+unlink --help
+----
+

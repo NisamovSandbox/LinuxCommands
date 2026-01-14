@@ -1,0 +1,12 @@
+=== gedit
+Editor de texto gráfico para entornos GNOME.
+
+[source,bash]
+----
+# Abrir un fichero en gedit
+gedit ejemplo.txt
+
+# Abrir en segundo plano para no bloquear la terminal
+gedit ejemplo.txt &
+----
+

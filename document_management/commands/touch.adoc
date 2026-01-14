@@ -1,0 +1,54 @@
+=== touch
+Actualizar la marca temporal de un fichero o crear un fichero vacío si no existe.
+
+[source,bash]
+----
+# Crear un fichero vacío o actualizar su timestamp
+touch fichero.txt
+----
+
+[unordered.stack]
+-a:: `touch -a` Cambiar solo el tiempo de acceso
+----
+[source,bash]
+----
+# Cambiar solo tiempo de acceso
+touch -a fichero.txt
+----
+
+[unordered.stack]
+-m:: `touch -m` Cambiar solo tiempo de modificación
+----
+[source,bash]
+----
+# Cambiar solo tiempo de modificación
+touch -m fichero.txt
+----
+
+[unordered.stack]
+-c:: `touch -c` No crear archivo si no existe
+----
+[source,bash]
+----
+# No crear si no existe
+touch -c noexiste.txt
+----
+
+[unordered.stack]
+-t:: `touch -t [[CC]YY]MMDDhhmm[.ss]` Establecer tiempo específico
+----
+[source,bash]
+----
+# Establecer timestamp específico
+touch -t 202401011200 fichero.txt
+----
+
+[unordered.stack]
+-r:: `touch -r referencia fichero` Copiar timestamp de otro fichero
+----
+[source,bash]
+----
+# Copiar timestamps de otro fichero
+touch -r referencia.txt fichero.txt
+----
+

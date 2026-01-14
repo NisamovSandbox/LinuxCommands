@@ -1,0 +1,21 @@
+
+
+=== mkfifo
+Crear una tubería con nombre (FIFO) en el sistema de ficheros.
+
+[source,bash]
+----
+# Crear una tubería llamada 'tuberia'
+mkfifo tuberia
+----
+
+[unordered.stack]
+- (uso):: `mkfifo <nombre>` Crear tubería con nombre
+----
+[source,bash]
+----
+# Escribir en la tubería desde un proceso y leer en otro
+echo "Hola" > tuberia &
+cat < tuberia
+----
+
