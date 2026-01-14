@@ -9,7 +9,7 @@ uniq entrada.txt > salida.txt
 
 [unordered.stack]
 -c:: `uniq -c` Mostrar numero de repeticiones en columna
-----
++
 [source,bash]
 ----
 # Contar repeticiones de líneas consecutivas
@@ -18,7 +18,7 @@ uniq -c entrada.txt
 
 [unordered.stack]
 -d:: `uniq -d` Mostrar lineas duplicadas
-----
++
 [source,bash]
 ----
 # Mostrar sólo las líneas duplicadas consecutivas
@@ -27,7 +27,7 @@ uniq -d entrada.txt
 
 [unordered.stack]
 -u:: `uniq -u` Mostrar lineas no duplicadas
-----
++
 [source,bash]
 ----
 # Mostrar sólo líneas únicas
@@ -36,7 +36,7 @@ uniq -u entrada.txt
 
 [unordered.stack]
 -i:: `uniq -i` Ignorar mayúsculas/minúsculas
-----
++
 [source,bash]
 ----
 # Ignorar case
@@ -45,7 +45,7 @@ uniq -i entrada.txt
 
 [unordered.stack]
 -f:: `uniq -f N` Ignorar las primeras N columnas (palabras)
-----
++
 [source,bash]
 ----
 # Ignorar la primera columna al comparar
@@ -54,7 +54,7 @@ uniq -f 1 entrada.txt
 
 [unordered.stack]
 -s:: `uniq -s N` Ignorar los primeros N caracteres
-----
++
 [source,bash]
 ----
 # Ignorar primeros 3 caracteres
