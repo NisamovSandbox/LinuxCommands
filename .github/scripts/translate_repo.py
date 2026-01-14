@@ -3,7 +3,8 @@ import deepl
 import re
 
 translator = deepl.Translator(os.getenv("DEEPL_AUTH_KEY"))
-EXTENSIONS = (".md", ".conf", ".adoc")
+#EXTENSIONS = (".md", ".conf", ".adoc")
+EXTENSIONS = (".md") # Limitado para pruebas
 
 def translate_preserving_indent(text):
     lines = text.splitlines(keepends=True)
