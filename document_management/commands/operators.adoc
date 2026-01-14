@@ -52,3 +52,4 @@ gedit archivo.txt &
 # Redirigir stderr a fichero
 ls /noexiste 2> errores.txt
 ----
+

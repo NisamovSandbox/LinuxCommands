@@ -18,3 +18,4 @@ rmdir Documentos
 # Intentar eliminar un directorio no vacío falla
 rmdir carpeta_con_contenido || echo "El directorio no está vacío"
 ----
+

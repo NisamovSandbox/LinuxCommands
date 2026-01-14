@@ -1,5 +1,4 @@
 = Administración de Documentos
-Andrés Ruslan Abadías Otal | github.com/Nisamov
 :toc:
 :toclevels: 2
 :icons: font
@@ -11,6 +10,9 @@ Andrés Ruslan Abadías Otal | github.com/Nisamov
 :url-repo: https://github.com/Nisamov/LinuxCommands
 :lang: es
 :author: Andrés Ruslan Abadías Otal
+
+[align=center]
+Andrés Ruslan Abadías Otal | github.com/Nisamov
 
 == Introducción
 Este manual está pensado como guía de referencia para:

@@ -159,3 +159,4 @@ ls -l --time=atime
 # Ordenar por tamaño usando --sort
 ls -l --sort=size
 ----
+
