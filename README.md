@@ -35,11 +35,11 @@ El formato utilizado está definido formalmente en un documento de origen y se a
 
 ## Formato de documentación
 
-El formato base de los comandos se define en el [Documento de Origen](.github/origins/LinuxCommandsOrigen.md).
+El repositorio tiene su origen en el fichero [Documento de Origen](.github/origins/LinuxCommandsOrigen.md), al que posteriormente siguió una versión con una estructura más elaborada, denominado [Modelo Base](.github/origins/LinuxCommandsModel.md).
 
-La versión más actual y aplicada del formato puede encontrarse en [`document_management/commands.md`](/document_management/commands.md).
+Con el crecimiento progresivo de la documentación, este enfoque resultó poco manejable debido al volumen de información concentrada en un único fichero, por lo que fue finalmente descartado.
 
-Este fichero actúa como **referencia canónica** del estándar utilizado en el repositorio.
+Como solución, se adoptó un modelo estructurado y escalable de documentación, que dio lugar al uso de un índice centralizado, dando lugar al fichero [index.adoc](/document_management/index.adoc), de donde se comenzó la primera generación de PDFs
 
 ---
 
