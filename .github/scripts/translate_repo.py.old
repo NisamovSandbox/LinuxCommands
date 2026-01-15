@@ -1,0 +1,17 @@
+# Este script no guarda sangrías
+import os
+import deepl
+
+translator = deepl.Translator(os.getenv("DEEPL_AUTH_KEY"))
+
+def translate_file(path):
+    with open(path, "r", encoding="utf-8") as f:
+        content = f.read()
+    translated = translator.translate_text(content, target_lang="EN-US")
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(translated.text)
+
+for root, _, files in os.walk("."):
+    for file in files:
+        if file.endswith((".md", ".txt")):
+            translate_file(os.path.join(root, file))

@@ -1,4 +1,4 @@
-name: Generación PDF Asciidoctor
+name: Generación PDFs Documentación
 
 on:
   push:
@@ -20,36 +20,80 @@ jobs:
           bundler-cache: true
 
       - name: Instalar Asciidoctor PDF
-        run: gem install asciidoctor-pdf --no-document
-
-      - name: Verificar instalación de Asciidoctor PDF
         run: |
-          which asciidoctor-pdf
-          asciidoctor-pdf --version
+          gem install asciidoctor-pdf rouge --no-document
 
-      - name: Crear directorio de PDFs
+      - name: Instalar Pandoc
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: Instalar LaTeX
+        run: |
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-fonts-recommended \
+            texlive-latex-extra
+
+      - name: Crear directorio de salida
         run: mkdir -p pdf
 
-      - name: Generar PDFs (nombre = directorio)
+      - name: Generar PDFs (AsciiDoc + Markdown)
         run: |
           ASCIIDOCTOR=$(which asciidoctor-pdf)
+
           for dir in */ ; do
+            [[ "$dir" == ".github/" ]] && continue
+
+            SECTION="${dir%/}"
+
+            # AsciiDoc raíz
             if [ -f "$dir/index.adoc" ]; then
-              NAME="${dir%/}"
-              echo "Generando PDF para $NAME/index.adoc..."
-              (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/$NAME.pdf")
+              echo "📕 Generando PDF AsciiDoc para $SECTION"
+              mkdir -p "pdf/$SECTION"
+
+              (
+                cd "$dir" || exit 1
+                "$ASCIIDOCTOR" index.adoc \
+                  -a allow-uri-read \
+                  -a toc \
+                  -a toclevels=3 \
+                  -a sectnums \
+                  -o "../pdf/$SECTION/$SECTION.pdf"
+              )
+              continue
+            fi
+
+            # Markdown agregado
+            MD_FILES=$(find "$dir" -type f -name "*.md")
+
+            if [ -n "$MD_FILES" ]; then
+              echo "📘 Generando PDF Markdown para $SECTION"
+              mkdir -p "pdf/$SECTION"
+
+              pandoc $MD_FILES \
+                --toc \
+                --number-sections \
+                --pdf-engine=pdflatex \
+                -o "pdf/$SECTION/$SECTION.pdf"
             fi
           done
 
-      - name: Crear body del release
+      - name: Generar cuerpo del Release
         run: |
           echo "## 📕 PDFs generados automáticamente" > release_body.md
           echo "" >> release_body.md
           echo "![Release Image](.github/media/released.png)" >> release_body.md
-          echo "### Documentación disponible:" >> release_body.md
           echo "" >> release_body.md
-          for pdf in pdf/*.pdf; do
-            echo "- $(basename "$pdf")" >> release_body.md
+
+          for section in pdf/*/ ; do
+            NAME=$(basename "$section")
+            PDF="$NAME.pdf"
+
+            echo "<details open>" >> release_body.md
+            echo "<summary><strong>• $NAME</strong></summary>" >> release_body.md
+            echo "<div align=\"center\"><h1>$NAME</h1></div>" >> release_body.md
+            echo "<li><a href=\"https://github.com/${{ github.repository }}/releases/download/docs-pdf-${{ github.run_number }}/$NAME/$PDF\">Descargar $PDF</a></li>" >> release_body.md
+            echo "</details>" >> release_body.md
+            echo "" >> release_body.md
           done
 
       - name: Crear Release y subir PDFs
@@ -58,7 +102,7 @@ jobs:
           tag_name: docs-pdf-${{ github.run_number }}
           name: "🔵 Docs Descargables PDF 📕"
           body_path: release_body.md
-          files: pdf/*.pdf
+          files: pdf/**/*
           draft: false
           prerelease: false
         env:
