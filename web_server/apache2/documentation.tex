@@ -1,29 +1,219 @@
-\documentclass{article}
+\documentclass[12pt,a4paper]{article}
+
+% Codificación y lenguaje
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Márgenes
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+% Paquetes útiles
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{setspace}
+
+% Configuración listings
+\lstset{
+  basicstyle=\ttfamily\small,
+  frame=single,
+  breaklines=true,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{teal},
+  showstringspaces=false
+}
+
+\title{Documentación Apache2}
+\author{Andrés Ruslan Abadías Otal (Nisamov)}
+\date{\today}
 
 \begin{document}
 
-\section{Documentación Apache2}
-\subsection{Instalación}
+\maketitle
+\onehalfspacing
 
-\textbf{negrita}
-\textit{cursiva}
-\texttt{texto monoespaciado}
+\section{Instalación}
 
-\begin{itemize}
-  \item Primer elemento
-  \item Segundo elemento
-\end{itemize}
+Para evitar posibles problemas durante la instalación, se recomienda actualizar los paquetes del sistema.
 
-\usepackage{listings}
-\begin{lstlisting}
-def hola():
-    print("Hola mundo")
+\begin{lstlisting}[language=bash]
+# Esto es únicamente opcional
+sudo apt update && sudo apt upgrade -y
 \end{lstlisting}
 
-\subsection{Creación de página}
+Instalación de Apache2 con privilegios de administrador:
 
-\subsection{Estructura de página}
+\begin{lstlisting}[language=bash]
+sudo apt install apache2
+\end{lstlisting}
 
-\subsection{Estilo y funcionamiento}
+\section{Creación de la página}
+
+Para crear una página hay que dirigirse a la ruta \texttt{/var/www/}, donde se encuentra el fichero \texttt{index.html}.
+Se debe crear un directorio con el nombre del dominio deseado, finalizando en \texttt{.es}, \texttt{.org}, \texttt{.com}, etc.
+
+\begin{lstlisting}[language=bash]
+cd /var/www/
+mkdir mipagina.es
+cd mipagina.es
+touch index.html
+\end{lstlisting}
+
+\section{Edición de la página}
+
+Para dar estructura a la página, es necesario editar el fichero \texttt{index.html}.  
+Si se desea añadir diseño y funcionalidad, se utilizarán ficheros \texttt{.css} y \texttt{.js}.
+
+\begin{lstlisting}[language=bash]
+sudo nano index.html
+\end{lstlisting}
+
+Contenido básico HTML5:
+
+\begin{lstlisting}[language=html]
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiPagina</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <p>Este es el contenido de tu pagina</p>
+    <u>He seguido la guia de github.com/Nisamov</u>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+\end{lstlisting}
+
+\section{Estructura de directorios}
+
+La estructura recomendada es la siguiente:
+
+\begin{lstlisting}
+var
+└── www
+    └── mipagina.es
+        ├── index.html
+        ├── styles
+        │   └── style.css
+        └── scripts
+            └── script.js
+\end{lstlisting}
+
+Creación de los directorios:
+
+\begin{lstlisting}[language=bash]
+cd /var/www/mipagina.es
+mkdir styles scripts
+\end{lstlisting}
+
+\section{Estilo y funcionamiento con CSS y JavaScript}
+
+\subsection{JavaScript}
+
+\begin{lstlisting}[language=bash]
+cd /var/www/mipagina.es/scripts
+nano script.js
+\end{lstlisting}
+
+Contenido de ejemplo:
+
+\begin{lstlisting}[language=JavaScript]
+// Alerta de comprobación
+alert("El Codigo JavaScript Funciona correctamente");
+console.log("Correcto funcionamiento");
+\end{lstlisting}
+
+\subsection{CSS}
+
+\begin{lstlisting}[language=bash]
+cd /var/www/mipagina.es/styles
+nano style.css
+\end{lstlisting}
+
+Ejemplo de estilos:
+
+\begin{lstlisting}[language=CSS]
+body {
+  background-color: #fefbd8;
+}
+
+h1 {
+  background-color: #80ced6;
+}
+
+p {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  color: #ccc;
+  line-height: 18px;
+}
+\end{lstlisting}
+
+\section{Configuración SSL}
+
+Instalación de OpenSSL:
+
+\begin{lstlisting}[language=bash]
+sudo apt install openssl
+\end{lstlisting}
+
+Habilitar módulo SSL y reiniciar Apache:
+
+\begin{lstlisting}[language=bash]
+sudo a2enmod ssl
+sudo systemctl restart apache2
+\end{lstlisting}
+
+Clonar el fichero de configuración:
+
+\begin{lstlisting}[language=bash]
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf mipagina.es.conf
+\end{lstlisting}
+
+Configuración del VirtualHost:
+
+\begin{lstlisting}[language=bash]
+<VirtualHost *:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/mipagina.es
+Redirect permanent / http://www.mipagina.es
+ServerName www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName www.mipagina.es
+DocumentRoot /var/www/mipagina.es
+SSLEngine on
+SSLCertificateFile /etc/apache2/certificate/apache-certificado.crt
+SSLCertificateKeyFile /etc/apache2/certificate/apache.key
+</VirtualHost>
+\end{lstlisting}
+
+Activar el sitio y reiniciar Apache:
+
+\begin{lstlisting}[language=bash]
+sudo a2ensite mipagina.es
+sudo systemctl restart apache2
+\end{lstlisting}
+
+\section{Configuración de hosts}
+
+\begin{lstlisting}
+127.0.0.1       localhost
+127.0.1.1       nisamov
+40.0.0.2        mipagina.es www.mipagina.es
+\end{lstlisting}
+
+\section{Conclusión}
+
+Si se ha seguido correctamente el procedimiento descrito, la página será completamente funcional.
+Durante el proceso pueden aparecer errores, los cuales se mostrarán en los reinicios y registros del servicio Apache2.
 
 \end{document}
