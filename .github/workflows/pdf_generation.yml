@@ -55,10 +55,17 @@ jobs:
       - name: Eliminar releases anteriores
         run: |
           echo "Eliminando releases anteriores..."
-          releases=$(gh release list --limit 100 | awk '{print $1}')
-          for r in $releases; do
-            gh release delete "$r" --yes
-          done
+          # Obtener todos los tags de releases existentes
+          releases=$(gh release list --limit 100 --json tagName -q '.[].tagName')
+          
+          if [ -z "$releases" ]; then
+            echo "No hay releases anteriores que eliminar."
+          else
+            for r in $releases; do
+              echo "Borrando release $r..."
+              gh release delete "$r" --yes || echo "Error eliminando $r, continuando..."
+            done
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
