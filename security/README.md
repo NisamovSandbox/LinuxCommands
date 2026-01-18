@@ -18,10 +18,7 @@ Incluye tanto prevención como control de accesos y comunicaciones seguras.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
-- [proxy_squid](/security/proxy_squid)
-  - [proxy_squid/documentation.md](/security/proxy_squid/documentation.md)
-- [secure_channel](/security/secure_channel)
-- [vpn_openvpn](/security/vpn_openvpn)
-  - [vpn_openvpn/documentation.md](/security/vpn_openvpn/documentation.md)
+- [network_security](/security/network_security)
+- [secure_channels](/security/secure_channels)
 - [audit.md](/security/audit.md)
 <!-- AUTO-GENERATED-INDEX:END -->
