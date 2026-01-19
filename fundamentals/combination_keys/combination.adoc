@@ -1,0 +1,165 @@
+= Atajos de Teclado
+
+== Linux Virtual Box
+
+[cols="1,2", options="header"]
+|===
+|Atajo | Función
+
+|CTRL_DERECHO + F
+|Pantalla completa (Guest Additions)
+
+|ALT_IZQUIERDO + →
+|Nueva terminal de Linux Server
+
+|ALT + TAB
+|Movernos entre aplicaciones (interfaz)
+
+|CTRL + ALT + TAB
+|Movernos entre ventanas en barra de tareas
+|===
+
+== Linux Genérico
+
+[cols="1,2", options="header"]
+|===
+|Atajo | Función
+
+|ALT_IZQUIERDO + →
+|Nueva terminal en Linux Server
+
+|CTRL + ALT + L
+|Bloquear la sesión activa
+
+|CTRL + ALT + T
+|Crear y abrir nueva terminal
+
+|CTRL + X
+|Salir de la terminal activa
+
+|CTRL + Shift + W
+|Cerrar terminal principal
+
+|CTRL + O
+|Guardar sin salir
+
+|CTRL + Z
+|Suspender un proceso activo
+
+|CTRL + C
+|Quitar un proceso / Detiene el comando actual
+
+|CTRL + A
+|Mover al principio de la línea
+
+|CTRL + B
+|Retrocede un carácter
+
+|CTRL + D
+|Borra un carácter hacia atrás o cierra la sesión actual
+
+|CTRL + E
+|Se mueve al final de la línea
+
+|CTRL + F
+|Avanza un carácter
+
+|CTRL + G
+|Aborta el comando de edición actual y suena la campana del terminal
+
+|CTRL + H
+|Borra un carácter bajo el cursor (igual que DELETE)
+
+|CTRL + J
+|Igual que RETURN
+
+|CTRL + K
+|Borra hacia adelante hasta el final de la línea
+
+|CTRL + L
+|Borra la pantalla y vuelve a mostrar la línea
+
+|CTRL + M
+|Igual que RETURN
+
+|CTRL + N
+|Línea siguiente en el historial de comandos
+
+|CTRL + O
+|Igual que RETURN, luego muestra la siguiente línea en el historial
+
+|CTRL + P
+|Línea anterior en el historial de comandos
+
+|CTRL + Q
+|Reanuda la salida de la terminal suspendida
+
+|CTRL + R
+|Busca hacia atrás
+
+|CTRL + S
+|Busca hacia adelante o suspende la salida de la terminal
+
+|CTRL + T
+|Intercambia dos caracteres
+
+|CTRL + U
+|Elimina hacia atrás desde el punto hasta el principio de la línea
+
+|CTRL + V
+|Hace que el próximo carácter escrito se tome literalmente
+
+|CTRL + W
+|Elimina la palabra detrás del cursor
+
+|CTRL + X
+|Lista las posibles completaciones de nombres de archivo
+
+|CTRL + Y
+|Recupera (pega) el último ítem eliminado
+
+|CTRL + Z
+|Suspende el comando actual, reanuda con fg o bg
+
+|ALT + B
+|Retrocede una palabra
+
+|ALT + D
+|Elimina la próxima palabra
+
+|ALT + F
+|Avanza una palabra
+
+|ALT + H
+|Borra un carácter hacia atrás
+
+|ALT + Tv
+|Intercambia dos palabras
+
+|ALT + .
+|Pega la última palabra del último comando
+
+|ALT + U
+|Capitaliza cada carácter desde el cursor hasta el final de la palabra
+
+|ALT + L
+|Descapitaliza cada carácter desde el cursor hasta el final de la palabra
+
+|ALT + C
+|Capitaliza la letra bajo el cursor y mueve el cursor al final de la palabra
+
+|ALT + R
+|Revierte cualquier cambio a un comando editado del historial
+
+|ALT + ?
+|Lista las posibles completaciones
+
+|ALT + ^
+|Expande la línea al último resultado coincidente del historial
+
+|!!
+|Repite el último comando ejecutado
+
+|exit
+|Sale de la sesión actual
+|===
