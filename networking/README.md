@@ -26,6 +26,7 @@ Incluye tanto conceptos teóricos como ejemplos prácticos.
   - [dhcp_samba/theory.md](/networking/dhcp_samba/theory.md)
 - [interfaces_net](/networking/interfaces_net)
   - [interfaces_net/theory.md](/networking/interfaces_net/theory.md)
+- [ipfire](/networking/ipfire)
 - [iptables](/networking/iptables)
   - [iptables/command-list.md](/networking/iptables/command-list.md)
   - [iptables/commands.md](/networking/iptables/commands.md)

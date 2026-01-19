@@ -21,5 +21,5 @@ Sirve como base teórica para el resto de secciones del repositorio.
 - [combination_keys](/fundamentals/combination_keys)
   - [combination_keys/combination.md](/fundamentals/combination_keys/combination.md)
 - [system_structure](/fundamentals/system_structure)
-  - [system_structure/linux-structure.md](/fundamentals/system_structure/linux-structure.md)
+  - [system_structure/linux_structure.md](/fundamentals/system_structure/linux_structure.md)
 <!-- AUTO-GENERATED-INDEX:END -->
