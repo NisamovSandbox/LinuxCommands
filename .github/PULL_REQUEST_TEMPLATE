@@ -12,13 +12,13 @@ Ejemplo: "Añade sección de comandos de red avanzados"
 ---
 
 ## Cómo probar / revisar
-1. Revisar que el formato del archivo siga la plantilla base
-    1.1. En caso de Markdown (`.md`): [plantilla](./templates/markdown.md)
-    1.2. En caso de AsciiDocument (`.adoc`): [plantilla](./templates/asciidocument.adoc)
-            En ficherod `.adoc`, ha de dejar un espacio de dos INTROs, para evitar colisiones con semejantes (en caso de estar indexado)
-    1.3. En caso de LaTex (`.tex`): [plantilla](./templates/latex.tex)
-2. Verificar que los comandos y ejemplos son correctos y ejecutables
-3. Confirmar consistencia en nombres, títulos, secciones y referencias
+- Revisar que el formato del archivo siga la plantilla base
+  - En caso de Markdown (`.md`): [plantilla](./templates/markdown.md)
+  - En caso de AsciiDocument (`.adoc`): [plantilla](./templates/asciidocument.adoc)
+    - En ficheros `.adoc`, ha de dejar un espacio de dos INTROs, para evitar colisiones con semejantes (en caso de estar indexado)
+  - En caso de LaTex (`.tex`): [plantilla](./templates/latex.tex)
+- Verificar que los comandos y ejemplos son correctos y ejecutables
+- Confirmar consistencia en nombres, títulos, secciones y referencias
 
 ---
 
