@@ -1,0 +1,20 @@
+# Título ejemplo
+Ejemplo escritura
+
+Este es un ejemplo de formato para el repositorio
+
+## Subtítulo ejemplo
+
+### Ejemplo comando
+Descripcion de comando
+```ejemplo
+# Ejemplo comentario describiendo accion del comando
+comando -parametros fichero
+```
+
+### Ejemplo comando 2
+Descripcion de comando
+```ejemplo
+# Ejemplo comentario describiendo accion del comando
+comando -parametros fichero
+```

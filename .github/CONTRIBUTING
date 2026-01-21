@@ -5,10 +5,9 @@
 ## Proceso de Contribución
 
 1. Fork el repositorio y clónalo localmente.
-2. Cree una nueva rama para su contribución: `git checkout -b nombre-de-su-rama`.
-3. Realiza tus cambios y asegúrate de seguir las convenciones de estilo y formato del proyecto.
-4. Verifica que tus cambios sean coherentes y cumplan el estandar que se tiene en este repositorio.
-5. Envía tu solicitud de extracción describiendo tus cambios de manera clara y concisa.
+2. Realiza tus cambios y asegúrate de seguir las convenciones de estilo y formato del proyecto.
+3. Verifica que tus cambios sean coherentes y cumplan el estandar que se tiene en este repositorio.
+4. Envía tu solicitud de extracción describiendo tus cambios de manera clara y concisa.
 
 ## Convenciones de Contribución
 
