@@ -1,0 +1,20 @@
+=== umask
+Establece los permisos predeterminados para nuevos archivos y directorios creados por el usuario.
+
+[source,bash]
+----
+# Ver la máscara de permisos actual
+umask
+
+# Establecer permisos predeterminados
+umask 022
+
+# Establecer permisos más restrictivos
+umask 077
+----
+
+[unordered.stack]
+ver:: `umask` Muestra la máscara de permisos actual
+022:: `umask 022` Permite que los archivos nuevos tengan permisos 644 y los directorios 755
+077:: `umask 077` Permite que los archivos y directorios nuevos sean accesibles solo por el propietario
+

@@ -1,0 +1,36 @@
+= Permission Management
+:toc:
+:toclevels: 2
+:icons: font
+:source-highlighter: rouge
+:sectnums:
+:pdf-page-size: A4
+:pdf-page-margin: [2cm, 2cm, 2cm, 2cm]
+:description: LinuxCommands es un repositorio creado para servir como guía y apoyo a usuarios o administradores de sistemas Linux
+:url-repo: https://github.com/Nisamov/LinuxCommands
+:lang: es
+:author: Andrés Ruslan Abadías Otal
+
+Andrés Ruslan Abadías Otal | github.com/Nisamov
+
+== Introducción
+Este manual está pensado como guía de referencia para:
+
+* Ámbito escolar y formativo
+* Administradores de sistemas Linux
+* Usuarios técnicos en proceso de aprendizaje
+
+== Teoría
+include::theory.adoc[]
+
+== Administración de Permisos
+include::commands/chmod.adoc[]
+include::commands/chown.adoc[]
+include::commands/sudo.adoc[]
+include::commands/umask.adoc[]
+
+== Listas de Acceso
+include::access_control_lists/acls.adoc[]
+include::access_control_lists/commands/setfacl.adoc[]
+include::access_control_lists/commands/getfacl.adoc[]
+

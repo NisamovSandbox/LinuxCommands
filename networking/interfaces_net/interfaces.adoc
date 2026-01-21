@@ -1,9 +1,9 @@
-= Interfaces de Red en Ubuntu/Debian
+=== Interfaces de Red en Ubuntu/Debian
 :toc:
 :toclevels: 3
 :sectnums:
 
-== Introducción
+==== Introducción
 
 En sistemas **Ubuntu 18 y anteriores** (y Debian clásico), la gestión de red se realiza tradicionalmente mediante **NetworkManager** y el archivo de configuración:
 
@@ -18,7 +18,7 @@ A diferencia de Netplan:
 * La sintaxis es más flexible.
 * Es necesario editar con **privilegios de superusuario** (`root` o `sudo`) para evitar errores al guardar cambios.
 
-== Configuración por Defecto
+==== Configuración por Defecto
 
 La configuración mínima del sistema incluye la interfaz de loopback:
 
@@ -32,7 +32,7 @@ iface lo inet loopback
 * `auto lo`: inicia la interfaz `lo` automáticamente al arrancar.
 * `iface lo inet loopback`: define la interfaz de loopback con protocolo `inet` (IPv4).
 
-== Configuración de Red Estática
+==== Configuración de Red Estática
 
 Para asignar una IP fija a una interfaz, se define de la siguiente forma:
 
@@ -60,7 +60,7 @@ Notas importantes:
 
 Esta configuración es **persistente** y se mantiene tras reinicios.
 
-== Configuración de Red Dinámica (DHCP)
+==== Configuración de Red Dinámica (DHCP)
 
 Para obtener la dirección IP automáticamente mediante DHCP:
 
@@ -80,7 +80,7 @@ Notas:
 * Ideal para clientes o entornos donde la IP puede variar.
 * La configuración **no es persistente** si el servidor DHCP cambia la IP asignada.
 
-== Aplicación de Cambios
+==== Aplicación de Cambios
 
 Después de editar `/etc/network/interfaces`, los cambios pueden aplicarse sin reiniciar usando:
 
@@ -91,7 +91,7 @@ sudo ifdown enp0s3 && sudo ifup enp0s3
 
 O bien reiniciando la máquina.
 
-== Resumen
+==== Resumen
 
 * `/etc/network/interfaces` es el método clásico de configuración de red.
 * Soporta **IP estática y DHCP**.

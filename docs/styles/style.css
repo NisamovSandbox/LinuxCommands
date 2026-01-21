@@ -83,6 +83,8 @@ header .subtitle {
     border-bottom: 1px solid #cccccc;
     padding-bottom: 5px;
     margin-bottom: 15px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .section pre {

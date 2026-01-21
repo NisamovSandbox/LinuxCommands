@@ -1,0 +1,22 @@
+=== chown
+Cambiar el propietario y/o grupo de archivos y directorios en Linux.
+
+[source,bash]
+----
+# Cambiar propietario de un archivo
+chown usuario archivo.txt
+
+# Cambiar propietario y grupo de un archivo
+chown usuario:grupo archivo.txt
+
+# Cambiar propietario de un directorio de forma recursiva
+chown -R usuario:grupo carpeta/
+----
+
+[unordered.stack]
+usuario:: `chown usuario archivo.txt` Cambia el propietario del archivo al usuario especificado
+usuario:grupo:: `chown usuario:grupo archivo.txt` Cambia propietario y grupo del archivo
+-R:: `chown -R usuario:grupo carpeta/` Cambia propietario y grupo de todos los archivos y subdirectorios de forma recursiva
+-c:: `chown -c archivo.txt` Muestra solo los cambios realizados
+--:: `chown -- archivo.txt` Permite cambiar el propietario de archivos cuyo nombre comienza con '-'
+

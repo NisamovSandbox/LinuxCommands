@@ -10,17 +10,20 @@ LinuxCommands nació como una recopilación de apuntes personales para organizar
 Con el tiempo, se fue estructurando para que sea más fácil de navegar y consultar, tanto para mí como para cualquier persona interesada en aprender o consultar comandos y servicios de manera práctica.
 
 ---
-
-## Objetivos del proyecto
+<details open>
+<summary><strong>• OBJETIVOS DEL PORYECTO</strong></summary>
+<h1>Objetivos del proyecto</h1>
 
 - Proporcionar un **formato claro y reutilizable** para documentar comandos Linux.
 - Facilitar una documentación **legible para humanos y mantenible a largo plazo**.
 - Reducir duplicación, ambigüedad y variaciones innecesarias entre repositorios.
 - Servir como referencia práctica para administradores de sistemas, desarrolladores y equipos técnicos.
+</details>
 
 ---
-
-## Enfoque
+<details open>
+<summary><strong>• ENFOQUE DEL PORYECTO</strong></summary>
+<h1>Enfoque del proyecto</h1>
 
 El repositorio no pretende sustituir herramientas existentes como `man`, sino **complementarlas** mediante:
 
@@ -28,52 +31,38 @@ El repositorio no pretende sustituir herramientas existentes como `man`, sino **
 - Convenciones claras de documentación,
 - Ejemplos prácticos y homogéneos,
 - Una organización pensada para crecer sin perder consistencia.
-
-El formato utilizado está definido formalmente en un documento de origen y se aplica de forma uniforme en todo el repositorio.
-
----
-
-## Formato de documentación
-
-El repositorio tiene su origen en el fichero [Documento de Origen](.github/origins/LinuxCommandsOrigen.md), al que posteriormente siguió una versión con una estructura más elaborada, denominado [Modelo Base](.github/origins/LinuxCommandsModel.md).
-
-Con el crecimiento progresivo de la documentación, este enfoque resultó poco manejable debido al volumen de información concentrada en un único fichero, por lo que fue finalmente descartado.
-
-Como solución, se adoptó un modelo estructurado y escalable de documentación, que dio lugar al uso de un índice centralizado, dando lugar al fichero [index.adoc](/document_management/index.adoc), de donde se comenzó la primera generación de PDFs
+</details>
 
 ---
-
-## Generar HTML / PDF (manualmente)
+<details close>
+<summary><strong>• GENERACIÓN MANUAL DE DOCUMENTOS</strong></summary>
+<h1>Generación manual de documentos</h1>
 
 Instrucciones rápidas para generar la documentación localmente y comprobar la jerarquía y el índice.
 
 Prerequisitos:
-
 - `asciidoctor` para HTML.
 - `asciidoctor-pdf` para generar PDF directamente (opcional).
 
 Instalación (si dispone de Ruby/gems):
-
 ```bash
 gem install asciidoctor
 gem install asciidoctor-pdf
 ```
-
 Generar HTML:
-
 ```bash
 asciidoctor -b html5 document_management/index.adoc -o document_management/index.html
 ```
-
 Generar PDF (directo con `asciidoctor-pdf`):
-
 ```bash
 asciidoctor-pdf document_management/index.adoc -o document_management/LinuxCommands.pdf
 ```
+</details>
 
 ---
-
-## Estructura del repositorio
+<details close>
+<summary><strong>• ESTRUCTURA DEL PROYECTO</strong></summary>
+<h1>Estructura del proyecto</h1>
 
 La organización del repositorio está pensada para facilitar la navegación y el crecimiento progresivo del contenido:
 
@@ -92,16 +81,36 @@ La organización del repositorio está pensada para facilitar la navegación y e
 - [user_permissions](/user_permissions)
 - [web_server](/web_server)
 <!-- AUTO-GENERATED-INDEX:END -->
+</details>
 
 ---
+<details close>
+<summary><strong>• FORMATO DE DOCUMENTACIÓN</strong></summary>
+<h1>Formato de documentación</h1>
 
-## Información adicional
+El repositorio sigue un estándar fijo de documentación para mantener el orden y permitir una correcta indexación a la hora de generar PDFs.
 
--  [Información general del repositorio](.github/INFO.md)
+Premodelos de ejemplo:
+- [Ejemplo de premodelo en Markdown (.md)](.github/templates/markdown.md)
+- [Ejemplo de premodelo en LaTeX (.tex)](.github/templates/latex.tex)
+- [Ejemplo de premodelo en Documento Ascii (.adoc)](.github/templates/asciidocument.adoc)
+
+Se pide tener en cuenta el [PULL_REQUEST_TEMPLATE](.github/PULL_REQUEST_TEMPLATE) en caso de querer colaborar con el repositorio.
+</details>
 
 ---
-
-## Contribuciones
+<details close>
+<summary><strong>• CONTRIBUYE AL PROYECTO</strong></summary>
+<h1>Contribuye al proyecto</h1>
 
 Las contribuciones son bienvenidas siempre que respeten el formato y la estructura definidos.  
 El objetivo es mantener una documentación coherente y de alta calidad.
+
+> [Crear pull request](https://github.com/Nisamov/LinuxCommands/pulls)
+</details>
+
+---
+<div align="center">
+  <p>Linux Commands - By Nisamov | MIT License - 2026</p>
+  <p>Contacto: <a href="mailto:nisamov.contact@gmail.com">nisamov.contact@gmail.com</a></p>
+</div>

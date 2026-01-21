@@ -1,0 +1,33 @@
+=== sudo
+Permite ejecutar comandos con privilegios de superusuario o de otro usuario.
+
+[source,bash]
+----
+# Ejecutar un comando como superusuario
+sudo comando
+
+# Abrir una sesión como superusuario
+sudo su
+
+# Ejecutar un comando como otro usuario
+sudo -u usuario comando
+
+# Simular una sesión completa de inicio de sesión
+sudo -i
+
+# Editar un archivo como superusuario
+sudo -e archivo.txt
+----
+
+[unordered.stack]
+su:: `sudo su` Abrir una sesión como superusuario, permaneciendo en el entorno de root
+-u usuario:: `sudo -u usuario comando` Ejecutar un comando como otro usuario
+-i:: `sudo -i` Simular una sesión completa de inicio de sesión con el entorno del usuario
+-e:: `sudo -e archivo.txt` Editar archivos como superusuario
+-l:: `sudo -l` Listar los comandos que el usuario puede ejecutar con sudo
+-L:: `sudo -L` Bloquear el entorno del shell para prevenir cambios en autenticación durante su ejecución
+-V:: `sudo -V` Mostrar versión de sudo y opciones de configuración compiladas
+-b:: `sudo -b comando` Ejecutar un comando en segundo plano
+-A:: `sudo -A comando` Solicitar la contraseña mediante un helper externo
+-B:: `sudo -B comando` Activar notificación sonora al solicitar contraseña
+

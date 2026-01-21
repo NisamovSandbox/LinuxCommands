@@ -39,6 +39,6 @@ Varias personas contribuyeron al repositorio, creando nuevas subcategorías y au
 
 ## Licencia
 
-Este proyecto está bajo la licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es).
+Este proyecto está bajo la licencia MIT.
 
 > [ ! ] Repositorio creado por [Andrés Abadías](https://github.com/Nisamov)

@@ -1,0 +1,100 @@
+=== Permisos en Linux
+
+Los permisos en Linux permiten controlar el acceso y las acciones que los usuarios pueden realizar sobre archivos y directorios.
+
+==== Sistema numérico de permisos
+
+Los permisos se representan mediante un sistema numérico, donde cada número indica los permisos otorgados:
+
+[cols="1,1,3",options="header"]
+|===
+| Permisos Base | Numérico | Significado
+
+| rwxrwxrwx
+| 777
+| Lectura, escritura y ejecución para el propietario, el grupo y otros.
+|===
+
+Cada cifra se obtiene sumando los valores de los permisos:  
+* r = 4 (lectura)  
+* w = 2 (escritura)  
+* x = 1 (ejecución)  
+
+Por ejemplo: 7 = r + w + x = 4 + 2 + 1
+
+===== Modificación de permisos con chmod
+
+Se pueden modificar los permisos tanto en **forma numérica** como en **forma simbólica**.  
+
+[cols="1,1,1",options="header"]
+|===
+| Símbolo | Entidad | Descripción
+| u | users | Usuario propietario
+| g | groups | Grupo principal
+| o | others | Otros
+|===
+
+Ejemplos prácticos:
+
+- `chmod u+s /fichero` → Activa SUID para el usuario en el fichero  
+- `chmod o+x /fichero` → Activa ejecución para otros (Sticky Bit)  
+- `chmod ugo+x /fichero` → Otorga permisos de ejecución a todos  
+- `chmod u+x,g+x,o+x /fichero` → Otra forma de otorgar ejecución a todos  
+
+==== UID y GID
+
+===== UID (User ID)
+
+Identificador único de un usuario en el sistema, utilizado para gestionar permisos y recursos.  
+
+* UID 0 → Usuario root, con privilegios completos  
+* UID 1..1000 → Usuarios del sistema  
+* UID > 1000 → Usuarios normales (editable)
+
+Formato típico en `/etc/passwd`:
+
+usuario:x:1002:1005:Comentario:/home/usuario:/bin/bash
+
+> Nota: el UID del root es siempre 0 y por defecto los usuarios normales comienzan desde 1000.
+
+===== GID (Group ID)
+
+Identificador de grupo del sistema, utilizado para gestionar permisos y recursos compartidos.
+
+==== Permisos especiales
+
+Archivo de configuración: `/etc/login.defs`  
+
+===== SUID (Set User ID)
+
+Permite que un archivo se ejecute con los permisos de su propietario, aunque lo ejecute otro usuario.  
+
+* s → Permiso de ejecución activo (-rwsr-xr-x)  
+* S → Permiso de ejecución no activo (-rwSr-xr-x)  
+
+Representación octal: 4000  
+
+> Riesgo elevado: puede permitir escalada de privilegios. No recomendable para scripts sensibles.
+
+===== SGID (Set Group ID)
+
+El proceso que ejecuta el archivo lo hace con los privilegios del grupo propietario.  
+
+* s → Permiso de ejecución activo (-rwxr-sr-x)  
+* S → Permiso de ejecución no activo (-rwxr-Sr-x)  
+
+Representación octal: 2000  
+
+> Riesgo moderado: puede permitir escalada lateral entre usuarios del mismo grupo.
+
+===== Sticky Bit
+
+Solo se aplica a directorios. Permite que los archivos dentro de ellos solo puedan ser eliminados o renombrados por el propietario del archivo o del directorio.  
+
+* t → Permiso de ejecución de otros activo  
+* T → Permiso de ejecución de otros no activo  
+
+Representación octal: 1000  
+
+> Uso típico: directorios temporales como `/tmp`.
+

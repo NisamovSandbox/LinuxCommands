@@ -1,9 +1,9 @@
-= Fundamentos de Direccionamiento y Configuración de Red
+=== Fundamentos de Direccionamiento y Configuración de Red
 :toc:
 :toclevels: 3
 :sectnums:
 
-== Conceptos Básicos de Red
+==== Conceptos Básicos de Red
 
 [cols="2,5,3", options="header"]
 |===
@@ -38,7 +38,7 @@
 | Persistentes si se configuran manualmente; variables si se asignan por DHCP.
 |===
 
-== Persistencia de la Configuración de Red
+==== Persistencia de la Configuración de Red
 
 La persistencia de la configuración hace referencia a la capacidad de un sistema para conservar los parámetros de red tras reinicios, apagados o desconexiones.
 
@@ -54,7 +54,7 @@ Una configuración no persistente:
 
 En términos prácticos, la persistencia aporta estabilidad y previsibilidad, mientras que la no persistencia facilita la automatización y escalabilidad, especialmente en redes grandes.
 
-== Visualización de la Configuración de Red en Linux
+==== Visualización de la Configuración de Red en Linux
 
 Para consultar las interfaces y direcciones de red en sistemas Linux se utilizan los siguientes comandos:
 
@@ -66,7 +66,7 @@ o bien:
 [source,bash]
 ip address show
 
-== Interfaces de Red
+==== Interfaces de Red
 
 [cols="2,6", options="header"]
 |===

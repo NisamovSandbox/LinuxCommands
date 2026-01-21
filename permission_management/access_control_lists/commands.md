@@ -1,5 +1,0 @@
-- Verificar ACLs: `getfacl archivo.txt`
-- Modificar Máscara ACL: `setfacl -m m:rwx archivo.txt`
-- Asignar Permisos Específicos ACL a un Usuario en un Archivo: `setfacl -m u:usuario:r reporte.txt`
-- Asignar Permisos Específicos ACL a un Grupo en un Directorio: `setfacl -d -m g:grupo:rw proyectos`
-- Eliminar Permisos Específicos ACL de un Usuario en un Archivo: `setfacl -x u:usuario archivo.txt`

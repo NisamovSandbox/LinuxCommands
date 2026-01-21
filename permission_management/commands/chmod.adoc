@@ -1,0 +1,27 @@
+=== chmod
+Modificar los permisos de archivos y directorios en Linux.
+
+[source,bash]
+----
+# Otorgar permisos de ejecución a un archivo
+chmod +x archivo.txt
+
+# Revocar permisos de ejecución a un archivo
+chmod -x archivo.txt
+
+# Establecer permisos de lectura y escritura para el usuario y grupo
+chmod 660 archivo.txt
+
+# Aplicar cambios de forma recursiva a un directorio
+chmod -R 755 carpeta/
+----
+
+[unordered.stack]
++ x:: `chmod +x archivo.txt` Otorga permisos de ejecución al archivo
+- x:: `chmod -x archivo.txt` Revoca permisos de ejecución
+u+s:: `chmod u+s archivo.txt` Establece el bit SUID en un archivo
+g+s:: `chmod g+s carpeta/` Establece el bit SGID en un directorio
++t:: `chmod +t carpeta/` Establece el sticky bit, solo el propietario puede modificar archivos en el directorio
+-R:: `chmod -R 755 carpeta/` Aplica los permisos recursivamente a todos los archivos y subdirectorios
+-v:: `chmod -v archivo.txt` Muestra información detallada de los cambios aplicados
+
