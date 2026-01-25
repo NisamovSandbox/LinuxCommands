@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install torch transformers
+          pip install torch transformers sentencepiece
 
       - name: Recreate english branch
         run: git checkout -B english
