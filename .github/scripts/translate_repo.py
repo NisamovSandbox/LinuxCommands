@@ -6,7 +6,7 @@ import re
 from transformers import MarianMTModel, MarianTokenizer
 from multiprocessing import Pool, cpu_count
 
-MODEL_NAME = "Helsinki-NLP/opus-mt-small-es-en"
+MODEL_NAME = "Helsinki-NLP/opus-mt-es-en"
 tokenizer = MarianTokenizer.from_pretrained(MODEL_NAME)
 model = MarianMTModel.from_pretrained(MODEL_NAME)
 
