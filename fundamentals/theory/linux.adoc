@@ -1,0 +1,14 @@
+=== Linux
+
+Linux es un sistema operativo libre y de código abierto, perteneciente a la familia de sistemas tipo Unix. Su desarrollo comenzó en 1991, cuando Linus Torvalds creó el núcleo (*kernel*) como un proyecto personal, con el objetivo de disponer de un sistema operativo funcional para ordenadores personales. Con el tiempo, este núcleo se combinó con herramientas y componentes del proyecto GNU, dando lugar a sistemas completos comúnmente conocidos como sistemas Linux.
+
+Desde un punto de vista conceptual, Linux se estructura en torno a un núcleo monolítico modular. El kernel es el componente central del sistema operativo y se encarga de la gestión de los recursos del hardware, tales como el procesador, la memoria, los dispositivos de almacenamiento y los periféricos de entrada y salida. Además, proporciona servicios fundamentales como la planificación de procesos, la gestión de la memoria, el control de dispositivos y la comunicación entre procesos.
+
+Linux destaca por su modelo de desarrollo abierto, basado en la colaboración de una amplia comunidad internacional de desarrolladores. El código fuente está disponible públicamente, lo que permite su estudio, modificación y redistribución bajo los términos de la Licencia Pública General de GNU (GPL). Este modelo ha favorecido la transparencia, la mejora continua del sistema y su rápida adaptación a nuevas tecnologías.
+
+Otra característica esencial de Linux es su portabilidad. El sistema ha sido adaptado para funcionar en una gran variedad de arquitecturas de hardware, incluyendo ordenadores personales, servidores, sistemas embebidos, dispositivos móviles y superordenadores. Esta versatilidad ha contribuido a su adopción en múltiples ámbitos, tanto académicos como industriales.
+
+Linux se distribuye mediante diferentes distribuciones, cada una de las cuales integra el kernel junto con bibliotecas, utilidades del sistema y aplicaciones. Estas distribuciones pueden estar orientadas a distintos usos, como estaciones de trabajo, servidores, entornos educativos o sistemas de misión crítica. A pesar de sus diferencias, todas comparten los mismos principios fundamentales y la misma base tecnológica.
+
+En el ámbito teórico, Linux es un ejemplo representativo de los principios de diseño de los sistemas operativos modernos, tales como la separación entre espacio de usuario y espacio de núcleo, la multitarea, el soporte multiusuario y el control de permisos y seguridad. Estas características lo convierten en una plataforma de referencia para el estudio de la informática y la ingeniería de sistemas.
+

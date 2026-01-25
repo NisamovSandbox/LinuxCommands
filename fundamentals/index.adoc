@@ -20,6 +20,11 @@ Este manual está pensado como guía de referencia para:
 * Administradores de sistemas Linux
 * Usuarios técnicos en proceso de aprendizaje
 
+== Teoría
+include::theory/linus_torvalds.adoc[]
+include::theory/linux.adoc[]
+
 == Inclusiones
 include::combination_keys/combination.adoc[]
 include::system_structure/linux_structure.adoc[]
+
