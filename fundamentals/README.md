@@ -19,7 +19,6 @@ Sirve como base teórica para el resto de secciones del repositorio.
 
 <!-- AUTO-GENERATED-INDEX:START -->
 - [combination_keys](/fundamentals/combination_keys)
-  - [combination_keys/combination.md](/fundamentals/combination_keys/combination.md)
 - [system_structure](/fundamentals/system_structure)
-  - [system_structure/linux_structure.md](/fundamentals/system_structure/linux_structure.md)
+- [theory](/fundamentals/theory)
 <!-- AUTO-GENERATED-INDEX:END -->
