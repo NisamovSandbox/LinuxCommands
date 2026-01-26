@@ -6,15 +6,11 @@
 :sectnums:
 :pdf-page-size: A4
 :pdf-page-margin: [2cm, 2cm, 2cm, 2cm]
+:pdf-footer: "Andrés Ruslan Abadías Otal | github.com/Nisamov"
 :description: LinuxCommands es un repositorio creado para servir como guía y apoyo a usuarios o administradores de sistemas Linux
 :url-repo: https://github.com/Nisamov/LinuxCommands
 :lang: es
 :author: Andrés Ruslan Abadías Otal
-
-:pdf-watermark-text: "g\ni\nt\nh\nu\nb\n.\nc\no\nm\n/\nN\ni\ns\na\nm\no\nv"
-:pdf-watermark-opacity: 0.1
-:pdf-watermark-angle: 30
-:pdf-watermark-font-size: 50
 
 == Introducción
 Este manual está pensado como guía de referencia para:
@@ -27,49 +23,49 @@ Este manual está pensado como guía de referencia para:
 include::raid/theory.adoc[]
 
 == Particiones
-include::partitions/theory.adoc
+include::partitions/theory.adoc[]
 
 == Copias de Seguridad
-include::backup/theory
-include::backup/rsync/rsync.adoc
-include::backup/data_dump/data_dump.adoc
+include::backup/theory.adoc[]
+include::backup/rsync/rsync.adoc[]
+include::backup/data_dump/data_dump.adoc[]
 
 == Comandos
-include::commands/blkid.adoc
-include::commands/cfdisk.adoc
-include::commands/df.adoc
-include::commands/fdisk.adoc
-include::commands/free.adoc
-include::commands/losetup.adoc
-include::commands/lsblk.adoc
-include::commands/lsof.adoc
-include::commands/lvcreate.adoc
-include::commands/lvdisplay.adoc
-include::commands/lvextend.adoc
-include::commands/lvreduce.adoc
-include::commands/lvremove.adoc
-include::commands/lvrename.adoc
-include::commands/lvresize.adoc
-include::commands/lvs.adoc
-include::commands/lvscan.adoc
-include::commands/mkfs.adoc
-include::commands/mkswap.adoc
-include::commands/mount.adoc
-include::commands/partx.adoc
-include::commands/pvcreate.adoc
-include::commands/pvdisplay.adoc
-include::commands/pvremove.adoc
-include::commands/pvs.adoc
-include::commands/reize2fs.adoc
-include::commands/swapoff.adoc
-include::commands/swapon.adoc
-include::commands/umount.adoc
-include::commands/vgchange.adoc
-include::commands/vgcreate.adoc
-include::commands/vgdisplay.adoc
-include::commands/vgreduce.adoc
-include::commands/vgremove.adoc
-include::commands/vgs.adoc
-include::commands/vgscan.adoc
-include::commands/vgsextend.adoc
+include::commands/blkid.adoc[]
+include::commands/cfdisk.adoc[]
+include::commands/df.adoc[]
+include::commands/fdisk.adoc[]
+include::commands/free.adoc[]
+include::commands/losetup.adoc[]
+include::commands/lsblk.adoc[]
+include::commands/lsof.adoc[]
+include::commands/lvcreate.adoc[]
+include::commands/lvdisplay.adoc[]
+include::commands/lvextend.adoc[]
+include::commands/lvreduce.adoc[]
+include::commands/lvremove.adoc[]
+include::commands/lvrename.adoc[]
+include::commands/lvresize.adoc[]
+include::commands/lvs.adoc[]
+include::commands/lvscan.adoc[]
+include::commands/mkfs.adoc[]
+include::commands/mkswap.adoc[]
+include::commands/mount.adoc[]
+include::commands/partx.adoc[]
+include::commands/pvcreate.adoc[]
+include::commands/pvdisplay.adoc[]
+include::commands/pvremove.adoc[]
+include::commands/pvs.adoc[]
+include::commands/reize2fs.adoc[]
+include::commands/swapoff.adoc[]
+include::commands/swapon.adoc[]
+include::commands/umount.adoc[]
+include::commands/vgchange.adoc[]
+include::commands/vgcreate.adoc[]
+include::commands/vgdisplay.adoc[]
+include::commands/vgreduce.adoc[]
+include::commands/vgremove.adoc[]
+include::commands/vgs.adoc[]
+include::commands/vgscan.adoc[]
+include::commands/vgsextend.adoc[]
 

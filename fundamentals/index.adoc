@@ -6,6 +6,7 @@
 :sectnums:
 :pdf-page-size: A4
 :pdf-page-margin: [2cm, 2cm, 2cm, 2cm]
+:pdf-footer: "Andrés Ruslan Abadías Otal | github.com/Nisamov"
 :description: LinuxCommands es un repositorio creado para servir como guía y apoyo a usuarios o administradores de sistemas Linux
 :url-repo: https://github.com/Nisamov/LinuxCommands
 :lang: es

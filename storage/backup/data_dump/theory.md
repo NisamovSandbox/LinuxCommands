@@ -1,4 +1,4 @@
-Este comando, es batsante peligroso, pues es capaz tanto de proteger como destruir todo en el sistema.
+Este comando, es bastante peligroso, pues es capaz tanto de proteger como destruir todo en el sistema.
 Teniendo en cuenta que este comando nos permite gestionar las informacion almacenada en el sistema.
 
 Si se hace con fines maliciosos, puede borrar y sobreescribir todo en el sistema, incluyendo al sistema mismo.
