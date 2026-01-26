@@ -49,23 +49,11 @@ jobs:
               echo "Generando PDF español para $NAME..."
               (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/es_${NAME}.pdf")
 
-              # Traducir los .adoc a inglés
-              TMP_DIR="../tmp_en/$NAME"
-              mkdir -p "$TMP_DIR"
-              for file in $(find "$dir" -name "*.adoc"); do
-                REL_PATH=$(realpath --relative-to="$dir" "$file")
-                OUT_FILE="$TMP_DIR/$REL_PATH"
-                mkdir -p "$(dirname "$OUT_FILE")"
-                python3 - <<EOF
-      from googletrans import Translator
-      text = open("$file", "r", encoding="utf-8").read()
-      translated = Translator().translate(text, src='es', dest='en').text
-      open("$OUT_FILE", "w", encoding="utf-8").write(translated)
-      EOF
-              done
-              # Generar PDF inglés
+              # Traducir los .adoc a inglés usando el script Python
+              python3 .github/scripts/translate_adoc.py "$dir" "../tmp_en/$NAME"
+
               echo "Generando PDF inglés para $NAME..."
-              (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
+              (cd "../tmp_en/$NAME" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
             fi
           done
 
@@ -98,7 +86,6 @@ jobs:
         run: |
           echo "Eliminando releases anteriores..."
           releases=$(gh release list --limit 100 --json tagName -q '.[].tagName')
-          
           if [ -z "$releases" ]; then
             echo "No hay releases anteriores que eliminar."
           else
