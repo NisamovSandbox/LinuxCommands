@@ -65,6 +65,7 @@ jobs:
           echo "" >> release_body.md
           for pdf in pdf/*.pdf; do
             echo "- $(basename "$pdf")" >> release_body.md
+          done
 
       - name: Borrar todos los tags remotos
         run: |
