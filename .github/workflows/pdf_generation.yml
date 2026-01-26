@@ -27,7 +27,7 @@ jobs:
           which asciidoctor-pdf
           asciidoctor-pdf --version
 
-      - name: Configurar Python para traducción
+      - name: Configurar Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -35,10 +35,10 @@ jobs:
       - name: Instalar librería de traducción
         run: pip install deep-translator
 
-      - name: Crear directorio de PDFs y temporal para traducción
+      - name: Crear directorios
         run: mkdir -p pdf tmp_en
 
-      - name: Generar PDFs Español e Inglés automáticamente
+      - name: Generar PDFs Español e Inglés
         run: |
           ASCIIDOCTOR=$(which asciidoctor-pdf)
 
@@ -49,7 +49,7 @@ jobs:
               echo "Generando PDF español para $NAME..."
               (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/es_${NAME}.pdf")
 
-              # Traducir los .adoc a inglés usando el script Python
+              echo "Traduciendo a inglés..."
               python3 .github/scripts/translate_adoc.py "$dir" "../tmp_en/$NAME"
 
               echo "Generando PDF inglés para $NAME..."
@@ -69,30 +69,20 @@ jobs:
 
       - name: Borrar todos los tags remotos
         run: |
-          echo "Obteniendo todos los tags remotos..."
           tags=$(git ls-remote --tags origin | awk '{print $2}' | sed 's#refs/tags/##' | grep -v '\^{}')
-          if [ -z "$tags" ]; then
-            echo "No hay tags para borrar."
-          else
-            for tag in $tags; do
-              echo "Borrando tag remoto: $tag"
-              git push origin --delete "$tag"
-            done
-          fi
+          for tag in $tags; do
+            echo "Borrando tag remoto: $tag"
+            git push origin --delete "$tag"
+          done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Eliminar releases anteriores
         run: |
-          echo "Eliminando releases anteriores..."
           releases=$(gh release list --limit 100 --json tagName -q '.[].tagName')
-          if [ -z "$releases" ]; then
-            echo "No hay releases anteriores que eliminar."
-          else
-            for r in $releases; do
-              echo "Borrando release $r..."
-              gh release delete "$r" --yes || echo "Error eliminando $r, continuando..."
-            done
+          for r in $releases; do
+            echo "Borrando release $r..."
+            gh release delete "$r" --yes || echo "Error eliminando $r, continuando..."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
