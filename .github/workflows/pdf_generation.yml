@@ -93,6 +93,7 @@ jobs:
               echo "Borrando release $r..."
               gh release delete "$r" --yes || echo "Error eliminando $r, continuando..."
             done
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
