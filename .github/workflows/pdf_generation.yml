@@ -71,6 +71,7 @@ jobs:
 
       - name: Borrar todos los tags remotos
         run: |
+          set +e
           echo "Obteniendo todos los tags remotos..."
           tags=$(git ls-remote --tags origin | awk '{print $2}' | sed 's#refs/tags/##' | grep -v '\^{}')
           if [ -z "$tags" ]; then
@@ -81,6 +82,7 @@ jobs:
               git push origin --delete "$tag" || echo "No se pudo borrar $tag, continuando..."
             done
           fi
+          set -e
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
