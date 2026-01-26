@@ -57,13 +57,12 @@ jobs:
                 OUT_FILE="$TMP_DIR/$REL_PATH"
                 mkdir -p "$(dirname "$OUT_FILE")"
                 python3 - <<EOF
-                from googletrans import Translator
-                text = open("$file", "r", encoding="utf-8").read()
-                translated = Translator().translate(text, src='es', dest='en').text
-                open("$OUT_FILE", "w", encoding="utf-8").write(translated)
-                EOF
+      from googletrans import Translator
+      text = open("$file", "r", encoding="utf-8").read()
+      translated = Translator().translate(text, src='es', dest='en').text
+      open("$OUT_FILE", "w", encoding="utf-8").write(translated)
+      EOF
               done
-
               # Generar PDF inglés
               echo "Generando PDF inglés para $NAME..."
               (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
