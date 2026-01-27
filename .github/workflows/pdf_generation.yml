@@ -56,23 +56,25 @@ jobs:
               echo "Preparando versión en inglés..."
               TMP_DIR="../tmp_en/$NAME"
               mkdir -p "$TMP_DIR"
-              rsync -a "$dir/" "$TMP_DIR/"
+              
+              # Copiar solo archivos .adoc al TMP_DIR
+              find "$dir" -name '*.adoc' -exec rsync -R {} "$TMP_DIR/" \;
 
-              # Traducir solo archivos .adoc dentro del TMP_DIR
+              # Traducir archivos dentro de TMP_DIR y dejar los .adoc en TMP_DIR
               python3 .github/scripts/translate_adoc.py "$TMP_DIR" "$TMP_DIR"
 
               echo "Generando PDF inglés para $NAME..."
               (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
-
-              # Mover PDF inglés a pdf/ si asciidoctor lo generó en otra ruta
-              if [ -f "../../pdf/en_${NAME}.pdf" ]; then
-                mv "../../pdf/en_${NAME}.pdf" pdf/
+              
+              # Verificar que se creó el PDF inglés
+              if [ ! -f "../../pdf/en_${NAME}.pdf" ]; then
+                echo " ERROR: PDF inglés para $NAME no se generó correctamente."
               fi
             fi
           done
 
           echo ""
-          echo "✅ PDFs generados:"
+          echo "PDFs generados:"
           ls -l pdf/
 
       - name: Crear body del release
