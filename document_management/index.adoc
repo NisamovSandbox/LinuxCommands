@@ -12,8 +12,6 @@
 :lang: es
 :author: Andrés Ruslan Abadías Otal
 
-Andrés Ruslan Abadías Otal | github.com/Nisamov
-
 == Introducción
 Este manual está pensado como guía de referencia para:
 

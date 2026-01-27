@@ -100,7 +100,7 @@ jobs:
             echo "</details>"
             echo ""
             echo "<details open>"
-            echo "<summary><strong>• Documentación ENG</strong></summary>"
+            echo "<summary><strong>• Documentation ENG</strong></summary>"
             echo ""
             for pdf in pdf/ENG_*.pdf; do
               [ -e "$pdf" ] || continue
