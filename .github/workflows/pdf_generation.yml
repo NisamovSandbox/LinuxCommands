@@ -52,7 +52,7 @@ jobs:
               NAME="${dir%/}"
               
               echo "Generando PDF español para $NAME..."
-              (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/es_${NAME}.pdf")
+              (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/ESP_${NAME}.pdf")
 
               echo "Preparando versión en inglés..."
               TMP_DIR="tmp_en/$NAME"
@@ -66,7 +66,7 @@ jobs:
 
               echo "Generando PDF inglés para $NAME..."
               if [ -f "$TMP_DIR/index.adoc" ]; then
-                (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
+                (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/ENG_${NAME}.pdf")
               else
                 echo "ERROR: index.adoc no encontrado en $TMP_DIR"
               fi
@@ -84,14 +84,32 @@ jobs:
 
       - name: Crear body del release
         run: |
-          echo "## 📕 PDFs generados automáticamente" > release_body.md
-          echo "" >> release_body.md
-          echo "![Release Image](.github/media/released.png)" >> release_body.md
-          echo "### Documentación disponible:" >> release_body.md
-          echo "" >> release_body.md
-          for pdf in pdf/*.pdf; do
-            echo "- $(basename "$pdf")" >> release_body.md
-          done
+          {
+            echo "## 📕 PDFs generados automáticamente"
+            echo ""
+            echo "![Release Image](.github/media/released.png)"
+            echo ""
+            echo "<details open>"
+            echo "<summary><strong>• Documentación ESP</strong></summary>"
+            echo ""
+            for pdf in pdf/ESP_*.pdf; do
+              [ -e "$pdf" ] || continue
+              echo "- $(basename "$pdf")"
+            done
+            echo ""
+            echo "</details>"
+            echo ""
+            echo "<details open>"
+            echo "<summary><strong>• Documentación ENG</strong></summary>"
+            echo ""
+            for pdf in pdf/ENG_*.pdf; do
+              [ -e "$pdf" ] || continue
+              echo "- $(basename "$pdf")"
+            done
+            echo ""
+            echo "</details>"
+          } > release_body.md
+
           cat release_body.md
 
       - name: Borrar todos los tags remotos
