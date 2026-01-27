@@ -22,24 +22,65 @@ jobs:
       - name: Instalar Asciidoctor PDF
         run: gem install asciidoctor-pdf --no-document
 
+      - name: Instalar Rouge (dependencia de Asciidoctor PDF)
+        run: gem install rouge --no-document
+
       - name: Verificar instalación de Asciidoctor PDF
         run: |
           which asciidoctor-pdf
           asciidoctor-pdf --version
 
-      - name: Crear directorio de PDFs
-        run: mkdir -p pdf
+      - name: Configurar Python para traducción
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
 
-      - name: Generar PDFs (nombre = directorio)
+      - name: Instalar librería de traducción
+        run: pip install deep-translator
+
+      - name: Crear directorios
+        run: mkdir -p pdf tmp_en
+
+      - name: Generar PDFs Español e Inglés
         run: |
+          set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
+          mkdir -p pdf tmp_en
+
           for dir in */ ; do
             if [ -f "$dir/index.adoc" ]; then
               NAME="${dir%/}"
-              echo "Generando PDF para $NAME/index.adoc..."
-              (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/$NAME.pdf")
+              
+              echo "Generando PDF español para $NAME..."
+              (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/es_${NAME}.pdf")
+
+              echo "Preparando versión en inglés..."
+              TMP_DIR="tmp_en/$NAME"
+              mkdir -p "$TMP_DIR"
+
+              # Copiar todo el módulo manteniendo estructura y subdirectorios
+              rsync -av "$dir"/ "$TMP_DIR"/
+
+              # Traducir todos los archivos .adoc in-place dentro de TMP_DIR
+              python3 .github/scripts/translate_adoc.py "$TMP_DIR" "$TMP_DIR"
+
+              echo "Generando PDF inglés para $NAME..."
+              if [ -f "$TMP_DIR/index.adoc" ]; then
+                (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
+              else
+                echo "ERROR: index.adoc no encontrado en $TMP_DIR"
+              fi
+
+              # Verificar PDF inglés
+              if [ ! -f "pdf/en_${NAME}.pdf" ]; then
+                echo "ERROR: PDF inglés para $NAME no se generó correctamente."
+              fi
             fi
           done
+
+          echo ""
+          echo "PDFs generados:"
+          ls -l pdf/
 
       - name: Crear body del release
         run: |
@@ -51,21 +92,22 @@ jobs:
           for pdf in pdf/*.pdf; do
             echo "- $(basename "$pdf")" >> release_body.md
           done
+          cat release_body.md
 
-      - name: Eliminar releases anteriores
+      - name: Borrar todos los tags remotos
         run: |
-          echo "Eliminando releases anteriores..."
-          # Obtener todos los tags de releases existentes
-          releases=$(gh release list --limit 100 --json tagName -q '.[].tagName')
-          
-          if [ -z "$releases" ]; then
-            echo "No hay releases anteriores que eliminar."
+          set +e
+          echo "Obteniendo todos los tags remotos..."
+          tags=$(git ls-remote --tags origin | awk '{print $2}' | sed 's#refs/tags/##' | grep -v '\^{}')
+          if [ -z "$tags" ]; then
+            echo "No hay tags para borrar."
           else
-            for r in $releases; do
-              echo "Borrando release $r..."
-              gh release delete "$r" --yes || echo "Error eliminando $r, continuando..."
+            for tag in $tags; do
+              echo "Intentando borrar tag remoto: $tag"
+              git push origin --delete "$tag" || echo "No se pudo borrar $tag, continuando..."
             done
           fi
+          set -e
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
