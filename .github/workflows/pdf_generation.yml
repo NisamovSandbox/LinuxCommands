@@ -49,21 +49,28 @@ jobs:
           for dir in */ ; do
             if [ -f "$dir/index.adoc" ]; then
               NAME="${dir%/}"
+              
               echo "Generando PDF español para $NAME..."
               (cd "$dir" && "$ASCIIDOCTOR" index.adoc -o "../pdf/es_${NAME}.pdf")
 
               echo "Preparando versión en inglés..."
               TMP_DIR="../tmp_en/$NAME"
               mkdir -p "$TMP_DIR"
-              rsync -a "$dir/" "$TMP_DIR/"  # Copia todo, incluyendo subcarpetas
+              rsync -a "$dir/" "$TMP_DIR/"
 
               # Traducir solo archivos .adoc dentro del TMP_DIR
               python3 .github/scripts/translate_adoc.py "$TMP_DIR" "$TMP_DIR"
 
               echo "Generando PDF inglés para $NAME..."
               (cd "$TMP_DIR" && "$ASCIIDOCTOR" index.adoc -o "../../pdf/en_${NAME}.pdf")
+
+              # Mover PDF inglés a pdf/ si asciidoctor lo generó en otra ruta
+              if [ -f "../../pdf/en_${NAME}.pdf" ]; then
+                mv "../../pdf/en_${NAME}.pdf" pdf/
+              fi
             fi
           done
+
           echo ""
           echo "✅ PDFs generados:"
           ls -l pdf/
