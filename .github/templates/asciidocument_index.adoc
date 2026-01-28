@@ -1,0 +1,32 @@
+= Nombre Apartado Correspondiente
+:toc:
+:toclevels: 2
+:icons: font
+:source-highlighter: rouge
+:sectnums:
+:pdf-page-size: A4
+:pdf-page-margin: [2cm, 2cm, 2cm, 2cm]
+:description: LinuxCommands es un repositorio creado para servir como guía y apoyo a usuarios o administradores de sistemas Linux
+:url-repo: https://github.com/Nisamov/LinuxCommands
+:doctype: book
+:lang: es
+:author: Nombre Completo
+
+== Introducción
+Este manual está pensado como guía de referencia para:
+
+* Ámbito escolar y formativo
+* Administradores de sistemas Linux
+* Usuarios técnicos en proceso de aprendizaje
+
+== Sección 1
+include::ruta1/fichero1.adoc[]
+include::ruta1/fichero2.adoc[]
+include::ruta1/fichero3.adoc[]
+include::ruta1/fichero4.adoc[]
+
+== Sección 2
+include::ruta2/fichero1.adoc[]
+include::ruta2/fichero2.adoc[]
+include::ruta2/fichero3.adoc[]
+include::ruta2/fichero4.adoc[]

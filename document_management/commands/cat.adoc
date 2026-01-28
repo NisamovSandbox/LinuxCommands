@@ -14,6 +14,7 @@ cat fichero.txt
 # Mostrar con numeración de líneas
 cat -n fichero.txt
 ----
+
 [unordered.stack]
 -b:: `cat -b` Numerar sólo líneas no vacías
 
@@ -22,6 +23,7 @@ cat -n fichero.txt
 # Numerar sólo líneas no vacías
 cat -b fichero.txt
 ----
+
 [unordered.stack]
 -A:: `cat -A` Mostrar caracteres especiales
 
