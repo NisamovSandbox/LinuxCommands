@@ -32,6 +32,12 @@ def translate_adoc(text: str) -> str:
     in_code_block = False
     for line in text.splitlines(keepends=True):
         stripped = line.lstrip()
+        prefix = ""
+        if stripped.startswith("* "):
+            prefix = "* "
+            line_to_translate = stripped[2:]
+        else:
+            line_to_translate = line.rstrip("\n")
         if stripped.startswith("----"):
             in_code_block = not in_code_block
             output.append(line)
