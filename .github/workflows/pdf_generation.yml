@@ -1,9 +1,9 @@
 name: Generación PDF Asciidoctor
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    # Ejecutar los lunes y viernes a medianoche
+    - cron: '0 0 * * 1,5'
 
 jobs:
   build-pdfs:
@@ -35,25 +35,61 @@ jobs:
       - name: Crear directorios temporales y de PDFs
         run: mkdir -p tmp_en tmp_zh pdf
 
+      - name: Listar y borrar tags
+        run: |
+          TAGS=$(git tag)
+          if [ -z "$TAGS" ]; then
+            echo "No hay tags que borrar."
+          else
+            echo "Borrando tags locales..."
+            git tag -d $TAGS || true
+            echo "Borrando tags remotos..."
+            for TAG in $TAGS; do
+              git push origin :refs/tags/$TAG || true
+            done
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Borrar releases existentes
+        run: |
+          set -e
+          REPO="${{ github.repository }}"
+          PAGE=1
+          while true; do
+            IDS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
+             "https://api.github.com/repos/$REPO/releases?per_page=100&page=$PAGE" | jq -r '.[].id')
+            [ -z "$IDS" ] && break
+            for ID in $IDS; do
+              curl -s -X DELETE -H "Authorization: Bearer $GITHUB_TOKEN" \ "https://api.github.com/repos/$REPO/releases/$ID"
+            done
+            PAGE=$((PAGE + 1))
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Generar PDFs ESP, ENG y ZH
         run: |
           set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
 
-          # Buscar todas las carpetas con index.adoc en el repo
           find . -type f -name "index.adoc" | while read INDEX; do
             DIR=$(dirname "$INDEX")
             NAME=$(basename "$DIR")
             echo "=== Procesando módulo: $NAME ==="
+
+            # Español
             echo "Generando PDF Español..."
             "$ASCIIDOCTOR" "$DIR/index.adoc" -o "pdf/ESP_${NAME}.pdf"
-            echo "Generando PDF Inglés..."
+
+            # Inglés
             TMP_EN="tmp_en/$NAME"
             mkdir -p "$TMP_EN"
             rsync -a "$DIR/" "$TMP_EN/"
             python3 .github/scripts/translate_adoc.py "$TMP_EN" "$TMP_EN" en
             "$ASCIIDOCTOR" "$TMP_EN/index.adoc" -o "pdf/ENG_${NAME}.pdf"
-            echo "Generando PDF Chino..."
+
+            # Chino
             TMP_ZH="tmp_zh/$NAME"
             mkdir -p "$TMP_ZH"
             rsync -a "$DIR/" "$TMP_ZH/"
@@ -65,54 +101,13 @@ jobs:
               -o "pdf/ZH_${NAME}.pdf"
           done
 
-      - name: Crear body del release
+      - name: Crear releases por idioma
         run: |
-          {
-            echo "## 📕 PDFs generados automáticamente"
-            echo ""
-            echo "<details open>"
-            echo "<summary><strong>• Documentación ESP</strong></summary>"
-            echo ""
-            for pdf in pdf/ESP_*.pdf; do [ -e "$pdf" ] || continue; echo "- $(basename "$pdf")"; done
-            echo "</details>"
-            echo ""
-            echo "<details open>"
-            echo "<summary><strong>• Documentation ENG</strong></summary>"
-            echo ""
-            for pdf in pdf/ENG_*.pdf; do [ -e "$pdf" ] || continue; echo "- $(basename "$pdf")"; done
-            echo "</details>"
-            echo ""
-            echo "<details open>"
-            echo "<summary><strong>• 文档 中文（简体）</strong></summary>"
-            echo ""
-            for pdf in pdf/ZH_*.pdf; do [ -e "$pdf" ] || continue; echo "- $(basename "$pdf")"; done
-            echo "</details>"
-          } > release_body.md
-
-      - name: Borrar releases existentes
-        run: |
-          set -e
-          REPO="${{ github.repository }}"
-          PAGE=1
-          while true; do
-            IDS=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-              "https://api.github.com/repos/$REPO/releases?per_page=100&page=$PAGE" | jq -r '.[].id')
-            [ -z "$IDS" ] && break
-            for ID in $IDS; do
-              curl -s -X DELETE -H "Authorization: Bearer $GITHUB_TOKEN" \
-                "https://api.github.com/repos/$REPO/releases/$ID"
-            done
-            PAGE=$((PAGE + 1))
+          echo "Creando releases separados por idioma..."
+          for LANG in ESP ENG ZH; do
+            FILES=$(ls pdf/${LANG}_*.pdf | tr '\n' ' ')
+            echo "Archivos $LANG: $FILES"
+            gh release create $LANG $FILES --title "Documentación PDF $LANG" --notes "Generado automáticamente para $LANG"
           done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Crear Release y subir PDFs
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: docs-pdf-${{ github.run_number }}
-          name: "📘 Documentación PDF"
-          body_path: release_body.md
-          files: pdf/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
