@@ -2,8 +2,4 @@ font:
   catalog:
     NotoSansCJK:
       normal: NotoSansCJKsc-Regular.otf
-  fallbacks:
-    - NotoSansCJK
-
-base:
-  font-family: NotoSansCJK
+      bold: NotoSansCJKsc-Regular.otf

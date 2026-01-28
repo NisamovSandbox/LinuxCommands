@@ -2,7 +2,7 @@
 
 [![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/commits) [![License](https://img.shields.io/static/v1?label=License&message=MIT&color=000000&style=flat-square&labelColor=ffffff)](LICENSE) [![Stars](https://img.shields.io/github/stars/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/stargazers) [![Forks](https://img.shields.io/github/forks/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/network/members)
 
-> *[ESP Descargar Documentos PDF](https://github.com/Nisamov/LinuxCommands/releases/latest) ∙ [ENG Download PDF Documents](https://github.com/Nisamov/LinuxCommands/releases/latest) ∙ [CHS 下载 PDF 文档](https://github.com/Nisamov/LinuxCommands/releases/latest)*
+> *[ESPAÑOL](https://github.com/Nisamov/LinuxCommands/releases/latest) ∙ [ENGLISH](https://github.com/Nisamov/LinuxCommands/releases/latest) ∙ [中文简体](https://github.com/Nisamov/LinuxCommands/releases/latest)*
 
 # LinuxCommands
 ### Estructura y referencia para documentar comandos y servicios en Linux
