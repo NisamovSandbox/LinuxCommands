@@ -10,7 +10,7 @@ unlink enlace_sim.txt
 
 [unordered.stack]
 --help:: `unlink --help` Mostrar ayuda breve
-+
+
 [source,bash]
 ----
 unlink --help

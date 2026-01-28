@@ -9,7 +9,7 @@ ls | column
 
 [unordered.stack]
 -t:: `column -t` Ajustar columnas en tabla
-+
+
 [source,bash]
 ----
 # Separar por tabulaciones y alinear columnas
@@ -18,7 +18,7 @@ cat datos.txt | column -t
 
 [unordered.stack]
 -s:: `column -s` Definir delimitador
-+
+
 [source,bash]
 ----
 # Usar coma como separador de columnas
@@ -27,7 +27,7 @@ cat datos.csv | column -s ',' -t
 
 [unordered.stack]
 -x:: `column -x` Llenar filas antes de columnas
-+
+
 [source,bash]
 ----
 # Mostrar las columnas llenando filas primero
@@ -36,7 +36,7 @@ ls | column -x
 
 [unordered.stack]
 --help:: `column --help` Mostrar ayuda
-+
+
 [source,bash]
 ----
 # Ver opciones disponibles

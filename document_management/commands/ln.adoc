@@ -9,7 +9,7 @@ ln -s /ruta/origen/archivo.txt enlace.txt
 
 [unordered.stack]
 -s:: `ln -s` Crear un enlace simbólico
-+
+
 [source,bash]
 ----
 # Crear enlace simbólico
@@ -18,7 +18,7 @@ ln -s /ruta/origen/archivo.txt enlace.txt
 
 [unordered.stack]
 -f:: `ln -f` Forzar creación de enlace sobrescribiendo el destino
-+
+
 [source,bash]
 ----
 # Forzar creación de enlace y sobrescribir si existe
@@ -27,7 +27,7 @@ ln -f archivo.txt enlace_existente.txt
 
 [unordered.stack]
 -i:: `ln -i` Solicitar confirmación antes de sobrescribir
-+
+
 [source,bash]
 ----
 # Crear enlace solicitando confirmación
@@ -36,7 +36,7 @@ ln -i archivo.txt enlace.txt
 
 [unordered.stack]
 --help:: `ln --help` Mostrar ayuda breve
-+
+
 [source,bash]
 ----
 ln --help

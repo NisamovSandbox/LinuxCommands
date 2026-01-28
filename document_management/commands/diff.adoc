@@ -8,7 +8,7 @@ diff fichero1.txt fichero2.txt
 ----
 [unordered.stack]
 -u:: `diff -u` Mostrar diferencias en formato unificado
-+
+
 [source,bash]
 ----
 # Comparar en formato unificado (útil para parches)
@@ -16,7 +16,7 @@ diff -u fichero1.txt fichero2.txt > cambios.patch
 ----
 [unordered.stack]
 -c:: `diff -c` Mostrar diferencias con contexto
-+
+
 [source,bash]
 ----
 # Comparar mostrando contexto adicional
@@ -24,7 +24,7 @@ diff -c fichero1.txt fichero2.txt
 ----
 [unordered.stack]
 -r:: `diff -r` Comparar directorios recursivamente
-+
+
 [source,bash]
 ----
 # Comparar dos directorios recursivamente
@@ -32,7 +32,7 @@ diff -r dir1/ dir2/
 ----
 [unordered.stack]
 -i:: `diff -i` Ignorar mayúsculas/minúsculas
-+
+
 [source,bash]
 ----
 # Ignorar case

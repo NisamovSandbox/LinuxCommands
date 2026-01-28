@@ -8,7 +8,7 @@ echo "Hola Mundo"
 ----
 [unordered.stack]
 -n:: `echo -n` No añadir salto de línea final
-+
+
 [source,bash]
 ----
 # No añadir salto de línea
@@ -16,7 +16,8 @@ echo -n "Hola"
 ----
 [unordered.stack]
 -e:: `echo -e` Interpretar escapes como \n, \t
-+
+
+
 [source,bash]
 ----
 # Interpretar escapes

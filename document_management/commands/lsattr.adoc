@@ -9,7 +9,7 @@ lsattr fichero.txt
 
 [unordered.stack]
 -R:: `lsattr -R` Recursivo
-+
+
 [source,bash]
 ----
 # Mostrar atributos de todos los archivos en un directorio recursivamente
@@ -18,7 +18,7 @@ lsattr -R /ruta/directorio
 
 [unordered.stack]
 -d:: `lsattr -d` Mostrar atributos de directorios en lugar de su contenido
-+
+
 [source,bash]
 ----
 # Mostrar atributos de un directorio
@@ -27,7 +27,7 @@ lsattr -d /ruta/directorio
 
 [unordered.stack]
 -V:: `lsattr -V` Mostrar versión del comando
-+
+
 [source,bash]
 ----
 # Ver versión de lsattr
@@ -36,7 +36,7 @@ lsattr -V
 
 [unordered.stack]
 --help:: `lsattr --help` Mostrar ayuda
-+
+
 [source,bash]
 ----
 # Ver opciones disponibles
@@ -45,7 +45,7 @@ lsattr --help
 
 [unordered.stack]
 --quiet:: `lsattr --quiet` Suprimir mensajes innecesarios
-+
+
 [source,bash]
 ----
 # Mostrar solo información esencial

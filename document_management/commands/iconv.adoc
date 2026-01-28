@@ -9,7 +9,7 @@ iconv -f UTF-8 -t ISO-8859-1 fichero.txt -o fichero_latin1.txt
 
 [unordered.stack]
 -f:: `iconv -f` Especificar codificación de origen (from)
-+
+
 [source,bash]
 ----
 # Leer un archivo en UTF-16
@@ -18,7 +18,7 @@ iconv -f UTF-16 -t UTF-8 fichero_utf16.txt > fichero_utf8.txt
 
 [unordered.stack]
 -t:: `iconv -t` Especificar codificación de destino (to)
-+
+
 [source,bash]
 ----
 # Convertir a ASCII ignorando caracteres no representables
@@ -27,7 +27,7 @@ iconv -f UTF-8 -t ASCII//TRANSLIT fichero.txt
 
 [unordered.stack]
 -o:: `iconv -o` Especificar archivo de salida
-+
+
 [source,bash]
 ----
 # Guardar la salida en un fichero específico
@@ -36,7 +36,7 @@ iconv -f UTF-8 -t ISO-8859-1 fichero.txt -o salida.txt
 
 [unordered.stack]
 -c:: `iconv -c` Omitir caracteres no convertibles
-+
+
 [source,bash]
 ----
 # Convertir ignorando caracteres inválidos
@@ -45,7 +45,7 @@ iconv -f UTF-8 -t ISO-8859-1 -c fichero.txt -o salida.txt
 
 [unordered.stack]
 -l:: `iconv -l` Listar todas las codificaciones disponibles
-+
+
 [source,bash]
 ----
 # Ver codificaciones soportadas
@@ -54,7 +54,7 @@ iconv -l
 
 [unordered.stack]
 --verbose:: `iconv --verbose` Mostrar información detallada
-+
+
 [source,bash]
 ----
 # Información detallada sobre la conversión

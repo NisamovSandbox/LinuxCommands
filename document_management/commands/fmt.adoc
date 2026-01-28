@@ -9,7 +9,7 @@ fmt -w 75 fichero.txt
 
 [unordered.stack]
 -w:: `fmt -w` Ancho máximo de línea
-+
+
 [source,bash]
 ----
 # Ajustar líneas a 50 caracteres
@@ -18,7 +18,7 @@ fmt -w 50 fichero.txt
 
 [unordered.stack]
 --prefix:: `fmt --prefix` Mantener prefijo de cada línea
-+
+
 [source,bash]
 ----
 # Mantener sangría de 4 espacios al formatear
@@ -27,7 +27,7 @@ fmt --prefix="    " fichero.txt
 
 [unordered.stack]
 -c:: `fmt -c` Centrar líneas
-+
+
 [source,bash]
 ----
 # Centrar el texto (cuando se usa con ciertas configuraciones)
@@ -36,7 +36,7 @@ fmt -c fichero.txt
 
 [unordered.stack]
 --help:: `fmt --help` Mostrar ayuda
-+
+
 [source,bash]
 ----
 # Ver opciones disponibles

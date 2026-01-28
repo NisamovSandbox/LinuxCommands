@@ -9,7 +9,7 @@ nl fichero.txt
 
 [unordered.stack]
 -b:: `nl -b` Especificar qué líneas numerar
-+
+
 [source,bash]
 ----
 # Numerar solo líneas no vacías
@@ -18,7 +18,7 @@ nl -b a fichero.txt
 
 [unordered.stack]
 -v:: `nl -v` Número inicial
-+
+
 [source,bash]
 ----
 # Comenzar numeración desde 100
@@ -27,7 +27,7 @@ nl -v 100 fichero.txt
 
 [unordered.stack]
 -i:: `nl -i` Incremento entre números de línea
-+
+
 [source,bash]
 ----
 # Incrementar de 5 en 5
@@ -36,7 +36,7 @@ nl -i 5 fichero.txt
 
 [unordered.stack]
 -n:: `nl -n` Formato del número
-+
+
 [source,bash]
 ----
 # Formato con ceros a la izquierda
@@ -45,7 +45,7 @@ nl -n rz fichero.txt
 
 [unordered.stack]
 -s:: `nl -s` Separador entre número y línea
-+
+
 [source,bash]
 ----
 # Usar “->” como separador
@@ -54,7 +54,7 @@ nl -s '->' fichero.txt
 
 [unordered.stack]
 -w:: `nl -w` Ancho del número de línea
-+
+
 [source,bash]
 ----
 # Ancho de 4 caracteres

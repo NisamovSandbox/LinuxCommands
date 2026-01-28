@@ -9,7 +9,7 @@ join fichero1.txt fichero2.txt
 
 [unordered.stack]
 -1:: `join -1` Especificar campo del primer fichero
-+
+
 [source,bash]
 ----
 # Usar segunda columna del primer fichero como clave
@@ -18,7 +18,7 @@ join -1 2 fichero1.txt fichero2.txt
 
 [unordered.stack]
 -2:: `join -2` Especificar campo del segundo fichero
-+
+
 [source,bash]
 ----
 # Usar tercera columna del segundo fichero como clave
@@ -27,7 +27,7 @@ join -2 3 fichero1.txt fichero2.txt
 
 [unordered.stack]
 -a:: `join -a` Incluir líneas sin coincidencias
-+
+
 [source,bash]
 ----
 # Incluir todas las líneas del primer fichero, incluso sin coincidencia
@@ -36,7 +36,7 @@ join -a 1 fichero1.txt fichero2.txt
 
 [unordered.stack]
 -e:: `join -e` Rellenar campos vacíos
-+
+
 [source,bash]
 ----
 # Rellenar campos vacíos con “NA”
@@ -45,7 +45,7 @@ join -a 1 -a 2 -e NA fichero1.txt fichero2.txt
 
 [unordered.stack]
 -o:: `join -o` Especificar campos a mostrar
-+
+
 [source,bash]
 ----
 # Mostrar solo campos seleccionados: 1.1 y 2.2
@@ -54,7 +54,7 @@ join -o 1.1,2.2 fichero1.txt fichero2.txt
 
 [unordered.stack]
 -t:: `join -t` Definir delimitador
-+
+
 [source,bash]
 ----
 # Usar coma como separador
@@ -63,7 +63,7 @@ join -t ',' fichero1.csv fichero2.csv
 
 [unordered.stack]
 -v:: `join -v` Mostrar solo líneas sin coincidencias
-+
+
 [source,bash]
 ----
 # Mostrar solo líneas del primer fichero sin coincidencia

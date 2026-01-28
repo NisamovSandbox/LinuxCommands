@@ -11,7 +11,7 @@ mkfifo tuberia
 
 [unordered.stack]
 - (uso):: `mkfifo <nombre>` Crear tubería con nombre
-+
+
 [source,bash]
 ----
 # Escribir en la tubería desde un proceso y leer en otro

@@ -9,7 +9,7 @@ updatedb
 
 [unordered.stack]
 -U:: `updatedb -U` Definir directorios a indexar
-+
+
 [source,bash]
 ----
 # Indexar únicamente /home
@@ -18,7 +18,7 @@ updatedb -U /home
 
 [unordered.stack]
 -o:: `updatedb -o` Especificar archivo de base de datos
-+
+
 [source,bash]
 ----
 # Crear base de datos personalizada
@@ -27,7 +27,7 @@ updatedb -o /tmp/mi_locate.db
 
 [unordered.stack]
 --prunepaths:: `updatedb --prunepaths` Excluir rutas
-+
+
 [source,bash]
 ----
 # Excluir /proc y /sys
@@ -36,7 +36,7 @@ updatedb --prunepaths="/proc /sys"
 
 [unordered.stack]
 --prunefs:: `updatedb --prunefs` Excluir sistemas de ficheros
-+
+
 [source,bash]
 ----
 # Excluir sistemas virtuales
@@ -45,7 +45,7 @@ updatedb --prunefs="proc sysfs tmpfs"
 
 [unordered.stack]
 --prunenames:: `updatedb --prunenames` Excluir nombres concretos
-+
+
 [source,bash]
 ----
 # Excluir directorios .git
@@ -54,7 +54,7 @@ updatedb --prunenames=".git"
 
 [unordered.stack]
 --localpaths:: `updatedb --localpaths` Indexar solo sistemas locales
-+
+
 [source,bash]
 ----
 # Evitar sistemas remotos
@@ -63,7 +63,7 @@ updatedb --localpaths
 
 [unordered.stack]
 --debug:: `updatedb --debug` Mostrar información de depuración
-+
+
 [source,bash]
 ----
 # Ver proceso detallado

@@ -9,7 +9,7 @@ find . -name "*.txt"
 
 [unordered.stack]
 -name:: `find -name` Buscar por nombre
-+
+
 [source,bash]
 ----
 # Buscar archivos con extensión .log
@@ -18,7 +18,7 @@ find /var/log -name "*.log"
 
 [unordered.stack]
 -type:: `find -type` Buscar por tipo (`f` fichero, `d` directorio)
-+
+
 [source,bash]
 ----
 # Buscar sólo ficheros
@@ -27,7 +27,7 @@ find . -type f -name "*.conf"
 
 [unordered.stack]
 -mtime:: `find -mtime` Buscar por fecha de modificación
-+
+
 [source,bash]
 ----
 # Buscar ficheros modificados en los últimos 7 días
@@ -36,7 +36,7 @@ find . -mtime -7
 
 [unordered.stack]
 -atime:: `find -atime` Buscar por fecha de acceso
-+
+
 [source,bash]
 ----
 # Buscar archivos accedidos en el último día
@@ -44,17 +44,17 @@ find . -atime -1
 ----
 
 [unordered.stack]
--size:: `find -size` Buscar por tamaño (ej: +1M)
-+
+-size:: `find -size` Buscar por tamaño (ej: 1M)
+
 [source,bash]
 ----
 # Buscar ficheros mayores a 1M
-find /ruta -size +1M
+find /ruta -size 1M
 ----
 
 [unordered.stack]
 -maxdepth:: `find -maxdepth` Limitar profundidad máxima
-+
+
 [source,bash]
 ----
 # Limitar búsqueda a profundidad 2
@@ -63,7 +63,7 @@ find . -maxdepth 2 -name "*.sh"
 
 [unordered.stack]
 -mindepth:: `find -mindepth` Limitar profundidad mínima
-+
+
 [source,bash]
 ----
 # Buscar a partir de profundidad 1
@@ -72,7 +72,7 @@ find . -mindepth 1 -name "README.md"
 
 [unordered.stack]
 -exec:: `find -exec` Ejecutar comando sobre resultados
-+
+
 [source,bash]
 ----
 # Cambiar permisos de los ficheros encontrados

@@ -9,7 +9,7 @@ head fichero.txt
 
 [unordered.stack]
 -n:: `head -n <numero>` Mostrar las primeras N líneas
-+
+
 [source,bash]
 ----
 # Mostrar las primeras 3 líneas

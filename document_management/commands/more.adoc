@@ -10,7 +10,7 @@ more fichero.txt
 
 [unordered.stack]
 - (uso):: `more <fichero>` Ver paginado básico
-+
+
 [source,bash]
 ----
 # Avanzar página por página

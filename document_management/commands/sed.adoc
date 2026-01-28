@@ -9,7 +9,7 @@ sed 's/viejo/nuevo/' fichero.txt
 
 [unordered.stack]
 -i:: `sed -i` Modificar el fichero directamente
-+
+
 [source,bash]
 ----
 # Reemplazar “viejo” por “nuevo” en el archivo original
@@ -18,7 +18,7 @@ sed -i 's/viejo/nuevo/g' fichero.txt
 
 [unordered.stack]
 -e:: `sed -e` Ejecutar múltiples comandos
-+
+
 [source,bash]
 ----
 # Reemplazar y eliminar líneas al mismo tiempo
@@ -27,7 +27,7 @@ sed -e 's/viejo/nuevo/g' -e '/^#/d' fichero.txt
 
 [unordered.stack]
 -n:: `sed -n` Suprimir salida automática
-+
+
 [source,bash]
 ----
 # Mostrar solo líneas que coincidan con el patrón
@@ -36,7 +36,7 @@ sed -n '/error/p' fichero.log
 
 [unordered.stack]
 -d:: `sed 'Nd'` Eliminar líneas específicas
-+
+
 [source,bash]
 ----
 # Eliminar la tercera línea
@@ -45,7 +45,7 @@ sed '3d' fichero.txt
 
 [unordered.stack]
 -a:: `sed 'Nq'` Imprimir hasta cierta línea
-+
+
 [source,bash]
 ----
 # Imprimir solo las primeras 5 líneas
@@ -54,7 +54,7 @@ sed -n '1,5p' fichero.txt
 
 [unordered.stack]
 -r:: `sed -r` Expresiones regulares extendidas
-+
+
 [source,bash]
 ----
 # Usar regex extendido para reemplazo
@@ -63,7 +63,7 @@ sed -r 's/(foo|bar)/baz/g' fichero.txt
 
 [unordered.stack]
 --follow-symlinks:: `sed --follow-symlinks` Modificar enlaces simbólicos
-+
+
 [source,bash]
 ----
 # Editar fichero que es un enlace simbólico

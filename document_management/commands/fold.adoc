@@ -9,7 +9,7 @@ fold -w 80 fichero.txt
 
 [unordered.stack]
 -w:: `fold -w` Ancho de línea
-+
+
 [source,bash]
 ----
 # Ajustar líneas a 50 caracteres
@@ -18,7 +18,7 @@ fold -w 50 fichero.txt
 
 [unordered.stack]
 -s:: `fold -s` Ajustar por espacios en blanco
-+
+
 [source,bash]
 ----
 # Evitar cortar palabras, dividir solo en espacios
@@ -27,7 +27,7 @@ fold -s -w 60 fichero.txt
 
 [unordered.stack]
 -b:: `fold -b` Contar bytes en lugar de caracteres
-+
+
 [source,bash]
 ----
 # Ajustar según bytes en lugar de caracteres
@@ -36,7 +36,7 @@ fold -b -w 40 fichero.txt
 
 [unordered.stack]
 --help:: `fold --help` Mostrar ayuda
-+
+
 [source,bash]
 ----
 # Ver opciones disponibles

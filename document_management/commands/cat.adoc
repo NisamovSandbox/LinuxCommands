@@ -1,4 +1,3 @@
-
 === cat
 Concatenar y mostrar el contenido de ficheros.
 
@@ -9,7 +8,7 @@ cat fichero.txt
 ----
 [unordered.stack]
 -n:: `cat -n` Numerar líneas de salida
-+
+
 [source,bash]
 ----
 # Mostrar con numeración de líneas
@@ -17,7 +16,7 @@ cat -n fichero.txt
 ----
 [unordered.stack]
 -b:: `cat -b` Numerar sólo líneas no vacías
-+
+
 [source,bash]
 ----
 # Numerar sólo líneas no vacías
@@ -25,7 +24,7 @@ cat -b fichero.txt
 ----
 [unordered.stack]
 -A:: `cat -A` Mostrar caracteres especiales
-+
+
 [source,bash]
 ----
 # Mostrar caracteres especiales (tabuladores, finales de línea)
