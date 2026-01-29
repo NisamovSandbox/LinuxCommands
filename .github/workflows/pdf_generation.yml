@@ -128,16 +128,7 @@ jobs:
       - name: Crear releases por idioma
         run: |
           echo "Creando releases separados por idioma..."
-          
-          # Crear release para Español
-          ESP_FILES=$(ls pdf/ESP_*.pdf 2>/dev/null | tr '\n' ' ')
-          if [ -n "$ESP_FILES" ]; then
-            echo "Archivos ESP: $ESP_FILES"
-            gh release create ESP $ESP_FILES \
-              --title "🔵 Documentación PDF Español 📕" \
-              --notes "Documentación en español generada automáticamente"
-          fi
-          
+                   
           # Crear release para Inglés
           ENG_FILES=$(ls pdf/ENG_*.pdf 2>/dev/null | tr '\n' ' ')
           if [ -n "$ENG_FILES" ]; then
@@ -154,6 +145,15 @@ jobs:
             gh release create DE $DE_FILES \
               --title "🔵 Dokumentation PDF Deutsch 📕" \
               --notes "Automatisch generierte deutsche Dokumentation"
+          fi
+
+          # Crear release para Español
+          ESP_FILES=$(ls pdf/ESP_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$ESP_FILES" ]; then
+            echo "Archivos ESP: $ESP_FILES"
+            gh release create ESP $ESP_FILES \
+              --title "🔵 Documentación PDF Español 📕" \
+              --notes "Documentación en español generada automáticamente"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
