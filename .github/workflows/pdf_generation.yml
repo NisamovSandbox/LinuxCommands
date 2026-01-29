@@ -2,7 +2,6 @@ name: Generación PDF Asciidoctor
 
 on:
   schedule:
-    # Ejecutar los lunes y viernes a medianoche
     - cron: '0 0 * * 1,5'
   workflow_dispatch:
 
@@ -37,7 +36,10 @@ jobs:
         run: pip install deep-translator
 
       - name: Crear directorios temporales y de PDFs
-        run: mkdir -p tmp_en tmp_de pdf
+        run: |
+          mkdir -p tmp_en tmp_de pdf
+          # Limpiar directorios previos
+          rm -rf tmp_en/* tmp_de/* pdf/*
 
       - name: Listar y borrar tags
         run: |
@@ -78,41 +80,80 @@ jobs:
         run: |
           set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
-
-          find . -type f -name "index.adoc" | while read INDEX; do
-            DIR=$(dirname "$INDEX")
-            NAME=$(basename "$DIR")
-            echo "=== Procesando módulo: $NAME ==="
-
-            # Español
-            echo "Generando PDF Español..."
-            "$ASCIIDOCTOR" "$DIR/index.adoc" -o "pdf/ESP_${NAME}.pdf"
-
-            # Inglés
-            TMP_EN="tmp_en/$NAME"
-            mkdir -p "$TMP_EN"
-            rsync -a "$DIR/" "$TMP_EN/"
-            python3 .github/scripts/translate_adoc.py "$TMP_EN" "$TMP_EN" en
-            "$ASCIIDOCTOR" "$TMP_EN/index.adoc" -o "pdf/ENG_${NAME}.pdf"
-            
-            # Alemán
-            TMP_DE="tmp_de/$NAME"
-            mkdir -p "$TMP_DE"
-            rsync -a "$DIR/" "$TMP_DE/"
-            python3 .github/scripts/translate_adoc.py "$TMP_DE" "$TMP_DE" de
-            "$ASCIIDOCTOR" "$TMP_DE/index.adoc" -o "pdf/DE_${NAME}.pdf"
+          
+          # Lista específica de módulos a procesar
+          MODULES="document_management fundamentals networking permission_management services software_management storage"
+          
+          for MODULE in $MODULES; do
+            if [ -d "$MODULE" ] && [ -f "$MODULE/index.adoc" ]; then
+              echo "=== Procesando módulo: $MODULE ==="
+              
+              # Español (original)
+              echo "Generando PDF Español..."
+              "$ASCIIDOCTOR" "$MODULE/index.adoc" -o "pdf/ESP_${MODULE}.pdf"
+              
+              # Inglés
+              echo "Traduciendo a inglés..."
+              TMP_EN="tmp_en/$MODULE"
+              mkdir -p "$TMP_EN"
+              cp -r "$MODULE/"* "$TMP_EN/" 2>/dev/null || true
+              python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_EN" en
+              
+              # Verificar que la traducción funcionó
+              if [ -f "$TMP_EN/index.adoc" ]; then
+                echo "Generando PDF Inglés..."
+                "$ASCIIDOCTOR" "$TMP_EN/index.adoc" -o "pdf/ENG_${MODULE}.pdf"
+              else
+                echo "ERROR: No se pudo traducir $MODULE a inglés"
+              fi
+              
+              # Alemán
+              echo "Traduciendo a alemán..."
+              TMP_DE="tmp_de/$MODULE"
+              mkdir -p "$TMP_DE"
+              cp -r "$MODULE/"* "$TMP_DE/" 2>/dev/null || true
+              python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_DE" de
+              
+              if [ -f "$TMP_DE/index.adoc" ]; then
+                echo "Generando PDF Alemán..."
+                "$ASCIIDOCTOR" "$TMP_DE/index.adoc" -o "pdf/DE_${MODULE}.pdf"
+              else
+                echo "ERROR: No se pudo traducir $MODULE a alemán"
+              fi
+            else
+              echo "Saltando $MODULE - no es un módulo válido"
+            fi
           done
 
       - name: Crear releases por idioma
         run: |
           echo "Creando releases separados por idioma..."
-          for LANG in DE ENG ESP; do
-            FILES=$(ls pdf/${LANG}_*.pdf | tr '\n' ' ')
-            echo "Archivos $LANG: $FILES"
-            IMAGE_URL="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_${LANG}.png"
-            gh release create $LANG $FILES \
-              --title "🔵 Documentación PDF $LANG 📕" \
-              --notes "![Release Image]($IMAGE_URL)"
-          done
+                   
+          # Crear release para Inglés
+          ENG_FILES=$(ls pdf/ENG_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$ENG_FILES" ]; then
+            echo "Archivos ENG: $ENG_FILES"
+            gh release create ENG $ENG_FILES \
+              --title "🔵 Documentación PDF English 📕" \
+              --notes "Automatically generated English documentation"
+          fi
+          
+          # Crear release para Alemán
+          DE_FILES=$(ls pdf/DE_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$DE_FILES" ]; then
+            echo "Archivos DE: $DE_FILES"
+            gh release create DE $DE_FILES \
+              --title "🔵 Dokumentation PDF Deutsch 📕" \
+              --notes "Automatisch generierte deutsche Dokumentation"
+          fi
+
+          # Crear release para Español
+          ESP_FILES=$(ls pdf/ESP_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$ESP_FILES" ]; then
+            echo "Archivos ESP: $ESP_FILES"
+            gh release create ESP $ESP_FILES \
+              --title "🔵 Documentación PDF Español 📕" \
+              --notes "Documentación en español generada automáticamente"
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

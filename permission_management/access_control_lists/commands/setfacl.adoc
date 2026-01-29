@@ -7,7 +7,6 @@ Establecer o modificar listas de control de acceso (ACL) en ficheros y directori
 setfacl -m u:usuario:rwx fichero.txt
 ----
 
-[unordered.stack]
 -m:: `setfacl -m` Modificar o añadir entradas ACL
 +
 [source,bash]
@@ -16,7 +15,6 @@ setfacl -m u:usuario:rwx fichero.txt
 setfacl -m u:juan:rx programa.sh
 ----
 
-[unordered.stack]
 -x:: `setfacl -x` Eliminar entradas ACL
 +
 [source,bash]
@@ -25,7 +23,6 @@ setfacl -m u:juan:rx programa.sh
 setfacl -x u:ana fichero.txt
 ----
 
-[unordered.stack]
 -b:: `setfacl -b` Quitar todas las ACL
 +
 [source,bash]
@@ -34,7 +31,6 @@ setfacl -x u:ana fichero.txt
 setfacl -b fichero.txt
 ----
 
-[unordered.stack]
 -k:: `setfacl -k` Quitar la máscara (mask)
 +
 [source,bash]
@@ -43,7 +39,6 @@ setfacl -b fichero.txt
 setfacl -k fichero.txt
 ----
 
-[unordered.stack]
 -R:: `setfacl -R` Aplicar recursivamente
 +
 [source,bash]
@@ -52,7 +47,6 @@ setfacl -k fichero.txt
 setfacl -R -m g:grupo:rw /ruta/directorio
 ----
 
-[unordered.stack]
 -d:: `setfacl -d` Establecer ACL por defecto
 +
 [source,bash]
@@ -61,7 +55,6 @@ setfacl -R -m g:grupo:rw /ruta/directorio
 setfacl -d -m u:guest:rx /ruta/directorio
 ----
 
-[unordered.stack]
 --remove-all:: `setfacl --remove-all` Eliminar todas las ACL (equivale a -b)
 +
 [source,bash]

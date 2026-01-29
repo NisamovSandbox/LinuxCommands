@@ -9,7 +9,7 @@ TAR (Tape ARchive) es un software que empaqueta múltiples archivos y directorio
 # Crear un tar simple
 tar -cf archivo.tar archivo1 archivo2
 ----
-[unordered.stack]
+
 -c:: `tar -c` Crear un nuevo archivo tar
 
 [source,bash]
@@ -17,7 +17,7 @@ tar -cf archivo.tar archivo1 archivo2
 # Crear archivo tar
 tar -cf proyecto.tar src/
 ----
-[unordered.stack]
+
 -f:: `tar -f` Especificar nombre de archivo tar
 
 [source,bash]
@@ -25,7 +25,7 @@ tar -cf proyecto.tar src/
 # Especificar archivo con -f
 tar -cf archivo.tar carpeta/
 ----
-[unordered.stack]
+
 -x:: `tar -x` Extraer archivos de un tar
 
 [source,bash]
@@ -33,7 +33,7 @@ tar -cf archivo.tar carpeta/
 # Extraer archivo tar
 tar -xf archivo.tar
 ----
-[unordered.stack]
+
 -t:: `tar -t` Listar contenido del tar
 
 [source,bash]
@@ -41,7 +41,7 @@ tar -xf archivo.tar
 # Listar contenido
 tar -tf archivo.tar
 ----
-[unordered.stack]
+
 -v:: `tar -v` Verbose: mostrar archivos procesados
 
 [source,bash]
@@ -49,7 +49,7 @@ tar -tf archivo.tar
 # Crear con verbose
 tar -cvf archivo.tar carpeta/
 ----
-[unordered.stack]
+
 -z:: `tar -z` Comprimir/Descomprimir usando gzip (con -c/-x)
 
 [source,bash]
@@ -60,7 +60,7 @@ tar -czf proyecto.tar.gz carpeta/
 # Descomprimir gzip
 tar -xzf proyecto.tar.gz
 ----
-[unordered.stack]
+
 -j:: `tar -j` Usar bzip2
 
 [source,bash]
@@ -71,7 +71,7 @@ tar -cjf proyecto.tar.bz2 carpeta/
 # Descomprimir bzip2
 tar -xjf proyecto.tar.bz2
 ----
-[unordered.stack]
+
 -J:: `tar -J` Usar xz
 
 [source,bash]
@@ -82,7 +82,7 @@ tar -cJf proyecto.tar.xz carpeta/
 # Descomprimir xz
 tar -xJf proyecto.tar.xz
 ----
-[unordered.stack]
+
 --exclude:: `tar --exclude=<patrón>` Excluir archivos/paths coincidentes
 
 [source,bash]
@@ -90,7 +90,7 @@ tar -xJf proyecto.tar.xz
 # Crear tar excluyendo archivos .git
 tar -czf proyecto.tar.gz --exclude='.git' carpeta/
 ----
-[unordered.stack]
+
 --strip-components:: `tar --strip-components=N` Omitir N componentes del path al extraer
 
 [source,bash]
@@ -98,7 +98,7 @@ tar -czf proyecto.tar.gz --exclude='.git' carpeta/
 # Extraer omitiendo los dos primeros componentes del path
 tar -xzf proyecto.tar.gz --strip-components=2
 ----
-[unordered.stack]
+
 --no-same-owner:: `tar --no-same-owner` No restaurar propietario (útil como usuario no root)
 
 [source,bash]
@@ -106,7 +106,7 @@ tar -xzf proyecto.tar.gz --strip-components=2
 # Extraer sin intentar restaurar propietarios
 tar --no-same-owner -xzf proyecto.tar.gz
 ----
-[unordered.stack]
+
 --remove-files:: `tar --remove-files` Eliminar archivos que se han archivado
 
 [source,bash]

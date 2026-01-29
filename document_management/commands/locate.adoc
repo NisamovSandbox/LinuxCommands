@@ -7,8 +7,7 @@ Buscar rápidamente archivos en el sistema usando la base de datos actualizada p
 locate fichero.txt
 ----
 
-[unordered.stack]
--i:: `locate -i` Ignorar mayúsculas/minúsculas
+* -i:: `locate -i` Ignorar mayúsculas/minúsculas
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ locate fichero.txt
 locate -i FICHERO.TXT
 ----
 
-[unordered.stack]
--r:: `locate -r` Usar expresiones regulares
+* -r:: `locate -r` Usar expresiones regulares
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ locate -i FICHERO.TXT
 locate -r '\.log$'
 ----
 
-[unordered.stack]
--c:: `locate -c` Contar coincidencias
+* -c:: `locate -c` Contar coincidencias
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ locate -r '\.log$'
 locate -c fichero.txt
 ----
 
-[unordered.stack]
--l:: `locate -l` Limitar el número de resultados
+* -l:: `locate -l` Limitar el número de resultados
 
 [source,bash]
 ----
@@ -43,8 +39,7 @@ locate -c fichero.txt
 locate -l 10 fichero.txt
 ----
 
-[unordered.stack]
---existing:: `locate --existing` Mostrar solo archivos existentes
+* --existing:: `locate --existing` Mostrar solo archivos existentes
 
 [source,bash]
 ----
@@ -52,8 +47,7 @@ locate -l 10 fichero.txt
 locate --existing fichero.txt
 ----
 
-[unordered.stack]
---database:: `locate --database` Especificar base de datos
+* --database:: `locate --database` Especificar base de datos
 
 [source,bash]
 ----
@@ -61,8 +55,7 @@ locate --existing fichero.txt
 locate --database /tmp/mi_locate.db fichero.txt
 ----
 
-[unordered.stack]
---help:: `locate --help` Mostrar ayuda
+* --help:: `locate --help` Mostrar ayuda
 
 [source,bash]
 ----

@@ -10,7 +10,6 @@ Snap es un sistema de paquetes autocontenidos desarrollado por Canonical.
 snap install ejemplo
 ----
 
-[unordered.stack]
 install:: `snap install` Instalar snaps
 +
 [source,bash]
@@ -19,7 +18,6 @@ install:: `snap install` Instalar snaps
 snap install code
 ----
 
-[unordered.stack]
 remove:: `snap remove` Eliminar snaps
 +
 [source,bash]
@@ -28,7 +26,6 @@ remove:: `snap remove` Eliminar snaps
 snap remove code
 ----
 
-[unordered.stack]
 list:: `snap list` Listar snaps instalados
 +
 [source,bash]
@@ -37,7 +34,6 @@ list:: `snap list` Listar snaps instalados
 snap list
 ----
 
-[unordered.stack]
 find:: `snap find` Buscar snaps
 +
 [source,bash]
@@ -46,7 +42,6 @@ find:: `snap find` Buscar snaps
 snap find docker
 ----
 
-[unordered.stack]
 refresh:: `snap refresh` Actualizar snaps
 +
 [source,bash]
@@ -55,7 +50,6 @@ refresh:: `snap refresh` Actualizar snaps
 snap refresh
 ----
 
-[unordered.stack]
 services:: `snap services` Gestionar servicios snap
 +
 [source,bash]

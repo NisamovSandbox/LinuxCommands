@@ -6,17 +6,16 @@ Mostrar una línea de texto o variables en la salida estándar.
 # Mostrar una cadena simple
 echo "Hola Mundo"
 ----
-[unordered.stack]
--n:: `echo -n` No añadir salto de línea final
+
+* -n:: `echo -n` No añadir salto de línea final
 
 [source,bash]
 ----
 # No añadir salto de línea
 echo -n "Hola"
 ----
-[unordered.stack]
--e:: `echo -e` Interpretar escapes como \n, \t
 
+* -e:: `echo -e` Interpretar escapes como \n, \t
 
 [source,bash]
 ----

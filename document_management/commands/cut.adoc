@@ -6,24 +6,24 @@ Extraer secciones de cada línea de un fichero o flujo de datos.
 # Uso básico: extraer campos o caracteres
 cut -f 1 archivo.csv
 ----
-[unordered.stack]
--c:: Extraer caracteres por rango
+
+* -c:: Extraer caracteres por rango
 
 [source,bash]
 ----
 # Extraer primeros 5 caracteres de cada línea
 cut -c 1-5 fichero.txt
 ----
-[unordered.stack]
--d:: `cut -d'<delimitador>'` Usar un delimitador para campos
+
+* -d:: `cut -d'<delimitador>'` Usar un delimitador para campos
 
 [source,bash]
 ----
 # Extraer la segunda columna usando ':' como separador
 cut -d ':' -f 2 fichero.csv
 ----
-[unordered.stack]
--f:: `cut -f <columna>` Seleccionar columnas (campos)
+
+* -f:: `cut -f <columna>` Seleccionar columnas (campos)
 
 [source,bash]
 ----

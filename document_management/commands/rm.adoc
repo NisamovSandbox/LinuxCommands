@@ -8,7 +8,6 @@ Eliminar ficheros o directorios (con precaución).
 rm archivo.txt
 ----
 
-[unordered.stack]
 -r:: `rm -r` Eliminar directorios de forma recursiva
 
 [source,bash]
@@ -17,7 +16,6 @@ rm archivo.txt
 rm -r carpeta_a_borrar/
 ----
 
-[unordered.stack]
 -i:: `rm -i` Solicitar confirmación antes de borrar cada fichero
 
 [source,bash]
@@ -26,7 +24,6 @@ rm -r carpeta_a_borrar/
 rm -i archivo.txt
 ----
 
-[unordered.stack]
 -f:: `rm -f` Forzar la eliminación sin preguntar
 
 [source,bash]
@@ -35,7 +32,6 @@ rm -i archivo.txt
 rm -f temporal.tmp
 ----
 
-[unordered.stack]
 -v:: `rm -v` Mostrar operaciones realizadas
 
 [source,bash]
@@ -44,7 +40,6 @@ rm -f temporal.tmp
 rm -v archivo.txt
 ----
 
-[unordered.stack]
 -d:: `rm -d` Eliminar directorios vacíos
 
 [source,bash]
@@ -53,7 +48,6 @@ rm -v archivo.txt
 rmdir_temp=carpeta_vacia && rm -d "$rmdir_temp" || echo "No vacío"
 ----
 
-[unordered.stack]
 --preserve-root:: `rm --preserve-root[=all]` No permitir eliminar la raíz '/'
 
 [source,bash]
@@ -62,7 +56,6 @@ rmdir_temp=carpeta_vacia && rm -d "$rmdir_temp" || echo "No vacío"
 rm --preserve-root -rf /
 ----
 
-[unordered.stack]
 --no-preserve-root:: `rm --no-preserve-root` Permite operar sobre '/'
 
 [source,bash]
@@ -71,7 +64,6 @@ rm --preserve-root -rf /
 rm --no-preserve-root -rf /ruta/peligrosa
 ----
 
-[unordered.stack]
 --help:: `rm --help` Mostrar ayuda breve
 
 [source,bash]

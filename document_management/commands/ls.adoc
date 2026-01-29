@@ -7,7 +7,6 @@ Listar ficheros del directorio actual.
 ls
 ----
 
-[unordered.stack]
 -l:: `ls -l` Lista detallada (permisos, propietario, tamaño)
 
 [source,bash]
@@ -16,7 +15,6 @@ ls
 ls -l
 ----
 
-[unordered.stack]
 -a:: `ls -a` Mostrar ficheros ocultos
 
 [source,bash]
@@ -25,7 +23,6 @@ ls -l
 ls -a
 ----
 
-[unordered.stack]
 -h:: `ls -h` Mostrar tamaños legibles por humanos
 
 [source,bash]
@@ -34,7 +31,6 @@ ls -a
 ls -lh
 ----
 
-[unordered.stack]
 -t:: `ls -t` Ordenar por fecha de modificación
 
 [source,bash]
@@ -43,7 +39,6 @@ ls -lh
 ls -lt
 ----
 
-[unordered.stack]
 -S:: `ls -S` Ordenar por tamaño (mayor a menor)
 
 [source,bash]
@@ -52,7 +47,6 @@ ls -lt
 ls -lS
 ----
 
-[unordered.stack]
 -r:: `ls -r` Invertir orden
 
 [source,bash]
@@ -61,7 +55,6 @@ ls -lS
 ls -lr
 ----
 
-[unordered.stack]
 -R:: `ls -R` Mostrar recursivamente
 
 [source,bash]
@@ -70,7 +63,6 @@ ls -lr
 ls -R
 ----
 
-[unordered.stack]
 -d:: `ls -d` Mostrar directorios en sí, no su contenido
 
 [source,bash]
@@ -79,7 +71,6 @@ ls -R
 ls -d /etc
 ----
 
-[unordered.stack]
 -F:: `ls -F` Añadir indicador de tipo a nombres
 
 [source,bash]
@@ -88,7 +79,6 @@ ls -d /etc
 ls -F
 ----
 
-[unordered.stack]
 -1:: `ls -1` Un elemento por línea
 
 [source,bash]
@@ -97,7 +87,6 @@ ls -F
 ls -1
 ----
 
-[unordered.stack]
 -Q:: `ls -Q` Poner nombres entre comillas
 
 [source,bash]
@@ -106,7 +95,6 @@ ls -1
 ls -Q
 ----
 
-[unordered.stack]
 -v:: `ls -v` Orden natural (útil con números)
 
 [source,bash]
@@ -115,7 +103,6 @@ ls -Q
 ls -v
 ----
 
-[unordered.stack]
 -X:: `ls -X` Ordenar por extensión
 
 [source,bash]
@@ -124,7 +111,6 @@ ls -v
 ls -lX
 ----
 
-[unordered.stack]
 ---color:: `ls --color` Colorear la salida
 
 [source,bash]
@@ -133,7 +119,6 @@ ls -lX
 ls --color=auto
 ----
 
-[unordered.stack]
 --block-size:: `ls --block-size=<unidad>` Mostrar tamaños en unidad específica
 
 [source,bash]
@@ -142,7 +127,6 @@ ls --color=auto
 ls -l --block-size=K
 ----
 
-[unordered.stack]
 --time:: `ls --time=<atime|ctime|mtime|birth>` Seleccionar campo de tiempo
 
 [source,bash]
@@ -151,7 +135,6 @@ ls -l --block-size=K
 ls -l --time=atime
 ----
 
-[unordered.stack]
 --sort:: `ls --sort=<criterio>` Ordenar según criterio (size,time,version,extension)
 
 [source,bash]

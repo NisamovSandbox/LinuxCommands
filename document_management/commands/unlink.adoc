@@ -8,7 +8,6 @@ Eliminar el enlace a un fichero (equivalente a `rm` para ficheros simples). Acep
 unlink enlace_sim.txt
 ----
 
-[unordered.stack]
 --help:: `unlink --help` Mostrar ayuda breve
 
 [source,bash]

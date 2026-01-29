@@ -7,8 +7,7 @@ Formatear texto ajustando líneas y párrafos para mejorar legibilidad.
 fmt -w 75 fichero.txt
 ----
 
-[unordered.stack]
--w:: `fmt -w` Ancho máximo de línea
+* -w:: `fmt -w` Ancho máximo de línea
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ fmt -w 75 fichero.txt
 fmt -w 50 fichero.txt
 ----
 
-[unordered.stack]
---prefix:: `fmt --prefix` Mantener prefijo de cada línea
+* --prefix:: `fmt --prefix` Mantener prefijo de cada línea
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ fmt -w 50 fichero.txt
 fmt --prefix="    " fichero.txt
 ----
 
-[unordered.stack]
--c:: `fmt -c` Centrar líneas
+* -c:: `fmt -c` Centrar líneas
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ fmt --prefix="    " fichero.txt
 fmt -c fichero.txt
 ----
 
-[unordered.stack]
---help:: `fmt --help` Mostrar ayuda
+* --help:: `fmt --help` Mostrar ayuda
 
 [source,bash]
 ----

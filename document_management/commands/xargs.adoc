@@ -7,7 +7,6 @@ Construir y ejecutar comandos a partir de la entrada estándar.
 echo "archivo1 archivo2" | xargs rm
 ----
 
-[unordered.stack]
 -n:: `xargs -n` Número de argumentos por ejecución
 
 [source,bash]
@@ -16,7 +15,6 @@ echo "archivo1 archivo2" | xargs rm
 echo "a b c" | xargs -n 1 echo
 ----
 
-[unordered.stack]
 -I:: `xargs -I` Reemplazar argumentos con un marcador
 
 [source,bash]
@@ -25,7 +23,6 @@ echo "a b c" | xargs -n 1 echo
 ls *.txt | xargs -I {} cp {} backup/{}
 ----
 
-[unordered.stack]
 -0:: `xargs -0` Usar separador nulo
 
 [source,bash]
@@ -34,7 +31,6 @@ ls *.txt | xargs -I {} cp {} backup/{}
 find . -name "*.log" -print0 | xargs -0 rm
 ----
 
-[unordered.stack]
 -p:: `xargs -p` Confirmar antes de ejecutar
 
 [source,bash]
@@ -43,7 +39,6 @@ find . -name "*.log" -print0 | xargs -0 rm
 echo "archivo1 archivo2" | xargs -p rm
 ----
 
-[unordered.stack]
 -t:: `xargs -t` Mostrar el comando antes de ejecutarlo
 
 [source,bash]
@@ -52,7 +47,6 @@ echo "archivo1 archivo2" | xargs -p rm
 echo "a b c" | xargs -t echo
 ----
 
-[unordered.stack]
 -r:: `xargs -r` No ejecutar si no hay entrada
 
 [source,bash]
@@ -61,7 +55,6 @@ echo "a b c" | xargs -t echo
 grep "error" logs.txt | xargs -r rm
 ----
 
-[unordered.stack]
 -max-procs:: `xargs -P` Ejecución en paralelo
 
 [source,bash]

@@ -7,7 +7,7 @@ Listar ficheros con estructura de árbol.
 tree
 ----
 
-[unordered.stack]
+
 -d:: `tree -d` Mostrar solo directorios
 
 [source,bash]
@@ -15,7 +15,7 @@ tree
 # Mostrar sólo directorios
 tree -d
 ----
-[unordered.stack]
+
 -f:: `tree -f` Mostrar los archivos con su respectiva ruta
 
 [source,bash]
@@ -23,7 +23,7 @@ tree -d
 # Mostrar archivos con rutas
 tree -f
 ----
-[unordered.stack]
+
 -a:: `tree -a` Mostrar archivos ocultos
 
 [source,bash]
@@ -31,7 +31,7 @@ tree -f
 # Incluir archivos ocultos
 tree -a
 ----
-[unordered.stack]
+
 -u:: `tree -u` Mostrar propietario de cada archivo
 
 [source,bash]
@@ -39,7 +39,7 @@ tree -a
 # Mostrar propietarios
 tree -u
 ----
-[unordered.stack]
+
 -g:: `tree -g` Mostrar grupos de ficheros
 
 [source,bash]
@@ -47,7 +47,7 @@ tree -u
 # Mostrar grupo de cada fichero
 tree -g
 ----
-[unordered.stack]
+
 -h:: `tree -h` Mostrar peso de cada archivo
 
 [source,bash]

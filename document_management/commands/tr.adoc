@@ -7,7 +7,6 @@ Traducir o eliminar caracteres desde la entrada estándar.
 echo "hola mundo" | tr 'a-z' 'A-Z'
 ----
 
-[unordered.stack]
 -d:: `tr -d` Eliminar caracteres
 
 [source,bash]
@@ -16,7 +15,6 @@ echo "hola mundo" | tr 'a-z' 'A-Z'
 echo "hola mundo" | tr -d 'aeiou'
 ----
 
-[unordered.stack]
 -s:: `tr -s` Sustituir repeticiones por una sola
 
 [source,bash]
@@ -25,7 +23,6 @@ echo "hola mundo" | tr -d 'aeiou'
 echo "hola    mundo" | tr -s ' '
 ----
 
-[unordered.stack]
 -c:: `tr -c` Complementar el conjunto de caracteres
 
 [source,bash]
@@ -34,7 +31,6 @@ echo "hola    mundo" | tr -s ' '
 echo "hola123!!!" | tr -cd 'a-zA-Z'
 ----
 
-[unordered.stack]
 -set1-set2:: `tr set1 set2` Traducir caracteres
 
 [source,bash]
@@ -43,7 +39,6 @@ echo "hola123!!!" | tr -cd 'a-zA-Z'
 echo "uno,dos,tres" | tr ',' ';'
 ----
 
-[unordered.stack]
 -[:class:]:: Clases de caracteres POSIX
 
 [source,bash]
@@ -52,7 +47,6 @@ echo "uno,dos,tres" | tr ',' ';'
 echo "hola mundo" | tr '[:lower:]' '[:upper:]'
 ----
 
-[unordered.stack]
 -newline:: Uso con saltos de línea
 
 [source,bash]
@@ -61,7 +55,6 @@ echo "hola mundo" | tr '[:lower:]' '[:upper:]'
 tr '\n' ' ' < fichero.txt
 ----
 
-[unordered.stack]
 -input-only:: Uso sobre entrada estándar
 
 [source,bash]

@@ -1,10 +1,23 @@
 ![Cartel Principal](.github/media/LinuxCommandsWhiteTheme.png)
 
-[![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/commits) [![License](https://img.shields.io/static/v1?label=License&message=MIT&color=000000&style=flat-square&labelColor=ffffff)](LICENSE) [![Stars](https://img.shields.io/github/stars/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/stargazers) [![Forks](https://img.shields.io/github/forks/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/network/members)
-
-> *[ESPAÑOL](https://github.com/Nisamov/LinuxCommands/releases/tag/ESP) ∙ [ENGLISH](https://github.com/Nisamov/LinuxCommands/releases/tag/ENG) ∙ [GERMAN](https://github.com/Nisamov/LinuxCommands/releases/tag/DE)*
+---
+<p align="center">
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP">
+    <img src="https://img.shields.io/badge/🇪🇸%20ESPAÑOL-Descargar?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG">
+    <img src="https://img.shields.io/badge/🇬🇧%20ENGLISH-Download?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE">
+    <img src="https://img.shields.io/badge/🇩🇪%20DEUTSCH-Herunterladen?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+</p>
 
 # LinuxCommands
+[![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/commits)[![License](https://img.shields.io/github/license/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](LICENSE)[![Release](https://img.shields.io/github/v/release/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/releases)
+
 ### Estructura y referencia para documentar comandos y servicios en Linux
 
 LinuxCommands nació como una recopilación de apuntes personales para organizar y entender mejor distintos comandos, scripts y servicios en Linux.
@@ -87,6 +100,30 @@ El objetivo es mantener una documentación coherente y de alta calidad.
 </details>
 
 ---
+<p align="center">
+  <a href="https://github.com/Nisamov/LinuxCommands/stargazers">
+    <img src="https://img.shields.io/github/stars/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/network/members">
+    <img src="https://img.shields.io/github/forks/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases">
+    <img src="https://img.shields.io/github/downloads/Nisamov/LinuxCommands/total?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/watchers">
+    <img src="https://img.shields.io/github/watchers/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/pulls">
+    <img src="https://img.shields.io/github/issues-pr/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/pulls?q=is%3Apr+is%3Aclosed">
+    <img src="https://img.shields.io/github/issues-pr-closed/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
+  </a>
+</p>
+
 <div align="center">
   <p>Linux Commands - By Nisamov | MIT License - 2026</p>
   <p>Contacto: <a href="mailto:nisamov.contact@gmail.com">nisamov.contact@gmail.com</a></p>

@@ -13,7 +13,6 @@ umask 022
 umask 077
 ----
 
-[unordered.stack]
 ver:: `umask` Muestra la máscara de permisos actual
 022:: `umask 022` Permite que los archivos nuevos tengan permisos 644 y los directorios 755
 077:: `umask 077` Permite que los archivos y directorios nuevos sean accesibles solo por el propietario

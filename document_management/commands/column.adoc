@@ -7,8 +7,7 @@ Formatear la salida en columnas para mejorar la legibilidad.
 ls | column
 ----
 
-[unordered.stack]
--t:: `column -t` Ajustar columnas en tabla
+* -t:: `column -t` Ajustar columnas en tabla
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ ls | column
 cat datos.txt | column -t
 ----
 
-[unordered.stack]
--s:: `column -s` Definir delimitador
+* -s:: `column -s` Definir delimitador
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ cat datos.txt | column -t
 cat datos.csv | column -s ',' -t
 ----
 
-[unordered.stack]
--x:: `column -x` Llenar filas antes de columnas
+* -x:: `column -x` Llenar filas antes de columnas
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ cat datos.csv | column -s ',' -t
 ls | column -x
 ----
 
-[unordered.stack]
---help:: `column --help` Mostrar ayuda
+* --help:: `column --help` Mostrar ayuda
 
 [source,bash]
 ----

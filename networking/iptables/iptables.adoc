@@ -38,7 +38,6 @@ Dentro de la categoría de las IPTables existen diferentes elementos que permite
 iptables -L
 ----
 
-[unordered.stack]
 -A:: `iptables -A` Agrega una regla a una cadena
 +
 [source,bash]
@@ -47,7 +46,6 @@ iptables -L
 iptables -A INPUT -j ACCEPT
 ----
 
-[unordered.stack]
 -C:: `iptables -C` Comprueba si una regla existe en una cadena
 +
 [source,bash]
@@ -56,7 +54,6 @@ iptables -A INPUT -j ACCEPT
 iptables -C INPUT -s 192.168.1.10 -j ACCEPT
 ----
 
-[unordered.stack]
 -D:: `iptables -D` Elimina una regla de una cadena
 +
 [source,bash]
@@ -65,7 +62,6 @@ iptables -C INPUT -s 192.168.1.10 -j ACCEPT
 iptables -D INPUT 2
 ----
 
-[unordered.stack]
 -E:: `iptables -E` Renombra una cadena existente
 +
 [source,bash]
@@ -74,7 +70,6 @@ iptables -D INPUT 2
 iptables -E MI_CADENA NUEVA_CADENA
 ----
 
-[unordered.stack]
 -F:: `iptables -F` Borra todas las reglas
 +
 [source,bash]
@@ -83,7 +78,6 @@ iptables -E MI_CADENA NUEVA_CADENA
 iptables -F
 ----
 
-[unordered.stack]
 -I:: `iptables -I` Inserta una regla en una cadena
 +
 [source,bash]
@@ -92,7 +86,6 @@ iptables -F
 iptables -I INPUT 1 -j ACCEPT
 ----
 
-[unordered.stack]
 -L:: `iptables -L` Lista las reglas configuradas
 +
 [source,bash]
@@ -101,7 +94,6 @@ iptables -I INPUT 1 -j ACCEPT
 iptables -L -v
 ----
 
-[unordered.stack]
 --line-numbers:: `iptables --line-numbers` Muestra reglas numeradas
 +
 [source,bash]
@@ -110,7 +102,6 @@ iptables -L -v
 iptables -L --line-numbers
 ----
 
-[unordered.stack]
 -n:: `iptables -n` Muestra IPs y puertos en formato numérico
 +
 [source,bash]
@@ -119,7 +110,6 @@ iptables -L --line-numbers
 iptables -L -n
 ----
 
-[unordered.stack]
 -v:: `iptables -v` Muestra información detallada
 +
 [source,bash]
@@ -128,7 +118,6 @@ iptables -L -n
 iptables -L -v
 ----
 
-[unordered.stack]
 -x:: `iptables -x` Muestra contadores en formato numérico
 +
 [source,bash]
@@ -137,7 +126,6 @@ iptables -L -v
 iptables -L -x
 ----
 
-[unordered.stack]
 -N:: `iptables -N` Crea una nueva cadena de usuario
 +
 [source,bash]
@@ -146,7 +134,6 @@ iptables -L -x
 iptables -N MI_CADENA
 ----
 
-[unordered.stack]
 -P:: `iptables -P` Establece la política por defecto
 +
 [source,bash]
@@ -155,7 +142,6 @@ iptables -N MI_CADENA
 iptables -P INPUT DROP
 ----
 
-[unordered.stack]
 -R:: `iptables -R` Reemplaza una regla existente
 +
 [source,bash]
@@ -164,7 +150,6 @@ iptables -P INPUT DROP
 iptables -R INPUT 1 -j DROP
 ----
 
-[unordered.stack]
 -X:: `iptables -X` Borra cadenas personalizadas
 +
 [source,bash]
@@ -173,7 +158,6 @@ iptables -R INPUT 1 -j DROP
 iptables -X
 ----
 
-[unordered.stack]
 -Z:: `iptables -Z` Reinicia contadores
 +
 [source,bash]
@@ -182,7 +166,6 @@ iptables -X
 iptables -Z
 ----
 
-[unordered.stack]
 -i:: `iptables -i` Interfaz de entrada
 +
 [source,bash]
@@ -191,7 +174,6 @@ iptables -Z
 iptables -A INPUT -i eth0 -j ACCEPT
 ----
 
-[unordered.stack]
 -o:: `iptables -o` Interfaz de salida
 +
 [source,bash]
@@ -200,7 +182,6 @@ iptables -A INPUT -i eth0 -j ACCEPT
 iptables -A OUTPUT -o eth0 -j ACCEPT
 ----
 
-[unordered.stack]
 -p:: `iptables -p` Protocolo
 +
 [source,bash]
@@ -209,7 +190,6 @@ iptables -A OUTPUT -o eth0 -j ACCEPT
 iptables -A INPUT -p tcp -j ACCEPT
 ----
 
-[unordered.stack]
 -s:: `iptables -s` Dirección de origen
 +
 [source,bash]
@@ -218,7 +198,6 @@ iptables -A INPUT -p tcp -j ACCEPT
 iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
 ----
 
-[unordered.stack]
 -d:: `iptables -d` Dirección de destino
 +
 [source,bash]
@@ -227,7 +206,6 @@ iptables -A INPUT -s 192.168.1.0/24 -j ACCEPT
 iptables -A OUTPUT -d 10.0.0.5 -j DROP
 ----
 
-[unordered.stack]
 -m:: `iptables -m` Uso de módulos
 +
 [source,bash]
@@ -236,7 +214,6 @@ iptables -A OUTPUT -d 10.0.0.5 -j DROP
 iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
 ----
 
-[unordered.stack]
 --dport:: `--dport` Puerto de destino
 +
 [source,bash]
@@ -245,7 +222,6 @@ iptables -A INPUT -m state --state ESTABLISHED -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 ----
 
-[unordered.stack]
 --sport:: `--sport` Puerto de origen
 +
 [source,bash]
@@ -254,7 +230,6 @@ iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 iptables -A INPUT -p tcp --sport 1024:65535 -j ACCEPT
 ----
 
-[unordered.stack]
 --tcp-flags:: `--tcp-flags` Banderas TCP
 +
 [source,bash]
@@ -263,7 +238,6 @@ iptables -A INPUT -p tcp --sport 1024:65535 -j ACCEPT
 iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN -j ACCEPT
 ----
 
-[unordered.stack]
 --syn:: `--syn` Establecer bit SYN
 +
 [source,bash]
@@ -272,7 +246,6 @@ iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN -j ACCEPT
 iptables -A INPUT -p tcp --syn -j ACCEPT
 ----
 
-[unordered.stack]
 --icmp-type:: `--icmp-type` Tipo de mensaje ICMP
 +
 [source,bash]
@@ -281,7 +254,6 @@ iptables -A INPUT -p tcp --syn -j ACCEPT
 iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 ----
 
-[unordered.stack]
 --state:: `--state` Estado de la conexión
 +
 [source,bash]
@@ -290,7 +262,6 @@ iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 ----
 
-[unordered.stack]
 -j:: `iptables -j` Acción de la regla
 +
 [source,bash]
@@ -299,7 +270,6 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 iptables -A INPUT -j DROP
 ----
 
-[unordered.stack]
 ACCEPT:: `-j ACCEPT` Aceptar paquetes
 +
 [source,bash]
@@ -307,7 +277,6 @@ ACCEPT:: `-j ACCEPT` Aceptar paquetes
 iptables -A INPUT -j ACCEPT
 ----
 
-[unordered.stack]
 DROP:: `-j DROP` Descartar paquetes
 +
 [source,bash]
@@ -315,7 +284,6 @@ DROP:: `-j DROP` Descartar paquetes
 iptables -A INPUT -j DROP
 ----
 
-[unordered.stack]
 REJECT:: `-j REJECT` Rechazar paquetes
 +
 [source,bash]
@@ -323,7 +291,6 @@ REJECT:: `-j REJECT` Rechazar paquetes
 iptables -A INPUT -j REJECT
 ----
 
-[unordered.stack]
 LOG:: `-j LOG` Registrar paquetes
 +
 [source,bash]
@@ -331,7 +298,6 @@ LOG:: `-j LOG` Registrar paquetes
 iptables -A INPUT -j LOG
 ----
 
-[unordered.stack]
 SNAT:: `-j SNAT` Traducción de dirección de origen
 +
 [source,bash]
@@ -339,7 +305,6 @@ SNAT:: `-j SNAT` Traducción de dirección de origen
 iptables -t nat -A POSTROUTING -j SNAT --to-source 1.2.3.4
 ----
 
-[unordered.stack]
 DNAT:: `-j DNAT` Traducción de dirección de destino
 +
 [source,bash]
@@ -347,7 +312,6 @@ DNAT:: `-j DNAT` Traducción de dirección de destino
 iptables -t nat -A PREROUTING -j DNAT --to-destination 192.168.1.10
 ----
 
-[unordered.stack]
 -t:: `iptables -t` Seleccionar tabla
 +
 [source,bash]
@@ -356,7 +320,6 @@ iptables -t nat -A PREROUTING -j DNAT --to-destination 192.168.1.10
 iptables -t nat -L
 ----
 
-[unordered.stack]
 -S:: `iptables -S` Mostrar reglas en formato de salida
 +
 [source,bash]
@@ -364,7 +327,6 @@ iptables -t nat -L
 iptables -S
 ----
 
-[unordered.stack]
 -h:: `iptables -h` Mostrar ayuda
 +
 [source,bash]
@@ -372,7 +334,6 @@ iptables -S
 iptables -h
 ----
 
-[unordered.stack]
 -V:: `iptables -V` Mostrar versión
 +
 [source,bash]

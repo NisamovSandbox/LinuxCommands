@@ -6,7 +6,7 @@ Ordenar lineas de texto.
 # Ordenar un fichero alfabéticamente
 sort entrada.txt
 ----
-[unordered.stack]
+
 -n:: `sort -n` Ordenar lineas por valor numérico
 
 [source,bash]
@@ -14,7 +14,7 @@ sort entrada.txt
 # Ordenar numéricamente
 sort -n entrada.txt
 ----
-[unordered.stack]
+
 -r:: `sort -r` Ordenar en orden inverso
 
 [source,bash]
@@ -22,7 +22,7 @@ sort -n entrada.txt
 # Ordenar en orden descendente
 sort -r entrada.txt
 ----
-[unordered.stack]
+
 -u:: `sort -u` Eliminar duplicados en la salida
 
 [source,bash]
@@ -30,7 +30,7 @@ sort -r entrada.txt
 # Ordenar y eliminar duplicados
 sort -u entrada.txt
 ----
-[unordered.stack]
+
 -k:: `sort -k N` Ordenar por la columna N
 
 [source,bash]
@@ -38,7 +38,7 @@ sort -u entrada.txt
 # Ordenar por la segunda columna usando ':' como separador
 sort -t ':' -k 2 entrada.txt
 ----
-[unordered.stack]
+
 -t:: `sort -t` Usar separador de campo
 
 [source,bash]
@@ -46,7 +46,7 @@ sort -t ':' -k 2 entrada.txt
 # Ordenar usando separador ':'
 sort -t ':' -k 2 entrada.txt
 ----
-[unordered.stack]
+
 -f:: `sort -f` Ignorar diferencias entre mayúsculas/minúsculas
 
 [source,bash]
@@ -54,7 +54,7 @@ sort -t ':' -k 2 entrada.txt
 # Ignorar case
 sort -f entrada.txt
 ----
-[unordered.stack]
+
 -h:: `sort -h` Ordenar por números con sufijos (1K, 2M)
 
 [source,bash]
@@ -62,7 +62,7 @@ sort -f entrada.txt
 # Ordenar por tamaños legibles
 sort -h entrada.txt
 ----
-[unordered.stack]
+
 -o:: `sort -o archivo` Guardar salida en archivo
 
 [source,bash]

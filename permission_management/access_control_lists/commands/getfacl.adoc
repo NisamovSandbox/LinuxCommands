@@ -7,7 +7,6 @@ Mostrar las listas de control de acceso (ACL) de ficheros y directorios.
 getfacl fichero.txt
 ----
 
-[unordered.stack]
 -R:: `getfacl -R` Recursivo
 +
 [source,bash]
@@ -16,7 +15,6 @@ getfacl fichero.txt
 getfacl -R /ruta/directorio
 ----
 
-[unordered.stack]
 -d:: `getfacl -d` Mostrar ACL por defecto
 +
 [source,bash]
@@ -25,7 +23,6 @@ getfacl -R /ruta/directorio
 getfacl -d /ruta/directorio
 ----
 
-[unordered.stack]
 -c:: `getfacl -c` Salida compacta (sin comentarios)
 +
 [source,bash]
@@ -34,7 +31,6 @@ getfacl -d /ruta/directorio
 getfacl -c fichero.txt
 ----
 
-[unordered.stack]
 --absolute-names:: Mostrar rutas absolutas
 +
 [source,bash]
@@ -43,7 +39,6 @@ getfacl -c fichero.txt
 getfacl --absolute-names fichero.txt
 ----
 
-[unordered.stack]
 --omit-header:: `getfacl --omit-header` Omitir cabeceras
 +
 [source,bash]
@@ -52,7 +47,6 @@ getfacl --absolute-names fichero.txt
 getfacl --omit-header fichero.txt
 ----
 
-[unordered.stack]
 --version:: `getfacl --version` Mostrar versión
 +
 [source,bash]
@@ -61,7 +55,6 @@ getfacl --omit-header fichero.txt
 getfacl --version
 ----
 
-[unordered.stack]
 --help:: `getfacl --help` Mostrar ayuda
 +
 [source,bash]

@@ -13,7 +13,6 @@ chown usuario:grupo archivo.txt
 chown -R usuario:grupo carpeta/
 ----
 
-[unordered.stack]
 usuario:: `chown usuario archivo.txt` Cambia el propietario del archivo al usuario especificado
 usuario:grupo:: `chown usuario:grupo archivo.txt` Cambia propietario y grupo del archivo
 -R:: `chown -R usuario:grupo carpeta/` Cambia propietario y grupo de todos los archivos y subdirectorios de forma recursiva

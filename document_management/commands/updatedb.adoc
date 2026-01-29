@@ -7,7 +7,6 @@ Actualizar la base de datos utilizada por el comando locate.
 updatedb
 ----
 
-[unordered.stack]
 -U:: `updatedb -U` Definir directorios a indexar
 
 [source,bash]
@@ -16,7 +15,6 @@ updatedb
 updatedb -U /home
 ----
 
-[unordered.stack]
 -o:: `updatedb -o` Especificar archivo de base de datos
 
 [source,bash]
@@ -25,7 +23,6 @@ updatedb -U /home
 updatedb -o /tmp/mi_locate.db
 ----
 
-[unordered.stack]
 --prunepaths:: `updatedb --prunepaths` Excluir rutas
 
 [source,bash]
@@ -34,7 +31,6 @@ updatedb -o /tmp/mi_locate.db
 updatedb --prunepaths="/proc /sys"
 ----
 
-[unordered.stack]
 --prunefs:: `updatedb --prunefs` Excluir sistemas de ficheros
 
 [source,bash]
@@ -43,7 +39,6 @@ updatedb --prunepaths="/proc /sys"
 updatedb --prunefs="proc sysfs tmpfs"
 ----
 
-[unordered.stack]
 --prunenames:: `updatedb --prunenames` Excluir nombres concretos
 
 [source,bash]
@@ -52,7 +47,6 @@ updatedb --prunefs="proc sysfs tmpfs"
 updatedb --prunenames=".git"
 ----
 
-[unordered.stack]
 --localpaths:: `updatedb --localpaths` Indexar solo sistemas locales
 
 [source,bash]
@@ -61,7 +55,6 @@ updatedb --prunenames=".git"
 updatedb --localpaths
 ----
 
-[unordered.stack]
 --debug:: `updatedb --debug` Mostrar información de depuración
 
 [source,bash]

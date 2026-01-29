@@ -11,7 +11,6 @@ rolling release.
 pacman -S ejemplo
 ----
 
-[unordered.stack]
 -S:: `pacman -S` Instalar paquetes
 +
 [source,bash]
@@ -23,7 +22,6 @@ pacman -S nginx
 pacman -S vim curl git
 ----
 
-[unordered.stack]
 -R:: `pacman -R` Eliminar paquetes
 +
 [source,bash]
@@ -32,7 +30,6 @@ pacman -S vim curl git
 pacman -R nginx
 ----
 
-[unordered.stack]
 -Rs:: `pacman -Rs` Eliminar paquetes y dependencias no usadas
 +
 [source,bash]
@@ -41,7 +38,6 @@ pacman -R nginx
 pacman -Rs nginx
 ----
 
-[unordered.stack]
 -Rns:: `pacman -Rns` Eliminación completa
 +
 [source,bash]
@@ -50,7 +46,6 @@ pacman -Rs nginx
 pacman -Rns nginx
 ----
 
-[unordered.stack]
 -Ss:: `pacman -Ss` Buscar paquetes en repositorios
 +
 [source,bash]
@@ -59,7 +54,6 @@ pacman -Rns nginx
 pacman -Ss nginx
 ----
 
-[unordered.stack]
 -Q:: `pacman -Q` Consultar paquetes instalados
 +
 [source,bash]
@@ -71,7 +65,6 @@ pacman -Q
 pacman -Q nginx
 ----
 
-[unordered.stack]
 -Qs:: `pacman -Qs` Buscar entre paquetes instalados
 +
 [source,bash]
@@ -80,7 +73,6 @@ pacman -Q nginx
 pacman -Qs nginx
 ----
 
-[unordered.stack]
 -Qi:: `pacman -Qi` Mostrar información de un paquete instalado
 +
 [source,bash]
@@ -89,7 +81,6 @@ pacman -Qs nginx
 pacman -Qi nginx
 ----
 
-[unordered.stack]
 -Ql:: `pacman -Ql` Listar archivos de un paquete
 +
 [source,bash]
@@ -98,7 +89,6 @@ pacman -Qi nginx
 pacman -Ql nginx
 ----
 
-[unordered.stack]
 -F:: `pacman -F` Buscar archivos en repositorios
 +
 [source,bash]
@@ -112,8 +102,7 @@ NOTE: Requiere tener la base de datos de archivos sincronizada:
 pacman -Fy
 ----
 
-[unordered.stack]
--Syu:: `pacman -Syu` Actualizar el sistema completo
+Syu:: `pacman -Syu` Actualizar el sistema completo
 +
 [source,bash]
 ----
@@ -121,7 +110,6 @@ pacman -Fy
 pacman -Syu
 ----
 
-[unordered.stack]
 -Sc:: `pacman -Sc` Limpiar caché de paquetes
 +
 [source,bash]
@@ -130,7 +118,6 @@ pacman -Syu
 pacman -Sc
 ----
 
-[unordered.stack]
 -Scc:: `pacman -Scc` Limpiar completamente la caché
 +
 [source,bash]

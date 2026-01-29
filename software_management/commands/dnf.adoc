@@ -10,7 +10,6 @@ Gestiona paquetes RPM y resuelve dependencias de forma automática.
 dnf install ejemplo
 ----
 
-[unordered.stack]
 list:: `dnf list` Listar paquetes
 +
 [source,bash]
@@ -28,7 +27,6 @@ dnf list available
 dnf list updates
 ----
 
-[unordered.stack]
 search:: `dnf search` Buscar paquetes por nombre o descripción
 +
 [source,bash]
@@ -37,7 +35,6 @@ search:: `dnf search` Buscar paquetes por nombre o descripción
 dnf search httpd
 ----
 
-[unordered.stack]
 info:: `dnf info` Mostrar información detallada de un paquete
 +
 [source,bash]
@@ -46,7 +43,6 @@ info:: `dnf info` Mostrar información detallada de un paquete
 dnf info httpd
 ----
 
-[unordered.stack]
 install:: `dnf install` Instalar paquetes
 +
 [source,bash]
@@ -58,7 +54,6 @@ dnf install httpd
 dnf install vim curl git
 ----
 
-[unordered.stack]
 remove:: `dnf remove` Eliminar paquetes
 +
 [source,bash]
@@ -67,7 +62,6 @@ remove:: `dnf remove` Eliminar paquetes
 dnf remove httpd
 ----
 
-[unordered.stack]
 reinstall:: `dnf reinstall` Reinstalar paquetes
 +
 [source,bash]
@@ -76,7 +70,6 @@ reinstall:: `dnf reinstall` Reinstalar paquetes
 dnf reinstall httpd
 ----
 
-[unordered.stack]
 autoremove:: `dnf autoremove` Eliminar dependencias no usadas
 +
 [source,bash]
@@ -85,7 +78,6 @@ autoremove:: `dnf autoremove` Eliminar dependencias no usadas
 dnf autoremove
 ----
 
-[unordered.stack]
 update:: `dnf update` Actualizar paquetes
 +
 [source,bash]
@@ -94,7 +86,6 @@ update:: `dnf update` Actualizar paquetes
 dnf update
 ----
 
-[unordered.stack]
 upgrade:: `dnf upgrade` Actualizar paquetes (equivalente a update)
 +
 [source,bash]
@@ -105,7 +96,6 @@ dnf upgrade
 
 NOTE: En `dnf`, `update` y `upgrade` son funcionalmente equivalentes.
 
-[unordered.stack]
 check-update:: `dnf check-update` Comprobar actualizaciones disponibles
 +
 [source,bash]
@@ -114,7 +104,6 @@ check-update:: `dnf check-update` Comprobar actualizaciones disponibles
 dnf check-update
 ----
 
-[unordered.stack]
 clean:: `dnf clean` Limpiar caché
 +
 [source,bash]
@@ -123,7 +112,6 @@ clean:: `dnf clean` Limpiar caché
 dnf clean all
 ----
 
-[unordered.stack]
 provides:: `dnf provides` Averiguar qué paquete proporciona un archivo
 +
 [source,bash]
@@ -132,7 +120,6 @@ provides:: `dnf provides` Averiguar qué paquete proporciona un archivo
 dnf provides /usr/bin/python3
 ----
 
-[unordered.stack]
 history:: `dnf history` Consultar historial de transacciones
 +
 [source,bash]

@@ -7,7 +7,6 @@ Combinar columnas de uno o más ficheros línea a línea.
 paste fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
 -d:: `paste -d` Definir delimitador
 
 [source,bash]
@@ -16,7 +15,6 @@ paste fichero1.txt fichero2.txt
 paste -d ',' fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
 -s:: `paste -s` Serializar líneas de un fichero
 
 [source,bash]
@@ -25,7 +23,6 @@ paste -d ',' fichero1.txt fichero2.txt
 paste -s fichero.txt
 ----
 
-[unordered.stack]
 --help:: `paste --help` Mostrar ayuda
 
 [source,bash]
@@ -34,7 +31,6 @@ paste -s fichero.txt
 paste --help
 ----
 
-[unordered.stack]
 --version:: `paste --version` Mostrar versión
 
 [source,bash]
@@ -43,7 +39,6 @@ paste --help
 paste --version
 ----
 
-[unordered.stack]
 -m:: `paste -m` Combinar múltiples archivos de forma paralela
 
 [source,bash]

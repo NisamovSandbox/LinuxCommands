@@ -7,7 +7,7 @@ Contar líneas, palabras y bytes de uno o varios ficheros.
 wc fichero.txt
 ----
 
-[unordered.stack]
+
 -l:: `wc -l` Mostrar número de líneas
 
 [source,bash]
@@ -16,7 +16,6 @@ wc fichero.txt
 wc -l fichero.txt
 ----
 
-[unordered.stack]
 -w:: `wc -w` Mostrar número de palabras
 
 [source,bash]
@@ -25,7 +24,6 @@ wc -l fichero.txt
 wc -w fichero.txt
 ----
 
-[unordered.stack]
 -c:: `wc -c` Mostrar número de bytes
 
 [source,bash]
@@ -34,7 +32,6 @@ wc -w fichero.txt
 wc -c fichero.txt
 ----
 
-[unordered.stack]
 -m:: `wc -m` Mostrar número de caracteres
 
 [source,bash]
@@ -43,7 +40,6 @@ wc -c fichero.txt
 wc -m fichero.txt
 ----
 
-[unordered.stack]
 -L:: `wc -L` Mostrar la longitud de la línea más larga
 
 [source,bash]
@@ -52,7 +48,6 @@ wc -m fichero.txt
 wc -L fichero.txt
 ----
 
-[unordered.stack]
 --help:: `wc --help` Mostrar ayuda
 
 [source,bash]

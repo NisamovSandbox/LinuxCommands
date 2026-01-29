@@ -6,7 +6,7 @@ Mover archivo entre rutas.
 # Mover un fichero a otro directorio
 mv archivo.txt /ruta/destino/
 ----
-[unordered.stack]
+
 -i:: `mv -i` Solicitar confirmación antes de sobreescribir archivos
 
 [source,bash]
@@ -14,7 +14,7 @@ mv archivo.txt /ruta/destino/
 # Mover pidiendo confirmación antes de sobrescribir
 mv -i archivo.txt /ruta/destino/
 ----
-[unordered.stack]
+
 -v:: `mv -v` Mostrar archivos de origen y destino (verbose)
 
 [source,bash]
@@ -22,7 +22,7 @@ mv -i archivo.txt /ruta/destino/
 # Mover y mostrar información de la operación
 mv -v archivo.txt /ruta/destino/
 ----
-[unordered.stack]
+
 -f:: `mv -f` Forzar la acción (sobrescribir sin preguntar)
 
 [source,bash]
@@ -30,7 +30,7 @@ mv -v archivo.txt /ruta/destino/
 # Mover forzando la sobreescritura
 mv -f archivo.txt /ruta/destino/archivo.txt
 ----
-[unordered.stack]
+
 -n:: `mv -n` No sobrescribir archivos existentes (no-clobber)
 
 [source,bash]
@@ -38,7 +38,7 @@ mv -f archivo.txt /ruta/destino/archivo.txt
 # No sobrescribir si destino existe
 mv -n archivo.txt /ruta/destino/
 ----
-[unordered.stack]
+
 -b:: `mv -b` Hacer copia de seguridad del destino al sobrescribir
 
 [source,bash]
@@ -46,7 +46,7 @@ mv -n archivo.txt /ruta/destino/
 # Usar copia de seguridad al mover
 mv -b archivo.txt /ruta/destino/
 ----
-[unordered.stack]
+
 --backup:: `mv --backup[=CONTROL]` Hacer copia de seguridad con control (simple/numbered/t) 
 
 [source,bash]

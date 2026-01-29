@@ -10,7 +10,6 @@ No resuelve dependencias automáticamente; normalmente se usa junto con `apt`.
 dpkg -i paquete.deb
 ----
 
-[unordered.stack]
 -i:: `dpkg -i` Instalar un paquete `.deb`
 +
 [source,bash]
@@ -24,7 +23,6 @@ NOTE: Si hay dependencias no satisfechas, deberá ejecutar posteriormente:
 apt -f install
 ----
 
-[unordered.stack]
 -r:: `dpkg -r` Eliminar un paquete (conserva configuración)
 +
 [source,bash]
@@ -33,7 +31,6 @@ apt -f install
 dpkg -r paquete
 ----
 
-[unordered.stack]
 -P:: `dpkg -P` Eliminar un paquete y su configuración (purge)
 +
 [source,bash]
@@ -42,7 +39,6 @@ dpkg -r paquete
 dpkg -P paquete
 ----
 
-[unordered.stack]
 -l:: `dpkg -l` Listar paquetes
 +
 [source,bash]
@@ -54,7 +50,6 @@ dpkg -l
 dpkg -l nginx
 ----
 
-[unordered.stack]
 -s:: `dpkg -s` Mostrar estado de un paquete
 +
 [source,bash]
@@ -63,7 +58,6 @@ dpkg -l nginx
 dpkg -s paquete
 ----
 
-[unordered.stack]
 -L:: `dpkg -L` Listar archivos instalados por un paquete
 +
 [source,bash]
@@ -72,7 +66,6 @@ dpkg -s paquete
 dpkg -L paquete
 ----
 
-[unordered.stack]
 -S:: `dpkg -S` Buscar a qué paquete pertenece un archivo
 +
 [source,bash]
@@ -81,7 +74,6 @@ dpkg -L paquete
 dpkg -S /bin/ls
 ----
 
-[unordered.stack]
 -c:: `dpkg -c` Listar contenido de un `.deb`
 +
 [source,bash]
@@ -90,7 +82,6 @@ dpkg -S /bin/ls
 dpkg -c paquete.deb
 ----
 
-[unordered.stack]
 -I:: `dpkg -I` Mostrar información de un `.deb`
 +
 [source,bash]
@@ -99,7 +90,6 @@ dpkg -c paquete.deb
 dpkg -I paquete.deb
 ----
 
-[unordered.stack]
 --configure:: `dpkg --configure` Configurar paquetes pendientes
 +
 [source,bash]

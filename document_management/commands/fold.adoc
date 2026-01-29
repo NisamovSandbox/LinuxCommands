@@ -7,8 +7,7 @@ Dividir líneas largas en varias más cortas, ajustando el ancho de la línea.
 fold -w 80 fichero.txt
 ----
 
-[unordered.stack]
--w:: `fold -w` Ancho de línea
+* -w:: `fold -w` Ancho de línea
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ fold -w 80 fichero.txt
 fold -w 50 fichero.txt
 ----
 
-[unordered.stack]
--s:: `fold -s` Ajustar por espacios en blanco
+* -s:: `fold -s` Ajustar por espacios en blanco
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ fold -w 50 fichero.txt
 fold -s -w 60 fichero.txt
 ----
 
-[unordered.stack]
--b:: `fold -b` Contar bytes en lugar de caracteres
+* -b:: `fold -b` Contar bytes en lugar de caracteres
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ fold -s -w 60 fichero.txt
 fold -b -w 40 fichero.txt
 ----
 
-[unordered.stack]
---help:: `fold --help` Mostrar ayuda
+* --help:: `fold --help` Mostrar ayuda
 
 [source,bash]
 ----

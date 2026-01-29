@@ -8,7 +8,7 @@ cd ..
 # Ir a una ruta absoluta
 cd /home/usuario/Documentos
 ----
-[unordered.stack]
+
 -~:: `cd ~` Ir al directorio home del usuario
 
 [source,bash]
@@ -16,14 +16,14 @@ cd /home/usuario/Documentos
 # Volver al directorio anterior (OLDPWD)
 cd ~
 ----
-[unordered.stack]
+
 -..:: `cd ..` Acceder al directorio padre
 
 [source,bash]
 ----
 cd ..
 ----
-[unordered.stack]
+
 --:: `cd -` Volver al directorio anterior (OLDPWD)
 
 [source,bash]

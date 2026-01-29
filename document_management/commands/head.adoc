@@ -7,8 +7,7 @@ Mostrar las primeras líneas de uno o varios ficheros.
 head fichero.txt
 ----
 
-[unordered.stack]
--n:: `head -n <numero>` Mostrar las primeras N líneas
+* -n:: `head -n <numero>` Mostrar las primeras N líneas
 
 [source,bash]
 ----

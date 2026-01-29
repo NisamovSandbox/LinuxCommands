@@ -16,7 +16,6 @@ chmod 660 archivo.txt
 chmod -R 755 carpeta/
 ----
 
-[unordered.stack]
 + x:: `chmod +x archivo.txt` Otorga permisos de ejecución al archivo
 - x:: `chmod -x archivo.txt` Revoca permisos de ejecución
 u+s:: `chmod u+s archivo.txt` Establece el bit SUID en un archivo

@@ -19,7 +19,6 @@ sudo -i
 sudo -e archivo.txt
 ----
 
-[unordered.stack]
 su:: `sudo su` Abrir una sesión como superusuario, permaneciendo en el entorno de root
 -u usuario:: `sudo -u usuario comando` Ejecutar un comando como otro usuario
 -i:: `sudo -i` Simular una sesión completa de inicio de sesión con el entorno del usuario

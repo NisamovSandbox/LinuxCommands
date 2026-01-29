@@ -8,7 +8,6 @@ Ver ficheros de texto paginados en la terminal (similar a `less`).
 more fichero.txt
 ----
 
-[unordered.stack]
 - (uso):: `more <fichero>` Ver paginado básico
 
 [source,bash]

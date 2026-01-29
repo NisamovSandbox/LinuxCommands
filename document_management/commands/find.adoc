@@ -7,8 +7,7 @@ Buscar ficheros y directorios que cumplan criterios especificados.
 find . -name "*.txt"
 ----
 
-[unordered.stack]
--name:: `find -name` Buscar por nombre
+* -name:: `find -name` Buscar por nombre
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ find . -name "*.txt"
 find /var/log -name "*.log"
 ----
 
-[unordered.stack]
--type:: `find -type` Buscar por tipo (`f` fichero, `d` directorio)
+* -type:: `find -type` Buscar por tipo (`f` fichero, `d` directorio)
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ find /var/log -name "*.log"
 find . -type f -name "*.conf"
 ----
 
-[unordered.stack]
--mtime:: `find -mtime` Buscar por fecha de modificación
+* -mtime:: `find -mtime` Buscar por fecha de modificación
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ find . -type f -name "*.conf"
 find . -mtime -7
 ----
 
-[unordered.stack]
--atime:: `find -atime` Buscar por fecha de acceso
+* -atime:: `find -atime` Buscar por fecha de acceso
 
 [source,bash]
 ----
@@ -43,8 +39,7 @@ find . -mtime -7
 find . -atime -1
 ----
 
-[unordered.stack]
--size:: `find -size` Buscar por tamaño (ej: 1M)
+* -size:: `find -size` Buscar por tamaño (ej: 1M)
 
 [source,bash]
 ----
@@ -52,8 +47,7 @@ find . -atime -1
 find /ruta -size 1M
 ----
 
-[unordered.stack]
--maxdepth:: `find -maxdepth` Limitar profundidad máxima
+* -maxdepth:: `find -maxdepth` Limitar profundidad máxima
 
 [source,bash]
 ----
@@ -61,8 +55,7 @@ find /ruta -size 1M
 find . -maxdepth 2 -name "*.sh"
 ----
 
-[unordered.stack]
--mindepth:: `find -mindepth` Limitar profundidad mínima
+* -mindepth:: `find -mindepth` Limitar profundidad mínima
 
 [source,bash]
 ----
@@ -70,8 +63,7 @@ find . -maxdepth 2 -name "*.sh"
 find . -mindepth 1 -name "README.md"
 ----
 
-[unordered.stack]
--exec:: `find -exec` Ejecutar comando sobre resultados
+* -exec:: `find -exec` Ejecutar comando sobre resultados
 
 [source,bash]
 ----

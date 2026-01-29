@@ -10,7 +10,6 @@ independiente de la distribución.
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ----
 
-[unordered.stack]
 install:: `flatpak install` Instalar aplicaciones
 +
 [source,bash]
@@ -19,7 +18,6 @@ install:: `flatpak install` Instalar aplicaciones
 flatpak install flathub org.mozilla.firefox
 ----
 
-[unordered.stack]
 remove:: `flatpak uninstall` Eliminar aplicaciones
 +
 [source,bash]
@@ -28,7 +26,6 @@ remove:: `flatpak uninstall` Eliminar aplicaciones
 flatpak uninstall org.mozilla.firefox
 ----
 
-[unordered.stack]
 list:: `flatpak list` Listar aplicaciones instaladas
 +
 [source,bash]
@@ -37,7 +34,6 @@ list:: `flatpak list` Listar aplicaciones instaladas
 flatpak list
 ----
 
-[unordered.stack]
 search:: `flatpak search` Buscar aplicaciones
 +
 [source,bash]
@@ -46,7 +42,6 @@ search:: `flatpak search` Buscar aplicaciones
 flatpak search firefox
 ----
 
-[unordered.stack]
 update:: `flatpak update` Actualizar aplicaciones
 +
 [source,bash]

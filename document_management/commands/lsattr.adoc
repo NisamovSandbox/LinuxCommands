@@ -7,7 +7,7 @@ Mostrar los atributos de los archivos en sistemas de ficheros ext2/ext3/ext4.
 lsattr fichero.txt
 ----
 
-[unordered.stack]
+
 -R:: `lsattr -R` Recursivo
 
 [source,bash]
@@ -16,7 +16,6 @@ lsattr fichero.txt
 lsattr -R /ruta/directorio
 ----
 
-[unordered.stack]
 -d:: `lsattr -d` Mostrar atributos de directorios en lugar de su contenido
 
 [source,bash]
@@ -25,7 +24,6 @@ lsattr -R /ruta/directorio
 lsattr -d /ruta/directorio
 ----
 
-[unordered.stack]
 -V:: `lsattr -V` Mostrar versión del comando
 
 [source,bash]
@@ -34,7 +32,6 @@ lsattr -d /ruta/directorio
 lsattr -V
 ----
 
-[unordered.stack]
 --help:: `lsattr --help` Mostrar ayuda
 
 [source,bash]
@@ -43,7 +40,6 @@ lsattr -V
 lsattr --help
 ----
 
-[unordered.stack]
 --quiet:: `lsattr --quiet` Suprimir mensajes innecesarios
 
 [source,bash]

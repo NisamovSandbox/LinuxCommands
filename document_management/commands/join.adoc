@@ -7,8 +7,7 @@ Combinar líneas de dos ficheros basándose en un campo común.
 join fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--1:: `join -1` Especificar campo del primer fichero
+* -1:: `join -1` Especificar campo del primer fichero
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ join fichero1.txt fichero2.txt
 join -1 2 fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--2:: `join -2` Especificar campo del segundo fichero
+* -2:: `join -2` Especificar campo del segundo fichero
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ join -1 2 fichero1.txt fichero2.txt
 join -2 3 fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--a:: `join -a` Incluir líneas sin coincidencias
+* -a:: `join -a` Incluir líneas sin coincidencias
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ join -2 3 fichero1.txt fichero2.txt
 join -a 1 fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--e:: `join -e` Rellenar campos vacíos
+* -e:: `join -e` Rellenar campos vacíos
 
 [source,bash]
 ----
@@ -43,8 +39,7 @@ join -a 1 fichero1.txt fichero2.txt
 join -a 1 -a 2 -e NA fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--o:: `join -o` Especificar campos a mostrar
+* -o:: `join -o` Especificar campos a mostrar
 
 [source,bash]
 ----
@@ -52,8 +47,7 @@ join -a 1 -a 2 -e NA fichero1.txt fichero2.txt
 join -o 1.1,2.2 fichero1.txt fichero2.txt
 ----
 
-[unordered.stack]
--t:: `join -t` Definir delimitador
+* -t:: `join -t` Definir delimitador
 
 [source,bash]
 ----
@@ -61,8 +55,7 @@ join -o 1.1,2.2 fichero1.txt fichero2.txt
 join -t ',' fichero1.csv fichero2.csv
 ----
 
-[unordered.stack]
--v:: `join -v` Mostrar solo líneas sin coincidencias
+* -v:: `join -v` Mostrar solo líneas sin coincidencias
 
 [source,bash]
 ----

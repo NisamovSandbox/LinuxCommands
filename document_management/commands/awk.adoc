@@ -7,7 +7,6 @@ Procesar y analizar texto estructurado por columnas.
 awk '{print $1}' fichero.txt
 ----
 
-[unordered.stack]
 -F:: `awk -F` Definir separador de campos
 
 [source,bash]
@@ -16,7 +15,6 @@ awk '{print $1}' fichero.txt
 awk -F: '{print $1, $3}' /etc/passwd
 ----
 
-[unordered.stack]
 -print:: `awk '{print}'` Mostrar campos específicos
 
 [source,bash]
@@ -25,7 +23,6 @@ awk -F: '{print $1, $3}' /etc/passwd
 awk '{print $1, $3}' datos.txt
 ----
 
-[unordered.stack]
 -condicion:: `awk 'condición'` Filtrar líneas
 
 [source,bash]
@@ -34,7 +31,6 @@ awk '{print $1, $3}' datos.txt
 awk '$2 > 50' valores.txt
 ----
 
-[unordered.stack]
 -BEGIN:: `awk 'BEGIN {}` Ejecutar acciones iniciales
 
 [source,bash]
@@ -43,7 +39,6 @@ awk '$2 > 50' valores.txt
 awk 'BEGIN {print "Inicio"} {print $1}' datos.txt
 ----
 
-[unordered.stack]
 -END:: `awk 'END {}` Ejecutar acciones finales
 
 [source,bash]
@@ -52,7 +47,6 @@ awk 'BEGIN {print "Inicio"} {print $1}' datos.txt
 awk '{suma += $2} END {print suma}' ventas.txt
 ----
 
-[unordered.stack]
 -NR:: `NR` Número de registro (línea)
 
 [source,bash]
@@ -61,7 +55,6 @@ awk '{suma += $2} END {print suma}' ventas.txt
 awk '{print NR, $0}' fichero.txt
 ----
 
-[unordered.stack]
 -NF:: `NF` Número de campos por línea
 
 [source,bash]

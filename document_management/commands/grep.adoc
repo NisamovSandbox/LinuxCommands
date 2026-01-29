@@ -7,8 +7,7 @@ Buscar cadenas de texto en ficheros según patrones (expresiones regulares).
 grep "Hola Mundo" fichero.txt
 ----
 
-[unordered.stack]
--i:: `grep -i` Buscar ignorando mayúsculas
+* -i:: `grep -i` Buscar ignorando mayúsculas
 
 [source,bash]
 ----
@@ -16,8 +15,7 @@ grep "Hola Mundo" fichero.txt
 grep -i "hola mundo" fichero.txt
 ----
 
-[unordered.stack]
--r:: `grep -r` Buscar recursivamente en directorios
+* -r:: `grep -r` Buscar recursivamente en directorios
 
 [source,bash]
 ----
@@ -25,8 +23,7 @@ grep -i "hola mundo" fichero.txt
 grep -r "TODO" /ruta/proyecto/
 ----
 
-[unordered.stack]
--n:: `grep -n` Mostrar número de línea
+* -n:: `grep -n` Mostrar número de línea
 
 [source,bash]
 ----
@@ -34,8 +31,7 @@ grep -r "TODO" /ruta/proyecto/
 grep -n "funcion" fichero.c
 ----
 
-[unordered.stack]
--v:: `grep -v` Mostrar líneas que NO coinciden
+* -v:: `grep -v` Mostrar líneas que NO coinciden
 
 [source,bash]
 ----
@@ -43,8 +39,7 @@ grep -n "funcion" fichero.c
 grep -v "DEBUG" log.txt
 ----
 
-[unordered.stack]
--E:: `grep -E` Usar expresiones regulares extendidas
+* -E:: `grep -E` Usar expresiones regulares extendidas
 
 [source,bash]
 ----
@@ -52,8 +47,7 @@ grep -v "DEBUG" log.txt
 grep -E "error|warning" logfile.txt
 ----
 
-[unordered.stack]
--o:: `grep -o` Mostrar sólo la parte coincidente de cada línea
+* -o:: `grep -o` Mostrar sólo la parte coincidente de cada línea
 
 [source,bash]
 ----
@@ -61,8 +55,7 @@ grep -E "error|warning" logfile.txt
 grep -o "pattern" fichero.txt
 ----
 
-[unordered.stack]
--P:: `grep -P` Usar expresiones regulares Perl-compatible (PCRE)
+* -P:: `grep -P` Usar expresiones regulares Perl-compatible (PCRE)
 
 [source,bash]
 ----
@@ -70,8 +63,7 @@ grep -o "pattern" fichero.txt
 grep -P "\d{4}-\d{2}-\d{2}" logfile.txt
 ----
 
-[unordered.stack]
--l:: `grep -l` Mostrar sólo nombres de ficheros con coincidencias
+* -l:: `grep -l` Mostrar sólo nombres de ficheros con coincidencias
 
 [source,bash]
 ----
@@ -79,8 +71,7 @@ grep -P "\d{4}-\d{2}-\d{2}" logfile.txt
 grep -l "TODO" -r src/
 ----
 
-[unordered.stack]
--c:: `grep -c` Contar coincidencias por fichero
+* -c:: `grep -c` Contar coincidencias por fichero
 
 [source,bash]
 ----
@@ -88,8 +79,7 @@ grep -l "TODO" -r src/
 grep -c "import" script.py
 ----
 
-[unordered.stack]
--q:: `grep -q` Modo silencioso (devuelve código de salida)
+* -q:: `grep -q` Modo silencioso (devuelve código de salida)
 
 [source,bash]
 ----
@@ -97,8 +87,7 @@ grep -c "import" script.py
 if grep -q "pattern" fichero.txt; then echo "found"; fi
 ----
 
-[unordered.stack]
---color:: `grep --color=auto` Resaltar coincidencias
+* --color:: `grep --color=auto` Resaltar coincidencias
 
 [source,bash]
 ----

@@ -1,4 +1,4 @@
-==== apt
+=== apt
 Gestión de paquetes en sistemas Debian y derivados
 
 Instalación y administración de paquetes mediante la interfaz de alto nivel `apt`.
@@ -14,7 +14,6 @@ apt install ejemplo
 apt-get install ejemplo
 ----
 
-[unordered.stack]
 list:: `apt list` Listar paquetes
 +
 [source,bash]
@@ -29,7 +28,6 @@ apt list --installed
 apt list --upgradable
 ----
 
-[unordered.stack]
 search:: `apt search` Buscar paquetes por nombre o descripción
 +
 [source,bash]
@@ -38,7 +36,6 @@ search:: `apt search` Buscar paquetes por nombre o descripción
 apt search nginx
 ----
 
-[unordered.stack]
 show:: `apt show` Mostrar información detallada de un paquete
 +
 [source,bash]
@@ -46,7 +43,6 @@ show:: `apt show` Mostrar información detallada de un paquete
 apt show nginx
 ----
 
-[unordered.stack]
 install:: `apt install` Instalar paquetes
 +
 [source,bash]
@@ -55,7 +51,6 @@ apt install nginx
 apt install vim curl git
 ----
 
-[unordered.stack]
 remove:: `apt remove` Eliminar paquetes (conserva configuración)
 +
 [source,bash]
@@ -63,7 +58,6 @@ remove:: `apt remove` Eliminar paquetes (conserva configuración)
 apt remove nginx
 ----
 
-[unordered.stack]
 purge:: `apt purge` Eliminar paquetes y su configuración
 +
 [source,bash]
@@ -71,7 +65,6 @@ purge:: `apt purge` Eliminar paquetes y su configuración
 apt purge nginx
 ----
 
-[unordered.stack]
 reinstall:: `apt reinstall` Reinstalar paquetes
 +
 [source,bash]
@@ -79,7 +72,6 @@ reinstall:: `apt reinstall` Reinstalar paquetes
 apt reinstall nginx
 ----
 
-[unordered.stack]
 autoremove:: `apt autoremove` Eliminar dependencias no usadas
 +
 [source,bash]
@@ -87,7 +79,6 @@ autoremove:: `apt autoremove` Eliminar dependencias no usadas
 apt autoremove
 ----
 
-[unordered.stack]
 update:: `apt update` Actualizar la lista de paquetes disponibles
 +
 [source,bash]
@@ -95,7 +86,6 @@ update:: `apt update` Actualizar la lista de paquetes disponibles
 apt update
 ----
 
-[unordered.stack]
 upgrade:: `apt upgrade` Actualizar paquetes instalados
 +
 [source,bash]
@@ -103,7 +93,6 @@ upgrade:: `apt upgrade` Actualizar paquetes instalados
 apt upgrade
 ----
 
-[unordered.stack]
 full-upgrade:: `apt full-upgrade` / `apt dist-upgrade` Actualización completa del sistema
 +
 [source,bash]
@@ -114,7 +103,6 @@ apt full-upgrade
 apt dist-upgrade
 ----
 
-[unordered.stack]
 edit-sources:: `apt edit-sources` Editar repositorios
 +
 [source,bash]
@@ -122,7 +110,6 @@ edit-sources:: `apt edit-sources` Editar repositorios
 apt edit-sources
 ----
 
-[unordered.stack]
 satisfy:: `apt satisfy` Satisfacer dependencias manualmente
 +
 [source,bash]
@@ -130,7 +117,6 @@ satisfy:: `apt satisfy` Satisfacer dependencias manualmente
 apt satisfy 'libssl1.1 (>= 1.1.1)'
 ----
 
-[unordered.stack]
 release-upgrade:: `do-release-upgrade` Actualizar la distribución completa
 +
 [source,bash]

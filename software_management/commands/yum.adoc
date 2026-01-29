@@ -11,7 +11,7 @@ sigue presente en sistemas antiguos como CentOS 7.
 yum install ejemplo
 ----
 
-[unordered.stack]
+
 install:: `yum install` Instalar paquetes
 +
 [source,bash]
@@ -23,7 +23,7 @@ yum install httpd
 yum install vim curl git
 ----
 
-[unordered.stack]
+
 remove:: `yum remove` Eliminar paquetes
 +
 [source,bash]
@@ -32,7 +32,7 @@ remove:: `yum remove` Eliminar paquetes
 yum remove httpd
 ----
 
-[unordered.stack]
+
 reinstall:: `yum reinstall` Reinstalar paquetes
 +
 [source,bash]
@@ -41,7 +41,7 @@ reinstall:: `yum reinstall` Reinstalar paquetes
 yum reinstall httpd
 ----
 
-[unordered.stack]
+
 list:: `yum list` Listar paquetes
 +
 [source,bash]
@@ -59,7 +59,6 @@ yum list available
 yum list updates
 ----
 
-[unordered.stack]
 search:: `yum search` Buscar paquetes
 +
 [source,bash]
@@ -68,7 +67,6 @@ search:: `yum search` Buscar paquetes
 yum search httpd
 ----
 
-[unordered.stack]
 info:: `yum info` Mostrar información de un paquete
 +
 [source,bash]
@@ -77,7 +75,6 @@ info:: `yum info` Mostrar información de un paquete
 yum info httpd
 ----
 
-[unordered.stack]
 update:: `yum update` Actualizar paquetes
 +
 [source,bash]
@@ -86,7 +83,6 @@ update:: `yum update` Actualizar paquetes
 yum update
 ----
 
-[unordered.stack]
 check-update:: `yum check-update` Comprobar actualizaciones disponibles
 +
 [source,bash]
@@ -95,7 +91,6 @@ check-update:: `yum check-update` Comprobar actualizaciones disponibles
 yum check-update
 ----
 
-[unordered.stack]
 clean:: `yum clean` Limpiar caché
 +
 [source,bash]
@@ -104,7 +99,6 @@ clean:: `yum clean` Limpiar caché
 yum clean all
 ----
 
-[unordered.stack]
 provides:: `yum provides` Averiguar qué paquete proporciona un archivo
 +
 [source,bash]
@@ -113,7 +107,6 @@ provides:: `yum provides` Averiguar qué paquete proporciona un archivo
 yum provides /usr/bin/python
 ----
 
-[unordered.stack]
 history:: `yum history` Consultar historial de transacciones
 +
 [source,bash]

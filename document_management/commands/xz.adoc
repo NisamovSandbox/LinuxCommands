@@ -7,7 +7,6 @@ Comprimir y descomprimir archivos usando el algoritmo LZMA/LZMA2.
 xz fichero.txt
 ----
 
-[unordered.stack]
 -d:: `xz -d` Descomprimir archivos .xz
 
 [source,bash]
@@ -16,7 +15,6 @@ xz fichero.txt
 xz -d fichero.txt.xz
 ----
 
-[unordered.stack]
 -k:: `xz -k` Mantener el archivo original
 
 [source,bash]
@@ -25,7 +23,6 @@ xz -d fichero.txt.xz
 xz -k fichero.txt
 ----
 
-[unordered.stack]
 -l:: `xz -l` Mostrar información del archivo comprimido
 
 [source,bash]
@@ -34,7 +31,6 @@ xz -k fichero.txt
 xz -l fichero.txt.xz
 ----
 
-[unordered.stack]
 -c:: `xz -c` Enviar salida a stdout
 
 [source,bash]
@@ -43,7 +39,6 @@ xz -l fichero.txt.xz
 xz -c fichero.txt > fichero.txt.xz
 ----
 
-[unordered.stack]
 -t:: `xz -t` Comprobar integridad del archivo
 
 [source,bash]
@@ -52,7 +47,6 @@ xz -c fichero.txt > fichero.txt.xz
 xz -t fichero.txt.xz
 ----
 
-[unordered.stack]
 -0-9:: `xz -0` a `xz -9` Nivel de compresión
 
 [source,bash]
@@ -61,7 +55,6 @@ xz -t fichero.txt.xz
 xz -9 fichero.txt
 ----
 
-[unordered.stack]
 -z:: `xz -z` Forzar compresión (opción por defecto)
 
 [source,bash]

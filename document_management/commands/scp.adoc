@@ -7,7 +7,6 @@ Copiar ficheros de forma segura entre hosts usando SSH.
 scp fichero.txt usuario@192.168.1.10:/home/usuario/
 ----
 
-[unordered.stack]
 -r:: `scp -r` Copiar directorios recursivamente
 
 [source,bash]
@@ -16,7 +15,6 @@ scp fichero.txt usuario@192.168.1.10:/home/usuario/
 scp -r proyecto/ usuario@servidor:/ruta/destino/
 ----
 
-[unordered.stack]
 -P:: `scp -P <puerto>` Especificar puerto SSH
 
 [source,bash]
@@ -25,7 +23,6 @@ scp -r proyecto/ usuario@servidor:/ruta/destino/
 scp -P 2222 fichero.txt usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -p:: `scp -p` Mantener permisos y fechas
 
 [source,bash]
@@ -34,7 +31,6 @@ scp -P 2222 fichero.txt usuario@servidor:/home/usuario/
 scp -p fichero.txt usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -C:: `scp -C` Comprimir datos durante la transferencia
 
 [source,bash]
@@ -43,7 +39,6 @@ scp -p fichero.txt usuario@servidor:/home/usuario/
 scp -C fichero.iso usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -i:: `scp -i <clave>` Usar archivo de clave privada para autenticar
 
 [source,bash]
@@ -52,7 +47,6 @@ scp -C fichero.iso usuario@servidor:/home/usuario/
 scp -i ~/.ssh/id_rsa fichero.txt usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -B:: `scp -B` Modo batch (sin preguntas interactivas)
 
 [source,bash]
@@ -61,7 +55,6 @@ scp -i ~/.ssh/id_rsa fichero.txt usuario@servidor:/home/usuario/
 scp -B fichero.txt usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -l:: `scp -l` Limitar ancho de banda (KB/s)
 
 [source,bash]
@@ -70,7 +63,6 @@ scp -B fichero.txt usuario@servidor:/home/usuario/
 scp -l 100 fichero.txt usuario@servidor:/home/usuario/
 ----
 
-[unordered.stack]
 -o:: `scp -o` Pasar opciones a SSH (ej: puerto, identidad)
 
 [source,bash]

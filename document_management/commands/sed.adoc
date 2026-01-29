@@ -7,7 +7,6 @@ Editor de flujo de texto para filtrar y transformar texto línea a línea.
 sed 's/viejo/nuevo/' fichero.txt
 ----
 
-[unordered.stack]
 -i:: `sed -i` Modificar el fichero directamente
 
 [source,bash]
@@ -16,7 +15,6 @@ sed 's/viejo/nuevo/' fichero.txt
 sed -i 's/viejo/nuevo/g' fichero.txt
 ----
 
-[unordered.stack]
 -e:: `sed -e` Ejecutar múltiples comandos
 
 [source,bash]
@@ -25,7 +23,6 @@ sed -i 's/viejo/nuevo/g' fichero.txt
 sed -e 's/viejo/nuevo/g' -e '/^#/d' fichero.txt
 ----
 
-[unordered.stack]
 -n:: `sed -n` Suprimir salida automática
 
 [source,bash]
@@ -34,7 +31,6 @@ sed -e 's/viejo/nuevo/g' -e '/^#/d' fichero.txt
 sed -n '/error/p' fichero.log
 ----
 
-[unordered.stack]
 -d:: `sed 'Nd'` Eliminar líneas específicas
 
 [source,bash]
@@ -43,7 +39,6 @@ sed -n '/error/p' fichero.log
 sed '3d' fichero.txt
 ----
 
-[unordered.stack]
 -a:: `sed 'Nq'` Imprimir hasta cierta línea
 
 [source,bash]
@@ -52,7 +47,6 @@ sed '3d' fichero.txt
 sed -n '1,5p' fichero.txt
 ----
 
-[unordered.stack]
 -r:: `sed -r` Expresiones regulares extendidas
 
 [source,bash]
@@ -61,7 +55,6 @@ sed -n '1,5p' fichero.txt
 sed -r 's/(foo|bar)/baz/g' fichero.txt
 ----
 
-[unordered.stack]
 --follow-symlinks:: `sed --follow-symlinks` Modificar enlaces simbólicos
 
 [source,bash]

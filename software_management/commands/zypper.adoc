@@ -10,7 +10,6 @@ Trabaja con paquetes RPM y resuelve dependencias automáticamente.
 zypper refresh
 ----
 
-[unordered.stack]
 install:: `zypper install` Instalar paquetes
 +
 [source,bash]
@@ -19,7 +18,6 @@ install:: `zypper install` Instalar paquetes
 zypper install nginx
 ----
 
-[unordered.stack]
 remove:: `zypper remove` Eliminar paquetes
 +
 [source,bash]
@@ -28,7 +26,6 @@ remove:: `zypper remove` Eliminar paquetes
 zypper remove nginx
 ----
 
-[unordered.stack]
 search:: `zypper search` Buscar paquetes
 +
 [source,bash]
@@ -37,7 +34,6 @@ search:: `zypper search` Buscar paquetes
 zypper search nginx
 ----
 
-[unordered.stack]
 info:: `zypper info` Mostrar información de un paquete
 +
 [source,bash]
@@ -46,7 +42,6 @@ info:: `zypper info` Mostrar información de un paquete
 zypper info nginx
 ----
 
-[unordered.stack]
 update:: `zypper update` Actualizar paquetes instalados
 +
 [source,bash]
@@ -55,7 +50,6 @@ update:: `zypper update` Actualizar paquetes instalados
 zypper update
 ----
 
-[unordered.stack]
 dup:: `zypper dup` Actualización de distribución
 +
 [source,bash]

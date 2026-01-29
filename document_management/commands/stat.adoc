@@ -7,7 +7,6 @@ Mostrar estado y metadatos de un fichero o directorio.
 stat fichero.txt
 ----
 
-[unordered.stack]
 -c:: `stat -c` Formato personalizado con especificadores
 
 [source,bash]
@@ -16,7 +15,6 @@ stat fichero.txt
 stat -c "%n: %s bytes" fichero.txt
 ----
 
-[unordered.stack]
 -f:: `stat -f` Información del sistema de ficheros
 
 [source,bash]
@@ -25,7 +23,6 @@ stat -c "%n: %s bytes" fichero.txt
 stat -f /
 ----
 
-[unordered.stack]
 -L:: `stat -L` Seguir enlaces simbólicos
 
 [source,bash]
@@ -34,7 +31,6 @@ stat -f /
 stat -L /usr/bin/python
 ----
 
-[unordered.stack]
 -t:: `stat -t` Formato compacto
 
 [source,bash]
@@ -43,7 +39,6 @@ stat -L /usr/bin/python
 stat -t fichero.txt
 ----
 
-[unordered.stack]
 --printf:: `stat --printf` Formato con printf
 
 [source,bash]
@@ -52,7 +47,6 @@ stat -t fichero.txt
 stat --printf="%n: %s bytes\n" *
 ----
 
-[unordered.stack]
 --printf:: `stat --printf` Formato con printf
 
 [source,bash]

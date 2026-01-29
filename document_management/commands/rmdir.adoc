@@ -7,7 +7,6 @@ Eliminar directorios vacíos.
 rmdir Documentos
 ----
 
-[unordered.stack]
 - (uso):: `rmdir <directorio>` Eliminar directorio vacío
 
 [source,bash]

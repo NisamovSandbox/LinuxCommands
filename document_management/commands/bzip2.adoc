@@ -9,6 +9,6 @@ bzip2 archivo.txt
 # Desempaquetar archvivos
 bunzip2 archivo.txt.bz2
 ----
-[unordered.stack]
+
 -c:: `bzip -c archivo > archivo.txt.bz2` Comprimir manteniendo archivos originales
 
