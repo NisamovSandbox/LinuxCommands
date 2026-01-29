@@ -4,6 +4,7 @@ from deep_translator import GoogleTranslator
 import sys
 import time
 import re
+import html
 
 if len(sys.argv) != 4:
     print("Uso: translate_adoc.py <SRC_DIR> <DST_DIR> <TARGET_LANG>")
@@ -14,166 +15,194 @@ DST_ROOT = Path(sys.argv[2])
 TARGET_LANG = sys.argv[3]
 DST_ROOT.mkdir(parents=True, exist_ok=True)
 
-translator = GoogleTranslator(source="es", target=TARGET_LANG)
+translator = GoogleTranslator(source="auto", target=TARGET_LANG)
 
-# Patrones para detectar contenido que NO debe traducirse
-CODE_BLOCK_START = re.compile(r'^\[source,.*\]$')
-UNORDERED_BLOCK = re.compile(r'^\[unordered\.stack\]$')
-COMMENT_LINE = re.compile(r'^//')
-DIRECTIVE_LINE = re.compile(r'^(include|ifdef|ifndef|ifeval)::')
-ATTRIBUTE_LINE = re.compile(r'^:[\w-]+:')
-#HEADER_LINE = re.compile(r'^=+ ')
-MACRO_LINE = re.compile(r'^\[.*\]$')
+# Patrones más precisos
+CODE_BLOCK_DELIM = re.compile(r'^----\s*$')
+SOURCE_BLOCK = re.compile(r'^\[source')
+TABLE_BLOCK = re.compile(r'^\|===')
+COMMENT_LINE = re.compile(r'^\s*//')
+INCLUDE_DIRECTIVE = re.compile(r'^include::')
+ATTRIBUTE_DEF = re.compile(r'^:[\w-]+:')
+HEADER_LINE = re.compile(r'^=+[\s\w]')
+MACRO_LINE = re.compile(r'^\[.*\]\s*$')
+LIST_ITEM = re.compile(r'^\s*[\*\-+]\s+')
+ENUM_ITEM = re.compile(r'^\s*\d+\.\s+')
 
-def should_translate(line: str) -> bool:
-    stripped = line.strip()
+def should_translate_line(line: str) -> bool:
+    """Determina si una línea completa debe ser traducida"""
+    stripped = line.rstrip()
     
-    # Si está vacía
+    # Línea vacía
     if not stripped:
         return False
     
-    # Si es un comentario
+    # Comentarios
     if COMMENT_LINE.match(stripped):
         return False
     
-    # Si es una directiva de AsciiDoc
-    if DIRECTIVE_LINE.match(stripped):
+    # Directivas includes
+    if INCLUDE_DIRECTIVE.match(stripped):
         return False
     
-    # Si es una línea de atributo
-    if ATTRIBUTE_LINE.match(stripped):
+    # Definiciones de atributos
+    if ATTRIBUTE_DEF.match(stripped):
         return False
     
-    # Si es un encabezado
-    if HEADER_LINE.match(stripped):
+    # Bloques de código fuente
+    if SOURCE_BLOCK.match(stripped):
         return False
     
-    # Si es un bloque de código o lista especial
-    if CODE_BLOCK_START.match(stripped) or UNORDERED_BLOCK.match(stripped):
+    # Tablas
+    if TABLE_BLOCK.match(stripped):
         return False
     
-    # Si es solo una línea de atributos entre corchetes
+    # Líneas que son solo macros
     if MACRO_LINE.match(stripped):
         return False
     
-    # Si contiene marcadores de AsciiDoc que no deben traducirse
-    if any(marker in stripped for marker in [
-        "::", "xref:", "link:", "image::", "footnote:",
-        "<<", ">>", "pass:", "icon:", "btn:"
-    ]):
-        return False
-    
-    if stripped.startswith(("* ", "- ", "+ ", "# ", "=== ", "== ", "= ")):
-        return True
-    
     return True
 
-def translate_text(text: str, max_length: int = 4500) -> str:
-    """Traduce texto con manejo de límites de caracteres"""
+def extract_translatable_text(line: str) -> tuple[str, str, str]:
+    """
+    Extrae texto traducible de una línea.
+    Devuelve: (prefijo, texto_a_traducir, sufijo)
+    """
+    stripped = line.rstrip()
+    
+    # Elementos de lista
+    list_match = LIST_ITEM.match(line)
+    if list_match:
+        prefix = list_match.group(0)
+        text = line[len(prefix):].rstrip()
+        return prefix, text, ""
+    
+    # Elementos enumerados
+    enum_match = ENUM_ITEM.match(line)
+    if enum_match:
+        prefix = enum_match.group(0)
+        text = line[len(prefix):].rstrip()
+        return prefix, text, ""
+    
+    # Para otras líneas, intentar preservar indentación
+    leading_spaces = len(line) - len(line.lstrip())
+    prefix = line[:leading_spaces]
+    text = line[leading_spaces:].rstrip()
+    
+    return prefix, text, ""
+
+def translate_text(text: str) -> str:
+    """Traduce texto con manejo de errores"""
     if not text or not text.strip():
         return text
     
-    if len(text) <= max_length:
-        try:
-            result = translator.translate(text)
-            return result if result is not None else text
-        except Exception as e:
-            print(f"Error traduciendo texto: {e}")
-            return text
+    # Limitar longitud para evitar errores de la API
+    if len(text) > 4500:
+        chunks = []
+        # Dividir en párrafos si es posible
+        paragraphs = text.split('\n\n')
+        for para in paragraphs:
+            if len(para) > 4500:
+                # Dividir por oraciones
+                sentences = re.split(r'(?<=[.!?])\s+', para)
+                chunk = ""
+                for sentence in sentences:
+                    if len(chunk) + len(sentence) < 4500:
+                        chunk += sentence + " "
+                    else:
+                        if chunk:
+                            chunks.append(chunk.strip())
+                        chunk = sentence + " "
+                if chunk:
+                    chunks.append(chunk.strip())
+            else:
+                chunks.append(para)
+    else:
+        chunks = [text]
     
-    # Dividir texto largo en chunks
-    chunks = []
-    current_chunk = ""
-    sentences = text.split('. ')
-    
-    for sentence in sentences:
-        if len(current_chunk) + len(sentence) + 2 <= max_length:
-            current_chunk += sentence + '. '
-        else:
-            if current_chunk:
-                chunks.append(current_chunk)
-            current_chunk = sentence + '. '
-    
-    if current_chunk:
-        chunks.append(current_chunk)
-    
-    # Traducir cada chunk
     translated_chunks = []
     for chunk in chunks:
+        if not chunk.strip():
+            translated_chunks.append("")
+            continue
+            
         try:
-            translated = translator.translate(chunk)
-            translated_chunks.append(translated if translated is not None else chunk)
-            time.sleep(0.1)
+            # Escapar HTML antes de traducir
+            chunk_clean = html.escape(chunk) if '<' in chunk or '>' in chunk else chunk
+            
+            translated = translator.translate(chunk_clean)
+            if translated and translated != chunk_clean:
+                # Desescapar HTML si es necesario
+                if '&' in translated:
+                    translated = html.unescape(translated)
+                translated_chunks.append(translated)
+            else:
+                translated_chunks.append(chunk)
+            
+            # Pequeña pausa entre traducciones
+            time.sleep(0.2)
         except Exception as e:
-            print(f"Error traduciendo chunk: {e}")
+            print(f"  Error traduciendo texto: {str(e)[:100]}")
             translated_chunks.append(chunk)
+            time.sleep(1)  # Pausa más larga si hay error
     
-    return ' '.join(translated_chunks)
+    return '\n\n'.join(translated_chunks)
 
-def translate_adoc(text: str) -> str:
-    output = []
-    in_code_block = False
-    in_unordered_block = False
-    lines = text.splitlines()
+def translate_adoc(content: str) -> str:
+    """Traduce contenido AsciiDoc manteniendo estructura"""
+    lines = content.splitlines()
+    translated_lines = []
     
-    i = 0
-    while i < len(lines):
-        line = lines[i]
+    in_code_block = False
+    in_table = False
+    buffer = []
+    current_indent = ""
+    
+    for i, line in enumerate(lines):
+        original_line = line
         
-        # Manejar bloques de código
-        if line.strip() == "----":
+        # Detectar bloques de código
+        if CODE_BLOCK_DELIM.match(line.rstrip()):
             in_code_block = not in_code_block
-            output.append(line)
-            i += 1
+            translated_lines.append(line)
             continue
         
         if in_code_block:
-            output.append(line)
-            i += 1
+            translated_lines.append(line)
             continue
-       # Procesar línea normal
-        if should_translate(line):
-            if line.startswith(("* ", "- ", "+ ")):
-                # Para elementos de lista
-                marker = line[:2]
-                content = line[2:]
-                if content.strip():
-                    try:
-                        translated_content = translate_text(content.strip())
-                        if translated_content:
-                            output.append(f"{marker}{translated_content}")
-                        else:
-                            output.append(line)
-                    except Exception:
-                        output.append(line)
-                else:
-                    output.append(line)
-            elif line.strip():
-                # Para texto normal
-                try:
-                    translated_line = translate_text(line.strip())
-                    if translated_line:
-                        output.append(translated_line)
-                    else:
-                        output.append(line)
-                except Exception:
-                    output.append(line)
-            else:
-                output.append(line)
-        else:
-            output.append(line)
         
-        i += 1
-    
-    # Asegurarse de que todos los elementos sean strings
-    cleaned_output = []
-    for item in output:
-        if item is None:
-            cleaned_output.append("")
+        # Detectar tablas
+        if TABLE_BLOCK.match(line.rstrip()):
+            in_table = not in_table
+            translated_lines.append(line)
+            continue
+        
+        if in_table:
+            translated_lines.append(line)
+            continue
+        
+        # Verificar si la línea debe ser traducida
+        if not should_translate_line(line):
+            translated_lines.append(line)
+            continue
+        
+        # Extraer texto traducible
+        prefix, text, suffix = extract_translatable_text(line)
+        
+        if text:
+            try:
+                translated_text = translate_text(text)
+                if translated_text:
+                    translated_lines.append(prefix + translated_text + suffix)
+                else:
+                    translated_lines.append(line)
+            except Exception as e:
+                print(f"  Error en línea {i+1}: {str(e)[:50]}")
+                translated_lines.append(line)
         else:
-            cleaned_output.append(str(item))
+            translated_lines.append(line)
     
-    return "\n".join(cleaned_output)
+    return '\n'.join(translated_lines)
 
 def process_file(src_file: Path, dst_file: Path):
     """Procesa un archivo .adoc individual"""
@@ -183,24 +212,46 @@ def process_file(src_file: Path, dst_file: Path):
         # Leer contenido
         text = src_file.read_text(encoding="utf-8")
         
+        # Verificar si el archivo tiene contenido
+        if not text.strip():
+            print(f"  Archivo vacío, copiando sin cambios")
+            dst_file.parent.mkdir(parents=True, exist_ok=True)
+            dst_file.write_text(text, encoding="utf-8")
+            return
+        
         # Traducir
+        print(f"  Traduciendo {len(text)} caracteres...")
         translated_text = translate_adoc(text)
         
         # Escribir archivo traducido
         dst_file.parent.mkdir(parents=True, exist_ok=True)
         dst_file.write_text(translated_text, encoding="utf-8")
         
-        print(f"  Traducido a {TARGET_LANG}: {dst_file}")
+        print(f"  ✓ Traducido a {TARGET_LANG}: {dst_file}")
+        
     except Exception as e:
-        print(f"  ERROR procesando {src_file}: {e}")
+        print(f"  ✗ ERROR procesando {src_file}: {str(e)}")
         # Copiar el archivo original si hay error
         dst_file.parent.mkdir(parents=True, exist_ok=True)
-        dst_file.write_text(src_file.read_text(encoding="utf-8"), encoding="utf-8")
+        try:
+            dst_file.write_text(src_file.read_text(encoding="utf-8"), encoding="utf-8")
+        except:
+            dst_file.write_text("")
 
 # Procesar todos los archivos .adoc
-for src_file in SRC_ROOT.rglob("*.adoc"):
+adoc_files = list(SRC_ROOT.rglob("*.adoc"))
+print(f"\nEncontrados {len(adoc_files)} archivos .adoc para traducir")
+
+for i, src_file in enumerate(adoc_files, 1):
     relative_path = src_file.relative_to(SRC_ROOT)
     dst_file = DST_ROOT / relative_path
+    
+    print(f"\n[{i}/{len(adoc_files)}] ", end="")
     process_file(src_file, dst_file)
+    
+    # Pausa ocasional para evitar sobrecargar la API
+    if i % 10 == 0:
+        print("  Pausando 2 segundos...")
+        time.sleep(2)
 
 print(f"\nTraducción completada. Archivos {TARGET_LANG} guardados en: {DST_ROOT}")
