@@ -128,14 +128,17 @@ jobs:
       - name: Crear releases por idioma
         run: |
           echo "Creando releases separados por idioma..."
-                   
+          ESPImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ESP.png"
+          ENGImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ENG.png"
+          DEImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_DE.png"
+
           # Crear release para Inglés
           ENG_FILES=$(ls pdf/ENG_*.pdf 2>/dev/null | tr '\n' ' ')
           if [ -n "$ENG_FILES" ]; then
             echo "Archivos ENG: $ENG_FILES"
             gh release create ENG $ENG_FILES \
-              --title "🔵 Documentación PDF English 📕" \
-              --notes "Automatically generated English documentation"
+              --title "🔵 DOCS PDF ENGLISH 📕" \
+              --notes "![Documentación Inglés]($ENGImg)"
           fi
           
           # Crear release para Alemán
@@ -143,8 +146,8 @@ jobs:
           if [ -n "$DE_FILES" ]; then
             echo "Archivos DE: $DE_FILES"
             gh release create DE $DE_FILES \
-              --title "🔵 Dokumentation PDF Deutsch 📕" \
-              --notes "Automatisch generierte deutsche Dokumentation"
+              --title "🔵 DOCS PDF DEUSTCH 📕" \
+              --notes "![Documentación Alemán]($DEImg)"
           fi
 
           # Crear release para Español
@@ -152,8 +155,8 @@ jobs:
           if [ -n "$ESP_FILES" ]; then
             echo "Archivos ESP: $ESP_FILES"
             gh release create ESP $ESP_FILES \
-              --title "🔵 Documentación PDF Español 📕" \
-              --notes "Documentación en español generada automáticamente"
+              --title "🔵 DOCS PDF ESPAÑOL 📕" \
+              --notes "![Documentación Español]($ESPImg)"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
