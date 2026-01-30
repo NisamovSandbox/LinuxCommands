@@ -15,7 +15,16 @@ DST_ROOT = Path(sys.argv[2])
 TARGET_LANG = sys.argv[3]
 DST_ROOT.mkdir(parents=True, exist_ok=True)
 
-translator = GoogleTranslator(source="auto", target=TARGET_LANG)
+# Mapeo de códigos de idioma para Google Translator
+LANG_MAP = {
+    'en': 'en',
+    'de': 'de',
+    'pt': 'pt',
+    'es': 'es'
+}
+
+target_lang_code = LANG_MAP.get(TARGET_LANG, TARGET_LANG)
+translator = GoogleTranslator(source="auto", target=target_lang_code)
 
 # Patrones más precisos
 CODE_BLOCK_DELIM = re.compile(r'^----\s*$')
@@ -220,7 +229,7 @@ def process_file(src_file: Path, dst_file: Path):
             return
         
         # Traducir
-        print(f"  Traduciendo {len(text)} caracteres...")
+        print(f"  Traduciendo {len(text)} caracteres a {TARGET_LANG}...")
         translated_text = translate_adoc(text)
         
         # Escribir archivo traducido

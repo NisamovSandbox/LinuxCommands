@@ -100,6 +100,17 @@ El objetivo es mantener una documentación coherente y de alta calidad.
 </details>
 
 ---
+<details open>
+<summary><strong>• TRADUCCIONES</strong></summary>
+<h1>Traducciones en los documentos</h1>
+
+El repositorio se adapta a diferentes lenguas mediante la automatización de la generación PDF.
+<p align="center">
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20Español-Descargar?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/EN"><img src="https://img.shields.io/badge/🇬🇧%20English-Download?style=flat&color=000000&labelColor=ffffff" /></a><img src="https://img.shields.io/badge/🇨🇳%20简体中文-即将推出?style=flat&color=cccccc&labelColor=f2f2f2" /><img src="https://img.shields.io/badge/🇷🇺%20Русский-Скоро?style=flat&color=cccccc&labelColor=f2f2f2" /><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20Deutsch-Herunterladen?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇧🇷%20Português-Em%20breve?style=flat&color=000000&labelColor=ffffff" /></a><img src="https://img.shields.io/badge/🇰🇷%20한국어-준비%20중?style=flat&color=cccccc&labelColor=f2f2f2" />
+</p>
+</details>
+
+---
 <p align="center">
   <a href="https://github.com/Nisamov/LinuxCommands/stargazers">
     <img src="https://img.shields.io/github/stars/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff" />
