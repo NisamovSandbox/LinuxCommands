@@ -96,6 +96,7 @@ Se pide tener en cuenta el [PULL_REQUEST_TEMPLATE](.github/PULL_REQUEST_TEMPLATE
 
 Las contribuciones son bienvenidas siempre que respeten el formato y la estructura definidos.  
 El objetivo es mantener una documentación coherente y de alta calidad.
+
 [![Crear Pull Request](https://img.shields.io/badge/Crear_Pull_Request-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nisamov/LinuxCommands/pulls)
 </details>
 

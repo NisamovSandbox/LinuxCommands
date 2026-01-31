@@ -17,14 +17,28 @@ DST_ROOT.mkdir(parents=True, exist_ok=True)
 
 # Mapeo de códigos de idioma para Google Translator
 LANG_MAP = {
-    'en': 'en',
-    'de': 'de',
-    'pt': 'pt',
-    'es': 'es'
+    'en': 'en',      # Inglés
+    'de': 'de',      # Alemán
+    'pt': 'pt',      # Portugués
+    'es': 'es',      # Español
+    'ru': 'ru',      # Ruso
+    'zh': 'zh-CN',   # Chino simplificado
+    'ko': 'ko',      # Coreano
+    'ja': 'ja'       # Japonés
 }
 
 target_lang_code = LANG_MAP.get(TARGET_LANG, TARGET_LANG)
-translator = GoogleTranslator(source="auto", target=target_lang_code)
+print(f"Traduciendo a {TARGET_LANG} (código: {target_lang_code})...")
+
+try:
+    translator = GoogleTranslator(source="auto", target=target_lang_code)
+    print(f"✓ Traductor inicializado para {target_lang_code}")
+except Exception as e:
+    print(f"✗ Error inicializando traductor: {e}")
+    print("Lenguajes soportados comunes:")
+    for key, value in LANG_MAP.items():
+        print(f"'{key}' -> '{value}'")
+    sys.exit(1)
 
 # Patrones más precisos
 CODE_BLOCK_DELIM = re.compile(r'^----\s*$')
@@ -149,11 +163,11 @@ def translate_text(text: str) -> str:
                 translated_chunks.append(chunk)
             
             # Pequeña pausa entre traducciones
-            time.sleep(0.2)
+            time.sleep(0.3)
         except Exception as e:
             print(f"  Error traduciendo texto: {str(e)[:100]}")
             translated_chunks.append(chunk)
-            time.sleep(1)  # Pausa más larga si hay error
+            time.sleep(2)  # Pausa más larga si hay error
     
     return '\n\n'.join(translated_chunks)
 
@@ -259,8 +273,8 @@ for i, src_file in enumerate(adoc_files, 1):
     process_file(src_file, dst_file)
     
     # Pausa ocasional para evitar sobrecargar la API
-    if i % 10 == 0:
-        print("  Pausando 2 segundos...")
-        time.sleep(2)
+    if i % 5 == 0:
+        print("  Pausando 3 segundos...")
+        time.sleep(3)
 
-print(f"\nTraducción completada. Archivos {TARGET_LANG} guardados en: {DST_ROOT}")
+print(f"\n✓ Traducción completada. Archivos {TARGET_LANG} guardados en: {DST_ROOT}")

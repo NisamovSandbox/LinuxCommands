@@ -37,9 +37,9 @@ jobs:
 
       - name: Crear directorios temporales y de PDFs
         run: |
-          mkdir -p tmp_en tmp_de tmp_pt tmp_ru tmp_zh tmp_ko pdf
+          mkdir -p tmp_en tmp_de tmp_pt tmp_ru tmp_zh tmp_ko tmp_ja pdf
           # Limpiar directorios previos
-          rm -rf tmp_en/* tmp_de/* tmp_pt/* tmp_ru/* tmp_zh/* tmp_ko/* pdf/*
+          rm -rf tmp_en/* tmp_de/* tmp_pt/* tmp_ru/* tmp_zh/* tmp_ko/* tmp_ja/* pdf/*
 
       - name: Listar y borrar tags
         run: |
@@ -76,7 +76,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Generar PDFs ESP, ENG, DE, PT, RU, ZH y KO
+      - name: Generar PDFs ESP, ENG, DE, PT, RU, ZH, KO y JA
         run: |
           set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
@@ -176,6 +176,20 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a coreano"
               fi
+              
+              # Japonés (NUEVO)
+              echo "Traduciendo a japonés..."
+              TMP_JA="tmp_ja/$MODULE"
+              mkdir -p "$TMP_JA"
+              cp -r "$MODULE/"* "$TMP_JA/" 2>/dev/null || true
+              python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_JA" ja
+              
+              if [ -f "$TMP_JA/index.adoc" ]; then
+                echo "Generando PDF Japonés..."
+                "$ASCIIDOCTOR" "$TMP_JA/index.adoc" -o "pdf/JA_${MODULE}.pdf"
+              else
+                echo "ERROR: No se pudo traducir $MODULE a japonés"
+              fi
             else
               echo "Saltando $MODULE - no es un módulo válido"
             fi
@@ -191,7 +205,17 @@ jobs:
           RUImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_RU.png"
           ZHImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ZH.png"
           KOImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_KO.png"
+          JAImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_JA.png"
 
+          # Crear release para Japonés
+          JA_FILES=$(ls pdf/JA_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$JA_FILES" ]; then
+            echo "Archivos JA: $JA_FILES"
+            gh release create JA $JA_FILES \
+              --title "🔵 PDF ドキュメント 📕" \
+              --notes "![Documentación Japonés]($JAImg)"
+          fi
+          
           # Crear release para Coreano
           KO_FILES=$(ls pdf/KO_*.pdf 2>/dev/null | tr '\n' ' ')
           if [ -n "$KO_FILES" ]; then
