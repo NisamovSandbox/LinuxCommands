@@ -25,4 +25,5 @@ Incluye tanto conceptos teóricos como ejemplos prácticos.
 - [ipfire](/networking/ipfire)
 - [iptables](/networking/iptables)
 - [local_network](/networking/local_network)
+- [theory](/networking/theory)
 <!-- AUTO-GENERATED-INDEX:END -->

@@ -2,17 +2,14 @@
 
 ---
 <p align="center">
-  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP">
-    <img src="https://img.shields.io/badge/🇪🇸%20ESPAÑOL-Descargar?style=flat-square&color=000000&labelColor=ffffff" />
-  </a>
-  &nbsp;
-  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG">
-    <img src="https://img.shields.io/badge/🇬🇧%20ENGLISH-Download?style=flat-square&color=000000&labelColor=ffffff" />
-  </a>
-  &nbsp;
-  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE">
-    <img src="https://img.shields.io/badge/🇩🇪%20DEUTSCH-Herunterladen?style=flat-square&color=000000&labelColor=ffffff" />
-  </a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20ESP-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG"><img src="https://img.shields.io/badge/🇬🇧%20ENG-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20DEU-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇵🇹%20POR-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/RU"><img src="https://img.shields.io/badge/🇷🇺%20RUS-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ZH"><img src="https://img.shields.io/badge/🇨🇳%20中文-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/KO"><img src="https://img.shields.io/badge/🇰🇷%20한국-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/JA"><img src="https://img.shields.io/badge/🇯🇵%20日本語-000?style=flat-square&logo=adobeacrobatreader" /></a>
 </p>
 
 # LinuxCommands
@@ -96,7 +93,18 @@ Se pide tener en cuenta el [PULL_REQUEST_TEMPLATE](.github/PULL_REQUEST_TEMPLATE
 Las contribuciones son bienvenidas siempre que respeten el formato y la estructura definidos.  
 El objetivo es mantener una documentación coherente y de alta calidad.
 
-> [Crear pull request](https://github.com/Nisamov/LinuxCommands/pulls)
+[![Crear Pull Request](https://img.shields.io/badge/Crear_Pull_Request-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Nisamov/LinuxCommands/pulls)
+</details>
+
+---
+<details open>
+<summary><strong>• TRADUCCIONES</strong></summary>
+<h1>Traducciones en los documentos</h1>
+
+El repositorio se adapta a diferentes lenguas mediante la automatización de la generación PDF.
+<p align="center">
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20Español-Descargar?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG"><img src="https://img.shields.io/badge/🇬🇧%20English-Download?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20Deutsch-Herunterladen?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇧🇷%20Português-Em%20breve?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/RU"><img src="https://img.shields.io/badge/🇷🇺%20Русский-Скоро?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ZH"><img src="https://img.shields.io/badge/🇨🇳%20简体中文-即将推出?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/KO"><img src="https://img.shields.io/badge/🇰🇷%20한국어-준비%20중?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/JA"><img src="https://img.shields.io/badge/🇯🇵%20日本語-準備中?style=flat&color=000000&labelColor=ffffff" /></a>
+</p>
 </details>
 
 ---

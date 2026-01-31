@@ -22,6 +22,8 @@ Para el 11/09/2025, durante el grado superior, se actualizó tanto el contenido 
 
 El 07/01/2026 se cambió la estructura del repositorio, estableciendo un estándar y mejorando el formato para facilitar la búsqueda de información.
 
+A partir del 19/01/2026 se comenzó a tratar de buscar un cambio en el repositorio, permitiendo así la idea de los idiomas, para el 31/01/2026, ya se habían incorporado más de 5 idiomas al repositorio.
+
 ## Apoyo Escolar
 
 Durante los estudios de grado medio, estos documentos (antes un único documento Word) se compartieron con gran parte de los compañeros de clase, ayudando a muchos a aprobar gracias a esta recopilación.
@@ -31,7 +33,6 @@ Durante los estudios de grado medio, estos documentos (antes un único documento
 Varias personas contribuyeron al repositorio, creando nuevas subcategorías y aumentando el contenido disponible. Entre ellos:
 
 - ⥏﹅⥑ [Andrés Abadías](https://github.com/Nisamov) – Creador del repositorio
-- ⥏﹆⥑ Unai Urrestarazu – Profesor (Grado Medio y Superior)
 - ⥏﹆⥑ Clara Cirac Nerín – Profesora (Grado Medio)
 - ⥏﹆⥑ Juan Palacios Pérez – Profesor (Grado Medio)
 - ⥏﹆⥑ Diego Gracía – Compañero de Clase (Grado Medio)

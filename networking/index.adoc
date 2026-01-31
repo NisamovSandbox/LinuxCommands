@@ -20,7 +20,7 @@ Este manual está pensado como guía de referencia para:
 * Usuarios técnicos en proceso de aprendizaje
 
 == Teoría
-include::theory.adoc[]
+include::theory/theory.adoc[]
 
 == Interfaces
 include::interfaces_net/interfaces.adoc[]
