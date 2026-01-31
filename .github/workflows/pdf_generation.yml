@@ -95,77 +95,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Crear tema personalizado para CJK
+      - name: Crear tema simple para CJK (opcional)
         run: |
-          cat > cjk-theme.yml << 'EOF'
-          extends: default
-          font:
-            catalog:
-              Noto Sans CJK SC:
-                normal: NotoSansCJKsc-Regular.ttc
-                bold: NotoSansCJKsc-Bold.ttc
-                italic: NotoSansCJKsc-Regular.ttc
-                bold_italic: NotoSansCJKsc-Bold.ttc
-              Noto Sans CJK TC:
-                normal: NotoSansCJKtc-Regular.ttc
-                bold: NotoSansCJKtc-Bold.ttc
-                italic: NotoSansCJKtc-Regular.ttc
-                bold_italic: NotoSansCJKtc-Bold.ttc
-              Noto Sans CJK JP:
-                normal: NotoSansCJKjp-Regular.otf
-                bold: NotoSansCJKjp-Bold.otf
-                italic: NotoSansCJKjp-Regular.otf
-                bold_italic: NotoSansCJKjp-Bold.otf
-              Noto Sans CJK KR:
-                normal: NotoSansCJKkr-Regular.otf
-                bold: NotoSansCJKkr-Bold.otf
-                italic: NotoSansCJKkr-Regular.otf
-                bold_italic: NotoSansCJKkr-Bold.otf
-              Noto Serif CJK SC:
-                normal: NotoSerifCJKsc-Regular.otf
-                bold: NotoSerifCJKsc-Bold.otf
-              Noto Serif CJK TC:
-                normal: NotoSerifCJKtc-Regular.otf
-                bold: NotoSerifCJKtc-Bold.otf
-              Noto Serif CJK JP:
-                normal: NotoSerifCJKjp-Regular.otf
-                bold: NotoSerifCJKjp-Bold.otf
-              Noto Serif CJK KR:
-                normal: NotoSerifCJKkr-Regular.otf
-                bold: NotoSerifCJKkr-Bold.otf
-            fallback:
-              - Noto Sans CJK SC
-              - Noto Sans CJK TC
-              - Noto Sans CJK JP
-              - Noto Sans CJK KR
-          base:
-            font-family: Noto Sans CJK SC
-          heading:
-            font-family: Noto Serif CJK SC
-          code:
-            font-family: Courier
-          literal:
-            font-family: Courier
-          conum:
-            font-family: Courier
-          EOF
-
-          cat > simple-cjk-theme.yml << 'EOF'
+          cat > default-cjk.yml << 'EOF'
           extends: default
           font:
             catalog:
               Noto Sans:
-                normal: NotoSans-Regular.ttf
-                bold: NotoSans-Bold.ttf
-                italic: NotoSans-Italic.ttf
-                bold_italic: NotoSans-BoldItalic.ttf
-              Noto Sans CJK:
-                normal: NotoSansCJK-Regular.ttc
-                bold: NotoSansCJK-Bold.ttc
+                normal: /usr/share/fonts/truetype/noto/NotoSans-Regular.ttf
+                bold: /usr/share/fonts/truetype/noto/NotoSans-Bold.ttf
+                italic: /usr/share/fonts/truetype/noto/NotoSans-Italic.ttf
+                bold_italic: /usr/share/fonts/truetype/noto/NotoSans-BoldItalic.ttf
             fallback:
-              - Noto Sans CJK
-          base:
-            font-family: Noto Sans
+              - Noto Sans
           EOF
 
       - name: Generar PDFs ESP, ENG, DE, PT, RU, ZH, KO y JA
@@ -255,7 +197,7 @@ jobs:
                 echo "ERROR: No se pudo traducir $MODULE a ruso"
               fi
               
-              # Chino (CON FUENTES CJK)
+              # Chino (con tema por defecto y fuentes CJK)
               echo "Traduciendo a chino..."
               TMP_ZH="tmp_zh/$MODULE"
               mkdir -p "$TMP_ZH"
@@ -263,18 +205,18 @@ jobs:
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_ZH" zh
               
               if [ -f "$TMP_ZH/index.adoc" ]; then
-                echo "Generando PDF Chino con fuentes CJK..."
+                echo "Generando PDF Chino con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_ZH/index.adoc" \
-                  -a pdf-theme=simple-cjk-theme.yml \
+                  -a pdf-theme=default \
                   -a pdf-fontsdir=/usr/share/fonts \
                   -a scripts=cjk \
-                  -a experimental \
+                  -a lang=zh \
                   -o "pdf/ZH_${MODULE}.pdf"
               else
                 echo "ERROR: No se pudo traducir $MODULE a chino"
               fi
               
-              # Coreano (CON FUENTES CJK)
+              # Coreano (con tema por defecto y fuentes CJK)
               echo "Traduciendo a coreano..."
               TMP_KO="tmp_ko/$MODULE"
               mkdir -p "$TMP_KO"
@@ -282,18 +224,18 @@ jobs:
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_KO" ko
               
               if [ -f "$TMP_KO/index.adoc" ]; then
-                echo "Generando PDF Coreano con fuentes CJK..."
+                echo "Generando PDF Coreano con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_KO/index.adoc" \
-                  -a pdf-theme=simple-cjk-theme.yml \
+                  -a pdf-theme=default \
                   -a pdf-fontsdir=/usr/share/fonts \
                   -a scripts=cjk \
-                  -a experimental \
+                  -a lang=ko \
                   -o "pdf/KO_${MODULE}.pdf"
               else
                 echo "ERROR: No se pudo traducir $MODULE a coreano"
               fi
               
-              # Japonés (CON FUENTES CJK)
+              # Japonés (con tema por defecto y fuentes CJK)
               echo "Traduciendo a japonés..."
               TMP_JA="tmp_ja/$MODULE"
               mkdir -p "$TMP_JA"
@@ -301,12 +243,12 @@ jobs:
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_JA" ja
               
               if [ -f "$TMP_JA/index.adoc" ]; then
-                echo "Generando PDF Japonés con fuentes CJK..."
+                echo "Generando PDF Japonés con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_JA/index.adoc" \
-                  -a pdf-theme=simple-cjk-theme.yml \
+                  -a pdf-theme=default \
                   -a pdf-fontsdir=/usr/share/fonts \
                   -a scripts=cjk \
-                  -a experimental \
+                  -a lang=ja \
                   -o "pdf/JA_${MODULE}.pdf"
               else
                 echo "ERROR: No se pudo traducir $MODULE a japonés"
@@ -318,11 +260,14 @@ jobs:
 
       - name: Verificar PDFs generados
         run: |
-          echo "Verificando PDFs generados"
+          echo "=== Verificando PDFs generados ==="
           ls -la pdf/
           echo ""
-          echo "Verificando fuentes instaladas"
+          echo "=== Verificando fuentes instaladas ==="
           fc-list | grep -i "noto\|cjk" | sort | uniq | head -30
+          echo ""
+          echo "=== Tamaño de PDFs ==="
+          du -h pdf/*.pdf
 
       - name: Crear releases por idioma
         run: |
@@ -342,7 +287,7 @@ jobs:
             echo "Archivos JA: $JA_FILES"
             gh release create JA $JA_FILES \
               --title "🔵 PDF ドキュメント 📕 (Con soporte de fuentes CJK)" \
-              --notes "![Documentación Japonés]($JAImg)
+              --notes "![Documentación Japonés]($JAImg)"
           fi
           
           # Crear release para Coreano
@@ -351,7 +296,7 @@ jobs:
             echo "Archivos KO: $KO_FILES"
             gh release create KO $KO_FILES \
               --title "🔵 PDF 문서 📕 (Con soporte de fuentes CJK)" \
-              --notes "![Documentación Coreano]($KOImg)
+              --notes "![Documentación Coreano]($KOImg)"
           fi
           
           # Crear release para Chino
@@ -360,7 +305,7 @@ jobs:
             echo "Archivos ZH: $ZH_FILES"
             gh release create ZH $ZH_FILES \
               --title "🔵 PDF 文档 📕 (Con soporte de fuentes CJK)" \
-              --notes "![Documentación Chino]($ZHImg)
+              --notes "![Documentación Chino]($ZHImg)"
           fi
           
           # Crear release para Ruso
