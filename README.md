@@ -13,7 +13,10 @@
 </p>
 
 # LinuxCommands
-[![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/commits)[![License](https://img.shields.io/github/license/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](LICENSE)[![Release](https://img.shields.io/github/v/release/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/releases)
+[![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff&label=ultima-actualizacion)](https://github.com/Nisamov/LinuxCommands/commits)[![License](https://img.shields.io/github/license/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff&label=licencia)](LICENSE)[![Visits](https://img.shields.io/endpoint?url=https://hits.dwyl.com/Nisamov/LinuxCommands.json&style=flat-square&color=000000&labelColor=ffffff&label=visitas)](https://github.com/Nisamov/LinuxCommands)
+<!--
+[![Release](https://img.shields.io/github/v/release/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/releases)
+-->
 
 ### Estructura y referencia para documentar comandos y servicios en Linux
 
