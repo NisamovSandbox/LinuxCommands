@@ -1,0 +1,252 @@
+=== chkconfig
+Gestionar servicios en sistemas basados en Red Hat con SysVinit (RHEL/CentOS 6 y anteriores).
+
+[source,bash]
+----
+# Listar servicios y sus niveles de ejecución
+chkconfig --list
+----
+
+-Listar servicios:: Ver estado de todos los servicios
+
+[source,bash]
+----
+# Ver todos los servicios
+chkconfig --list
+
+# Ver solo un servicio específico
+chkconfig --list httpd
+
+# Ver formato abreviado
+chkconfig
+----
+
+-Habilitar servicios:: Activar inicio automático
+
+[source,bash]
+----
+# Habilitar servicio en todos los niveles
+chkconfig servicio on
+
+# Habilitar en niveles específicos
+chkconfig --level 2345 servicio on
+
+# Habilitar múltiples niveles
+chkconfig --levels 35 servicio on
+----
+
+-Deshabilitar servicios:: Desactivar inicio automático
+
+[source,bash]
+----
+# Deshabilitar en todos los niveles
+chkconfig servicio off
+
+# Deshabilitar en niveles específicos
+chkconfig --level 016 servicio off
+
+# Deshabilitar sshd en modo gráfico (nivel 5)
+chkconfig --level 5 sshd off
+----
+
+-Niveles ejecución:: Runlevels tradicionales
+
+[source,bash]
+----
+# Niveles de ejecución:
+# 0 - Apagado
+# 1 - Modo monousuario/rescate
+# 2 - Multiusuario sin red
+# 3 - Multiusuario con red (modo texto)
+# 4 - Sin usar (personalizable)
+# 5 - Multiusuario con red y GUI
+# 6 - Reinicio
+
+# Ver servicios en nivel específico
+chkconfig --list | grep 3:on
+----
+
+-Agregar servicio:: Registrar nuevo servicio
+
+[source,bash]
+----
+# Agregar servicio al sistema
+chkconfig --add servicio
+
+# Esto agrega los links en /etc/rc.d/
+# Requiere script en /etc/init.d/servicio
+----
+
+-Eliminar servicio:: Remover del sistema
+
+[source,bash]
+----
+# Remover servicio del sistema
+chkconfig --del servicio
+
+# Elimina los links simbólicos de /etc/rc.d/
+# No elimina el script de /etc/init.d/
+----
+
+-Servicio específico:: Información detallada
+
+[source,bash]
+----
+# Ver niveles donde está activo un servicio
+chkconfig --list httpd
+
+# Salida típica:
+# httpd   0:off   1:off   2:on    3:on    4:on    5:on    6:off
+----
+
+-Override prioridad:: Cambiar orden de inicio
+
+[source,bash]
+----
+# Ver números S/K (Start/Kill) de un servicio
+ls -l /etc/rc.d/rc3.d/ | grep httpd
+
+# Los servicios se ejecutan en orden numérico
+# S10network se inicia antes que S85httpd
+# K90network se detiene antes que K15httpd
+----
+
+-Compatibilidad systemd:: En sistemas modernos
+
+[source,bash]
+----
+# En RHEL/CentOS 7+, chkconfig es un wrapper de systemctl
+# Estos comandos funcionan pero usan systemd por detrás:
+chkconfig httpd on    # Equivale a: systemctl enable httpd
+chkconfig httpd off   # Equivale a: systemctl disable httpd
+chkconfig --list httpd # Equivale a: systemctl is-enabled httpd
+----
+
+-Ejemplos prácticos:: Casos comunes
+
+[source,bash]
+----
+# Configurar servicio para iniciar en arranque
+chkconfig sshd on
+
+# Verificar estado de servicios de red
+chkconfig --list | grep -E "(network|sshd|iptables)"
+
+# Deshabilitar GUI en servidor
+chkconfig --level 5 gdm off
+chkconfig --level 5 kdm off
+chkconfig --level 5 lightdm off
+
+# Configurar niveles para servidor web
+chkconfig --level 2345 httpd on
+chkconfig --level 016 httpd off
+----
+
+-Scripts init.d:: Estructura requerida
+
+[source,bash]
+----
+# Un script de servicio debe tener:
+# 1. Cabecera de comentarios con chkconfig
+# 2. Funciones start, stop, restart, status, reload
+
+# Ejemplo de cabecera en /etc/init.d/miservicio:
+# chkconfig: 2345 85 15
+# description: Descripción del servicio
+
+# Donde:
+# 2345 = niveles donde se ejecuta
+# 85   = número S (start) - orden de inicio
+# 15   = número K (kill) - orden de detención
+----
+
+-Migración systemctl:: Comparación de comandos
+
+[source,bash]
+----
+# chkconfig -> systemctl
+chkconfig servicio on      -> systemctl enable servicio
+chkconfig servicio off     -> systemctl disable servicio
+chkconfig --list servicio -> systemctl is-enabled servicio
+chkconfig --list          -> systemctl list-unit-files --type=service
+
+# service -> systemctl
+service servicio start    -> systemctl start servicio
+service servicio stop     -> systemctl stop servicio
+service servicio restart  -> systemctl restart servicio
+service servicio status   -> systemctl status servicio
+----
+
+-Archivos configuración:: Rutas importantes
+
+[source,bash]
+----
+# Scripts de servicio
+/etc/init.d/servicio
+
+# Enlaces por nivel de ejecución
+/etc/rc.d/rc0.d/   # Nivel 0 (apagado)
+/etc/rc.d/rc1.d/   # Nivel 1 (rescate)
+/etc/rc.d/rc2.d/   # Nivel 2
+/etc/rc.d/rc3.d/   # Nivel 3 (texto)
+/etc/rc.d/rc4.d/   # Nivel 4
+/etc/rc.d/rc5.d/   # Nivel 5 (gráfico)
+/etc/rc.d/rc6.d/   # Nivel 6 (reinicio)
+
+# Archivo de configuración
+/etc/sysconfig/servicio  # Variables de entorno
+----
+
+-Solución problemas:: Troubleshooting común
+
+[source,bash]
+----
+# Si chkconfig --add falla:
+# 1. Verificar permisos del script
+chmod +x /etc/init.d/servicio
+
+# 2. Verificar cabecera chkconfig
+head -5 /etc/init.d/servicio
+
+# 3. Verificar sintaxis del script
+bash -n /etc/init.d/servicio
+
+# 4. Verificar enlaces
+ls -la /etc/rc.d/rc*.d/ | grep servicio
+
+# Servicio no aparece en --list
+chkconfig --add servicio
+chkconfig servicio on
+----
+
+-Comandos avanzados:: Opciones adicionales
+
+[source,bash]
+----
+# Sobrescribir configuración existente
+chkconfig --override servicio
+
+# Exportar configuración
+chkconfig --list > servicios_backup.txt
+
+# Importar configuración (reconstruir enlaces)
+for svc in $(cat servicios_backup.txt | awk '{print $1}'); do
+    chkconfig --add $svc 2>/dev/null
+done
+----
+
+-Limitaciones:: Consideraciones importantes
+
+[source,bash]
+----
+# chkconfig NO inicia/detiene servicios, solo configura el arranque
+# Para controlar el servicio usar:
+service servicio start   # O: /etc/init.d/servicio start
+
+# No funciona con servicios de systemd nativos
+# En RHEL 7+ usar systemctl para servicios nativos
+
+# No muestra servicios deshabilitados por defecto
+chkconfig --list        # Solo muestra servicios con scripts
+----
+

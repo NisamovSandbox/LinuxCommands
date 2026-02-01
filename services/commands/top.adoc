@@ -1,0 +1,271 @@
+=== top
+Monitor interactivo de procesos en tiempo real.
+
+[source,bash]
+----
+# Iniciar top
+top
+----
+
+-Encabezado sistema:: Información general del sistema
+
+[source,bash]
+----
+# Línea 1: uptime, usuarios, load average
+# Línea 2: Procesos totales, ejecutando, dormidos, etc.
+# Línea 3: Uso de CPU (us, sy, ni, id, wa, hi, si, st)
+# Línea 4: Uso de memoria (total, libre, usada, buff/cache)
+# Línea 5: Uso de swap (total, libre, usada, disponible)
+----
+
+-Comandos interacción:: Teclas durante ejecución
+
+[source,bash]
+----
+# Actualizar pantalla inmediatamente
+Space
+
+# Cambiar delay de actualización (segundos)
+s luego número (ej: 2 para 2 segundos)
+
+# Mostrar/ocultar información de CPU
+1
+
+# Mostrar/ocultar núcleos individuales de CPU
+1 (alterna entre agregado e individual)
+----
+
+-Ordenación:: Cambiar criterio de orden
+
+[source,bash]
+----
+# Ordenar por uso de CPU (por defecto)
+P
+
+# Ordenar por uso de memoria
+M
+
+# Ordenar por tiempo de ejecución
+T
+
+# Ordenar por PID
+N
+
+# Ordenar por usuario
+O luego u
+
+# Alternar orden ascendente/descendente
+R
+----
+
+-Colores:: Personalizar colores
+
+[source,bash]
+----
+# Cambiar a modo color/mono
+Z
+
+# Alternar tema de colores
+z
+----
+
+-Procesos específicos:: Filtrar y mostrar
+
+[source,bash]
+----
+# Filtrar por usuario
+u luego nombre_usuario
+
+# Filtrar por comando
+o luego COMMAND=patrón
+
+# Mostrar procesos de todos los usuarios
+u luego Enter
+
+# Mostrar árbol de procesos
+V
+----
+
+-Campos personalizados:: Configurar columnas
+
+[source,bash]
+----
+# Agregar/remover columnas
+f
+
+# Cambiar orden de columnas
+< y > (con f seleccionado)
+
+# Campos comunes a agregar:
+# PPID (PID padre), NI (nice), PRI (prioridad)
+# %CPU, %MEM, TIME+, COMMAND
+----
+
+-Comandos proceso:: Acciones sobre procesos
+
+[source,bash]
+----
+# Enviar señal a proceso
+k luego PID
+
+# Reniciar proceso (cambiar nice)
+r luego PID y valor nice (-20 a 19)
+
+# Matar proceso
+k luego PID y señal (15=TERM, 9=KILL)
+
+# Suspender proceso (STOP/CONT)
+s luego PID (enviar señal SIGSTOP)
+----
+
+-Modo batch:: Para scripting
+
+[source,bash]
+----
+# Ejecutar top una vez y salir
+top -b -n 1
+
+# Guardar salida a archivo
+top -b -n 1 > procesos.txt
+
+# Ejecutar con delay específico
+top -b -d 2 -n 5
+
+# Mostrar solo ciertos procesos
+top -b -p PID1,PID2,PID3
+----
+
+-Opciones línea comandos:: Al iniciar
+
+[source,bash]
+----
+# Ordenar por memoria desde inicio
+top -o %MEM
+
+# Ocultar threads
+top -H
+
+# Mostrar comandos completos
+top -c
+
+# Actualizar cada 3 segundos
+top -d 3
+
+# Mostrar solo procesos de usuario
+top -u nombre_usuario
+----
+
+-Vista alternativa:: Pantallas especiales
+
+[source,bash]
+----
+# Mostrar vista de memoria
+m (alterna entre barra/porcentaje/texto)
+
+# Mostrar vista compacta de procesos
+l (alterna línea de carga)
+t (alterna líneas de CPU)
+----
+
+-Atajos teclado:: Comandos rápidos
+
+[source,bash]
+----
+# Salir de top
+q
+
+# Mostrar ayuda
+h
+
+# Mostrar número de comandos ejecutados
+c (alterna COMMAND vs línea completa)
+
+# Congelar/descongelar actualización
+s luego 0 (congela) o número (delay)
+
+# Forzar actualización inmediata
+Space
+----
+
+-Estados proceso:: Códigos en columna S
+
+[source,bash]
+----
+# D - Dormido ininterrumpido (disk sleep)
+# R - En ejecución (running)
+# S - Dormido (sleeping)
+# T - Detenido (stopped)
+# Z - Zombie
+# I - Idle (inactivo)
+
+# Ver con comando: pulsar t para detalles CPU
+----
+
+-Información threads:: Trabajar con hilos
+
+[source,bash]
+----
+# Mostrar threads como procesos separados
+H
+
+# Cuando está activo, cada hilo se muestra
+# como proceso independiente con mismo PID
+----
+
+-Seguridad:: Modo seguro
+
+[source,bash]
+----
+# Iniciar en modo seguro (sin comandos)
+top -s
+
+# Desde dentro de top, deshabilitar comandos
+# Cambia con 's' para comandos seguros
+----
+
+-Comandos múltiples:: Secuencias útiles
+
+[source,bash]
+----
+# Monitorear proceso específico continuamente
+top -p $(pgrep proceso)
+
+# Monitorear usuario específico con delay
+top -u www-data -d 5
+
+# Ver procesos con mucho CPU periódicamente
+watch -n 2 'top -b -n 1 | head -20'
+----
+
+-Personalización:: Guardar configuración
+
+[source,bash]
+----
+# Configurar y guardar preferencias
+# Dentro de top, hacer cambios y luego:
+W (escribe configuración a ~/.toprc)
+
+# Cargar configuración personalizada
+top -c
+
+# Usar archivo de configuración específico
+top -c -C ~/mi_toprc
+----
+
+-Combinaciones útiles:: Para troubleshooting
+
+[source,bash]
+----
+# Top 10 procesos por CPU
+top -b -n 1 -o %CPU | head -17
+
+# Top 10 procesos por memoria
+top -b -n 1 -o %MEM | head -17
+
+# Ver solo procesos del sistema
+top -b -n 1 -u root | head -20
+
+# Monitorear servicio específico
+top -p $(systemctl show -p MainPID nginx | cut -d= -f2)
+----
+

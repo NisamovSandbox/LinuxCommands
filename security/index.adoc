@@ -1,4 +1,4 @@
-= Software
+= Seguridad
 :toc:
 :toclevels: 3
 :icons: font
@@ -22,25 +22,14 @@ Este manual está pensado como guía de referencia para:
 == Teoría
 include::theory/theory.adoc[]
 
-== Gestión de paquetes Debian / Ubuntu
-include::commands/apt.adoc[]
-include::commands/dpkg.adoc[]
+== Canales de comunicación segura
+include::secure_channels/theory.adoc[]
+include::secure_channels/secure_channel_ssh/theory.adoc[]
+include::secure_channels/secure_channel_ftp/theory.adoc[]
 
-== Gestión de paquetes Red Hat / Fedora
-include::commands/dnf.adoc[]
-include::commands/yum.adoc[]
-include::commands/rpm.adoc[]
-
-== Gestión de paquetes Arch Linux
-include::commands/pacman.adoc[]
-
-== Gestión de paquetes SUSE
-include::commands/zypper.adoc[]
-
-== Gestión de paquetes Alpine
-include::commands/apk.adoc[]
-
-== Paquetes universales / multiplataforma
-include::commands/flatpak.adoc[]
-include::commands/snap_snapctl.adoc[]
+== Seguridad en red
+include::network_security/fail2ban/theory.adoc[]
+include::network_security/firewall_ufw/theory.adoc[]
+include::network_security/openvpn/theory.adoc[]
+include::network_security/proxy_squid/theory.adoc[]
 

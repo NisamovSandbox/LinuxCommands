@@ -1,0 +1,110 @@
+=== systemd-analyze
+Analizar y depurar el rendimiento de arranque de systemd.
+
+[source,bash]
+----
+# Ver tiempo total de arranque
+systemd-analyze time
+----
+
+-Tiempos arranque:: Medición del inicio
+
+[source,bash]
+----
+# Ver tiempo total del arranque
+systemd-analyze time
+
+# Ver desglose por fase
+systemd-analyze critical-chain
+
+# Ver tiempo desde arranque anterior
+systemd-analyze time --since=$(uptime -s)
+----
+
+-Servicios lentos:: Identificar cuellos de botella
+
+[source,bash]
+----
+# Ver servicios más lentos al arrancar
+systemd-analyze blame
+
+# Ver top 10 servicios más lentos
+systemd-analyze blame | head -10
+
+# Excluir servicios del kernel
+systemd-analyze blame --no-pager
+----
+
+-Gráficos:: Visualización del arranque
+
+[source,bash]
+----
+# Generar gráfico de dependencias SVG
+systemd-analyze dot | dot -Tsvg > arranque.svg
+
+# Generar gráfico específico
+systemd-analyze plot > tiempos.png
+
+# Ver gráfico de arranque
+systemd-analyze plot --no-pager
+----
+
+-Depuración:: Análisis detallado
+
+[source,bash]
+----
+# Verificar archivos de unidad
+systemd-analyze verify unidad.service
+
+# Comprobar sintaxis de todas las unidades
+systemd-analyze verify /etc/systemd/system/*.service
+
+# Analizar ruta de arranque
+systemd-analyze critical-chain unidad.target
+----
+
+-Logs arranque:: Registros del inicio
+
+[source,bash]
+----
+# Ver logs del último arranque
+systemd-analyze dump
+
+# Exportar logs completos
+systemd-analyze dump > arranque.log
+
+# Filtrar por tiempo
+systemd-analyze dump | grep "time>"
+----
+
+-Comandos rápidos:: Uso común
+
+[source,bash]
+----
+# Resumen completo
+systemd-analyze
+
+# Solo ver tiempos
+systemd-analyze time
+
+# Solo servicios lentos
+systemd-analyze blame
+
+# Solo cadena crítica
+systemd-analyze critical-chain
+----
+
+-Casos práctico:: Ejemplos reales
+
+[source,bash]
+----
+# Ver qué retrasa el inicio
+systemd-analyze blame | head -5
+
+# Comprobar configuración de un servicio
+systemd-analyze verify nginx.service
+
+# Ver orden de inicio
+systemd-analyze dot | grep -A5 -B5 "nginx"
+----
+

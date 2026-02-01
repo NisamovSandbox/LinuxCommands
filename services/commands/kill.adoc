@@ -1,0 +1,171 @@
+=== kill
+Enviar señales a procesos para modificar su comportamiento o terminarlos.
+
+[source,bash]
+----
+# Enviar señal por defecto (SIGTERM) a un proceso
+kill PID
+----
+
+-PID:: Especificar proceso por ID
+
+[source,bash]
+----
+# Terminar proceso con PID 1234
+kill 1234
+
+# Terminar varios procesos
+kill 1234 5678 9012
+----
+
+-Señales:: Especificar señal diferente a SIGTERM
+
+[source,bash]
+----
+# Enviar señal específica usando número
+kill -9 PID        # SIGKILL (terminación forzada)
+kill -15 PID       # SIGTERM (terminación amigable)
+kill -1 PID        # SIGHUP (recargar configuración)
+kill -2 PID        # SIGINT (interrupción desde teclado)
+----
+
+-Nombre señal:: Usar nombre de señal
+
+[source,bash]
+----
+# Enviar señal por nombre (sin SIG)
+kill -KILL PID     # Equivalente a kill -9
+kill -TERM PID     # Equivalente a kill -15
+kill -HUP PID      # Recargar proceso
+kill -STOP PID     # Pausar proceso
+kill -CONT PID     # Continuar proceso pausado
+----
+
+-Listar señales:: Mostrar todas las señales disponibles
+
+[source,bash]
+----
+# Ver lista completa de señales con números
+kill -l
+
+# Ver formato específico
+kill -L
+----
+
+-PGID:: Enviar señal a grupo de procesos
+
+[source,bash]
+----
+# Enviar señal a todos los procesos del grupo
+kill -TERM -PGID
+
+# Ejemplo: terminar todos procesos del grupo 12345
+kill -TERM -12345
+----
+
+-Todos procesos:: Enviar señal a múltiples procesos por nombre
+
+[source,bash]
+----
+# Terminar todos los procesos llamados "firefox"
+killall firefox
+
+# Forzar terminación de todos los procesos "nginx"
+killall -9 nginx
+----
+
+-Por nombre exacto:: kill con pkill
+
+[source,bash]
+----
+# Enviar señal a procesos que coincidan con patrón
+pkill python      # Enviar SIGTERM a procesos "python"
+pkill -9 chrome   # Forzar terminación de procesos "chrome"
+
+# Enviar señal específica
+pkill -HUP nginx  # Recargar configuración de nginx
+----
+
+-Por usuario:: Enviar señal a procesos de usuario específico
+
+[source,bash]
+----
+# Terminar todos los procesos del usuario "www-data"
+pkill -u www-data
+
+# Forzar terminación de procesos del usuario 1001
+pkill -9 -u 1001
+----
+
+-Filtrar por comando:: Buscar y terminar procesos específicos
+
+[source,bash]
+----
+# Buscar PID de procesos y luego terminar
+pgrep apache2    # Listar PIDs de procesos apache2
+kill $(pgrep apache2)  # Enviar SIGTERM a todos
+
+# En una sola línea
+pkill apache2
+----
+
+-Señal personalizada:: Enviar señal definida por usuario
+
+[source,bash]
+----
+# Señales definidas por usuario (SIGUSR1, SIGUSR2)
+kill -USR1 PID    # Señal 10 - Para comunicación entre procesos
+kill -USR2 PID    # Señal 12 - Para comunicación entre procesos
+----
+
+-Verificación:: Confirmar que la señal fue recibida
+
+[source,bash]
+----
+# Verificar si proceso aún existe después de kill
+kill -0 PID       # Envía señal 0 (no hace nada)
+                 # Retorna 0 si proceso existe, 1 si no
+
+# Uso común en scripts
+if kill -0 1234 2>/dev/null; then
+    echo "Proceso 1234 aún está vivo"
+else
+    echo "Proceso 1234 no existe"
+fi
+----
+
+-Múltiples señales:: Secuencia de señales común
+
+[source,bash]
+----
+# Primero intentar terminación amigable, luego forzada
+kill -15 PID
+sleep 2
+kill -9 PID      # Solo si aún existe después de 2 segundos
+----
+
+-Programar terminación:: Enviar señal después de tiempo
+
+[source,bash]
+----
+# Programar terminación en 5 minutos
+sleep 300 && kill PID
+
+# Usar timeout command (mejor práctica)
+timeout 5s comando_largo  # Termina después de 5 segundos
+----
+
+-Ejemplos comunes:: Casos de uso frecuentes
+
+[source,bash]
+----
+# Recargar demonio sin reiniciar
+kill -HUP $(cat /var/run/nginx.pid)
+
+# Terminar proceso hijo específico
+kill -TERM CHILD_PID
+
+# Limpiar procesos zombies (no recomendado kill directo)
+# Los zombies se eliminan cuando el padre llama wait()
+----
+

@@ -1,0 +1,324 @@
+=== systemctl
+Controlar y gestionar el sistema y servicios de systemd.
+
+[source,bash]
+----
+# Ver estado del sistema
+systemctl status
+----
+
+-Gestión de servicios:: Comandos básicos para servicios
+
+[source,bash]
+----
+# Iniciar un servicio
+systemctl start servicio
+
+# Detener un servicio
+systemctl stop servicio
+
+# Reiniciar un servicio
+systemctl restart servicio
+
+# Recargar configuración (sin reiniciar)
+systemctl reload servicio
+
+# Ver estado de un servicio
+systemctl status servicio
+----
+
+-Habilitación servicios:: Controlar inicio automático
+
+[source,bash]
+----
+# Habilitar inicio automático al arranque
+systemctl enable servicio
+
+# Deshabilitar inicio automático
+systemctl disable servicio
+
+# Ver si está habilitado
+systemctl is-enabled servicio
+
+# Habilitar e iniciar inmediatamente
+systemctl enable --now servicio
+----
+
+-Máscara servicios:: Bloquear servicios
+
+[source,bash]
+----
+# Enmascarar (bloquear completamente) un servicio
+systemctl mask servicio
+
+# Desenmascarar un servicio
+systemctl unmask servicio
+
+# Listar servicios enmascarados
+systemctl list-unit-files --state=masked
+----
+
+-Listar servicios:: Ver todos los servicios
+
+[source,bash]
+----
+# Listar todas las unidades de servicio
+systemctl list-units --type=service
+
+# Listar servicios activos
+systemctl list-units --type=service --state=active
+
+# Listar servicios fallidos
+systemctl list-units --type=service --state=failed
+
+# Listar todos los archivos de servicio
+systemctl list-unit-files --type=service
+----
+
+-Sistema completo:: Gestión del sistema
+
+[source,bash]
+----
+# Apagar el sistema
+systemctl poweroff
+
+# Reiniciar el sistema
+systemctl reboot
+
+# Suspender el sistema
+systemctl suspend
+
+# Hibernar el sistema
+systemctl hibernate
+
+# Bloquear (suspender a RAM)
+systemctl hybrid-sleep
+----
+
+-Modo rescate:: Cambiar modo de ejecución
+
+[source,bash]
+----
+# Cambiar a modo rescate (single user)
+systemctl rescue
+
+# Cambiar a modo multi-usuario
+systemctl isolate multi-user.target
+
+# Cambiar a modo gráfico
+systemctl isolate graphical.target
+
+# Establecer target por defecto
+systemctl set-default multi-user.target
+----
+
+-Journal logs:: Ver registros del sistema
+
+[source,bash]
+----
+# Ver logs de un servicio específico
+journalctl -u servicio
+
+# Seguir logs en tiempo real
+journalctl -u servicio -f
+
+# Ver logs desde el último arranque
+journalctl -b
+
+# Ver logs con prioridad de error
+journalctl -p err
+----
+
+-Propiedades servicio:: Información detallada
+
+[source,bash]
+----
+# Mostrar todas las propiedades de un servicio
+systemctl show servicio
+
+# Mostrar valor específico
+systemctl show -p ActiveState servicio
+systemctl show -p MainPID servicio
+
+# Ver dependencias
+systemctl list-dependencies servicio
+----
+
+-Archivos unidad:: Gestión de archivos .service
+
+[source,bash]
+----
+# Recargar cambios en archivos .service
+systemctl daemon-reload
+
+# Ver ruta del archivo de unidad
+systemctl cat servicio
+
+# Editar temporalmente una unidad
+systemctl edit --full servicio
+
+# Ver configuración drop-in
+systemctl edit servicio
+----
+
+-Temporizadores:: Gestionar timers (cron de systemd)
+
+[source,bash]
+----
+# Listar temporizadores
+systemctl list-timers
+
+# Listar temporizadores próximos a ejecutarse
+systemctl list-timers --all --next
+
+# Ver estado de un temporizador
+systemctl status timer.timer
+
+# Activar un temporizador manualmente
+systemctl start timer.timer
+----
+
+-Sockets:: Gestionar sockets de systemd
+
+[source,bash]
+----
+# Listar sockets
+systemctl list-sockets
+
+# Ver estado de un socket
+systemctl status socket.socket
+
+# Activar un socket
+systemctl start socket.socket
+----
+
+-Montajes:: Gestionar montajes de systemd
+
+[source,bash]
+----
+# Listar montajes
+systemctl list-units --type=mount
+
+# Montar unidad manualmente
+systemctl start mnt-datos.mount
+
+# Ver estado de montaje
+systemctl status mnt-backup.mount
+----
+
+-Modo mantenimiento:: Funciones administrativas
+
+[source,bash]
+----
+# Ver si el sistema necesita reinicio
+systemctl is-system-running
+
+# Forzar recarga de toda la configuración
+systemctl daemon-reexec
+
+# Limpiar unidades fallidas
+systemctl reset-failed
+
+# Verificar sintaxis de archivo .service
+systemd-analyze verify /etc/systemd/system/servicio.service
+----
+
+-Operaciones por usuario:: Servicios de usuario
+
+[source,bash]
+----
+# Gestionar servicios de usuario (con --user)
+systemctl --user start servicio
+systemctl --user enable servicio
+systemctl --user status servicio
+
+# Ver servicios de usuario
+systemctl --user list-units
+----
+
+-Targets:: Gestionar targets (runlevels)
+
+[source,bash]
+----
+# Ver target actual
+systemctl get-default
+
+# Listar todos los targets disponibles
+systemctl list-unit-files --type=target
+
+# Cambiar a target específico
+systemctl isolate nombre.target
+
+# Ver target activo
+systemctl list-units --type=target --state=active
+----
+
+-Análisis sistema:: Diagnóstico y análisis
+
+[source,bash]
+----
+# Ver tiempo de arranque
+systemd-analyze time
+
+# Ver cadena de arranque
+systemd-analyze critical-chain
+
+# Ver servicios que retrasan el arranque
+systemd-analyze blame
+
+# Generar gráfico de dependencias
+systemd-analyze dot | dot -Tsvg > arranque.svg
+----
+
+-Ejemplos comunes:: Casos de uso frecuentes
+
+[source,bash]
+----
+# Reiniciar red
+systemctl restart NetworkManager
+systemctl restart networking
+
+# Recargar firewall
+systemctl reload firewalld
+
+# Gestionar servidor web
+systemctl status nginx
+systemctl reload nginx
+systemctl enable --now nginx
+
+# Ver servicios fallidos y solucionar
+systemctl --failed
+systemctl restart servicio-fallido
+journalctl -u servicio-fallido
+----
+
+-Auto-completado:: Comandos útiles
+
+[source,bash]
+----
+# Usar tabulación para autocompletar
+systemctl status nginx[TAB]
+systemctl start ssh[TAB]
+
+# Listar servicios que coincidan
+systemctl list-units --type=service '*apache*'
+----
+
+-Scripts administración:: Uso en scripts
+
+[source,bash]
+----
+# Verificar si servicio está activo
+if systemctl is-active --quiet servicio; then
+    echo "Servicio está corriendo"
+fi
+
+# Esperar a que servicio esté activo
+systemctl start servicio && systemctl is-active --quiet servicio
+
+# Ejecutar acción solo si servicio está inactivo
+if ! systemctl is-active servicio; then
+    systemctl start servicio
+fi
+----
+

@@ -1,0 +1,83 @@
+=== update-rc.d
+Gestionar enlaces de inicio en sistemas Debian/Ubuntu con SysVinit.
+
+[source,bash]
+----
+# Ver información de un servicio
+update-rc.d servicio defaults
+----
+
+-Habilitar servicio:: Activar inicio automático
+
+[source,bash]
+----
+# Habilitar con prioridades por defecto
+update-rc.d apache2 defaults
+
+# Habilitar con prioridades específicas
+update-rc.d servicio start 20 2 3 4 5 . stop 80 0 1 6 .
+
+# Habilitar solo en niveles específicos
+update-rc.d mysql start 20 2 3 4 5
+----
+
+-Deshabilitar servicio:: Remover del inicio
+
+[source,bash]
+----
+# Deshabilitar completamente
+update-rc.d -f servicio remove
+
+# Deshabilitar manteniendo scripts
+update-rc.d servicio remove
+
+# Deshabilitar en nivel específico
+update-rc.d servicio stop 20 0 1 6
+----
+
+-Opciones fuerza:: Override y forzar
+
+[source,bash]
+----
+# Forzar acción aunque haya conflictos
+update-rc.d -f servicio defaults
+
+# Solo mostrar qué haría (simulación)
+update-rc.d -n servicio defaults
+----
+
+-Prioridades:: Números S y K
+
+[source,bash]
+----
+# S = Start (inicio) - menor número = más pronto
+# K = Kill (parada)  - menor número = más tarde
+
+# Ejemplo: inicio temprano, parada tardía
+update-rc.d servicio start 10 2 3 4 5 . stop 90 0 1 6 .
+----
+
+-Compatibilidad:: Equivalente a chkconfig
+
+[source,bash]
+----
+# update-rc.d -> chkconfig
+update-rc.d srv defaults  = chkconfig --add srv
+update-rc.d srv remove    = chkconfig --del srv
+update-rc.d srv enable    = chkconfig srv on
+----
+
+-Resumen rápido:: Comandos comunes
+
+[source,bash]
+----
+# Habilitar servicio
+update-rc.d servicio defaults
+
+# Deshabilitar servicio  
+update-rc.d -f servicio remove
+
+# Ver enlaces actuales
+ls -la /etc/rc*.d/ | grep servicio
+----
+

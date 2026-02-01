@@ -1,0 +1,45 @@
+=== service
+Gestionar servicios en sistemas con SysVinit (alternativa a systemctl).
+
+[source,bash]
+----
+# Ver estado de un servicio
+service ssh status
+----
+
+-Comandos básicos:: Gestión tradicional de servicios
+
+[source,bash]
+----
+# Iniciar servicio
+service nginx start
+
+# Detener servicio
+service apache2 stop
+
+# Reiniciar servicio
+service mysql restart
+
+# Recargar configuración
+service haproxy reload
+
+# Verificar estado
+service postfix status
+----
+
+-Listar servicios:: Ver servicios disponibles
+
+[source,bash]
+----
+# Listar todos los servicios disponibles
+service --status-all
+
+# Listar servicios con estado
+service --status-all | grep +
+
+# Los símbolos indican estado:
+# [+] Servicio ejecutándose
+# [-] Servicio detenido
+# [?] Estado desconocido
+----
+

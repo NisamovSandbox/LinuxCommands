@@ -1,0 +1,65 @@
+=== journalctl
+Consultar y administrar los registros del sistema de systemd (journal).
+
+[source,bash]
+----
+# Ver todos los logs del sistema
+journalctl
+----
+
+-Logs servicio:: Ver logs de un servicio específico
+
+[source,bash]
+----
+# Ver logs de un servicio
+journalctl -u nginx.service
+
+# Seguir logs en tiempo real (como tail -f)
+journalctl -u apache2 -f
+
+# Ver logs desde el último arranque
+journalctl -u ssh -b
+
+# Ver logs de servicio con prioridad de error
+journalctl -u mysql -p err
+----
+
+-Filtros tiempo:: Filtrar por período de tiempo
+
+[source,bash]
+----
+# Ver logs desde ayer
+journalctl --since yesterday
+
+# Ver logs de las últimas 2 horas
+journalctl --since "2 hours ago"
+
+# Ver logs entre fechas específicas
+journalctl --since "2024-01-01" --until "2024-01-02"
+
+# Ver logs del arranque actual
+journalctl -b
+journalctl -b -1  # Arranque anterior
+----
+
+-Filtros prioridad:: Filtrar por nivel de severidad
+
+[source,bash]
+----
+# Ver solo errores
+journalctl -p err
+
+# Ver emergencias y alertas
+journalctl -p 0..2
+
+# Niveles disponibles:
+# 0: emerg (emergency)
+# 1: alert (alert)
+# 2: crit (critical)
+# 3: err (error)
+# 4: warning (warning)
+# 5: notice (notice)
+# 6: info (information)
+# 7: debug (debug)
+----
+

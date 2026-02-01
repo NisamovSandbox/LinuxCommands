@@ -25,20 +25,46 @@ include::raid/theory.adoc[]
 == Particiones
 include::partitions/theory.adoc[]
 
-== Copias de Seguridad
+== Copias de seguridad
 include::backup/theory.adoc[]
 include::backup/rsync/rsync.adoc[]
 include::backup/data_dump/data_dump.adoc[]
 
-== Comandos
+== Comandos generales de discos y particiones
 include::commands/blkid.adoc[]
 include::commands/cfdisk.adoc[]
 include::commands/df.adoc[]
 include::commands/fdisk.adoc[]
 include::commands/free.adoc[]
-include::commands/losetup.adoc[]
 include::commands/lsblk.adoc[]
-include::commands/lsof.adoc[]
+include::commands/mkfs.adoc[]
+include::commands/partx.adoc[]
+
+== Comandos de montaje y swap
+include::commands/mount.adoc[]
+include::commands/umount.adoc[]
+include::commands/mkswap.adoc[]
+include::commands/swapon.adoc[]
+include::commands/swapoff.adoc[]
+include::commands/resize2fs.adoc[]
+
+== Comandos LVM - volúmenes físicos
+include::commands/pvcreate.adoc[]
+include::commands/pvdisplay.adoc[]
+include::commands/pvs.adoc[]
+include::commands/pvremove.adoc[]
+
+== Comandos LVM - grupos de volúmenes
+include::commands/vgcreate.adoc[]
+include::commands/vgextend.adoc[]
+include::commands/vgdisplay.adoc[]
+include::commands/vgreduce.adoc[]
+include::commands/vgremove.adoc[]
+include::commands/vgs.adoc[]
+include::commands/vgscan.adoc[]
+include::commands/vgchange.adoc[]
+
+== Comandos LVM - volúmenes lógicos
 include::commands/lvcreate.adoc[]
 include::commands/lvdisplay.adoc[]
 include::commands/lvextend.adoc[]
@@ -48,24 +74,8 @@ include::commands/lvrename.adoc[]
 include::commands/lvresize.adoc[]
 include::commands/lvs.adoc[]
 include::commands/lvscan.adoc[]
-include::commands/mkfs.adoc[]
-include::commands/mkswap.adoc[]
-include::commands/mount.adoc[]
-include::commands/partx.adoc[]
-include::commands/pvcreate.adoc[]
-include::commands/pvdisplay.adoc[]
-include::commands/pvremove.adoc[]
-include::commands/pvs.adoc[]
-include::commands/resize2fs.adoc[]
-include::commands/swapoff.adoc[]
-include::commands/swapon.adoc[]
-include::commands/umount.adoc[]
-include::commands/vgchange.adoc[]
-include::commands/vgcreate.adoc[]
-include::commands/vgdisplay.adoc[]
-include::commands/vgreduce.adoc[]
-include::commands/vgremove.adoc[]
-include::commands/vgs.adoc[]
-include::commands/vgscan.adoc[]
-include::commands/vgsextend.adoc[]
+
+== Comandos especializados
+include::commands/losetup.adoc[]
+include::commands/lsof.adoc[]
 

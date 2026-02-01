@@ -1,0 +1,264 @@
+=== ps
+Mostrar información sobre procesos en ejecución (Process Status).
+
+[source,bash]
+----
+# Mostrar procesos del usuario actual
+ps
+----
+
+-Todos procesos:: Mostrar todos los procesos
+
+[source,bash]
+----
+# Mostrar todos los procesos (estilo BSD)
+ps aux
+
+# Mostrar todos los procesos (estilo UNIX)
+ps -ef
+----
+
+-Formato personalizado:: Seleccionar columnas específicas
+
+[source,bash]
+----
+# Mostrar PID, usuario, CPU, memoria y comando
+ps -eo pid,user,%cpu,%mem,comm
+
+# Mostrar con formato personalizado
+ps -eo pid,ppid,ni,pri,psr,pcpu,pmem,cmd
+----
+
+-Árbol procesos:: Mostrar jerarquía de procesos
+
+[source,bash]
+----
+# Mostrar procesos en formato árbol
+ps axjf
+ps -ef --forest
+
+# Mostrar árbol de un proceso específico
+ps -f --ppid PID --forest
+----
+
+-Hilos:: Mostrar hilos (threads)
+
+[source,bash]
+----
+# Mostrar todos los hilos
+ps -eLf
+
+# Mostrar hilos de un proceso específico
+ps -T -p PID
+----
+
+-Filtro por usuario:: Mostrar procesos de usuario específico
+
+[source,bash]
+----
+# Mostrar procesos del usuario "www-data"
+ps -u www-data
+
+# Mostrar procesos de múltiples usuarios
+ps -u root,www-data,postgres
+----
+
+-Filtro por comando:: Buscar procesos por nombre
+
+[source,bash]
+----
+# Buscar procesos de "nginx"
+ps -C nginx
+
+# Buscar con grep (evitar autoreferencia)
+ps aux | grep [n]ginx
+----
+
+-Filtro por terminal:: Procesos asociados a terminal
+
+[source,bash]
+----
+# Procesos de la terminal actual
+ps -t $(tty)
+
+# Procesos de terminal específica
+ps -t tty1
+ps -t pts/0
+----
+
+-Estado proceso:: Filtrar por estado
+
+[source,bash]
+----
+# Mostrar solo procesos en ejecución (Running)
+ps -r
+
+# Mostrar solo procesos dormidos (Sleeping)
+ps -s
+
+# Mostrar procesos zombie
+ps aux | grep 'Z'
+----
+
+-Memoria y CPU:: Ordenar por uso de recursos
+
+[source,bash]
+----
+# Ordenar por uso de CPU (descendente)
+ps aux --sort=-%cpu | head -10
+
+# Ordenar por uso de memoria (descendente)
+ps aux --sort=-%mem | head -10
+
+# Ordenar por tiempo de CPU
+ps aux --sort=-time
+----
+
+-Prioridad:: Información de prioridad y nice
+
+[source,bash]
+----
+# Mostrar valor nice y prioridad
+ps -eo pid,ni,pri,comm
+
+# NI: Nice value (-20 a 19)
+# PRI: Prioridad del kernel (menor = más prioridad)
+----
+
+-Contadores de recursos:: Uso acumulado de recursos
+
+[source,bash]
+----
+# Mostrar tiempo total de CPU
+ps -eo pid,comm,cputime
+
+# Mostrar tiempo desde inicio
+ps -eo pid,comm,etime
+----
+
+-PID y PPID:: Relaciones padre-hijo
+
+[source,bash]
+----
+# Mostrar PID y PPID (Parent PID)
+ps -eo pid,ppid,comm
+
+# Buscar padre de un proceso
+ps -o ppid= -p PID
+----
+
+-Grupo y sesión:: Información de agrupación
+
+[source,bash]
+----
+# Mostrar ID de sesión y grupo
+ps -eo pid,sid,pgrp,comm
+
+# SID: Session ID
+# PGRP: Process Group ID
+----
+
+-Contexto seguridad:: Información de seguridad
+
+[source,bash]
+----
+# Mostrar contexto SELinux/AppArmor
+ps -eo pid,label,comm
+
+# Mostrar usuario efectivo y real
+ps -eo pid,euser,ruser,comm
+----
+
+-Campos personalizados:: Crear salida personalizada
+
+[source,bash]
+----
+# Crear formato personalizado
+ps -eo pid,user:10,cmd:50
+
+# :10 = ancho de columna de 10 caracteres
+# Campos disponibles: ps -L para lista completa
+----
+
+-Modo batch:: Salida sin formato para scripts
+
+[source,bash]
+----
+# Salida sin cabeceras, separada por comas
+ps -eo pid,user,%cpu,%mem,comm --no-headers
+
+# Formato fácil de parsear
+ps -eo pid,comm,state --no-headers --separator=','
+----
+
+-Monitoreo continuo:: Similar a top
+
+[source,bash]
+----
+# Refrescar cada 2 segundos
+watch -n 2 'ps aux --sort=-%mem | head -20'
+
+# Usar en combinación con watch
+watch 'ps -eo pid,user,%cpu,%mem,comm --sort=-%cpu'
+----
+
+-Combinaciones útiles:: Ejemplos prácticos
+
+[source,bash]
+----
+# Top 10 procesos por memoria
+ps aux --sort=-%mem | head -11
+
+# Contar procesos por usuario
+ps -eo user | sort | uniq -c | sort -rn
+
+# Ver procesos de red
+ps -eo pid,user,cmd | grep -E "(nginx|apache|ssh)"
+
+# Ver procesos hijos de systemd
+ps -f --ppid 1
+----
+
+-Diagnóstico problemas:: Comandos de troubleshooting
+
+[source,bash]
+----
+# Procesos usando mucho CPU
+ps aux --sort=-%cpu | head -5
+
+# Procesos usando mucha memoria
+ps aux --sort=-%mem | head -5
+
+# Procesos zombie
+ps aux | awk '$8=="Z" {print}'
+
+# Procesos defunct
+ps aux | grep defunct
+----
+
+-Comparación estados:: Diferentes formatos de salida
+
+[source,bash]
+----
+# BSD vs System V
+ps aux    # BSD: a=all, u=user format, x=include no tty
+ps -ef    # System V: -e=all, -f=full format
+
+# Mostrar todas las opciones disponibles
+ps L      # Listar todos los campos disponibles
+----
+
+-Integración con otros comandos:: Pipelines comunes
+
+[source,bash]
+----
+# Buscar y matar procesos
+ps aux | grep [m]alware | awk '{print $2}' | xargs kill
+
+# Monitorear cambios en procesos
+while true; do clear; ps aux --sort=-%cpu | head -20; sleep 2; done
+
+# Exportar a archivo
+ps aux > procesos_$(date +%Y%m%d_%H%M%S).txt
+----
+

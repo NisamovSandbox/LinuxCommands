@@ -1,0 +1,289 @@
+=== initctl
+Gestionar servicios y trabajos (jobs) en sistemas con Upstart (Ubuntu 9.10-14.10, RHEL 6).
+
+[source,bash]
+----
+# Listar todos los trabajos y sus estados
+initctl list
+----
+
+-Listar trabajos:: Ver estado de todos los trabajos Upstart
+
+[source,bash]
+----
+# Ver todos los trabajos
+initctl list
+
+# Ver formato largo con detalles
+initctl list --long
+
+# Filtrar trabajos por estado
+initctl list | grep running
+initctl list | grep waiting
+----
+
+-Gestión trabajos:: Controlar trabajos individuales
+
+[source,bash]
+----
+# Iniciar un trabajo
+initctl start servicio
+
+# Detener un trabajo
+initctl stop servicio
+
+# Reiniciar un trabajo
+initctl restart servicio
+
+# Recargar configuración
+initctl reload servicio
+
+# Ver estado específico
+initctl status servicio
+----
+
+-Estados trabajo:: Estados posibles en Upstart
+
+[source,bash]
+----
+# Estados comunes:
+# waiting    - Esperando evento para iniciar
+# starting   - En proceso de inicio
+# pre-start  - Ejecutando script pre-start
+# spawned    - Proceso principal ejecutándose
+# post-start - Ejecutando script post-start
+# running    - En ejecución normal
+# pre-stop   - Ejecutando script pre-stop
+# stopping   - En proceso de detención
+# killed     - Proceso terminado
+# post-stop  - Ejecutando script post-stop
+
+# Ver transiciones de estado
+initctl status --verbose servicio
+----
+
+-Eventos:: Emitir y gestionar eventos
+
+[source,bash]
+----
+# Emitir un evento
+initctl emit evento
+
+# Emitir evento con variables de entorno
+initctl emit evento VARIABLE=valor
+
+# Eventos comunes del sistema:
+# startup        - Inicio del sistema
+# shutdown       - Apagado del sistema
+# runlevel [N]   - Cambio de nivel de ejecución
+# filesystem     - Sistemas de archivos montados
+# mounted        - Dispositivo montado
+# networking     - Red configurada
+----
+
+-Configuración:: Archivos de trabajo Upstart
+
+[source,bash]
+----
+# Archivos de configuración Upstart
+/etc/init/servicio.conf
+
+# Estructura típica:
+# description "Descripción"
+# author "Autor"
+# start on evento
+# stop on evento
+# script
+#   comando
+# end script
+
+# Ver configuración de un trabajo
+initctl show-config servicio
+----
+
+-Variables entorno:: Configurar entorno de trabajo
+
+[source,bash]
+----
+# Establecer variable de entorno
+initctl set-env VARIABLE=valor
+
+# Ver variables de entorno
+initctl get-env VARIABLE
+
+# Listar todas las variables
+initctl get-env
+
+# Limpiar variable
+initctl unset-env VARIABLE
+----
+
+-Niveles ejecución:: Gestión de runlevels
+
+[source,bash]
+----
+# Cambiar nivel de ejecución
+initctl runlevel NIVEL
+
+# Niveles disponibles:
+# 0 - Apagado
+# 1 - Modo rescate (S)
+# 2,3,4 - Multiusuario
+# 5 - Reinicio
+
+# Ver nivel actual
+runlevel
+who -r
+----
+
+-Logs:: Ver registros de Upstart
+
+[source,bash]
+----
+# Ver logs del sistema
+# Upstart usa syslog por defecto
+# En Ubuntu, también está en:
+/var/log/upstart/servicio.log
+
+# Ver logs específicos de trabajo
+tail -f /var/log/upstart/servicio.log
+
+# Configurar log en archivo de trabajo:
+# console log  # Envia a syslog
+# console none # Sin logging
+# console output  # Salida directa
+----
+
+-Trabajos predefinidos:: Trabajos del sistema
+
+[source,bash]
+----
+# Trabajos comunes del sistema:
+# tty1, tty2, ... - Consolas virtuales
+# rc-sysinit      - Inicialización del sistema
+# rc              - Scripts de runlevel
+# plymouth        - Pantalla de inicio
+# network-interface - Interfaces de red
+# mounted         - Sistema de archivos
+
+# Ver trabajos del sistema
+initctl list | grep -E "^(tty|rc|plymouth|network)"
+----
+
+-Migración systemd:: Equivalencias
+
+[source,bash]
+----
+# initctl -> systemctl
+initctl start servicio    -> systemctl start servicio
+initctl stop servicio     -> systemctl stop servicio
+initctl restart servicio  -> systemctl restart servicio
+initctl status servicio   -> systemctl status servicio
+initctl list             -> systemctl list-units --type=service
+
+# Archivos:
+# /etc/init/servicio.conf -> /etc/systemd/system/servicio.service
+----
+
+-Ejemplos prácticos:: Casos de uso
+
+[source,bash]
+----
+# Gestionar servicio de red
+initctl status networking
+initctl restart networking
+
+# Trabajar con consolas
+initctl start tty4
+initctl stop tty6
+
+# Servicio web
+initctl status nginx
+initctl reload nginx
+
+# Base de datos
+initctl restart mysql
+initctl status postgresql
+----
+
+-Compatibilidad SysVinit:: Trabajar con scripts antiguos
+
+[source,bash]
+----
+# Upstart puede ejecutar scripts SysVinit
+# Ubicados en /etc/init.d/
+
+# Iniciar script SysVinit
+service servicio start    # Usa compatibilidad
+
+# Verificar si es script SysVinit
+file /etc/init.d/servicio
+
+# Trabajos de compatibilidad:
+# rc-sysinit  - Maneja scripts /etc/rc.d/
+# rc          - Ejecuta scripts de runlevel
+----
+
+-Solución problemas:: Troubleshooting
+
+[source,bash]
+----
+# Trabajo atascado en "starting"
+initctl status servicio
+# Si está atascado:
+initctl stop servicio
+initctl start servicio
+
+# Ver logs detallados
+tail -f /var/log/syslog | grep upstart
+tail -f /var/log/upstart/servicio.log
+
+# Ver eventos recientes
+initctl log-priority    # Ver nivel de log
+initctl log-priority info  # Aumentar verbosidad
+
+# Releer configuración
+initctl reload-configuration
+----
+
+-Comandos avanzados:: Funcionalidades adicionales
+
+[source,bash]
+----
+# Ver versión de Upstart
+initctl version
+
+# Ver modo de operación
+initctl --help
+
+# Modo de compatibilidad
+initctl --system   # Modo sistema (por defecto)
+initctl --user     # Modo usuario (limitado)
+
+# Ver estado de sesión
+initctl --session
+
+# Depuración
+initctl --debug start servicio
+----
+
+-Archivos importantes:: Rutas del sistema
+
+[source,bash]
+----
+# Configuración Upstart
+/etc/init/                   # Trabajos del sistema
+/etc/init/servicio.conf     # Configuración por trabajo
+/etc/init/servicio.override # Overrides de configuración
+
+# Scripts
+/etc/init.d/                # Scripts SysVinit (compatibilidad)
+
+# Variables de entorno
+/var/lib/upstart/           # Variables persistentes
+
+# Logs
+/var/log/upstart/           # Logs específicos por trabajo
+/var/log/syslog             # Logs generales del sistema
+----
+

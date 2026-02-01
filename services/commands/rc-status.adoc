@@ -1,0 +1,94 @@
+=== rc-status
+Mostrar estado de servicios en sistemas con OpenRC.
+
+[source,bash]
+----
+# Ver estado general de servicios
+rc-status
+----
+
+-Estado general:: Vista completa del sistema
+
+[source,bash]
+----
+# Ver todo con estados
+rc-status
+
+# Ver solo servicios activos
+rc-status -s
+
+# Ver runlevels y dependencias
+rc-status -l
+----
+
+-Servicios caídos:: Detección de problemas
+
+[source,bash]
+----
+# Mostrar servicios caídos (crashed)
+rc-status --crashed
+
+# Ver servicios detenidos
+rc-status --stopped
+
+# Ver inactivos
+rc-status --inactive
+----
+
+-Listar todo:: Visión completa
+
+[source,bash]
+----
+# Ver todos los servicios instalados
+rc-status -a
+
+# Ver servicios por runlevel
+rc-status runlevel
+rc-status boot
+
+# Formato condensado
+rc-status -c
+----
+
+-Dependencias:: Relaciones entre servicios
+
+[source,bash]
+----
+# Ver árbol de dependencias
+rc-status --deps
+
+# Ver dependencias específicas
+rc-status --list-deps servicio
+
+# Ver orden de inicio
+rc-status --order
+----
+
+-Info detallada:: Más información
+
+[source,bash]
+----
+# Ver tiempos de inicio
+rc-status --time
+
+# Ver con formato extendido
+rc-status --verbose
+
+# Ver nombre completo del servicio
+rc-status --full
+----
+
+-Sintaxis simple:: Formas de uso
+
+[source,bash]
+----
+# Ver runlevel actual
+rc-status
+
+# Ver servicios de boot
+rc-status boot
+
+# Ver todo junto
+rc-status -a
+----
+

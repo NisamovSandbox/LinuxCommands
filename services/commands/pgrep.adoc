@@ -1,0 +1,216 @@
+=== pgrep
+Buscar procesos en ejecución basándose en su nombre u otros atributos y mostrar sus PIDs.
+
+[source,bash]
+----
+# Buscar procesos por nombre exacto
+pgrep bash
+----
+
+-Nombre proceso:: Buscar por nombre de comando
+
+[source,bash]
+----
+# Buscar todos los procesos llamados "nginx"
+pgrep nginx
+
+# Mostrar también el nombre del proceso
+pgrep -l nginx
+----
+
+-Coincidencia parcial:: Usar expresiones regulares
+
+[source,bash]
+----
+# Buscar procesos que contengan "python"
+pgrep -f python
+
+# Coincidir con patrón específico
+pgrep '^py.*'      # Procesos que empiecen con "py"
+----
+
+-Usuario:: Filtrar por usuario propietario
+
+[source,bash]
+----
+# Buscar procesos del usuario "www-data"
+pgrep -u www-data
+
+# Buscar procesos de múltiples usuarios
+pgrep -u root,www-data,postgres
+
+# Excluir procesos de un usuario específico
+pgrep -v -u nobody   # Procesos NO del usuario nobody
+----
+
+-Grupo:: Filtrar por grupo de proceso
+
+[source,bash]
+----
+# Buscar procesos del grupo "users"
+pgrep -G users
+
+# Buscar por GID (Group ID)
+pgrep -G 1000
+----
+
+-Terminal:: Filtrar por terminal asociada
+
+[source,bash]
+----
+# Buscar procesos asociados a terminal específica
+pgrep -t tty1
+pgrep -t pts/0
+
+# Buscar en múltiples terminales
+pgrep -t tty1,tty2,pts/0
+----
+
+-Padre:: Filtrar por proceso padre
+
+[source,bash]
+----
+# Buscar procesos hijos de un PID específico
+pgrep -P 1234
+
+# Buscar nietos (hijos de hijos)
+pgrep -P $(pgrep -P 1234)
+----
+
+-Sesión:: Filtrar por ID de sesión
+
+[source,bash]
+----
+# Buscar procesos de una sesión específica
+pgrep -s 12345
+----
+
+-Más reciente:: Obtener el proceso más reciente
+
+[source,bash]
+----
+# Obtener PID del proceso más reciente de "bash"
+pgrep -n bash
+
+# Obtener el más antiguo
+pgrep -o bash
+----
+
+-Conteo:: Solo contar procesos, no mostrar PIDs
+
+[source,bash]
+----
+# Contar cuántos procesos "apache2" hay en ejecución
+pgrep -c apache2
+----
+
+-Listar completo:: Mostrar información detallada
+
+[source,bash]
+----
+# Mostrar PID y nombre del comando completo
+pgrep -a nginx
+
+# Ejemplo de salida:
+# 1234 nginx: master process /usr/sbin/nginx
+# 1235 nginx: worker process
+----
+
+-Delimitar salida:: Especificar separador entre PIDs
+
+[source,bash]
+----
+# Separar PIDs con coma
+pgrep -d ',' sshd
+
+# Usar nueva línea (por defecto)
+pgrep -d $'\n' bash
+
+# Usar espacio
+pgrep -d ' ' cron
+----
+
+-Límites:: Establecer límite de resultados
+
+[source,bash]
+----
+# Mostrar solo los primeros 3 PIDs encontrados
+pgrep -l --limit 3 python
+----
+
+-Combinaciones:: Filtros complejos
+
+[source,bash]
+----
+# Buscar procesos de "nginx" del usuario "www-data"
+pgrep -u www-data nginx
+
+# Buscar procesos que NO sean de "bash" del usuario actual
+pgrep -v -u $USER bash
+
+# Buscar procesos en terminal pts/0 o pts/1
+pgrep -t pts/0,pts/1
+----
+
+-Integración con kill:: Patrón común para terminar procesos
+
+[source,bash]
+----
+# Terminar todos los procesos "chrome" del usuario actual
+kill $(pgrep chrome)
+
+# Enviar señal HUP a todos los procesos "nginx"
+kill -HUP $(pgrep nginx)
+
+# Forzar terminación de procesos zombie relacionados
+pkill -9 $(pgrep -f "defunct")
+----
+
+-Verificación de servicio:: Uso en scripts de monitoreo
+
+[source,bash]
+----
+# Verificar si un servicio está corriendo
+if pgrep -x "mysqld" > /dev/null; then
+    echo "MySQL está en ejecución"
+else
+    echo "MySQL no está corriendo"
+fi
+
+# Contar procesos y tomar acción
+num_procesos=$(pgrep -c apache2)
+if [ $num_procesos -lt 2 ]; then
+    echo "Advertencia: Pocos procesos Apache"
+    systemctl restart apache2
+fi
+----
+
+-Comparación con ps:: Alternativas equivalentes
+
+[source,bash]
+----
+# pgrep vs ps para el mismo resultado
+pgrep sshd
+ps aux | grep [s]shd | awk '{print $2}'
+
+# pgrep es más limpio y evita el grep que se autoreferencia
+pgrep -f "python script.py"
+ps aux | grep "python script.py" | grep -v grep | awk '{print $2}'
+----
+
+-Errores comunes:: Solución de problemas
+
+[source,bash]
+----
+# Si no encuentra procesos (código de salida 1)
+pgrep proceso_inexistente
+echo $?  # Devolverá 1
+
+# Buscar proceso exacto vs coincidencia parcial
+pgrep bash     # Busca "bash" exacto
+pgrep -f bash  # Busca en línea de comando completa
+
+# Problemas con permisos (solo ve procesos propios)
+sudo pgrep -u root   # Ver procesos de root
+----
+

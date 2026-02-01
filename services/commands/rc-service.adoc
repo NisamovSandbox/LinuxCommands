@@ -1,0 +1,127 @@
+=== rc-service
+Gestionar servicios en sistemas con OpenRC (Gentoo, Alpine Linux, Artix Linux).
+
+[source,bash]
+----
+# Ver estado de un servicio
+rc-service servicio status
+----
+
+-Comandos básicos:: Control de servicios
+
+[source,bash]
+----
+# Iniciar servicio
+rc-service apache2 start
+
+# Detener servicio
+rc-service sshd stop
+
+# Reiniciar servicio
+rc-service nginx restart
+
+# Recargar configuración
+rc-service mysql reload
+
+# Ver estado actual
+rc-service docker status
+----
+
+-Listar servicios:: Ver servicios disponibles
+
+[source,bash]
+----
+# Listar todos los servicios
+rc-update show
+
+# Ver servicios activos
+rc-status
+
+# Ver servicios caídos (crashed)
+rc-status --crashed
+
+# Ver todos con estado detallado
+rc-status -a
+----
+
+-Habilitación:: Inicio automático
+
+[source,bash]
+----
+# Agregar servicio al inicio
+rc-update add servicio
+
+# Remover servicio del inicio
+rc-update del servicio
+
+# Agregar a runlevel específico
+rc-update add servicio default
+
+# Ver runlevels disponibles
+ls /etc/runlevels/
+----
+
+-Servicio caído:: Recuperar servicios
+
+[source,bash]
+----
+# Reiniciar servicios caídos
+rc-service servicio zap
+
+# Marcar como inactivo
+rc-service servicio -i
+
+# Forzar reinicio
+rc-service servicio restart
+----
+
+-Runlevels:: Niveles de ejecución
+
+[source,bash]
+----
+# Cambiar runlevel
+openrc-runlevel
+
+# Ver runlevel actual
+rc-status
+
+# Runlevels comunes:
+# boot    - Arranque del sistema
+# default - Multiusuario normal
+# nonetwork - Sin red
+# single  - Monousuario
+----
+
+-Compatibilidad:: Comandos equivalentes
+
+[source,bash]
+----
+# vs systemctl:
+rc-service srv start  = systemctl start srv
+rc-service srv stop   = systemctl stop srv
+rc-update add srv     = systemctl enable srv
+rc-update del srv     = systemctl disable srv
+rc-status            = systemctl list-units
+
+# vs service (SysV):
+rc-service srv start  = service srv start
+rc-service srv status = service srv status
+----
+
+-Comandos adicionales:: Funciones extra
+
+[source,bash]
+----
+# Pausar servicio temporalmente
+rc-service servicio pause
+
+# Reanudar servicio pausado
+rc-service servicio continue
+
+# Ver configuración
+rc-service servicio describe
+
+# Probar configuración
+rc-service servicio test
+----
+

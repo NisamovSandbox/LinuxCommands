@@ -1,0 +1,117 @@
+=== htop
+Monitor de procesos interactivo con interfaz visual mejorada que reemplaza a `top`.
+
+[source,bash]
+----
+# Iniciar htop
+htop
+----
+
+-Filtrado:: `F4` Filtrar procesos por nombre o usuario
+
+[source,bash]
+----
+# Presionar F4 y escribir "nginx"
+# Muestra solo procesos que contengan "nginx"
+----
+
+-Búsqueda:: `F3` Buscar texto en procesos
+
+[source,bash]
+----
+# Presionar F3 y buscar "python"
+# Resalta procesos que contienen "python"
+----
+
+-Ordenar:: `F6` Cambiar criterio de ordenación
+
+[source,bash]
+----
+# Presionar F6 y seleccionar:
+# - CPU%: Orden por uso de CPU
+# - MEM%: Orden por uso de memoria
+# - TIME+: Orden por tiempo de CPU
+# - PID: Orden por ID de proceso
+----
+
+-Tree:: `F5` Vista en árbol de procesos
+
+[source,bash]
+----
+# Presionar F5 para ver relaciones padre-hijo
+# Útil para identificar procesos hijos y dependencias
+----
+
+-Eliminar proceso:: `F9` Enviar señal a proceso
+
+[source,bash]
+----
+# Seleccionar proceso con flechas y presionar F9
+# Elegir señal: SIGTERM (15), SIGKILL (9), etc.
+----
+
+-Renice:: `F7/F8` Ajustar prioridad (nice value)
+
+[source,bash]
+----
+# Seleccionar proceso y:
+# F7: Aumentar prioridad (disminuir nice)
+# F8: Disminuir prioridad (aumentar nice)
+----
+
+-Colores:: Personalizar esquema de colores
+
+[source,bash]
+----
+# F2 → Setup → Colors
+# Seleccionar esquema: Monocromo, Classic, etc.
+----
+
+-Columnas:: Agregar/remover columnas de información
+
+[source,bash]
+----
+# F2 → Setup → Columns
+# Agregar columnas como: PPID, USER, PRIORITY, etc.
+----
+
+-Métricas:: Cambiar modo de visualización de métricas
+
+[source,bash]
+----
+# F2 → Meters
+# Configurar barras superiores/inferiores:
+# CPU, Memoria, Swap, Load average, Uptime
+----
+
+-Comandos rápidos:: Atajos de teclado esenciales
+
+[source,bash]
+----
+# u: Filtrar por usuario
+# P: Ordenar por CPU (equivalente a F6 → CPU%)
+# M: Ordenar por memoria (equivalente a F6 → MEM%)
+# T: Ordenar por tiempo de ejecución
+# K: Mostrar procesos del kernel (hilos)
+# q: Salir de htop
+----
+
+-Modo batch:: Ejecutar en modo no-interactivo
+
+[source,bash]
+----
+# Ejecutar htop una vez y salir
+htop --no-color --no-mouse -d 1
+
+# Exportar salida para scripting
+htop --batch > procesos.txt
+----
+
+-Help:: Mostrar ayuda en pantalla
+
+[source,bash]
+----
+# Presionar F1 o ? para ver ayuda completa
+# Muestra todas las teclas y funciones disponibles
+----
+

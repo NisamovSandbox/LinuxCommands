@@ -1,0 +1,60 @@
+=== Teoría Básica de OpenVPN
+
+OpenVPN es una solución de código abierto para crear redes privadas virtuales (VPN) que utiliza técnicas de tunelización segura.
+
+==== Arquitectura y Funcionamiento
+
+OpenVPN establece un túnel cifrado entre dos o más puntos, generalmente a través de la red pública (Internet). Su diseño se basa en los siguientes conceptos:
+
+* *Tunelización:* Encapsula el tráfico de red dentro de protocolos estándar como TCP o UDP, permitiendo atravesar firewalls y NAT de manera más eficiente que otros protocolos VPN (como IPsec).
+* *Modelo Cliente/Servidor:* Opera típicamente en una arquitectura donde un servidor central acepta conexiones de múltientes clientes remotos.
+* *Espacio de Usuario:* A diferencia de IPsec (que opera en el kernel), OpenVPN funciona principalmente en el espacio de usuario (`userspace`). Esto mejora la portabilidad y facilita su configuración, aunque puede implicar un ligero costo en el rendimiento.
+
+==== Pilares de la Seguridad
+
+La seguridad de OpenVPN se sustenta en tres componentes principales:
+
+* *SSL/TLS para Autenticación y Gestión de Claves:* Utiliza la pila de protocolos SSL/TLS para:
+** Autenticar mutuamente al servidor y al cliente mediante certificados digitales X.509 (infraestructura de clave pública - PKI).
+** Negociar de forma segura las claves simétricas para el canal de datos mediante el handshake TLS.
+** Proporcionar un canal de control seguro (canal TLS) para administrar la sesión.
+
+* *Cifrado del Canal de Datos:* Una vez establecido el túnel TLS, el tráfico de datos real es cifrado usando un algoritmo simétrico (ej., AES, ChaCha20). Las claves para este cifrado se derivan del handshake TLS.
+
+* *Integridad y Autenticación de Paquetes:* Utiliza HMAC (Hash-based Message Authentication Code) para verificar que los paquetes no han sido alterados en tránsito y para proteger contra ataques de repetición.
+
+==== Modos de Operación
+
+OpenVPN puede funcionar en dos modos de capa de red:
+
+* *Modo TUN (Tunnel):* Opera en la capa 3 del modelo OSI. Crea un túnel de dispositivos virtuales de tipo `tun` que transporta paquetes IP. Se utiliza principalmente para enrutar tráfico entre redes (VPN de sitio a sitio o acceso remoto para redirigir todo el tráfico).
+* *Modo TAP (Tap):* Opera en la capa 2. Crea un túnel de dispositivos virtuales de tipo `tap` que transporta tramas Ethernet. Emula una conexión de red cableada, permitiendo el transporte de tráfico no-IP (como NetBIOS) y la creación de una red virtual de capa 2 entre los participantes.
+
+==== Protocolo de Transporte
+
+OpenVPN es agnóstico al transporte, pudiendo usar:
+
+* *UDP (Recomendado):* Generalmente más rápido y eficiente, ya que no tiene sobrecarga de retransmisión y control de congestión en el túnel VPN propio. OpenVPN implementa su propio mecanismo de confiabilidad opcional.
+* *TCP:* Útil para entornos donde el tráfico UDP está bloqueado, aunque puede sufrir de "retransmisión dentro de retransmisión" si tanto el transporte TCP como la aplicación dentro del túnel usan TCP.
+
+==== Componentes Clave de la Configuración
+
+Una implementación típica requiere:
+* *Certificados CA, Servidor y Cliente:* Generados con herramientas como `easy-rsa`.
+* *Parámetros Diffie-Hellman (DH):* Para el intercambio de claves (en TLS 1.2) o el uso de suites que soporten el intercambio de claves ephemeral (ECDH en TLS 1.3).
+* *Archivos de Configuración (.ovpn / .conf):* Definen los parámetros de red, las rutas criptográficas, los modos de tunelización y las directivas de seguridad.
+* *Claves Estáticas (opcional, modo precompartido):* Una alternativa más simple pero menos escalable a TLS-PKI para entornos puntuales.
+
+==== Ventajas y Consideraciones
+
+*Ventajas:*
+* Alta flexibilidad y configurabilidad.
+* Gran portabilidad entre sistemas operativos.
+* Capacidad para atravesar NAT y firewalls fácilmente.
+* Seguridad sólida basada en estándares probados (SSL/TLS).
+
+*Consideraciones:*
+* El procesamiento en espacio de usuario puede limitar el rendimiento máximo frente a soluciones en el kernel.
+* Requiere la gestión de una PKI para el modo más seguro (certificados).
+* La configuración inicial puede ser más compleja que en soluciones comerciales integradas.
+
