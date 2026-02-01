@@ -19,6 +19,5 @@ Incluye comandos y fundamentos teóricos.
 
 <!-- AUTO-GENERATED-INDEX:START -->
 - [commands](/services/commands)
-- [commands.md](/services/commands.md)
-- [theory.md](/services/theory.md)
+- [theory](/services/theory)
 <!-- AUTO-GENERATED-INDEX:END -->

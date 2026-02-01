@@ -19,4 +19,5 @@ Incluye comandos y prácticas habituales.
 
 <!-- AUTO-GENERATED-INDEX:START -->
 - [commands](/software_management/commands)
+- [theory](/software_management/theory)
 <!-- AUTO-GENERATED-INDEX:END -->
