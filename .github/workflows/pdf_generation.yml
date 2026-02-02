@@ -277,6 +277,7 @@ jobs:
           DEImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_DE.png"
           PTImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_PT.png"
           RUImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_RU.png"
+          FRImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_FR.png"
           ZHImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ZH.png"
           KOImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_KO.png"
           JAImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_JA.png"
@@ -306,6 +307,15 @@ jobs:
             gh release create ZH $ZH_FILES \
               --title "🔵 PDF 文档 📕 (Con soporte de fuentes CJK)" \
               --notes "![Documentación Chino]($ZHImg)"
+          fi
+
+          # Crear release para Francés
+          FR_FILES=$(ls pdf/FR_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$FR_FILES" ]; then
+            echo "Archivos FR: $FR_FILES"
+            gh release create FR $FR_FILES \
+              --title "🔵 DOCUMENTATION PDF 📕" \
+              --notes "![Documentación Francés]($FRImg)"
           fi
           
           # Crear release para Ruso
