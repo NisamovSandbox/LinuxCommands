@@ -23,9 +23,10 @@ LANG_MAP = {
     'pt': 'pt',      # Portugués
     'es': 'es',      # Español
     'ru': 'ru',      # Ruso
+    'fr': 'fr',      # Francés
     'zh': 'zh-CN',   # Chino simplificado
     'ko': 'ko',      # Coreano
-    'ja': 'ja'       # Japonés
+    'ja': 'ja',      # Japonés
 }
 
 target_lang_code = LANG_MAP.get(TARGET_LANG, TARGET_LANG)
