@@ -1,0 +1,15 @@
+=== Entrada y Salida Estándar
+
+En Linux existen tres flujos de datos principales:
+
+* **STDIN (0)** → Entrada estándar (teclado, archivos)
+* **STDOUT (1)** → Salida estándar (pantalla)
+* **STDERR (2)** → Salida de errores
+
+[source,bash]
+----
+echo "Hola"        # salida estándar
+cat < archivo.txt  # entrada desde archivo
+ls /inexistente    # salida de error
+----
+

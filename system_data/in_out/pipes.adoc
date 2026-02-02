@@ -1,0 +1,11 @@
+=== Pipes
+
+Conecta la salida de un comando con la entrada de otro.
+
+[source,bash]
+----
+ls -l | grep ".txt"
+cat archivo.txt | wc -l
+ps aux | grep root
+----
+

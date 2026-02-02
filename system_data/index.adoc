@@ -1,4 +1,4 @@
-= Bases Fundamentales
+= Información del Sistema
 :toc:
 :toclevels: 3
 :icons: font
@@ -15,15 +15,11 @@
 == Introducción
 Este manual está pensado como guía de referencia para:
 
-* Ámbito escolar y formativo
-* Administradores de sistemas Linux
-* Usuarios técnicos en proceso de aprendizaje
+== Entrada y salida
+include::in_out/stdin_stdout_stderr.adoc[]
+include::in_out/redirections.adoc[]
+include::in_out/pipes.adoc[]
 
-== Teoría
-include::theory/linus_torvalds.adoc[]
-include::theory/linux.adoc[]
-
-== Inclusiones
-include::combination_keys/combination.adoc[]
-include::system_structure/linux_structure.adoc[]
+== Entorno
+include::environment/environment_variables.adoc[]
 

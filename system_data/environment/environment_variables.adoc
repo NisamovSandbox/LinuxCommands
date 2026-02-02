@@ -1,0 +1,73 @@
+=== Variables de Entorno en Linux
+
+Linux define muchas variables de entorno, a las que el usuario tiene acceso para realizar diferentes operaciones con ellas.
+Estas variables de entorno almacenan información del sistema, del usuario y del entorno de ejecución.
+
+==== Usuario y sesión
+
+* `$HOME`       :: Directorio home del usuario
+* `$USER`       :: Nombre del usuario actual
+* `$LOGNAME`    :: Nombre del usuario que inició sesión
+* `$SHELL`      :: Shell predeterminado del usuario
+* `$PWD`        :: Directorio de trabajo actual
+* `$OLDPWD`     :: Directorio anterior
+* `$HOSTNAME`   :: Nombre del host
+* `$UID`        :: ID numérico del usuario actual
+* `$GROUPS`     :: IDs de grupos a los que pertenece el usuario
+
+==== Sistema y entorno de ejecución
+
+* `$PATH`            :: Lista de directorios donde buscar ejecutables
+* `$LANG`            :: Configuración regional e idioma
+* `$LC_ALL`          :: Configuración regional global
+* `$TERM`            :: Tipo de terminal
+* `$PS1`             :: Prompt principal del shell
+* `$PS2`             :: Prompt secundario
+* `$EDITOR`          :: Editor de texto predeterminado
+* `$PAGER`           :: Programa para paginar salida (less, more)
+* `$DISPLAY`         :: Pantalla X11 (para entornos gráficos)
+* `$XDG_SESSION_TYPE`:: Tipo de sesión gráfica o consola
+
+==== Archivos y configuración del sistema
+
+* `$TMPDIR`     :: Directorio temporal
+* `$MAIL`       :: Ubicación del buzón de correo del usuario
+* `$HISTFILE`   :: Archivo donde bash guarda el historial (`.bash_history`)
+* `$HISTSIZE`   :: Número de comandos a guardar en el historial
+* `$HISTCONTROL`:: Control del historial (ignorar duplicados, espacios, etc.)
+
+==== Variables de proceso
+
+* `$PPID`       :: ID del proceso padre
+* `$PID`        :: ID del proceso actual
+* `$BASHPID`    :: ID del proceso bash actual
+* `$SECONDS`    :: Segundos desde que comenzó la shell
+
+==== Variables de escritorio y gráficos (Linux moderno)
+
+* `$XDG_DATA_HOME`   :: Directorio de datos del usuario (~/.local/share)
+* `$XDG_CONFIG_HOME` :: Directorio de configuración (~/.config)
+* `$XDG_RUNTIME_DIR` :: Directorio de runtime para sockets y archivos temporales
+* `$DISPLAY`         :: Número de pantalla (X11)
+* `$XAUTHORITY`      :: Archivo de autorización de X
+
+==== Variables de red y SSH
+
+* `$SSH_CLIENT`      :: IP y puerto del cliente SSH conectado
+* `$SSH_CONNECTION`  :: Información completa de conexión SSH
+* `$SSH_TTY`         :: TTY asociado a la sesión SSH
+* `$HOSTNAME`        :: Nombre del host (también usada en red)
+* `$PATH`            :: Incluye rutas necesarias para binarios de red
+
+==== Variables útiles para scripting
+
+* `$RANDOM`          :: Número aleatorio generado por bash
+* `$LINENO`          :: Número de línea actual en un script
+* `$0`               :: Nombre del script o comando actual
+* `$#`               :: Número de argumentos pasados al script
+* `$@`               :: Todos los argumentos como lista
+* `$*`               :: Todos los argumentos como cadena
+* `$?`               :: Código de salida del último comando
+* `$$`               :: PID del proceso actual
+* `$!`               :: PID del último comando en segundo plano
+

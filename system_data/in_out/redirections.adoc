@@ -1,0 +1,15 @@
+=== Redirecciones
+
+Redirigen la entrada o salida de comandos:
+
+* `>`  → sobrescribe archivo
+* `>>` → añade al final
+* `2>` → redirige errores
+
+[source,bash]
+----
+echo "Hola" > salida.txt
+echo "Mundo" >> salida.txt
+ls /inexistente 2> error.log
+----
+
