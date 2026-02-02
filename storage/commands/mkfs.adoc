@@ -1,0 +1,57 @@
+=== mkfs
+Crear sistemas de ficheros en dispositivos o volúmenes lógicos.
+
+[source,bash]
+----
+# Crear un sistema de ficheros ext4 en un dispositivo
+mkfs.ext4 /dev/sda1
+----
+
+-t:: `mkfs -t tipo` Especificar tipo de sistema de ficheros
+
+[source,bash]
+----
+# Crear un sistema de ficheros XFS
+mkfs -t xfs /dev/sdb1
+----
+
+-c:: `mkfs -c` Comprobar bloques dañados antes de crear FS
+
+[source,bash]
+----
+# Verificar bloques antes de formatear
+mkfs.ext4 -c /dev/sda1
+----
+
+-L:: `mkfs -L etiqueta` Asignar una etiqueta al sistema de ficheros
+
+[source,bash]
+----
+# Crear FS ext4 con etiqueta DATA
+mkfs.ext4 -L DATA /dev/sdb1
+----
+
+-n:: `mkfs -n` Simular creación de FS sin modificar el disco
+
+[source,bash]
+----
+# Probar la creación sin formatear realmente
+mkfs.ext4 -n /dev/sdb1
+----
+
+-F:: `mkfs -F` Forzar la creación sobre un dispositivo montado
+
+[source,bash]
+----
+# Forzar creación incluso si el dispositivo parece estar en uso
+mkfs.ext4 -F /dev/sdb1
+----
+
+-v:: `mkfs -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información detallada al crear el FS
+mkfs.ext4 -v /dev/sda1
+----
+

@@ -1,0 +1,49 @@
+=== whois
+Consultar información de registro de dominios y direcciones IP.
+
+[source,bash]
+----
+# Consultar información de un dominio
+whois ejemplo.com
+----
+
+-H:: `whois -H` Salida más limpia sin cabeceras innecesarias
+
+[source,bash]
+----
+# Mostrar información sin líneas de comentario
+whois -H ejemplo.com
+----
+
+--verbose:: `whois --verbose` Información detallada
+
+[source,bash]
+----
+# Mostrar información extendida y detallada
+whois --verbose ejemplo.com
+----
+
+-h:: `whois -h` Consultar un servidor WHOIS específico
+
+[source,bash]
+----
+# Consultar el servidor whois.verisign-grs.com
+whois -h whois.verisign-grs.com ejemplo.com
+----
+
+-p:: `whois -p` Especificar puerto del servidor WHOIS
+
+[source,bash]
+----
+# Conectar a un servidor WHOIS en puerto 43
+whois -h whois.iana.org -p 43 ejemplo.com
+----
+
+--verbose:: `whois --verbose` Mostrar salida completa y extendida
+
+[source,bash]
+----
+# Obtener todos los detalles posibles
+whois --verbose ejemplo.com
+----
+

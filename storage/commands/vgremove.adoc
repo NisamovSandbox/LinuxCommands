@@ -1,0 +1,33 @@
+=== vgremove
+Eliminar un grupo de volúmenes (VG) en LVM. **Precaución:** esta operación borra todos los volúmenes lógicos dentro del VG y sus datos.
+
+[source,bash]
+----
+# Eliminar un grupo de volúmenes llamado vg1
+vgremove vg1
+----
+
+-f:: `vgremove -f` Forzar la eliminación sin pedir confirmación
+
+[source,bash]
+----
+# Eliminar VG sin confirmación
+vgremove -f vg1
+----
+
+-v:: `vgremove -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Eliminar VG mostrando información detallada
+vgremove -v vg1
+----
+
+--test:: `vgremove --test` Simular la operación sin aplicarla
+
+[source,bash]
+----
+# Probar eliminación de VG sin borrar datos
+vgremove --test vg1
+----
+

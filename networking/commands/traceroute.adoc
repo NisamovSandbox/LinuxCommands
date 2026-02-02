@@ -1,0 +1,57 @@
+=== traceroute
+Mostrar la ruta que siguen los paquetes hasta un host y medir el tiempo de respuesta de cada salto.
+
+[source,bash]
+----
+# Hacer traceroute a un host
+traceroute ejemplo.com
+----
+
+-I:: `traceroute -I` Usar ICMP en lugar de UDP (similar a ping)
+
+[source,bash]
+----
+# Realizar traceroute usando ICMP
+traceroute -I ejemplo.com
+----
+
+-n:: `traceroute -n` No resolver nombres de host, mostrar solo IPs
+
+[source,bash]
+----
+# Mostrar solo direcciones IP sin nombres de dominio
+traceroute -n ejemplo.com
+----
+
+-m:: `traceroute -m` Número máximo de saltos
+
+[source,bash]
+----
+# Limitar traceroute a 10 saltos
+traceroute -m 10 ejemplo.com
+----
+
+-q:: `traceroute -q` Número de consultas por salto
+
+[source,bash]
+----
+# Hacer 2 consultas por salto
+traceroute -q 2 ejemplo.com
+----
+
+-w:: `traceroute -w` Tiempo de espera por respuesta (segundos)
+
+[source,bash]
+----
+# Esperar máximo 3 segundos por respuesta
+traceroute -w 3 ejemplo.com
+----
+
+-p:: `traceroute -p` Especificar puerto inicial (para UDP)
+
+[source,bash]
+----
+# Usar puerto 33434 como inicio
+traceroute -p 33434 ejemplo.com
+----
+

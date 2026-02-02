@@ -1,0 +1,69 @@
+=== mount
+Montar sistemas de ficheros en directorios del sistema.
+
+[source,bash]
+----
+# Montar un dispositivo en un punto de montaje
+mount /dev/sda1 /mnt
+----
+
+-t:: `mount -t tipo` Especificar tipo de sistema de ficheros
+
+[source,bash]
+----
+# Montar una partición ext4
+mount -t ext4 /dev/sdb1 /mnt/data
+----
+
+-o:: `mount -o opciones` Especificar opciones de montaje
+
+[source,bash]
+----
+# Montar en modo solo lectura
+mount -o ro /dev/sdb1 /mnt/data
+----
+
+# Montar con opciones múltiples (lectura/escritura, sinatime)
+mount -o rw,noatime /dev/sdb1 /mnt/data
+----
+
+-a:: `mount -a` Montar todos los sistemas de ficheros listados en /etc/fstab
+
+[source,bash]
+----
+# Montar todos los sistemas de ficheros automáticamente
+mount -a
+----
+
+-r:: `mount -r` Montar en modo solo lectura
+
+[source,bash]
+----
+# Montar partición en modo read-only
+mount -r /dev/sdb1 /mnt
+----
+
+-l:: `mount -l` Mostrar etiquetas de los sistemas de ficheros montados
+
+[source,bash]
+----
+# Montar mostrando etiquetas
+mount -l
+----
+
+-v:: `mount -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Montar mostrando información detallada
+mount -v /dev/sdb1 /mnt/data
+----
+
+-noatime:: `mount -o noatime` Evitar actualizar timestamp de acceso en archivos
+
+[source,bash]
+----
+# Montar partición sin actualizar access time
+mount -o noatime /dev/sdb1 /mnt/data
+----
+

@@ -1,0 +1,57 @@
+=== lvresize
+Redimensionar volúmenes lógicos en LVM, aumentando o reduciendo su tamaño. Puede redimensionar también el sistema de ficheros si se usa la opción adecuada.
+
+[source,bash]
+----
+# Redimensionar un volumen lógico a un tamaño específico
+lvresize -L 15G /dev/vg1/mi_volumen
+----
+
+-L:: `-L tamaño` Definir tamaño final del volumen lógico
+
+[source,bash]
+----
+# Cambiar el tamaño de datos a 10GB
+lvresize -L 10G /dev/vg1/datos
+----
+
+-l:: `-l porcentaje` Definir tamaño usando porcentaje del grupo de volúmenes
+
+[source,bash]
+----
+# Extender LV usando el 50% del espacio libre
+lvresize -l +50%FREE /dev/vg1/datos
+----
+
+-r:: `-r` Redimensionar automáticamente el sistema de ficheros
+
+[source,bash]
+----
+# Redimensionar LV y ajustar sistema de ficheros ext4
+lvresize -L +5G -r /dev/vg1/backup
+----
+
+--resizefs:: `--resizefs` Alternativa explícita para redimensionar FS antes o después de cambiar el LV
+
+[source,bash]
+----
+# Redimensionar LV y su sistema de ficheros
+lvresize --resizefs -L 8G /dev/vg1/temp
+----
+
+-v:: `-v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información detallada durante la operación
+lvresize -L +2G /dev/vg1/log -v
+----
+
+--test:: `--test` Simular la operación sin aplicarla
+
+[source,bash]
+----
+# Probar redimensionamiento sin modificar el LV
+lvresize -L +1G /dev/vg1/demo --test
+----
+

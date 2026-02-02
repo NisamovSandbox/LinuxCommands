@@ -1,0 +1,73 @@
+=== ping
+Comprobar la conectividad de red y el tiempo de respuesta entre hosts.
+
+[source,bash]
+----
+# Hacer ping a un host
+ping ejemplo.com
+----
+
+-c:: `ping -c` Número de paquetes a enviar
+
+[source,bash]
+----
+# Enviar 4 paquetes al host
+ping -c 4 ejemplo.com
+----
+
+-i:: `ping -i` Intervalo entre paquetes (en segundos)
+
+[source,bash]
+----
+# Enviar paquetes cada 2 segundos
+ping -i 2 ejemplo.com
+----
+
+-t:: `ping -t` Tiempo de vida (TTL) de los paquetes
+
+[source,bash]
+----
+# Establecer TTL a 64
+ping -t 64 ejemplo.com
+----
+
+-s:: `ping -s` Tamaño del paquete en bytes
+
+[source,bash]
+----
+# Enviar paquetes de 100 bytes
+ping -s 100 ejemplo.com
+----
+
+-q:: `ping -q` Salida en modo silencioso (resumen)
+
+[source,bash]
+----
+# Mostrar solo el resumen final
+ping -c 4 -q ejemplo.com
+----
+
+-W:: `ping -W` Tiempo de espera por respuesta (en segundos)
+
+[source,bash]
+----
+# Esperar máximo 3 segundos por respuesta
+ping -W 3 -c 4 ejemplo.com
+----
+
+-f:: `ping -f` Flood ping (envío rápido, requiere permisos de root)
+
+[source,bash]
+----
+# Enviar paquetes lo más rápido posible
+sudo ping -f ejemplo.com
+----
+
+-D:: `ping -D` Mostrar timestamp de cada paquete
+
+[source,bash]
+----
+# Incluir marcas de tiempo en cada línea
+ping -D ejemplo.com
+----
+

@@ -1,0 +1,41 @@
+=== vgextend
+Añadir volúmenes físicos (PV) a un grupo de volúmenes (VG) existente en LVM.
+
+[source,bash]
+----
+# Añadir /dev/sdc al grupo de volúmenes vg1
+vgextend vg1 /dev/sdc
+----
+
+-v:: `vgextend -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Añadir PV mostrando información detallada
+vgextend -v vg1 /dev/sdc
+----
+
+-u:: `vgextend -u UUID` Asignar un UUID específico al VG durante la extensión
+
+[source,bash]
+----
+# Extender VG con UUID personalizado
+vgextend -u 123e4567-e89b-12d3-a456-426614174000 vg1 /dev/sdc
+----
+
+-Z:: `vgextend -Z tipo` Establecer formato de metadatos (lvm1 o lvm2)
+
+[source,bash]
+----
+# Extender VG usando metadatos LVM2
+vgextend -Z lvm2 vg1 /dev/sdc
+----
+
+--physicalextentsize:: `vgextend --physicalextentsize tamaño` Definir tamaño de las extensiones físicas
+
+[source,bash]
+----
+# Extender VG especificando tamaño de extensión física de 32MB
+vgextend --physicalextentsize 32M vg1 /dev/sdc
+----
+

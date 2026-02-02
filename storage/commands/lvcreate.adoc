@@ -1,0 +1,73 @@
+=== lvcreate
+Crear volúmenes lógicos dentro de un grupo de volúmenes (LVM).
+
+[source,bash]
+----
+# Crear un volumen lógico básico
+lvcreate -L 10G -n mi_volumen mi_grupo
+----
+
+-L:: `-L tamaño` Especificar tamaño del volumen
+
+[source,bash]
+----
+# Crear un volumen de 5GB llamado datos
+lvcreate -L 5G -n datos vg1
+----
+
+-n:: `-n nombre` Nombrar el volumen lógico
+
+[source,bash]
+----
+# Nombrar el volumen como backup
+lvcreate -L 2G -n backup vg1
+----
+
+--size:: `--size tamaño` Alternativa a -L
+
+[source,bash]
+----
+# Crear volumen de 1GB usando --size
+lvcreate --size 1G -n temp vg1
+----
+
+-l:: `-l porcentaje` Especificar tamaño en porcentaje del VG
+
+[source,bash]
+----
+# Crear volumen usando el 50% del espacio disponible
+lvcreate -l 50%VG -n grande vg1
+----
+
+--snapshot:: `--snapshot` Crear un snapshot de un LV existente
+
+[source,bash]
+----
+# Crear snapshot de un volumen lógico existente
+lvcreate --size 1G --snapshot -n snap_backup /dev/vg1/datos
+----
+
+--thin:: `--thin` Crear volumen lógico delgado (thin provisioning)
+
+[source,bash]
+----
+# Crear un volumen delgado de 10GB
+lvcreate --thin -V 10G -n thin_vol vg1
+----
+
+--poolmetadata:: `--poolmetadata` Especificar nombre de metadata para thin pool
+
+[source,bash]
+----
+# Crear un thin pool con metadata personalizada
+lvcreate --type thin-pool --poolmetadata mdata -L 20G -n pool1 vg1
+----
+
+-v:: `-v` Modo verbose
+
+[source,bash]
+----
+# Mostrar información detallada durante la creación
+lvcreate -L 1G -n temp vg1 -v
+----
+

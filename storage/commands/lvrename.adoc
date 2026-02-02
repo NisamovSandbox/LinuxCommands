@@ -1,0 +1,25 @@
+=== lvrename
+Renombrar volúmenes lógicos en LVM.
+
+[source,bash]
+----
+# Renombrar un volumen lógico existente
+lvrename /dev/vg1/mi_volumen nuevo_nombre
+----
+
+-v:: `lvrename -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Renombrar LV mostrando información detallada
+lvrename -v /dev/vg1/datos respaldo
+----
+
+-device:: `lvrename VG LV nuevo_nombre` Alternativa explícita usando grupo y volumen
+
+[source,bash]
+----
+# Renombrar volumen lógico indicando grupo y LV
+lvrename vg1 datos backup
+----
+

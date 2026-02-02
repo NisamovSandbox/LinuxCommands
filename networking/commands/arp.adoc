@@ -1,0 +1,41 @@
+=== arp
+Consultar y manipular la tabla ARP (asociaciones IP ⇄ MAC) en la red local.
+
+[source,bash]
+----
+# Mostrar tabla ARP completa
+arp -a
+----
+
+-n:: `arp -n` Mostrar direcciones IP y MAC sin resolver nombres
+
+[source,bash]
+----
+# Ver la tabla ARP en formato numérico
+arp -n
+----
+
+-s:: `arp -s` Añadir una entrada estática en la tabla ARP
+
+[source,bash]
+----
+# Asociar IP 192.168.1.50 a MAC 00:11:22:33:44:55
+sudo arp -s 192.168.1.50 00:11:22:33:44:55
+----
+
+-d:: `arp -d` Eliminar una entrada de la tabla ARP
+
+[source,bash]
+----
+# Eliminar la entrada de la IP 192.168.1.50
+sudo arp -d 192.168.1.50
+----
+
+-i:: `arp -i` Especificar interfaz de red
+
+[source,bash]
+----
+# Mostrar tabla ARP solo para la interfaz eth0
+arp -i eth0 -a
+----
+

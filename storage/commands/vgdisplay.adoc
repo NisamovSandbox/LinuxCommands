@@ -1,0 +1,49 @@
+=== vgdisplay
+Mostrar información detallada de grupos de volúmenes (VG) en LVM.
+
+[source,bash]
+----
+# Mostrar todos los grupos de volúmenes del sistema
+vgdisplay
+----
+
+-v:: `vgdisplay -v` Modo verbose para mostrar información adicional
+
+[source,bash]
+----
+# Mostrar detalles completos de los VG
+vgdisplay -v
+----
+
+-n:: `vgdisplay -n nombre` Filtrar por nombre de grupo de volúmenes
+
+[source,bash]
+----
+# Mostrar información del VG llamado vg1
+vgdisplay -n vg1
+----
+
+-C:: `vgdisplay -C` Salida en columnas (formato compacto)
+
+[source,bash]
+----
+# Mostrar VG en formato compacto
+vgdisplay -C
+----
+
+--units:: `vgdisplay --units` Cambiar unidades de tamaño (B, K, M, G, T)
+
+[source,bash]
+----
+# Mostrar tamaños en gigabytes
+vgdisplay --units G
+----
+
+--maps:: `vgdisplay --maps` Mostrar mapeo de volúmenes lógicos sobre los PV del grupo
+
+[source,bash]
+----
+# Ver cómo los LV ocupan los PV del VG
+vgdisplay --maps vg1
+----
+

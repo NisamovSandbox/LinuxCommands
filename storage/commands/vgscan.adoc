@@ -1,0 +1,33 @@
+=== vgscan
+Escanear y detectar todos los grupos de volúmenes (VG) en LVM.
+
+[source,bash]
+----
+# Escanear todos los grupos de volúmenes del sistema
+vgscan
+----
+
+-a:: `vgscan -a` Incluir VG inactivos o internos
+
+[source,bash]
+----
+# Mostrar todos los VG, incluso los no activos
+vgscan -a
+----
+
+-v:: `vgscan -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Escanear VG mostrando información detallada
+vgscan -v
+----
+
+--ignorelockingfailure:: `vgscan --ignorelockingfailure` Ignorar errores de bloqueo de dispositivos
+
+[source,bash]
+----
+# Escanear VG aunque haya errores de bloqueo
+vgscan --ignorelockingfailure
+----
+

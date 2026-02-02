@@ -1,0 +1,65 @@
+=== lvs
+Mostrar información resumida de volúmenes lógicos en LVM.
+
+[source,bash]
+----
+# Listar todos los volúmenes lógicos del sistema
+lvs
+----
+
+-a:: `lvs -a` Incluir volúmenes inactivos o internos
+
+[source,bash]
+----
+# Mostrar todos los LV incluyendo los ocultos
+lvs -a
+----
+
+-o:: `lvs -o` Seleccionar columnas a mostrar
+
+[source,bash]
+----
+# Mostrar nombre, tamaño, grupo y estado
+lvs -o lv_name,lv_size,vg_name,lv_attr
+----
+
+--segments:: `lvs --segments` Mostrar información detallada de segmentos de LV
+
+[source,bash]
+----
+# Ver la distribución de segmentos físicos de cada LV
+lvs --segments
+----
+
+--units:: `lvs --units` Cambiar unidades de tamaño (B, K, M, G, T)
+
+[source,bash]
+----
+# Mostrar tamaños en gigabytes
+lvs --units G
+----
+
+--noheadings:: `lvs --noheadings` Ocultar encabezados de columnas
+
+[source,bash]
+----
+# Mostrar solo los valores de los LV sin títulos
+lvs --noheadings
+----
+
+-v:: `lvs -v` Modo verbose para información más detallada
+
+[source,bash]
+----
+# Mostrar detalles adicionales sobre los LV
+lvs -v
+----
+
+--select:: `lvs --select` Filtrar volúmenes según criterios
+
+[source,bash]
+----
+# Mostrar solo los LV activos
+lvs --select 'lv_active=1'
+----
+

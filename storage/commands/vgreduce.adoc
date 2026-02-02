@@ -1,0 +1,35 @@
+```adoc
+=== vgreduce
+Eliminar volúmenes físicos (PV) de un grupo de volúmenes (VG) en LVM. **Precaución:** los PV que contienen datos de volúmenes lógicos no se pueden eliminar hasta que los datos se muevan o eliminen.
+
+[source,bash]
+----
+# Eliminar /dev/sdc del grupo de volúmenes vg1
+vgreduce vg1 /dev/sdc
+----
+
+-v:: `vgreduce -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Eliminar PV mostrando información detallada
+vgreduce -v vg1 /dev/sdc
+----
+
+--removemissing:: `vgreduce --removemissing` Eliminar PV que faltan (no detectables físicamente)
+
+[source,bash]
+----
+# Eliminar PV faltante del VG
+vgreduce --removemissing vg1
+----
+
+--force:: `vgreduce --force` Forzar la operación (solo si es seguro)
+
+[source,bash]
+----
+# Forzar eliminación de PV del VG
+vgreduce --force vg1 /dev/sdc
+----
+```
+

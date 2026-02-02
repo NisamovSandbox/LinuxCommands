@@ -1,0 +1,41 @@
+=== lvscan
+Escanear y mostrar el estado de todos los volúmenes lógicos en LVM.
+
+[source,bash]
+----
+# Escanear todos los volúmenes lógicos del sistema
+lvscan
+----
+
+-a:: `lvscan -a` Incluir volúmenes inactivos o internos
+
+[source,bash]
+----
+# Mostrar todos los LV, incluso los no activos
+lvscan -a
+----
+
+--cache:: `lvscan --cache` Usar caché de LVM para acelerar el escaneo
+
+[source,bash]
+----
+# Escanear LV usando información en caché
+lvscan --cache
+----
+
+-v:: `lvscan -v` Modo verbose para mostrar detalles adicionales
+
+[source,bash]
+----
+# Escanear LV mostrando información detallada
+lvscan -v
+----
+
+--ignorelockingfailure:: `lvscan --ignorelockingfailure` Ignorar errores de bloqueo de dispositivos
+
+[source,bash]
+----
+# Escanear LV aunque haya errores de bloqueo
+lvscan --ignorelockingfailure
+----
+

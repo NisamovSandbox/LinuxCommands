@@ -1,0 +1,65 @@
+=== pvs
+Mostrar información resumida de volúmenes físicos (PV) en LVM.
+
+[source,bash]
+----
+# Listar todos los volúmenes físicos del sistema
+pvs
+----
+
+-a:: `pvs -a` Incluir volúmenes físicos inactivos o internos
+
+[source,bash]
+----
+# Mostrar todos los PV, incluyendo los ocultos
+pvs -a
+----
+
+-o:: `pvs -o` Seleccionar columnas a mostrar
+
+[source,bash]
+----
+# Mostrar nombre, tamaño, grupo y estado
+pvs -o pv_name,pv_size,vg_name,pv_attr
+----
+
+--segments:: `pvs --segments` Mostrar detalles de segmentos físicos de cada PV
+
+[source,bash]
+----
+# Ver cómo los LV ocupan los PV
+pvs --segments
+----
+
+--units:: `pvs --units` Cambiar unidades de tamaño (B, K, M, G, T)
+
+[source,bash]
+----
+# Mostrar tamaños en gigabytes
+pvs --units G
+----
+
+--noheadings:: `pvs --noheadings` Ocultar encabezados de columnas
+
+[source,bash]
+----
+# Mostrar solo valores sin títulos
+pvs --noheadings
+----
+
+-v:: `pvs -v` Modo verbose para mostrar más detalles
+
+[source,bash]
+----
+# Mostrar información detallada sobre los PV
+pvs -v
+----
+
+--select:: `pvs --select` Filtrar volúmenes según criterios
+
+[source,bash]
+----
+# Mostrar solo los PV activos
+pvs --select 'pv_active=1'
+----
+

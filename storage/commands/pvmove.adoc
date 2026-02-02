@@ -1,0 +1,41 @@
+=== pvmove
+Mover datos de volúmenes lógicos de un volumen físico a otro dentro de LVM. Permite liberar un PV para mantenimiento o reemplazo sin interrumpir los LV activos.
+
+[source,bash]
+----
+# Mover todos los datos de /dev/sdb a /dev/sdc
+pvmove /dev/sdb /dev/sdc
+----
+
+-v:: `pvmove -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mover PV mostrando información detallada
+pvmove -v /dev/sdb /dev/sdc
+----
+
+-n:: `pvmove -n` Simular la operación sin aplicarla (dry-run)
+
+[source,bash]
+----
+# Probar la migración de datos sin ejecutar cambios
+pvmove -n /dev/sdb /dev/sdc
+----
+
+--alloc:: `pvmove --alloc` Especificar la política de asignación de bloques
+
+[source,bash]
+----
+# Mover datos usando política de asignación normal
+pvmove --alloc normal /dev/sdb /dev/sdc
+----
+
+--abort:: `pvmove --abort` Cancelar una operación de pvmove en curso
+
+[source,bash]
+----
+# Detener la migración de datos si es necesario
+pvmove --abort
+----
+

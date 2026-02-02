@@ -1,0 +1,81 @@
+=== curl
+Transferir datos desde o hacia un servidor usando distintos protocolos (HTTP, HTTPS, FTP…).
+
+[source,bash]
+----
+# Hacer una petición GET a una URL
+curl https://ejemplo.com
+----
+
+-o:: `curl -o` Guardar salida en un archivo
+
+[source,bash]
+----
+# Descargar y guardar en archivo.txt
+curl -o archivo.txt https://ejemplo.com
+----
+
+-O:: `curl -O` Guardar con el nombre original del archivo
+
+[source,bash]
+----
+# Descargar y conservar el nombre original del archivo
+curl -O https://ejemplo.com/archivo.txt
+----
+
+-L:: `curl -L` Seguir redirecciones
+
+[source,bash]
+----
+# Seguir redirecciones hasta la URL final
+curl -L https://ejemplo.com
+----
+
+-I:: `curl -I` Obtener solo cabeceras HTTP
+
+[source,bash]
+----
+# Mostrar únicamente las cabeceras de respuesta
+curl -I https://ejemplo.com
+----
+
+-d:: `curl -d` Enviar datos en una petición POST
+
+[source,bash]
+----
+# Enviar datos mediante POST
+curl -d "usuario=juan&clave=1234" https://ejemplo.com/login
+----
+
+-H:: `curl -H` Añadir cabeceras HTTP personalizadas
+
+[source,bash]
+----
+# Añadir cabecera Content-Type
+curl -H "Content-Type: application/json" https://ejemplo.com
+----
+
+-u:: `curl -u` Autenticación HTTP básica
+
+[source,bash]
+----
+# Enviar usuario y contraseña
+curl -u usuario:clave https://ejemplo.com
+----
+
+-s:: `curl -s` Modo silencioso
+
+[source,bash]
+----
+# No mostrar progreso ni mensajes
+curl -s https://ejemplo.com
+----
+
+--limit-rate:: `curl --limit-rate` Limitar velocidad de descarga/subida
+
+[source,bash]
+----
+# Limitar descarga a 200kB/s
+curl --limit-rate 200k -O https://ejemplo.com/archivo.zip
+----
+

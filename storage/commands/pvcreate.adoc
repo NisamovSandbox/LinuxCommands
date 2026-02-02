@@ -1,0 +1,57 @@
+=== pvcreate
+Inicializar dispositivos de bloque para ser utilizados como volúmenes físicos en LVM.
+
+[source,bash]
+----
+# Crear un volumen físico en un dispositivo
+pvcreate /dev/sdb
+----
+
+-v:: `pvcreate -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Inicializar /dev/sdb mostrando información detallada
+pvcreate -v /dev/sdb
+----
+
+-f:: `pvcreate -f` Forzar inicialización aunque el dispositivo tenga datos existentes
+
+[source,bash]
+----
+# Forzar creación de volumen físico en /dev/sdb
+pvcreate -f /dev/sdb
+----
+
+-c:: `pvcreate -c tamaño` Especificar tamaño del cluster
+
+[source,bash]
+----
+# Crear volumen físico con tamaño de cluster de 64MB
+pvcreate -c 64 /dev/sdb
+----
+
+-u:: `pvcreate -u UUID` Asignar un UUID específico al PV
+
+[source,bash]
+----
+# Crear PV con UUID personalizado
+pvcreate -u 123e4567-e89b-12d3-a456-426614174000 /dev/sdb
+----
+
+-Z:: `pvcreate -Z tipo` Establecer formato de metadatos (lvm1 o lvm2)
+
+[source,bash]
+----
+# Inicializar PV usando metadatos LVM2
+pvcreate -Z lvm2 /dev/sdb
+----
+
+--dataalignment:: `pvcreate --dataalignment tamaño` Alinear datos según tamaño
+
+[source,bash]
+----
+# Alinear datos a 1MB para mejorar rendimiento
+pvcreate --dataalignment 1M /dev/sdb
+----
+

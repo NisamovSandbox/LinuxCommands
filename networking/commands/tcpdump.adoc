@@ -1,0 +1,81 @@
+=== tcpdump
+Capturar y analizar paquetes de red en tiempo real.
+
+[source,bash]
+----
+# Capturar tráfico en la interfaz por defecto
+sudo tcpdump
+----
+
+-i:: `tcpdump -i` Especificar interfaz de red
+
+[source,bash]
+----
+# Capturar tráfico en la interfaz eth0
+sudo tcpdump -i eth0
+----
+
+-n:: `tcpdump -n` No resolver nombres DNS ni puertos
+
+[source,bash]
+----
+# Mostrar solo direcciones IP numéricas
+sudo tcpdump -n
+----
+
+-c:: `tcpdump -c` Limitar número de paquetes capturados
+
+[source,bash]
+----
+# Capturar solo 10 paquetes
+sudo tcpdump -c 10
+----
+
+-w:: `tcpdump -w` Guardar captura en un archivo
+
+[source,bash]
+----
+# Guardar captura en un archivo .pcap
+sudo tcpdump -w captura.pcap
+----
+
+-r:: `tcpdump -r` Leer un archivo de captura
+
+[source,bash]
+----
+# Analizar una captura previamente guardada
+tcpdump -r captura.pcap
+----
+
+-port:: `tcpdump port` Filtrar por puerto
+
+[source,bash]
+----
+# Capturar tráfico del puerto 80
+sudo tcpdump port 80
+----
+
+-host:: `tcpdump host` Filtrar por host
+
+[source,bash]
+----
+# Capturar tráfico hacia o desde una IP concreta
+sudo tcpdump host 192.168.1.1
+----
+
+-proto:: `tcpdump tcp|udp|icmp` Filtrar por protocolo
+
+[source,bash]
+----
+# Capturar solo tráfico ICMP (ping)
+sudo tcpdump icmp
+----
+
+-v / -vv:: `tcpdump -v` Salida más detallada
+
+[source,bash]
+----
+# Mostrar información detallada de los paquetes
+sudo tcpdump -vv
+----
+

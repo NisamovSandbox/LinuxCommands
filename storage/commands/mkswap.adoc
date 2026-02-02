@@ -1,0 +1,49 @@
+=== mkswap
+Configurar un área de intercambio (swap) en un dispositivo o archivo.
+
+[source,bash]
+----
+# Crear swap en un dispositivo
+mkswap /dev/sda2
+----
+
+-L:: `mkswap -L etiqueta` Asignar una etiqueta al área de swap
+
+[source,bash]
+----
+# Crear swap con etiqueta SWAP1
+mkswap -L SWAP1 /dev/sda2
+----
+
+-c:: `mkswap -c` Comprobar bloques dañados antes de crear swap
+
+[source,bash]
+----
+# Verificar bloques antes de activar swap
+mkswap -c /dev/sda2
+----
+
+-n:: `mkswap -n tamaño` Especificar tamaño del área de swap (opcional en algunos sistemas)
+
+[source,bash]
+----
+# Crear swap de 2GB en un archivo (si se permite)
+mkswap -n 2G /swapfile
+----
+
+-v:: `mkswap -v` Modo verbose para mostrar información detallada
+
+[source,bash]
+----
+# Crear swap mostrando información de la operación
+mkswap -v /dev/sda2
+----
+
+--uuid:: `mkswap --uuid` Especificar UUID del swap
+
+[source,bash]
+----
+# Crear swap con UUID personalizado
+mkswap --uuid 123e4567-e89b-12d3-a456-426614174000 /dev/sda2
+----
+

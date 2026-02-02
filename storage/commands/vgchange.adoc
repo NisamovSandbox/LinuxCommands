@@ -1,0 +1,41 @@
+=== vgchange
+Activar o desactivar grupos de volúmenes en LVM.
+
+[source,bash]
+----
+# Activar un grupo de volúmenes
+vgchange -ay mi_grupo
+----
+
+-ay:: `vgchange -ay` Activar el grupo de volúmenes
+
+[source,bash]
+----
+# Activar el grupo vg1
+vgchange -ay vg1
+----
+
+-an:: `vgchange -an` Desactivar un grupo de volúmenes
+
+[source,bash]
+----
+# Desactivar el grupo vg1
+vgchange -an vg1
+----
+
+-v:: `vgchange -v` Modo verbose para mostrar información detallada
+
+[source,bash]
+----
+# Activar vg1 mostrando detalles
+vgchange -ay -v vg1
+----
+
+--test:: `vgchange --test` Simular operación sin aplicarla
+
+[source,bash]
+----
+# Probar activación sin modificar el VG
+vgchange --test -ay vg1
+----
+

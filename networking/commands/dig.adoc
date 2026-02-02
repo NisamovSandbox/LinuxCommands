@@ -1,0 +1,73 @@
+=== dig
+Consultar información de DNS y diagnosticar resolución de nombres de dominio.
+
+[source,bash]
+----
+# Consultar el registro A de un dominio
+dig ejemplo.com
+----
+
+-type:: `dig -t` Especificar tipo de registro DNS
+
+[source,bash]
+----
+# Obtener registros MX de un dominio
+dig ejemplo.com -t MX
+----
+
+-ns:: `dig NS` Consultar servidores de nombres de un dominio
+
+[source,bash]
+----
+# Mostrar los servidores de nombres del dominio
+dig ejemplo.com NS
+----
+
+-short:: `dig +short` Salida resumida
+
+[source,bash]
+----
+# Mostrar solo la IP asociada al dominio
+dig ejemplo.com +short
+----
+
+-recurse:: `dig +trace` Seguir la resolución recursiva desde la raíz
+
+[source,bash]
+----
+# Rastrear resolución DNS completa
+dig ejemplo.com +trace
+----
+
+-any:: `dig ANY` Consultar todos los registros disponibles
+
+[source,bash]
+----
+# Obtener todos los registros DNS
+dig ejemplo.com ANY
+----
+
+-timedns:: `dig +time=` Definir tiempo de espera
+
+[source,bash]
+----
+# Esperar máximo 5 segundos por respuesta
+dig ejemplo.com +time=5
+----
+
+-norecurse:: `dig +norecurse` Consultar sin recursión
+
+[source,bash]
+----
+# Preguntar a un servidor DNS sin permitir resolución recursiva
+dig ejemplo.com +norecurse
+----
+
+-server:: `dig @servidor` Usar un servidor DNS específico
+
+[source,bash]
+----
+# Consultar un dominio usando el servidor 8.8.8.8
+dig @8.8.8.8 ejemplo.com
+----
+

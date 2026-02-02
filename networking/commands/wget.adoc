@@ -1,0 +1,73 @@
+=== wget
+Descargar archivos desde la web mediante HTTP, HTTPS o FTP.
+
+[source,bash]
+----
+# Descargar un archivo desde una URL
+wget https://ejemplo.com/archivo.txt
+----
+
+-O:: `wget -O` Guardar con un nombre específico
+
+[source,bash]
+----
+# Descargar y guardar como nuevo_nombre.txt
+wget -O nuevo_nombre.txt https://ejemplo.com/archivo.txt
+----
+
+-c:: `wget -c` Continuar descargas interrumpidas
+
+[source,bash]
+----
+# Continuar descarga pausada previamente
+wget -c https://ejemplo.com/archivo_grande.zip
+----
+
+-q:: `wget -q` Modo silencioso
+
+[source,bash]
+----
+# Descargar sin mostrar salida en consola
+wget -q https://ejemplo.com/archivo.txt
+----
+
+--limit-rate:: `wget --limit-rate=VALOR` Limitar velocidad de descarga
+
+[source,bash]
+----
+# Limitar descarga a 200kB/s
+wget --limit-rate=200k https://ejemplo.com/archivo_grande.zip
+----
+
+--no-check-certificate:: `wget --no-check-certificate` Ignorar errores de certificado SSL
+
+[source,bash]
+----
+# Descargar desde un servidor con certificado no válido
+wget --no-check-certificate https://ejemplo.com/archivo.txt
+----
+
+-r:: `wget -r` Descarga recursiva de sitios web
+
+[source,bash]
+----
+# Descargar un sitio completo de forma recursiva
+wget -r https://ejemplo.com/
+----
+
+-np:: `wget -np` No ascender al directorio padre al descargar recursivamente
+
+[source,bash]
+----
+# Descargar recursivamente sin subir a directorios superiores
+wget -r -np https://ejemplo.com/carpeta/
+----
+
+--user / --password:: `wget --user=USUARIO --password=CONTRASEÑA` Autenticación HTTP/FTP
+
+[source,bash]
+----
+# Descargar archivo protegido con usuario y contraseña
+wget --user=miusuario --password=miclave https://ejemplo.com/archivo.txt
+----
+

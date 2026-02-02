@@ -1,0 +1,73 @@
+=== fdisk
+Herramienta para crear, modificar y gestionar tablas de particiones en discos.
+
+[source,bash]
+----
+# Abrir fdisk sobre un disco (modo interactivo)
+fdisk /dev/sda
+----
+
+-l:: `fdisk -l` Listar tablas de particiones
+
+[source,bash]
+----
+# Listar todos los discos y particiones
+fdisk -l
+----
+
+-device:: `fdisk /dev/dispositivo` Seleccionar disco a gestionar
+
+[source,bash]
+----
+# Gestionar particiones del disco /dev/sdb
+fdisk /dev/sdb
+----
+
+-t:: Acción interactiva `t` Cambiar tipo de partición
+
+[source,bash]
+----
+# Dentro de fdisk, cambiar el tipo de una partición
+# (acción interactiva)
+----
+
+-n:: Acción interactiva `n` Crear nueva partición
+
+[source,bash]
+----
+# Dentro de fdisk, crear una nueva partición
+# (acción interactiva)
+----
+
+-d:: Acción interactiva `d` Borrar una partición
+
+[source,bash]
+----
+# Dentro de fdisk, eliminar una partición
+# (acción interactiva)
+----
+
+-p:: Acción interactiva `p` Mostrar tabla de particiones
+
+[source,bash]
+----
+# Dentro de fdisk, mostrar la tabla actual
+# (acción interactiva)
+----
+
+-w:: Acción interactiva `w` Escribir cambios en disco
+
+[source,bash]
+----
+# Guardar los cambios y salir
+# (acción interactiva)
+----
+
+-q:: Acción interactiva `q` Salir sin guardar cambios
+
+[source,bash]
+----
+# Salir sin aplicar cambios
+# (acción interactiva)
+----
+

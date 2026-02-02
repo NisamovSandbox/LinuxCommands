@@ -1,0 +1,81 @@
+=== lsblk
+Listar dispositivos de bloques y su estructura (discos, particiones, puntos de montaje).
+
+[source,bash]
+----
+# Mostrar dispositivos de bloques en forma de árbol
+lsblk
+----
+
+-f:: `lsblk -f` Mostrar sistema de ficheros y UUID
+
+[source,bash]
+----
+# Mostrar FS, UUID y etiquetas
+lsblk -f
+----
+
+-o:: `lsblk -o` Seleccionar columnas a mostrar
+
+[source,bash]
+----
+# Mostrar nombre, tamaño, tipo y punto de montaje
+lsblk -o NAME,SIZE,TYPE,MOUNTPOINT
+----
+
+-a:: `lsblk -a` Incluir dispositivos vacíos
+
+[source,bash]
+----
+# Mostrar también dispositivos sin tamaño
+lsblk -a
+----
+
+-p:: `lsblk -p` Mostrar rutas completas (/dev/…)
+
+[source,bash]
+----
+# Mostrar dispositivos con ruta completa
+lsblk -p
+----
+
+-r:: `lsblk -r` Salida sin formato de árbol
+
+[source,bash]
+----
+# Mostrar salida en formato plano
+lsblk -r
+----
+
+-b:: `lsblk -b` Mostrar tamaños en bytes
+
+[source,bash]
+----
+# Mostrar tamaños exactos en bytes
+lsblk -b
+----
+
+-m:: `lsblk -m` Mostrar permisos y propietario
+
+[source,bash]
+----
+# Mostrar permisos estilo ls
+lsblk -m
+----
+
+--json:: `lsblk --json` Salida en formato JSON
+
+[source,bash]
+----
+# Exportar información en JSON
+lsblk --json
+----
+
+--fs:: `lsblk --fs` Mostrar solo información de sistemas de ficheros
+
+[source,bash]
+----
+# Mostrar únicamente datos de FS
+lsblk --fs
+----
+

@@ -1,0 +1,73 @@
+=== losetup
+Gestionar dispositivos de bucle (loop) para asociar ficheros como dispositivos de bloques.
+
+[source,bash]
+----
+# Mostrar todos los dispositivos loop activos
+losetup
+----
+
+-f:: `losetup -f` Buscar el primer dispositivo loop libre
+
+[source,bash]
+----
+# Mostrar el primer loop disponible
+losetup -f
+----
+
+-fP:: `losetup -fP` Asociar fichero y crear particiones automáticamente
+
+[source,bash]
+----
+# Asociar imagen de disco y detectar particiones
+losetup -fP disco.img
+----
+
+-d:: `losetup -d` Desasociar un dispositivo loop
+
+[source,bash]
+----
+# Liberar el dispositivo loop /dev/loop0
+losetup -d /dev/loop0
+----
+
+-a:: `losetup -a` Mostrar asociaciones activas
+
+[source,bash]
+----
+# Listar loops y ficheros asociados
+losetup -a
+----
+
+-o:: `losetup -o` Definir offset en bytes
+
+[source,bash]
+----
+# Asociar imagen comenzando en el byte 1048576
+losetup -o 1048576 /dev/loop0 disco.img
+----
+
+--sizelimit:: `losetup --sizelimit` Limitar tamaño visible
+
+[source,bash]
+----
+# Limitar el tamaño del loop a 1GB
+losetup --sizelimit 1G /dev/loop0 disco.img
+----
+
+-j:: `losetup -j` Buscar loop por fichero
+
+[source,bash]
+----
+# Mostrar loop asociado a disco.img
+losetup -j disco.img
+----
+
+-c:: `losetup -c` Releer tamaño del fichero asociado
+
+[source,bash]
+----
+# Actualizar tamaño del loop tras cambiar el fichero
+losetup -c /dev/loop0
+----
+

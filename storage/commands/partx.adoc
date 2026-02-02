@@ -1,0 +1,57 @@
+=== partx
+Actualizar la tabla de particiones del kernel para un dispositivo de bloque.
+
+[source,bash]
+----
+# Añadir todas las particiones de un disco al kernel
+partx -a /dev/sda
+----
+
+-a:: `partx -a` Añadir particiones detectadas al kernel
+
+[source,bash]
+----
+# Añadir particiones de /dev/sdb
+partx -a /dev/sdb
+----
+
+-d:: `partx -d` Eliminar particiones del kernel
+
+[source,bash]
+----
+# Eliminar todas las particiones de /dev/sdb del kernel
+partx -d /dev/sdb
+----
+
+-n:: `partx -n inicio:fín` Especificar rango de particiones
+
+[source,bash]
+----
+# Añadir solo la primera y segunda partición
+partx -a -n 1:2 /dev/sdb
+----
+
+-v:: `partx -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información detallada al añadir particiones
+partx -a -v /dev/sda
+----
+
+-l:: `partx -l` Listar particiones reconocidas en un dispositivo
+
+[source,bash]
+----
+# Mostrar particiones de /dev/sdb
+partx -l /dev/sdb
+----
+
+--show-labels:: `partx --show-labels` Mostrar etiquetas de particiones
+
+[source,bash]
+----
+# Mostrar etiquetas de todas las particiones del disco
+partx --show-labels /dev/sdb
+----
+

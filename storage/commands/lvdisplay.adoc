@@ -1,0 +1,65 @@
+=== lvdisplay
+Mostrar información detallada de volúmenes lógicos en LVM.
+
+[source,bash]
+----
+# Mostrar todos los volúmenes lógicos del sistema
+lvdisplay
+----
+
+-C:: `lvdisplay -C` Salida en columnas (formato compacto)
+
+[source,bash]
+----
+# Mostrar volúmenes lógicos en formato compacto
+lvdisplay -C
+----
+
+-v:: `lvdisplay -v` Modo verbose para más detalles
+
+[source,bash]
+----
+# Mostrar información detallada adicional
+lvdisplay -v
+----
+
+-n:: `lvdisplay -n nombre` Filtrar por nombre de volumen lógico
+
+[source,bash]
+----
+# Mostrar información del LV llamado datos
+lvdisplay -n datos
+----
+
+--select:: `lvdisplay --select` Filtrar volúmenes según atributos
+
+[source,bash]
+----
+# Mostrar solo volúmenes lógicos activos
+lvdisplay --select 'lv_active=1'
+----
+
+-L:: `lvdisplay -L` Mostrar tamaño en bytes (exacto)
+
+[source,bash]
+----
+# Mostrar tamaño exacto de los LV
+lvdisplay -L
+----
+
+-m:: `lvdisplay -m` Mostrar mapeo físico de cada volumen lógico
+
+[source,bash]
+----
+# Ver en qué volúmenes físicos se encuentran los LV
+lvdisplay -m
+----
+
+-p:: `lvdisplay -p` Mostrar permisos de los volúmenes lógicos
+
+[source,bash]
+----
+# Ver permisos y propiedades de los LV
+lvdisplay -p
+----
+

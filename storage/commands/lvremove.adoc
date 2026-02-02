@@ -1,0 +1,33 @@
+=== lvremove
+Eliminar volúmenes lógicos en LVM. **Precaución:** esta operación borra todos los datos del volumen.
+
+[source,bash]
+----
+# Eliminar un volumen lógico
+lvremove /dev/vg1/mi_volumen
+----
+
+-f:: `lvremove -f` Forzar la eliminación sin confirmación
+
+[source,bash]
+----
+# Eliminar el LV datos sin pedir confirmación
+lvremove -f /dev/vg1/datos
+----
+
+-v:: `lvremove -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Eliminar LV mostrando información detallada
+lvremove -v /dev/vg1/backup
+----
+
+--test:: `lvremove --test` Simular eliminación sin aplicarla
+
+[source,bash]
+----
+# Probar la eliminación sin borrar datos
+lvremove --test /dev/vg1/temp
+----
+

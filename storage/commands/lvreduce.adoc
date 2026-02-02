@@ -1,0 +1,57 @@
+=== lvreduce
+Reducir el tamaño de volúmenes lógicos en LVM. **Precaución:** esta operación puede causar pérdida de datos si el sistema de ficheros no se redimensiona antes.
+
+[source,bash]
+----
+# Reducir un volumen lógico a un tamaño específico
+lvreduce -L 10G /dev/vg1/mi_volumen
+----
+
+-L:: `-L tamaño` Definir tamaño final del volumen lógico
+
+[source,bash]
+----
+# Reducir LV datos a 5GB
+lvreduce -L 5G /dev/vg1/datos
+----
+
+-l:: `-l porcentaje` Especificar tamaño en porcentaje del espacio del grupo de volúmenes
+
+[source,bash]
+----
+# Reducir LV usando el 50% del tamaño actual
+lvreduce -l 50%VG /dev/vg1/datos
+----
+
+-r:: `-r` Redimensionar automáticamente el sistema de ficheros (si es compatible)
+
+[source,bash]
+----
+# Reducir LV y ajustar sistema de ficheros ext4 automáticamente
+lvreduce -L 8G -r /dev/vg1/backup
+----
+
+--resizefs:: `--resizefs` Alternativa explícita para redimensionar FS antes de reducir LV
+
+[source,bash]
+----
+# Reducir LV y su sistema de ficheros
+lvreduce --resizefs -L 6G /dev/vg1/temp
+----
+
+-v:: `-v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información detallada durante la reducción
+lvreduce -L 4G /dev/vg1/log -v
+----
+
+--test:: `--test` Simular operación sin aplicarla
+
+[source,bash]
+----
+# Probar reducción sin modificar el LV
+lvreduce -L 3G /dev/vg1/demo --test
+----
+

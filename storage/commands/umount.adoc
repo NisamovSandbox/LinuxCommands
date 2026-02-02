@@ -1,0 +1,67 @@
+```adoc
+=== umount
+Desmontar sistemas de ficheros montados en directorios del sistema.
+
+[source,bash]
+----
+# Desmontar un sistema de ficheros
+umount /mnt
+----
+
+-device:: `umount /dev/dispositivo` Desmontar un dispositivo específico
+
+[source,bash]
+----
+# Desmontar la partición /dev/sdb1
+umount /dev/sdb1
+----
+
+-l:: `umount -l` Desmontaje perezoso (lazy) para desmontar aunque esté en uso
+
+[source,bash]
+----
+# Desmontar perezosamente /mnt
+umount -l /mnt
+----
+
+-f:: `umount -f` Forzar desmontaje (útil para NFS o recursos de red colgados)
+
+[source,bash]
+----
+# Forzar desmontaje de un recurso de red
+umount -f /mnt/nfs
+----
+
+-a:: `umount -a` Desmontar todos los sistemas de ficheros listados en /etc/fstab
+
+[source,bash]
+----
+# Desmontar todos los FS definidos en fstab
+umount -a
+----
+
+-v:: `umount -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información al desmontar
+umount -v /dev/sdb1
+----
+
+-t:: `umount -t tipo` Desmontar solo sistemas de ficheros de un tipo específico
+
+[source,bash]
+----
+# Desmontar únicamente sistemas de ficheros de tipo tmpfs
+umount -t tmpfs /mnt/tmp
+----
+
+--recursive:: `umount --recursive` Desmontar directorios y submontajes recursivamente
+
+[source,bash]
+----
+# Desmontar /mnt y todos sus submontajes
+umount --recursive /mnt
+----
+```
+

@@ -1,0 +1,89 @@
+=== lsof
+Listar archivos abiertos y los procesos que los están utilizando.
+
+[source,bash]
+----
+# Mostrar todos los archivos abiertos del sistema
+lsof
+----
+
+-u:: `lsof -u` Filtrar por usuario
+
+[source,bash]
+----
+# Mostrar archivos abiertos por el usuario root
+lsof -u root
+----
+
+-p:: `lsof -p` Filtrar por PID
+
+[source,bash]
+----
+# Mostrar archivos abiertos por el proceso con PID 1234
+lsof -p 1234
+----
+
+-c:: `lsof -c` Filtrar por nombre de comando
+
+[source,bash]
+----
+# Mostrar archivos abiertos por procesos que empiezan por ssh
+lsof -c ssh
+----
+
+-i:: `lsof -i` Mostrar conexiones de red
+
+[source,bash]
+----
+# Mostrar sockets de red abiertos
+lsof -i
+----
+
+-iTCP:: `lsof -iTCP` Filtrar conexiones TCP
+
+[source,bash]
+----
+# Mostrar solo conexiones TCP
+lsof -iTCP
+----
+
+-i:PUERTO:: `lsof -i:PUERTO` Filtrar por puerto
+
+[source,bash]
+----
+# Mostrar procesos usando el puerto 80
+lsof -i:80
+----
+
+-n:: `lsof -n` No resolver nombres DNS
+
+[source,bash]
+----
+# Evitar resolución de nombres (más rápido)
+lsof -n
+----
+
+-P:: `lsof -P` No resolver nombres de puertos
+
+[source,bash]
+----
+# Mostrar números de puerto en lugar de nombres
+lsof -P
+----
+
+-D:: `lsof -D` Buscar en un directorio
+
+[source,bash]
+----
+# Mostrar archivos abiertos dentro de /var/log
+lsof +D /var/log
+----
+
+-t:: `lsof -t` Mostrar solo PIDs
+
+[source,bash]
+----
+# Mostrar únicamente los PID que usan el puerto 22
+lsof -t -i:22
+----
+

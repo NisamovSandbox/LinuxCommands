@@ -1,0 +1,65 @@
+=== cfdisk
+Herramienta interactiva para crear, modificar y gestionar tablas de particiones de forma visual en modo texto.
+
+[source,bash]
+----
+# Abrir cfdisk sobre el disco por defecto
+cfdisk
+----
+
+-device:: `cfdisk /dev/dispositivo` Seleccionar disco a gestionar
+
+[source,bash]
+----
+# Abrir cfdisk sobre /dev/sda
+cfdisk /dev/sda
+----
+
+-label:: `cfdisk --label` Definir tipo de tabla de particiones
+
+[source,bash]
+----
+# Crear o usar una tabla GPT
+cfdisk --label gpt /dev/sda
+----
+
+-list:: `cfdisk -l` Listar tablas de particiones detectadas
+
+[source,bash]
+----
+# Listar discos y particiones sin entrar en modo interactivo
+cfdisk -l
+----
+
+-help:: `cfdisk -h` Mostrar ayuda
+
+[source,bash]
+----
+# Mostrar opciones disponibles
+cfdisk -h
+----
+
+-geometry:: `cfdisk -z` Ignorar geometría existente (modo limpio)
+
+[source,bash]
+----
+# Iniciar cfdisk ignorando la geometría del disco
+cfdisk -z /dev/sda
+----
+
+-write:: Acción interactiva *Write* Guardar cambios en el disco
+
+[source,bash]
+----
+# Dentro de cfdisk, seleccionar Write para aplicar cambios
+# (acción interactiva, no se ejecuta como comando)
+----
+
+-quit:: Acción interactiva *Quit* Salir sin guardar cambios
+
+[source,bash]
+----
+# Dentro de cfdisk, seleccionar Quit para salir
+# (acción interactiva, no se ejecuta como comando)
+----
+

@@ -1,0 +1,65 @@
+=== df
+Mostrar el uso de espacio en disco de los sistemas de ficheros montados.
+
+[source,bash]
+----
+# Mostrar uso de disco en bloques
+df
+----
+
+-h:: `df -h` Mostrar tamaños en formato legible
+
+[source,bash]
+----
+# Mostrar uso de disco en formato humano
+df -h
+----
+
+-T:: `df -T` Mostrar tipo de sistema de ficheros
+
+[source,bash]
+----
+# Mostrar uso de disco junto con el tipo de FS
+df -T
+----
+
+-a:: `df -a` Incluir sistemas de ficheros especiales
+
+[source,bash]
+----
+# Mostrar todos los sistemas de ficheros
+df -a
+----
+
+-i:: `df -i` Mostrar uso de inodos
+
+[source,bash]
+----
+# Mostrar uso de inodos en lugar de bloques
+df -i
+----
+
+--total:: `df --total` Mostrar total acumulado
+
+[source,bash]
+----
+# Mostrar el total de espacio usado y disponible
+df --total
+----
+
+--exclude-type:: `df --exclude-type` Excluir tipos de FS
+
+[source,bash]
+----
+# Excluir sistemas de ficheros temporales
+df -h --exclude-type=tmpfs
+----
+
+-device:: `df /ruta/o/dispositivo` Consultar un punto concreto
+
+[source,bash]
+----
+# Mostrar uso del sistema de ficheros donde está /home
+df -h /home
+----
+

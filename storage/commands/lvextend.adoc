@@ -1,0 +1,57 @@
+=== lvextend
+Ampliar el tamaño de volúmenes lógicos en LVM.
+
+[source,bash]
+----
+# Ampliar un volumen lógico a un tamaño específico
+lvextend -L 20G /dev/vg1/mi_volumen
+----
+
+-L:: `-L tamaño` Definir tamaño final del volumen lógico
+
+[source,bash]
+----
+# Cambiar el tamaño de datos a 15GB
+lvextend -L 15G /dev/vg1/datos
+----
+
+-l:: `-l porcentaje` Especificar tamaño en porcentaje del espacio disponible del grupo de volúmenes
+
+[source,bash]
+----
+# Extender LV usando el 50% del espacio libre
+lvextend -l +50%FREE /dev/vg1/datos
+----
+
+-r:: `-r` Redimensionar automáticamente el sistema de ficheros
+
+[source,bash]
+----
+# Extender LV y redimensionar el sistema de ficheros ext4
+lvextend -L 10G -r /dev/vg1/backup
+----
+
+--resizefs:: `--resizefs` Alternativa explícita para redimensionar FS
+
+[source,bash]
+----
+# Redimensionar LV y su sistema de ficheros
+lvextend --resizefs -L +5G /dev/vg1/temp
+----
+
+-v:: `-v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Mostrar información detallada durante la extensión
+lvextend -L +2G /dev/vg1/log -v
+----
+
+--test:: `--test` Simular operación sin aplicarla
+
+[source,bash]
+----
+# Probar la extensión sin modificar el LV
+lvextend -L +1G /dev/vg1/demo --test
+----
+

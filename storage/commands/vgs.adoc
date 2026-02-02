@@ -1,0 +1,65 @@
+=== vgs
+Mostrar información resumida de grupos de volúmenes (VG) en LVM.
+
+[source,bash]
+----
+# Listar todos los grupos de volúmenes del sistema
+vgs
+----
+
+-a:: `vgs -a` Incluir grupos de volúmenes inactivos o internos
+
+[source,bash]
+----
+# Mostrar todos los VG, incluyendo los ocultos
+vgs -a
+----
+
+-o:: `vgs -o` Seleccionar columnas a mostrar
+
+[source,bash]
+----
+# Mostrar nombre, tamaño, número de PV y LV
+vgs -o vg_name,vg_size,pv_count,lv_count
+----
+
+--segments:: `vgs --segments` Mostrar detalles de los segmentos de cada VG
+
+[source,bash]
+----
+# Ver cómo los LV ocupan los PV de cada VG
+vgs --segments
+----
+
+--units:: `vgs --units` Cambiar unidades de tamaño (B, K, M, G, T)
+
+[source,bash]
+----
+# Mostrar tamaños en gigabytes
+vgs --units G
+----
+
+--noheadings:: `vgs --noheadings` Ocultar encabezados de columnas
+
+[source,bash]
+----
+# Mostrar solo los valores sin títulos
+vgs --noheadings
+----
+
+-v:: `vgs -v` Modo verbose para mostrar información detallada
+
+[source,bash]
+----
+# Mostrar detalles adicionales de los VG
+vgs -v
+----
+
+--select:: `vgs --select` Filtrar grupos según criterios
+
+[source,bash]
+----
+# Mostrar solo los VG activos
+vgs --select 'vg_active=1'
+----
+

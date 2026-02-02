@@ -1,0 +1,73 @@
+=== netstat
+Mostrar conexiones de red activas, puertos abiertos, rutas y estadísticas de red.
+
+[source,bash]
+----
+# Mostrar todas las conexiones de red activas
+netstat
+----
+
+-t:: `netstat -t` Mostrar solo conexiones TCP
+
+[source,bash]
+----
+# Listar conexiones TCP activas
+netstat -t
+----
+
+-u:: `netstat -u` Mostrar solo conexiones UDP
+
+[source,bash]
+----
+# Listar conexiones UDP activas
+netstat -u
+----
+
+-l:: `netstat -l` Mostrar solo puertos escuchando
+
+[source,bash]
+----
+# Ver puertos en escucha
+netstat -l
+----
+
+-n:: `netstat -n` Mostrar direcciones y puertos en formato numérico
+
+[source,bash]
+----
+# Mostrar puertos y direcciones sin resolver nombres
+netstat -tn
+----
+
+-p:: `netstat -p` Mostrar PID y programa que usa la conexión
+
+[source,bash]
+----
+# Ver conexiones TCP con programa asociado
+sudo netstat -tp
+----
+
+-a:: `netstat -a` Mostrar todas las conexiones y puertos escuchando
+
+[source,bash]
+----
+# Ver todas las conexiones TCP/UDP y puertos abiertos
+netstat -a
+----
+
+-s:: `netstat -s` Mostrar estadísticas de protocolos de red
+
+[source,bash]
+----
+# Resumen de estadísticas TCP, UDP, ICMP, IP
+netstat -s
+----
+
+-r:: `netstat -r` Mostrar tabla de rutas
+
+[source,bash]
+----
+# Ver la tabla de enrutamiento
+netstat -r
+----
+

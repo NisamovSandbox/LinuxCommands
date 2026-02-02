@@ -1,0 +1,49 @@
+=== vgcreate
+Crear un grupo de volúmenes (VG) en LVM a partir de uno o varios volúmenes físicos (PV).
+
+[source,bash]
+----
+# Crear un grupo de volúmenes llamado vg1 usando /dev/sdb y /dev/sdc
+vgcreate vg1 /dev/sdb /dev/sdc
+----
+
+-v:: `vgcreate -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Crear VG mostrando información detallada
+vgcreate -v vg1 /dev/sdb /dev/sdc
+----
+
+-s:: `vgcreate -s tamaño` Especificar tamaño del cluster de metadatos
+
+[source,bash]
+----
+# Crear VG con tamaño de cluster de 64MB
+vgcreate -s 64M vg1 /dev/sdb /dev/sdc
+----
+
+-u:: `vgcreate -u UUID` Asignar un UUID específico al grupo de volúmenes
+
+[source,bash]
+----
+# Crear VG con UUID personalizado
+vgcreate -u 123e4567-e89b-12d3-a456-426614174000 vg1 /dev/sdb
+----
+
+-Z:: `vgcreate -Z tipo` Establecer formato de metadatos (lvm1 o lvm2)
+
+[source,bash]
+----
+# Crear VG usando metadatos LVM2
+vgcreate -Z lvm2 vg1 /dev/sdb /dev/sdc
+----
+
+--physicalextentsize:: `vgcreate --physicalextentsize tamaño` Alternativa para definir tamaño del cluster
+
+[source,bash]
+----
+# Crear VG con tamaño de extensión física de 32MB
+vgcreate --physicalextentsize 32M vg1 /dev/sdb /dev/sdc
+----
+

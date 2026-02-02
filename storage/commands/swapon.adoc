@@ -1,0 +1,59 @@
+```adoc
+=== swapon
+Activar áreas de intercambio (swap) en el sistema.
+
+[source,bash]
+----
+# Activar todos los swap definidos en /etc/fstab
+swapon -a
+----
+
+-a:: `swapon -a` Activar todas las particiones o ficheros de swap listados en /etc/fstab
+
+[source,bash]
+----
+# Activar todos los swap activos en fstab
+swapon -a
+----
+
+-v:: `swapon -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Activar swap mostrando información detallada
+swapon -v /dev/sda2
+----
+
+-device:: `swapon dispositivo` Activar un swap específico
+
+[source,bash]
+----
+# Activar swap en /dev/sda2
+swapon /dev/sda2
+----
+
+-file:: `swapon fichero` Activar un archivo de swap específico
+
+[source,bash]
+----
+# Activar swap en un archivo /swapfile
+swapon /swapfile
+----
+
+-s:: `swapon -s` Mostrar un resumen de swaps activos
+
+[source,bash]
+----
+# Listar swaps activos
+swapon -s
+----
+
+-p:: `swapon -p prioridad` Establecer prioridad de uso del swap
+
+[source,bash]
+----
+# Activar swap con prioridad 10
+swapon -p 10 /dev/sda2
+----
+```
+

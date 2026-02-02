@@ -1,0 +1,49 @@
+=== pvdisplay
+Mostrar información detallada de volúmenes físicos (PV) en LVM.
+
+[source,bash]
+----
+# Mostrar todos los volúmenes físicos del sistema
+pvdisplay
+----
+
+-v:: `pvdisplay -v` Modo verbose para mostrar detalles adicionales
+
+[source,bash]
+----
+# Mostrar información detallada de los PV
+pvdisplay -v
+----
+
+-n:: `pvdisplay -n nombre` Filtrar por nombre del volumen físico
+
+[source,bash]
+----
+# Mostrar información del PV /dev/sdb
+pvdisplay -n /dev/sdb
+----
+
+-C:: `pvdisplay -C` Salida en formato de columnas (compacta)
+
+[source,bash]
+----
+# Mostrar PV en formato compacto
+pvdisplay -C
+----
+
+--units:: `pvdisplay --units` Cambiar unidades de tamaño (B, K, M, G, T)
+
+[source,bash]
+----
+# Mostrar tamaños en gigabytes
+pvdisplay --units G
+----
+
+--maps:: `pvdisplay --maps` Mostrar mapeo físico de volúmenes lógicos sobre PV
+
+[source,bash]
+----
+# Ver cómo los LV ocupan el PV
+pvdisplay --maps /dev/sdb
+----
+

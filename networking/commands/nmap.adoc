@@ -1,0 +1,73 @@
+=== nmap
+Escaneo y análisis de puertos, servicios y dispositivos en la red.
+
+[source,bash]
+----
+# Escanear puertos comunes de un host
+nmap ejemplo.com
+----
+
+-p:: `nmap -p` Especificar puertos a escanear
+
+[source,bash]
+----
+# Escanear solo los puertos 22, 80 y 443
+nmap -p 22,80,443 ejemplo.com
+----
+
+-sS:: `nmap -sS` Escaneo TCP SYN (stealth scan)
+
+[source,bash]
+----
+# Escanear puertos usando TCP SYN
+sudo nmap -sS ejemplo.com
+----
+
+-sU:: `nmap -sU` Escaneo de puertos UDP
+
+[source,bash]
+----
+# Escanear puertos UDP
+sudo nmap -sU ejemplo.com
+----
+
+-A:: `nmap -A` Detección de sistema operativo y servicios
+
+[source,bash]
+----
+# Escanear con detección de SO y versión de servicios
+sudo nmap -A ejemplo.com
+----
+
+-O:: `nmap -O` Detectar sistema operativo
+
+[source,bash]
+----
+# Intentar identificar el sistema operativo del host
+sudo nmap -O ejemplo.com
+----
+
+-T:: `nmap -T` Ajustar velocidad/agresividad del escaneo (0-5)
+
+[source,bash]
+----
+# Escaneo rápido/agresivo
+sudo nmap -T4 ejemplo.com
+----
+
+-v:: `nmap -v` Modo verbose para más detalles
+
+[source,bash]
+----
+# Escaneo mostrando información adicional
+nmap -v ejemplo.com
+----
+
+--open:: `nmap --open` Mostrar solo puertos abiertos
+
+[source,bash]
+----
+# Listar únicamente los puertos abiertos
+nmap --open ejemplo.com
+----
+

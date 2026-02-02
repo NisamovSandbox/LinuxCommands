@@ -1,0 +1,49 @@
+=== swapoff
+Desactivar áreas de intercambio (swap) en el sistema.
+
+[source,bash]
+----
+# Desactivar todo el swap del sistema
+swapoff -a
+----
+
+-a:: `swapoff -a` Desactivar todas las particiones o ficheros de swap listados en /etc/fstab
+
+[source,bash]
+----
+# Desactivar todos los swap activos
+swapoff -a
+----
+
+-v:: `swapoff -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Desactivar swap mostrando información detallada
+swapoff -v /dev/sda2
+----
+
+-n:: `swapoff -n` Simular la desactivación sin aplicarla (dry-run)
+
+[source,bash]
+----
+# Probar la desactivación sin apagar el swap
+swapoff -n /dev/sda2
+----
+
+-device:: `swapoff dispositivo` Desactivar un swap específico
+
+[source,bash]
+----
+# Desactivar swap en /dev/sda2
+swapoff /dev/sda2
+----
+
+-file:: `swapoff fichero` Desactivar un archivo de swap específico
+
+[source,bash]
+----
+# Desactivar swap en un archivo /swapfile
+swapoff /swapfile
+----
+

@@ -1,0 +1,81 @@
+=== blkid
+Identificar y mostrar información de dispositivos de bloques (UUID, tipo de sistema de ficheros, etiquetas, etc.).
+
+[source,bash]
+----
+# Mostrar todos los dispositivos de bloques detectados
+blkid
+----
+
+-device:: `blkid /dev/dispositivo` Consultar un dispositivo concreto
+
+[source,bash]
+----
+# Mostrar información de /dev/sda1
+blkid /dev/sda1
+----
+
+-o:: `blkid -o` Definir formato de salida
+
+[source,bash]
+----
+# Mostrar salida en formato export (clave=valor)
+blkid -o export /dev/sda1
+----
+
+-t:: `blkid -t` Filtrar por tipo o atributo
+
+[source,bash]
+----
+# Mostrar solo dispositivos con sistema de ficheros ext4
+blkid -t TYPE=ext4
+----
+
+-s:: `blkid -s` Mostrar solo un campo específico
+
+[source,bash]
+----
+# Mostrar únicamente el UUID del dispositivo
+blkid -s UUID /dev/sda1
+----
+
+-l:: `blkid -l` Usar caché para acelerar la búsqueda
+
+[source,bash]
+----
+# Listar dispositivos usando la caché
+blkid -l
+----
+
+-c:: `blkid -c` Especificar archivo de caché
+
+[source,bash]
+----
+# Usar un archivo de caché personalizado
+blkid -c /tmp/blkid.cache
+----
+
+-p:: `blkid -p` Sondeo directo del dispositivo (ignora la caché)
+
+[source,bash]
+----
+# Detectar información directamente del dispositivo
+blkid -p /dev/sdb1
+----
+
+-L:: `blkid -L` Buscar dispositivo por etiqueta
+
+[source,bash]
+----
+# Localizar el dispositivo con la etiqueta HOME
+blkid -L HOME
+----
+
+-U:: `blkid -U` Buscar dispositivo por UUID
+
+[source,bash]
+----
+# Localizar el dispositivo con un UUID concreto
+blkid -U 123e4567-e89b-12d3-a456-426614174000
+----
+

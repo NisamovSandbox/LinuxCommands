@@ -1,0 +1,49 @@
+=== nslookup
+Consultar información de DNS de dominios y direcciones IP de manera interactiva o directa.
+
+[source,bash]
+----
+# Consultar IP de un dominio
+nslookup ejemplo.com
+----
+
+-server:: `nslookup SERVER` Usar un servidor DNS específico
+
+[source,bash]
+----
+# Consultar ejemplo.com usando el servidor 8.8.8.8
+nslookup ejemplo.com 8.8.8.8
+----
+
+-type:: `nslookup -type=TIPO` Especificar tipo de registro DNS (A, MX, NS…)
+
+[source,bash]
+----
+# Obtener registros MX de ejemplo.com
+nslookup -type=MX ejemplo.com
+----
+
+-port:: `nslookup -port=PUERTO` Usar un puerto específico del servidor DNS
+
+[source,bash]
+----
+# Consultar usando el puerto 5353 del servidor
+nslookup -port=5353 ejemplo.com 8.8.8.8
+----
+
+-debug:: `nslookup -debug` Mostrar información detallada de la consulta
+
+[source,bash]
+----
+# Ver todo el detalle de la consulta DNS
+nslookup -debug ejemplo.com
+----
+
+-query:: `nslookup -query=TIPO` Alternativa para especificar tipo de registro
+
+[source,bash]
+----
+# Obtener registros NS de ejemplo.com
+nslookup -query=NS ejemplo.com
+----
+

@@ -1,0 +1,60 @@
+=== ifconfig
+Consultar y configurar interfaces de red en sistemas Linux.
+
+[source,bash]
+----
+# Mostrar todas las interfaces y sus configuraciones
+ifconfig
+----
+
+-interface:: `ifconfig INTERFAZ` Consultar configuración de una interfaz específica
+
+[source,bash]
+----
+# Ver detalles de la interfaz eth0
+ifconfig eth0
+----
+
+-up / -down:: `ifconfig INTERFAZ up/down` Activar o desactivar una interfaz
+
+[source,bash]
+----
+# Activar interfaz eth0
+sudo ifconfig eth0 up
+
+# Desactivar interfaz eth0
+sudo ifconfig eth0 down
+----
+
+-ip:: `ifconfig INTERFAZ IP` Asignar dirección IP a una interfaz
+
+[source,bash]
+----
+# Asignar IP 192.168.1.10 con máscara 255.255.255.0
+sudo ifconfig eth0 192.168.1.10 netmask 255.255.255.0
+----
+
+-broadcast:: `ifconfig INTERFAZ broadcast` Configurar dirección de broadcast
+
+[source,bash]
+----
+# Establecer dirección de broadcast
+sudo ifconfig eth0 broadcast 192.168.1.255
+----
+
+-mtu:: `ifconfig INTERFAZ mtu` Cambiar tamaño máximo de paquete (MTU)
+
+[source,bash]
+----
+# Establecer MTU de 1400 bytes
+sudo ifconfig eth0 mtu 1400
+----
+
+-promisc:: `ifconfig INTERFAZ promisc` Activar modo promiscuo
+
+[source,bash]
+----
+# Activar modo promiscuo (captura todo el tráfico)
+sudo ifconfig eth0 promisc
+----
+

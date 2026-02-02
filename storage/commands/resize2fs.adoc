@@ -1,0 +1,49 @@
+=== resize2fs
+Redimensionar sistemas de ficheros ext2/ext3/ext4 en un dispositivo o volumen lógico. Puede ampliarlos o reducirlos (reducir requiere que el FS esté desmontado o en modo read-only).
+
+[source,bash]
+----
+# Redimensionar un sistema de ficheros al tamaño máximo disponible
+resize2fs /dev/vg1/mi_volumen
+----
+
+-L:: `resize2fs -L tamaño` Establecer tamaño final del sistema de ficheros
+
+[source,bash]
+----
+# Redimensionar FS a 10GB
+resize2fs -L 10G /dev/vg1/datos
+----
+
+-M:: `resize2fs -M` Reducir el FS al tamaño mínimo posible
+
+[source,bash]
+----
+# Reducir FS al tamaño mínimo sin perder datos
+resize2fs -M /dev/vg1/backup
+----
+
+-p:: `resize2fs -p` Modo progreso, mostrar barra de progreso
+
+[source,bash]
+----
+# Mostrar progreso durante el redimensionamiento
+resize2fs -p /dev/vg1/temp
+----
+
+-v:: `resize2fs -v` Modo verbose para mostrar detalles de la operación
+
+[source,bash]
+----
+# Redimensionar FS mostrando información detallada
+resize2fs -v /dev/vg1/log
+----
+
+-f:: `resize2fs -f` Forzar operación incluso si hay advertencias
+
+[source,bash]
+----
+# Forzar redimensionamiento de FS
+resize2fs -f /dev/vg1/demo
+----
+
