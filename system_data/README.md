@@ -18,5 +18,6 @@ Sirve como referencia para consultas y análisis.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
-- [system_code.md](/system_data/system_code.md)
+- [environment](/system_data/environment)
+- [in_out](/system_data/in_out)
 <!-- AUTO-GENERATED-INDEX:END -->
