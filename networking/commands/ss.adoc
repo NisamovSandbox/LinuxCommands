@@ -1,0 +1,73 @@
+=== ss
+Mostrar conexiones de red activas, puertos abiertos y estadísticas, reemplazo moderno de netstat.
+
+[source,bash]
+----
+# Mostrar todas las conexiones TCP y UDP
+ss
+----
+
+-t:: `ss -t` Mostrar solo conexiones TCP
+
+[source,bash]
+----
+# Listar conexiones TCP activas
+ss -t
+----
+
+-u:: `ss -u` Mostrar solo conexiones UDP
+
+[source,bash]
+----
+# Listar conexiones UDP activas
+ss -u
+----
+
+-l:: `ss -l` Mostrar solo puertos en escucha (listening)
+
+[source,bash]
+----
+# Ver puertos escuchando
+ss -l
+----
+
+-n:: `ss -n` Mostrar direcciones y puertos en formato numérico
+
+[source,bash]
+----
+# Mostrar puertos y direcciones sin resolver nombres
+ss -tn
+----
+
+-p:: `ss -p` Mostrar PID y proceso asociado a la conexión
+
+[source,bash]
+----
+# Ver conexiones TCP con programa asociado
+sudo ss -tp
+----
+
+-a:: `ss -a` Mostrar todas las conexiones y puertos en escucha
+
+[source,bash]
+----
+# Listar todas las conexiones TCP/UDP y puertos abiertos
+ss -a
+----
+
+-s:: `ss -s` Mostrar resumen estadístico de protocolos de red
+
+[source,bash]
+----
+# Resumen de estadísticas TCP, UDP, ICMP
+ss -s
+----
+
+-r:: `ss -r` Mostrar tabla de rutas (similar a netstat -r)
+
+[source,bash]
+----
+# Ver tabla de enrutamiento
+ss -r
+----
+

@@ -30,6 +30,8 @@ include::local_network/network.adoc[]
 include::local_network/netplan.adoc[]
 
 == Comandos
+include::commands/ip.adoc[]
+include::commands/ss.adoc[]
 include::commands/dig.adoc[]
 include::commands/ping.adoc[]
 include::commands/wget.adoc[]

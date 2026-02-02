@@ -1,0 +1,82 @@
+=== ip
+Consultar y configurar interfaces de red, rutas, direcciones y vecinos en Linux (reemplazo moderno de ifconfig y arp).
+
+[source,bash]
+----
+# Mostrar todas las interfaces y sus direcciones
+ip addr show
+----
+
+-link:: `ip link show` Consultar estado de las interfaces de red
+
+[source,bash]
+----
+# Ver interfaces activas/inactivas
+ip link show
+----
+
+-up / -down:: `ip link set INTERFAZ up/down` Activar o desactivar interfaz
+
+[source,bash]
+----
+# Activar interfaz eth0
+sudo ip link set eth0 up
+
+# Desactivar interfaz eth0
+sudo ip link set eth0 down
+----
+
+-add / del:: `ip addr add/del` Añadir o eliminar direcciones IP
+
+[source,bash]
+----
+# Asignar IP 192.168.1.10/24 a eth0
+sudo ip addr add 192.168.1.10/24 dev eth0
+
+# Eliminar IP
+sudo ip addr del 192.168.1.10/24 dev eth0
+----
+
+-route:: `ip route show` Consultar tabla de rutas
+
+[source,bash]
+----
+# Mostrar la tabla de enrutamiento
+ip route show
+----
+
+-add / del:: `ip route add/del` Añadir o eliminar rutas
+
+[source,bash]
+----
+# Añadir ruta a red 10.0.0.0/24 vía gateway 192.168.1.1
+sudo ip route add 10.0.0.0/24 via 192.168.1.1
+
+# Eliminar ruta
+sudo ip route del 10.0.0.0/24
+----
+
+-neigh:: `ip neigh show` Consultar tabla ARP/vecinos
+
+[source,bash]
+----
+# Ver tabla ARP de la red local
+ip neigh show
+----
+
+-flush:: `ip neigh flush` Limpiar tabla de vecinos
+
+[source,bash]
+----
+# Eliminar todas las entradas ARP
+sudo ip neigh flush all
+----
+
+-m:: `ip -s link` Mostrar estadísticas de tráfico de interfaces
+
+[source,bash]
+----
+# Ver estadísticas de paquetes enviados/recibidos por cada interfaz
+ip -s link
+----
+
