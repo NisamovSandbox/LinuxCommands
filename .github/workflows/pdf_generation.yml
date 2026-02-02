@@ -97,45 +97,47 @@ jobs:
 
       - name: Crear tema simple para CJK (opcional)
         run: |
-          cat > default-cjk.yml << 'EOF'
+          cat > cjk-theme.yml << 'EOF'
           extends: default
           font:
             catalog:
-              Noto Sans:
-                normal: /usr/share/fonts/truetype/noto/NotoSans-Regular.ttf
-                bold: /usr/share/fonts/truetype/noto/NotoSans-Bold.ttf
-                italic: /usr/share/fonts/truetype/noto/NotoSans-Italic.ttf
-                bold_italic: /usr/share/fonts/truetype/noto/NotoSans-BoldItalic.ttf
-            fallback:
-              - Noto Sans
+              Noto Sans CJK SC:
+                normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+                bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
+              Noto Serif CJK SC:
+                normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
+                bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
+            fallback_fonts:
+              - Noto Sans CJK SC
+          base:
+            font_family: Noto Sans CJK SC
+          heading:
+            font_family: Noto Serif CJK SC
+          code:
+            font_family: Courier
           EOF
 
       - name: Generar PDFs ESP, ENG, DE, PT, RU, ZH, KO y JA
         run: |
           set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
-          
           # Lista específica de módulos a procesar
           MODULES="document_management fundamentals networking permission_management services software_management storage"
-          
           for MODULE in $MODULES; do
             if [ -d "$MODULE" ] && [ -f "$MODULE/index.adoc" ]; then
               echo "=== Procesando módulo: $MODULE ==="
-              
               # Español (original)
               echo "Generando PDF Español..."
               "$ASCIIDOCTOR" "$MODULE/index.adoc" \
                 -a pdf-theme=default \
                 -a pdf-fontsdir=/usr/share/fonts \
                 -o "pdf/ESP_${MODULE}.pdf"
-              
               # Inglés
               echo "Traduciendo a inglés..."
               TMP_EN="tmp_en/$MODULE"
               mkdir -p "$TMP_EN"
               cp -r "$MODULE/"* "$TMP_EN/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_EN" en
-              
               if [ -f "$TMP_EN/index.adoc" ]; then
                 echo "Generando PDF Inglés..."
                 "$ASCIIDOCTOR" "$TMP_EN/index.adoc" \
@@ -145,14 +147,12 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a inglés"
               fi
-              
               # Alemán
               echo "Traduciendo a alemán..."
               TMP_DE="tmp_de/$MODULE"
               mkdir -p "$TMP_DE"
               cp -r "$MODULE/"* "$TMP_DE/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_DE" de
-              
               if [ -f "$TMP_DE/index.adoc" ]; then
                 echo "Generando PDF Alemán..."
                 "$ASCIIDOCTOR" "$TMP_DE/index.adoc" \
@@ -162,14 +162,12 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a alemán"
               fi
-              
               # Portugués
               echo "Traduciendo a portugués..."
               TMP_PT="tmp_pt/$MODULE"
               mkdir -p "$TMP_PT"
               cp -r "$MODULE/"* "$TMP_PT/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_PT" pt
-              
               if [ -f "$TMP_PT/index.adoc" ]; then
                 echo "Generando PDF Portugués..."
                 "$ASCIIDOCTOR" "$TMP_PT/index.adoc" \
@@ -179,14 +177,12 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a portugués"
               fi
-              
               # Ruso
               echo "Traduciendo a ruso..."
               TMP_RU="tmp_ru/$MODULE"
               mkdir -p "$TMP_RU"
               cp -r "$MODULE/"* "$TMP_RU/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_RU" ru
-              
               if [ -f "$TMP_RU/index.adoc" ]; then
                 echo "Generando PDF Ruso..."
                 "$ASCIIDOCTOR" "$TMP_RU/index.adoc" \
@@ -196,33 +192,30 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a ruso"
               fi
-              
               # Chino (con tema por defecto y fuentes CJK)
               echo "Traduciendo a chino..."
               TMP_ZH="tmp_zh/$MODULE"
               mkdir -p "$TMP_ZH"
               cp -r "$MODULE/"* "$TMP_ZH/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_ZH" zh
-              
               if [ -f "$TMP_ZH/index.adoc" ]; then
                 echo "Generando PDF Chino con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_ZH/index.adoc" \
-                  -a pdf-theme=default \
-                  -a pdf-fontsdir=/usr/share/fonts \
-                  -a scripts=cjk \
-                  -a lang=zh \
+                  --attribute pdf-theme=cjk-theme.yml \
+                  --attribute pdf-fontsdir=/usr/share/fonts \
+                  --attribute scripts=cjk \
+                  --attribute lang=zh \
+                  --require asciidoctor-pdf-cjk \
                   -o "pdf/ZH_${MODULE}.pdf"
               else
                 echo "ERROR: No se pudo traducir $MODULE a chino"
               fi
-              
               # Coreano (con tema por defecto y fuentes CJK)
               echo "Traduciendo a coreano..."
               TMP_KO="tmp_ko/$MODULE"
               mkdir -p "$TMP_KO"
               cp -r "$MODULE/"* "$TMP_KO/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_KO" ko
-              
               if [ -f "$TMP_KO/index.adoc" ]; then
                 echo "Generando PDF Coreano con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_KO/index.adoc" \
