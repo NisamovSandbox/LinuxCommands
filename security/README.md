@@ -18,6 +18,7 @@ Incluye tanto prevención como control de accesos y comunicaciones seguras.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
+- [local_audit](/security/local_audit)
 - [manual_analysis](/security/manual_analysis)
   - [manual_analysis/audit.md](/security/manual_analysis/audit.md)
 - [network_security](/security/network_security)
