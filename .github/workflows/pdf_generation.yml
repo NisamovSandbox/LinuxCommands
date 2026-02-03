@@ -97,47 +97,45 @@ jobs:
 
       - name: Crear tema simple para CJK (opcional)
         run: |
-          cat > cjk-theme.yml << 'EOF'
+          cat > default-cjk.yml << 'EOF'
           extends: default
           font:
             catalog:
-              Noto Sans CJK SC:
-                normal: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
-                bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc
-              Noto Serif CJK SC:
-                normal: /usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc
-                bold: /usr/share/fonts/opentype/noto/NotoSerifCJK-Bold.ttc
-            fallback_fonts:
-              - Noto Sans CJK SC
-          base:
-            font_family: Noto Sans CJK SC
-          heading:
-            font_family: Noto Serif CJK SC
-          code:
-            font_family: Courier
+              Noto Sans:
+                normal: /usr/share/fonts/truetype/noto/NotoSans-Regular.ttf
+                bold: /usr/share/fonts/truetype/noto/NotoSans-Bold.ttf
+                italic: /usr/share/fonts/truetype/noto/NotoSans-Italic.ttf
+                bold_italic: /usr/share/fonts/truetype/noto/NotoSans-BoldItalic.ttf
+            fallback:
+              - Noto Sans
           EOF
 
       - name: Generar PDFs ESP, ENG, DE, PT, RU, ZH, KO y JA
         run: |
           set -e
           ASCIIDOCTOR=$(which asciidoctor-pdf)
+          
           # Lista específica de módulos a procesar
           MODULES="document_management fundamentals networking permission_management services software_management storage"
+          
           for MODULE in $MODULES; do
             if [ -d "$MODULE" ] && [ -f "$MODULE/index.adoc" ]; then
               echo "=== Procesando módulo: $MODULE ==="
+              
               # Español (original)
               echo "Generando PDF Español..."
               "$ASCIIDOCTOR" "$MODULE/index.adoc" \
                 -a pdf-theme=default \
                 -a pdf-fontsdir=/usr/share/fonts \
                 -o "pdf/ESP_${MODULE}.pdf"
+              
               # Inglés
               echo "Traduciendo a inglés..."
               TMP_EN="tmp_en/$MODULE"
               mkdir -p "$TMP_EN"
               cp -r "$MODULE/"* "$TMP_EN/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_EN" en
+              
               if [ -f "$TMP_EN/index.adoc" ]; then
                 echo "Generando PDF Inglés..."
                 "$ASCIIDOCTOR" "$TMP_EN/index.adoc" \
@@ -147,12 +145,14 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a inglés"
               fi
+              
               # Alemán
               echo "Traduciendo a alemán..."
               TMP_DE="tmp_de/$MODULE"
               mkdir -p "$TMP_DE"
               cp -r "$MODULE/"* "$TMP_DE/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_DE" de
+              
               if [ -f "$TMP_DE/index.adoc" ]; then
                 echo "Generando PDF Alemán..."
                 "$ASCIIDOCTOR" "$TMP_DE/index.adoc" \
@@ -162,12 +162,14 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a alemán"
               fi
+              
               # Portugués
               echo "Traduciendo a portugués..."
               TMP_PT="tmp_pt/$MODULE"
               mkdir -p "$TMP_PT"
               cp -r "$MODULE/"* "$TMP_PT/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_PT" pt
+              
               if [ -f "$TMP_PT/index.adoc" ]; then
                 echo "Generando PDF Portugués..."
                 "$ASCIIDOCTOR" "$TMP_PT/index.adoc" \
@@ -177,12 +179,14 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a portugués"
               fi
+              
               # Ruso
               echo "Traduciendo a ruso..."
               TMP_RU="tmp_ru/$MODULE"
               mkdir -p "$TMP_RU"
               cp -r "$MODULE/"* "$TMP_RU/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_RU" ru
+              
               if [ -f "$TMP_RU/index.adoc" ]; then
                 echo "Generando PDF Ruso..."
                 "$ASCIIDOCTOR" "$TMP_RU/index.adoc" \
@@ -192,30 +196,33 @@ jobs:
               else
                 echo "ERROR: No se pudo traducir $MODULE a ruso"
               fi
+              
               # Chino (con tema por defecto y fuentes CJK)
               echo "Traduciendo a chino..."
               TMP_ZH="tmp_zh/$MODULE"
               mkdir -p "$TMP_ZH"
               cp -r "$MODULE/"* "$TMP_ZH/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_ZH" zh
+              
               if [ -f "$TMP_ZH/index.adoc" ]; then
                 echo "Generando PDF Chino con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_ZH/index.adoc" \
-                  --attribute pdf-theme=cjk-theme.yml \
-                  --attribute pdf-fontsdir=/usr/share/fonts \
-                  --attribute scripts=cjk \
-                  --attribute lang=zh \
-                  --require asciidoctor-pdf-cjk \
+                  -a pdf-theme=default \
+                  -a pdf-fontsdir=/usr/share/fonts \
+                  -a scripts=cjk \
+                  -a lang=zh \
                   -o "pdf/ZH_${MODULE}.pdf"
               else
                 echo "ERROR: No se pudo traducir $MODULE a chino"
               fi
+              
               # Coreano (con tema por defecto y fuentes CJK)
               echo "Traduciendo a coreano..."
               TMP_KO="tmp_ko/$MODULE"
               mkdir -p "$TMP_KO"
               cp -r "$MODULE/"* "$TMP_KO/" 2>/dev/null || true
               python3 .github/scripts/translate_adoc.py "$MODULE" "$TMP_KO" ko
+              
               if [ -f "$TMP_KO/index.adoc" ]; then
                 echo "Generando PDF Coreano con tema por defecto..."
                 "$ASCIIDOCTOR" "$TMP_KO/index.adoc" \
@@ -267,10 +274,10 @@ jobs:
           echo "Creando releases separados por idioma..."
           ESPImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ESP.png"
           ENGImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ENG.png"
+          FRImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_FR.png"
           DEImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_DE.png"
           PTImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_PT.png"
           RUImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_RU.png"
-          FRImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_FR.png"
           ZHImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_ZH.png"
           KOImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_KO.png"
           JAImg="https://raw.githubusercontent.com/${{ github.repository }}/main/.github/media/released_JA.png"
@@ -301,15 +308,6 @@ jobs:
               --title "🔵 PDF 文档 📕 (Con soporte de fuentes CJK)" \
               --notes "![Documentación Chino]($ZHImg)"
           fi
-
-          # Crear release para Francés
-          FR_FILES=$(ls pdf/FR_*.pdf 2>/dev/null | tr '\n' ' ')
-          if [ -n "$FR_FILES" ]; then
-            echo "Archivos FR: $FR_FILES"
-            gh release create FR $FR_FILES \
-              --title "🔵 DOCUMENTATION PDF 📕" \
-              --notes "![Documentación Francés]($FRImg)"
-          fi
           
           # Crear release para Ruso
           RU_FILES=$(ls pdf/RU_*.pdf 2>/dev/null | tr '\n' ' ')
@@ -338,6 +336,15 @@ jobs:
               --notes "![Documentación Inglés]($ENGImg)"
           fi
           
+          # Crear release para Francés
+          FR_FILES=$(ls pdf/FR_*.pdf 2>/dev/null | tr '\n' ' ')
+          if [ -n "$FR_FILES" ]; then
+            echo "Archivos FR: $FR_FILES"
+            gh release create FR $FR_FILES \
+              --title "🔵 PDF DOCUMENTATION 📕" \
+              --notes "![Documentación Francés]($FRImg)"
+          fi
+
           # Crear release para Alemán
           DE_FILES=$(ls pdf/DE_*.pdf 2>/dev/null | tr '\n' ' ')
           if [ -n "$DE_FILES" ]; then
