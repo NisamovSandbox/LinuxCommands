@@ -19,14 +19,14 @@ DST_ROOT.mkdir(parents=True, exist_ok=True)
 # Mapeo de códigos de idioma para Google Translator
 LANG_MAP = {
     'en': 'en',      # Inglés
+    'fr': 'fr',      # Francés
     'de': 'de',      # Alemán
     'pt': 'pt',      # Portugués
     'es': 'es',      # Español
     'ru': 'ru',      # Ruso
-    'fr': 'fr',      # Francés
     'zh': 'zh-CN',   # Chino simplificado
     'ko': 'ko',      # Coreano
-    'ja': 'ja',      # Japonés
+    'ja': 'ja'       # Japonés
 }
 
 target_lang_code = LANG_MAP.get(TARGET_LANG, TARGET_LANG)
@@ -113,29 +113,6 @@ def extract_translatable_text(line: str) -> tuple[str, str, str]:
     
     return prefix, text, ""
 
-def ensure_cjk_encoding(text: str, lang_code: str) -> str:
-    """Asegura encoding correcto para idiomas CJK"""
-    if lang_code not in ['zh-CN', 'ko', 'ja']:
-        return text
-    
-    try:
-        # Normalizar Unicode
-        text = unicodedata.normalize('NFC', text)
-        
-        # Para coreano específicamente
-        if lang_code == 'ko':
-            # Asegurar espacios correctos (espacios finos coreanos)
-            text = text.replace('  ', ' ')
-            # Normalizar puntuación
-            text = re.sub(r'([가-힣])\s+([.,!?])', r'\1\2', text)
-        
-        # Codificar y decodificar para asegurar UTF-8 válido
-        return text.encode('utf-8', 'ignore').decode('utf-8')
-    except Exception as e:
-        print(f"  Advertencia en ensure_cjk_encoding: {str(e)[:50]}")
-        # Si hay error, filtrar caracteres no UTF-8
-        return text.encode('utf-8', 'ignore').decode('utf-8')
-
 def translate_text(text: str) -> str:
     """Traduce texto con manejo de errores"""
     if not text or not text.strip():
@@ -143,7 +120,7 @@ def translate_text(text: str) -> str:
     
     # Para idiomas CJK, asegurarnos de que el texto tenga caracteres válidos
     if target_lang_code in ['zh-CN', 'ko', 'ja']:
-        # Normalizar Unicode antes de traducir
+        # Normalizar Unicode
         text = unicodedata.normalize('NFC', text)
     
     # Limitar longitud para evitar errores de la API
@@ -187,10 +164,7 @@ def translate_text(text: str) -> str:
                         translated = html.unescape(translated)
                 
                 if translated and translated != chunk:
-                    # Aplicar ensure_cjk_encoding para idiomas CJK
-                    if target_lang_code in ['zh-CN', 'ko', 'ja']:
-                        translated = ensure_cjk_encoding(translated, target_lang_code)
-                    
+                    # Verificar que la traducción tenga caracteres válidos
                     try:
                         translated.encode('utf-8')
                         translated_chunks.append(translated)

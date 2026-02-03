@@ -11,7 +11,6 @@ sigue presente en sistemas antiguos como CentOS 7.
 yum install ejemplo
 ----
 
-
 install:: `yum install` Instalar paquetes
 +
 [source,bash]
@@ -23,7 +22,6 @@ yum install httpd
 yum install vim curl git
 ----
 
-
 remove:: `yum remove` Eliminar paquetes
 +
 [source,bash]
@@ -32,7 +30,6 @@ remove:: `yum remove` Eliminar paquetes
 yum remove httpd
 ----
 
-
 reinstall:: `yum reinstall` Reinstalar paquetes
 +
 [source,bash]
@@ -40,7 +37,6 @@ reinstall:: `yum reinstall` Reinstalar paquetes
 # Reinstalar un paquete
 yum reinstall httpd
 ----
-
 
 list:: `yum list` Listar paquetes
 +
