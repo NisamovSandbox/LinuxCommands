@@ -1,0 +1,33 @@
+=== basename
+Extraer el nombre del fichero o directorio a partir de una ruta.
+
+[source,bash]
+----
+# Obtener el nombre del fichero desde una ruta completa
+basename /ruta/completa/fichero.txt
+----
+
+-s:: `basename -s` Eliminar un sufijo específico del nombre
+
+[source,bash]
+----
+# Eliminar la extensión .txt del nombre
+basename -s .txt /ruta/completa/fichero.txt
+----
+
+-a:: `basename -a` Procesar múltiples rutas
+
+[source,bash]
+----
+# Obtener el nombre de varios ficheros
+basename -a /ruta/uno.txt /otra/ruta/dos.log
+----
+
+-z:: `basename -z` Terminar cada resultado con carácter nulo (útil en scripts)
+
+[source,bash]
+----
+# Salida segura para uso con xargs -0
+basename -z /ruta/completa/fichero.txt
+----
+

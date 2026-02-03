@@ -1,9 +1,10 @@
-![Cartel Principal](.github/media/LinuxCommandsWhiteTheme.png)
+![Cartel Principal](.github/media/sheyald.png)
 
 ---
 <p align="center">
   <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20ESP-000?style=flat-square&logo=adobeacrobatreader" /></a>
   <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG"><img src="https://img.shields.io/badge/🇬🇧%20ENG-000?style=flat-square&logo=adobeacrobatreader" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/FR"><img src="https://img.shields.io/badge/🇫🇷%20FR-000?style=flat-square&logo=adobeacrobatreader" /></a>
   <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20DEU-000?style=flat-square&logo=adobeacrobatreader" /></a>
   <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇵🇹%20POR-000?style=flat-square&logo=adobeacrobatreader" /></a>
   <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/RU"><img src="https://img.shields.io/badge/🇷🇺%20RUS-000?style=flat-square&logo=adobeacrobatreader" /></a>
@@ -14,9 +15,6 @@
 
 # LinuxCommands
 [![Last commit](https://img.shields.io/github/last-commit/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff&label=ultima-actualizacion)](https://github.com/Nisamov/LinuxCommands/commits)[![License](https://img.shields.io/github/license/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff&label=licencia)](LICENSE)[![Visits](https://img.shields.io/endpoint?url=https://hits.dwyl.com/Nisamov/LinuxCommands.json&style=flat-square&color=000000&labelColor=ffffff&label=visitas)](https://github.com/Nisamov/LinuxCommands)
-<!--
-[![Release](https://img.shields.io/github/v/release/Nisamov/LinuxCommands?style=flat-square&color=000000&labelColor=ffffff)](https://github.com/Nisamov/LinuxCommands/releases)
--->
 
 ### Estructura y referencia para documentar comandos y servicios en Linux
 
@@ -81,7 +79,6 @@ El repositorio sigue un estándar fijo de documentación para mantener el orden 
 
 Premodelos de ejemplo:
 - [Ejemplo de premodelo en Markdown (.md)](.github/templates/markdown.md)
-- [Ejemplo de premodelo en LaTeX (.tex)](.github/templates/latex.tex)
 - [Ejemplo de premodelo en Documento Ascii tipo Index (.adoc)](.github/templates/asciidocument_index.adoc)
 - [Ejemplo de premodelo en Documento Ascii para Comandos (.adoc)](.github/templates/asciidocument_command.adoc)
 
@@ -106,8 +103,11 @@ El objetivo es mantener una documentación coherente y de alta calidad.
 
 El repositorio se adapta a diferentes lenguas mediante la automatización de la generación PDF.
 <p align="center">
-  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20Español-Descargar?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG"><img src="https://img.shields.io/badge/🇬🇧%20English-Download?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20Deutsch-Herunterladen?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇧🇷%20Português-Em%20breve?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/RU"><img src="https://img.shields.io/badge/🇷🇺%20Русский-Скоро?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ZH"><img src="https://img.shields.io/badge/🇨🇳%20简体中文-即将推出?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/KO"><img src="https://img.shields.io/badge/🇰🇷%20한국어-준비%20중?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/JA"><img src="https://img.shields.io/badge/🇯🇵%20日本語-準備中?style=flat&color=000000&labelColor=ffffff" /></a>
+  <a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ESP"><img src="https://img.shields.io/badge/🇪🇸%20Español-Descargar?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ENG"><img src="https://img.shields.io/badge/🇬🇧%20English-Download?style=flat&color=000000&labelColor=ffffff" /><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/FR"><img src="https://img.shields.io/badge/🇫🇷%20Français-Bientôt?style=flat&color=000000&labelColor=ffffff" /></a></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/DE"><img src="https://img.shields.io/badge/🇩🇪%20Deutsch-Herunterladen?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/PT"><img src="https://img.shields.io/badge/🇧🇷%20Português-Em%20breve?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/RU"><img src="https://img.shields.io/badge/🇷🇺%20Русский-Скоро?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/ZH"><img src="https://img.shields.io/badge/🇨🇳%20简体中文-即将推出?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/KO"><img src="https://img.shields.io/badge/🇰🇷%20한국어-준비%20중?style=flat&color=000000&labelColor=ffffff" /></a><a href="https://github.com/Nisamov/LinuxCommands/releases/tag/JA"><img src="https://img.shields.io/badge/🇯🇵%20日本語-準備中?style=flat&color=000000&labelColor=ffffff" /></a>
 </p>
+
+> En caso de ver iconos semejantes a "▯" es porbable que requiera descargar los carácteres en el equipo.
+> [Descargar fuentes CJK manualmente](https://github.com/notofonts/noto-cjk/releases/latest)
 </details>
 
 ---

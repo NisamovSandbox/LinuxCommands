@@ -1,0 +1,34 @@
+=== Lynis: Herramienta de Auditoría y Hardening de Seguridad
+
+Lynis es una herramienta de auditoría de seguridad de código abierto (GPLv3) diseñada para sistemas basados en UNIX, como Linux, macOS y BSD.
+
+==== Propósitos y Objetivos Principales
+La herramienta está diseñada para automatizar tareas clave de seguridad y cumplimiento normativo:
+
+* **Auditoría de seguridad automatizada**: Escanea cientos de configuraciones y ajustes del sistema en busca de debilidades.
+* **Pruebas de cumplimiento**: Asiste en la verificación de estándares como ISO27001, PCI-DSS, HIPAA y GDPR.
+* **Detección de vulnerabilidades**: Identifica software desactualizado y posibles problemas de configuración.
+* **Hardening del sistema**: Proporciona consejos y pasos accionables para mejorar la postura de seguridad.
+* **Gestión de parches y configuración**: Ayuda a identificar sistemas y paquetes que requieren actualización.
+
+==== Características Técnicas y Funcionamiento
+Lynis se destaca por su simplicidad y enfoque práctico. Está escrito casi en su totalidad en Shell (99.6%), lo que lo hace portable y fácil de inspeccionar. Su funcionamiento se basa en:
+
+* **Ejecución directa**: No requiere compilación ni instalación compleja. Puede ejecutarse desde cualquier directorio con permisos adecuados.
+* **Modo no intrusivo**: Realiza chequeos de lectura en su mayoría, sin realizar cambios automáticos en el sistema (aunque puede sugerir comandos para aplicar hardening).
+* **Escaneo integral**: Revisa áreas como: autenticación, logging, redes, servicios en ejecución, configuración de kernel, permisos de archivos, y configuración de software específico (ej., SSH, bases de datos, servidores web).
+* **Generación de reportes**: Al finalizar, produce un archivo de log detallado (`/var/log/lynis.log`) y un reporte en pantalla con un score de seguridad, advertencias y sugerencias.
+
+==== Instalación y Métodos de Ejecución
+Existen varias formas de obtener y ejecutar Lynis, lo que facilita su uso en distintos escenarios:
+
+* **Desde paquetes del sistema (método preferido)**: Muchas distribuciones (Debian, Ubuntu, CentOS, RHEL, Fedora, openSUSE, etc.) incluyen Lynis en sus repositorios oficiales (aunque la versión puede no ser la más reciente).
+* **Desde los repositorios de CISOfy**: El proyecto ofrece paquetes RPM y DEB actualizados en su propio repositorio para garantizar la última versión.
+* **Desde el código fuente (Git)**: Para obtener el desarrollo más reciente. Solo es necesario clonar el repositorio y ejecutar desde allí:
+
+....
+git clone https://github.com/CISOfy/lynis
+cd lynis
+./lynis audit system
+....
+

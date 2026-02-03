@@ -2,4 +2,3 @@
 *.bt linguist-detectable=true
 *.adoc linguist-detectable=true
 *.md linguist-detectable=true
-*.tex linguist-detectable=true

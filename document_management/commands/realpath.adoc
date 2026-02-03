@@ -1,0 +1,33 @@
+=== realpath
+Mostrar la ruta absoluta y real de un fichero o directorio.
+
+[source,bash]
+----
+# Obtener la ruta absoluta real
+realpath fichero.txt
+----
+
+-e:: `realpath -e` Resolver la ruta sólo si el destino existe
+
+[source,bash]
+----
+# Mostrar la ruta real sólo si el fichero existe
+realpath -e fichero.txt
+----
+
+-m:: `realpath -m` Resolver la ruta incluso si el destino no existe
+
+[source,bash]
+----
+# Obtener una ruta absoluta aunque el fichero no exista
+realpath -m /ruta/inexistente/fichero.txt
+----
+
+-z:: `realpath -z` Terminar cada resultado con carácter nulo (útil en scripts)
+
+[source,bash]
+----
+# Salida segura para uso con xargs -0
+realpath -z fichero.txt
+----
+
