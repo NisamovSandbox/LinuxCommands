@@ -113,6 +113,29 @@ def extract_translatable_text(line: str) -> tuple[str, str, str]:
     
     return prefix, text, ""
 
+def ensure_cjk_encoding(text: str, lang_code: str) -> str:
+    """Asegura encoding correcto para idiomas CJK"""
+    if lang_code not in ['zh-CN', 'ko', 'ja']:
+        return text
+    
+    try:
+        # Normalizar Unicode
+        text = unicodedata.normalize('NFC', text)
+        
+        # Para coreano específicamente
+        if lang_code == 'ko':
+            # Asegurar espacios correctos (espacios finos coreanos)
+            text = text.replace('  ', ' ')
+            # Normalizar puntuación
+            text = re.sub(r'([가-힣])\s+([.,!?])', r'\1\2', text)
+        
+        # Codificar y decodificar para asegurar UTF-8 válido
+        return text.encode('utf-8', 'ignore').decode('utf-8')
+    except Exception as e:
+        print(f"  Advertencia en ensure_cjk_encoding: {str(e)[:50]}")
+        # Si hay error, filtrar caracteres no UTF-8
+        return text.encode('utf-8', 'ignore').decode('utf-8')
+
 def translate_text(text: str) -> str:
     """Traduce texto con manejo de errores"""
     if not text or not text.strip():
@@ -120,7 +143,7 @@ def translate_text(text: str) -> str:
     
     # Para idiomas CJK, asegurarnos de que el texto tenga caracteres válidos
     if target_lang_code in ['zh-CN', 'ko', 'ja']:
-        # Normalizar Unicode
+        # Normalizar Unicode antes de traducir
         text = unicodedata.normalize('NFC', text)
     
     # Limitar longitud para evitar errores de la API
@@ -164,7 +187,10 @@ def translate_text(text: str) -> str:
                         translated = html.unescape(translated)
                 
                 if translated and translated != chunk:
-                    # Verificar que la traducción tenga caracteres válidos
+                    # Aplicar ensure_cjk_encoding para idiomas CJK
+                    if target_lang_code in ['zh-CN', 'ko', 'ja']:
+                        translated = ensure_cjk_encoding(translated, target_lang_code)
+                    
                     try:
                         translated.encode('utf-8')
                         translated_chunks.append(translated)
@@ -332,26 +358,3 @@ for dst_file in DST_ROOT.rglob("*.adoc"):
         print(f"  ✓ {dst_file.relative_to(DST_ROOT)} - UTF-8 válido")
     except UnicodeDecodeError:
         print(f"  ✗ {dst_file.relative_to(DST_ROOT)} - Problema de encoding")
-
-def ensure_cjk_encoding(text: str, lang_code: str) -> str:
-    """Asegura encoding correcto para idiomas CJK"""
-    if lang_code not in ['zh-CN', 'ko', 'ja']:
-        return text
-    # Normalizar Unicode
-    text = unicodedata.normalize('NFC', text)
-    # Reemplazar caracteres problemáticos
-    # Para coreano específicamente
-    if lang_code == 'ko':
-        # Asegurar espacios correctos (espacios finos coreanos)
-        text = text.replace('  ', ' ')
-        # Normalizar puntuación
-        text = re.sub(r'([가-힣])\s+([.,!?])', r'\1\2', text)
-    # Codificar y decodificar para asegurar UTF-8 válido
-    try:
-        return text.encode('utf-8').decode('utf-8')
-    except:
-        # Si hay error, filtrar caracteres no UTF-8
-        return text.encode('utf-8', 'ignore').decode('utf-8')
-# En process_file, después de traducir:
-if target_lang_code in ['zh-CN', 'ko', 'ja']:
-    translated_text = ensure_cjk_encoding(translated_text, target_lang_code)
