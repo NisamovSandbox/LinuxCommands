@@ -1,0 +1,24 @@
+=== printenv
+Mostrar el valor de las variables de entorno.
+
+[source,bash]
+----
+# Mostrar todas las variables de entorno
+printenv
+----
+
+VARIABLE:: Mostrar el valor de una variable específica
+
+[source,bash]
+----
+# Mostrar el valor de PATH
+printenv PATH
+----
+
+--help:: Mostrar la ayuda del comando
+
+[source,bash]
+----
+printenv --help
+----
+

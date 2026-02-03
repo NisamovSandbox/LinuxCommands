@@ -16,7 +16,6 @@ Ejemplo: "Añade sección de comandos de red avanzados"
   - En caso de Markdown (`.md`): [plantilla](./templates/markdown.md)
   - En caso de AsciiDocument (`.adoc`): [plantilla](./templates/asciidocument.adoc)
     - En ficheros `.adoc`, ha de dejar un espacio de dos INTROs, para evitar colisiones con semejantes (en caso de estar indexado)
-  - En caso de LaTex (`.tex`): [plantilla](./templates/latex.tex)
 - Verificar que los comandos y ejemplos son correctos y ejecutables
 - Confirmar consistencia en nombres, títulos, secciones y referencias
 

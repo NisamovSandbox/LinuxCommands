@@ -1,0 +1,33 @@
+=== readlink
+Mostrar el destino de un enlace simbólico.
+
+[source,bash]
+----
+# Mostrar el destino de un enlace simbólico
+readlink enlace_simbolico
+----
+
+-f:: `readlink -f` Resolver la ruta completa (absoluta) siguiendo todos los enlaces
+
+[source,bash]
+----
+# Obtener la ruta real completa del fichero
+readlink -f enlace_simbolico
+----
+
+-e:: `readlink -e` Resolver la ruta sólo si el destino existe
+
+[source,bash]
+----
+# Mostrar la ruta real sólo si el fichero existe
+readlink -e enlace_simbolico
+----
+
+-z:: `readlink -z` Terminar cada resultado con carácter nulo (útil en scripts)
+
+[source,bash]
+----
+# Salida segura para uso con xargs -0
+readlink -z enlace_simbolico
+----
+

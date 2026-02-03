@@ -1,0 +1,17 @@
+=== dirname
+Extraer el directorio padre a partir de una ruta.
+
+[source,bash]
+----
+# Obtener el directorio padre de una ruta
+dirname /ruta/completa/fichero.txt
+----
+
+-z:: `dirname -z` Terminar cada resultado con carácter nulo (útil en scripts)
+
+[source,bash]
+----
+# Salida segura para uso con xargs -0
+dirname -z /ruta/completa/fichero.txt
+----
+

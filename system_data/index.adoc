@@ -19,7 +19,13 @@ Este manual está pensado como guía de referencia para:
 include::in_out/stdin_stdout_stderr.adoc[]
 include::in_out/redirections.adoc[]
 include::in_out/pipes.adoc[]
+include::in_out/tee.adoc[]
+include::in_out/time.adoc[]
+include::in_out/timeout.adoc[]
+include::in_out/yes.adoc[]
 
 == Entorno
 include::environment/environment_variables.adoc[]
+include::environment/env.adoc[]
+include::environment/printenv.adoc[]
 

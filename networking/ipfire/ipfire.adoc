@@ -1,0 +1,84 @@
+=== Documentación de IPFire
+
+=== Introducción
+IPFire es una *distribución Linux especializada en seguridad de redes* que funciona como *firewall*, router y sistema de control de tráfico.  
+Su objetivo principal es proteger la red interna frente a accesos no autorizados, separando el tráfico en distintas *zonas de seguridad*.
+
+=== Zonas de red en IPFire
+IPFire organiza la red en diferentes colores, cada uno con un nivel de confianza distinto:
+
+==== RED
+* Zona no confiable, normalmente conectada a Internet o a redes externas.
+* Todo el tráfico entrante está bloqueado por defecto.
+* Es la puerta hacia el exterior.
+
+==== GREEN
+* Red interna segura (LAN).
+* Dispositivos confiables como PCs, impresoras o NAS.
+* Puede acceder a Internet a través de IPFire.
+
+==== ORANGE
+* Zona semi-segura o DMZ (Desmilitarizada).
+* Aloja servidores públicos como web, FTP o correo.
+* Separada de GREEN para proteger la red interna en caso de compromiso.
+
+=== Instalación básica
+. Arrancar desde la ISO de IPFire.
+. Seleccionar idioma, teclado y zona horaria.
+. Configurar contraseñas:
+** `root`: acceso por consola
+** `admin`: acceso a la interfaz web
+
+=== Configuración de red
+
+==== Acceso al modo configuración
+Desde la consola de IPFire, se ingresa al menú de configuración con:
+
+[source,bash]
+----
+setup
+----
+
+==== Asignación de interfaces de red
+Las interfaces se asignan según la *dirección MAC* de cada adaptador:
+
+* GREEN: adaptador de red interna
+* RED: adaptador conectado a Internet
+* ORANGE: adaptador para la DMZ
+
+==== Configuración de IP por zona
+* GREEN: IP estática (ej: 192.168.1.1), máscara 255.255.255.0
+* RED: DHCP (o IP estática si el ISP lo requiere)
+* ORANGE: IP estática (ej: 192.168.2.1)
+
+=== Acceso a la interfaz web
+Desde un equipo en GREEN:
+
+[source,bash]
+----
+https://IP_GREEN:444
+Usuario: admin
+----
+
+=== Políticas de firewall por defecto
+* GREEN puede acceder a Internet
+* RED no puede acceder a la red interna
+* ORANGE tiene acceso controlado
+* Todo lo no permitido está bloqueado por defecto
+
+=== Servicios disponibles
+* DHCP
+* DNS
+* Proxy web
+* IDS/IPS (Snort o Suricata)
+* VPN (OpenVPN, IPsec)
+
+=== Ejemplo de laboratorio
+* IPFire instalado en una máquina virtual
+* Tres adaptadores de red:
+** Bridge: RED
+** Red interna: GREEN
+** Red interna: ORANGE
+* Clientes conectados a GREEN
+* Servidor web ubicado en ORANGE
+
