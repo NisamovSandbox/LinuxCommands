@@ -20,4 +20,6 @@ Sirve como referencia para consultas y análisis.
 <!-- AUTO-GENERATED-INDEX:START -->
 - [environment](/system_data/environment)
 - [in_out](/system_data/in_out)
+- [shell](/system_data/shell)
+- [system_info](/system_data/system_info)
 <!-- AUTO-GENERATED-INDEX:END -->
