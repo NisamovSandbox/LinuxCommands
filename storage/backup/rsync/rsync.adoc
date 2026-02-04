@@ -1,0 +1,73 @@
+=== rsync
+Sincronizar archivos y directorios de forma eficiente, local o remotamente.
+
+[source,bash]
+----
+# Sincronizar un directorio localmente
+rsync origen/ destino/
+----
+
+-a:: `--archive` Modo archivo (recursivo, permisos, tiempos, enlaces)
+
+[source,bash]
+----
+# Copia recursiva preservando atributos
+rsync -a origen/ destino/
+----
+
+-v:: `--verbose` Mostrar información detallada
+
+[source,bash]
+----
+# Mostrar archivos que se van copiando
+rsync -av origen/ destino/
+----
+
+--dry-run:: Simular la ejecución sin realizar cambios
+
+[source,bash]
+----
+# Ver qué se copiaría sin modificar nada
+rsync -av --dry-run origen/ destino/
+----
+
+--delete:: Eliminar en destino los archivos que no existen en origen
+
+[source,bash]
+----
+# Mantener el destino como copia exacta del origen
+rsync -av --delete origen/ destino/
+----
+
+-z:: `--compress` Comprimir datos durante la transferencia
+
+[source,bash]
+----
+# Transferencia remota comprimida
+rsync -avz origen/ usuario@servidor:/ruta/destino/
+----
+
+-e:: Especificar el método de transporte
+
+[source,bash]
+----
+# Usar SSH como transporte
+rsync -av -e ssh origen/ usuario@servidor:/ruta/destino/
+----
+
+--progress:: Mostrar progreso de la transferencia
+
+[source,bash]
+----
+# Ver progreso de archivos grandes
+rsync -av --progress origen/ destino/
+----
+
+--exclude:: Excluir archivos o directorios
+
+[source,bash]
+----
+# Excluir archivos temporales
+rsync -av --exclude='*.tmp' origen/ destino/
+----
+

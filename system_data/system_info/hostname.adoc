@@ -1,0 +1,34 @@
+=== hostname
+Mostrar o configurar el nombre del host del sistema.
+
+[source,bash]
+----
+# Mostrar el hostname actual
+hostname
+----
+
+-f:: `--fqdn` Mostrar el nombre de host completamente calificado
+
+[source,bash]
+----
+hostname -f
+----
+
+-i:: Mostrar la dirección IP asociada al hostname
+
+[source,bash]
+----
+hostname -i
+----
+
+-s:: Mostrar solo el nombre corto del host
+
+[source,bash]
+----
+hostname -s
+----
+
+# Cambiar temporalmente el hostname (requiere permisos)
+sudo hostname nuevo-nombre
+----
+

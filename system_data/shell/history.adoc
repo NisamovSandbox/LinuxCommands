@@ -1,0 +1,73 @@
+=== history
+Mostrar y gestionar el historial de comandos del shell.
+
+[source,bash]
+----
+# Mostrar el historial completo de comandos
+history
+----
+
+-c:: `history -c` Borrar el historial actual
+
+[source,bash]
+----
+# Limpiar todo el historial de la sesión
+history -c
+----
+
+-w:: `history -w` Escribir el historial en el fichero de historial
+
+[source,bash]
+----
+# Guardar los comandos recientes en ~/.bash_history
+history -w
+----
+
+-r:: `history -r` Leer el historial desde el fichero
+
+[source,bash]
+----
+# Cargar comandos previamente guardados
+history -r
+----
+
+-n:: `history -n` Leer las nuevas líneas del historial desde el fichero
+
+[source,bash]
+----
+# Añadir solo las nuevas entradas al historial actual
+history -n
+----
+
+-d:: `history -d` Eliminar un comando específico del historial
+
+[source,bash]
+----
+# Eliminar el comando número 42 del historial
+history -d 42
+----
+
+--grep:: Buscar comandos en el historial
+
+[source,bash]
+----
+# Buscar todas las ocurrencias de "rsync"
+history | grep rsync
+----
+
+HISTSIZE:: Número de comandos que se almacenan en memoria
+
+[source,bash]
+----
+# Limitar historial a 1000 comandos
+export HISTSIZE=1000
+----
+
+HISTFILE:: Archivo donde se guarda el historial
+
+[source,bash]
+----
+# Cambiar el archivo de historial
+export HISTFILE=~/.mi_historial
+----
+

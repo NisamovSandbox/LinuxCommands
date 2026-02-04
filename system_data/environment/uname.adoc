@@ -1,0 +1,45 @@
+=== uname
+Mostrar información sobre el sistema y el kernel.
+
+[source,bash]
+----
+# Mostrar el nombre del kernel
+uname
+----
+
+-a:: `--all` Mostrar toda la información disponible
+
+[source,bash]
+----
+uname -a
+# Ejemplo de salida: Linux servidor 5.19.0-46-generic x86_64 GNU/Linux
+----
+
+-s:: Mostrar solo el nombre del kernel
+
+[source,bash]
+----
+uname -s
+----
+
+-r:: Mostrar la versión del kernel
+
+[source,bash]
+----
+uname -r
+----
+
+-m:: Mostrar la arquitectura de la máquina
+
+[source,bash]
+----
+uname -m
+----
+
+-n:: Mostrar el nombre del nodo (hostname)
+
+[source,bash]
+----
+uname -n
+----
+

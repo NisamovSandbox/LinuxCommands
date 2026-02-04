@@ -1,0 +1,56 @@
+=== alias
+Definir o mostrar alias del shell para sustituir comandos por otros.
+
+[source,bash]
+----
+# Mostrar todos los alias definidos
+alias
+----
+
+nombre=valor:: Definir un alias
+
+[source,bash]
+----
+# Crear un alias simple
+alias ll='ls -lah'
+
+# Alias con opciones complejas
+alias grep='grep --color=auto'
+----
+
+-p:: `alias -p` Mostrar alias en formato reutilizable
+
+[source,bash]
+----
+# Listar alias en formato adecuado para scripts
+alias -p
+----
+
+nombre:: Mostrar un alias concreto
+
+[source,bash]
+----
+# Mostrar la definición de un alias específico
+alias ll
+----
+
+unalias:: Eliminar alias definidos
+
+[source,bash]
+----
+# Eliminar un alias concreto
+unalias ll
+
+# Eliminar todos los alias
+unalias -a
+----
+
+limitaciones:: Limitaciones de los alias
+
+[source,bash]
+----
+# Los alias no aceptan argumentos
+alias mkcd='mkdir -p && cd'
+# Esto no funcionará correctamente
+----
+

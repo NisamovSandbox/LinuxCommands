@@ -1,0 +1,57 @@
+=== du
+Mostrar el uso de espacio en disco de archivos y directorios.
+
+[source,bash]
+----
+# Mostrar el uso de espacio del directorio actual
+du
+----
+
+-h:: `--human-readable` Mostrar tamaños en formato legible
+
+[source,bash]
+----
+# Mostrar tamaños en KB, MB, GB
+du -h
+----
+
+-s:: `--summarize` Mostrar solo el total de cada argumento
+
+[source,bash]
+----
+# Mostrar el tamaño total de un directorio
+du -sh /ruta/directorio
+----
+
+-a:: `--all` Incluir archivos además de directorios
+
+[source,bash]
+----
+# Mostrar tamaño de archivos y directorios
+du -ah
+----
+
+-d:: Profundidad máxima de directorios (GNU)
+
+[source,bash]
+----
+# Mostrar hasta 1 nivel de profundidad
+du -h -d 1
+----
+
+--max-depth:: Limitar la profundidad del directorio
+
+[source,bash]
+----
+# Mostrar uso de espacio hasta 2 niveles
+du -h --max-depth=2
+----
+
+--exclude:: Excluir archivos o directorios
+
+[source,bash]
+----
+# Excluir directorios específicos
+du -h --exclude=/proc
+----
+

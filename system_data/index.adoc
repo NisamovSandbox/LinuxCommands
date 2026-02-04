@@ -23,9 +23,23 @@ include::in_out/tee.adoc[]
 include::in_out/time.adoc[]
 include::in_out/timeout.adoc[]
 include::in_out/yes.adoc[]
+include::in_out/cal.adoc[]
+include::in_out/date.adoc[]
+
+== Información de sistema
+include::system_info/hostname.adoc[]
+
+=== Alias
+include::shell/alias.adoc[]
+include::shell/history.adoc[]
 
 == Entorno
 include::environment/environment_variables.adoc[]
 include::environment/env.adoc[]
 include::environment/printenv.adoc[]
+include::environment/uname.adoc[]
+
+== Shell
+include::shell/alias.adoc[]
+include::shell/history.adoc[]
 
