@@ -1,0 +1,92 @@
+=== Scripts - Shell Bash
+
+Un script es un fichero que contiene sentencias para el intérprete Bash. El intérprete leerá y ejecutará cada instrucción del fichero de forma secuencial.
+
+Un script en Bash debe tener extensión `.sh` y, de manera general, permisos de ejecución.  
+El *shell scripting* permite utilizar sentencias de control de flujo presentes en lenguajes de programación de alto nivel.
+
+Un script puede ejecutarse de las siguientes formas:
+
+- `user@localhost~: bash script.sh`
+- `user@localhost~: ./script.sh`
+
+El elemento que indica al intérprete qué shell debe utilizarse es el *shebang*, representado por `#!`, seguido de la ruta del shell, por ejemplo `/bin/bash`, o cualquier otro shell que se desee usar.
+
+El *Shell Script* permite utilizar estructuras de control de flujo similares a las de lenguajes de programación de alto nivel.
+
+==== Estructuras de control en Bash
+
+[cols="2,3,4,4", options="header"]
+|===
+| Estructura | Palabras clave | Función principal | Características clave
+
+| Condicional
+| `if`, `then`, `elif`, `else`, `fi`
+| Ejecuta un bloque de comandos solo si se cumple una condición
+| Permite múltiples ramas usando `elif` y `else`
+
+| Bucle `for`
+| `for`, `in`, `do`, `done`
+| Itera sobre una lista de elementos
+| Útil para recorrer listas de valores o archivos
+
+| Bucle `while`
+| `while`, `do`, `done`
+| Ejecuta un bloque de comandos mientras una condición se mantenga verdadera
+| Evalúa la condición antes de cada iteración
+
+| Bucle `until`
+| `until`, `do`, `done`
+| Ejecuta un bloque de comandos hasta que una condición se vuelve verdadera
+| Funciona como el inverso de `while`
+
+| Selección de casos
+| `case`, `in`, `esac`
+| Compara una variable con múltiples patrones y ejecuta el bloque correspondiente
+| Permite usar comodines y cadenas de texto
+
+| Control de bucle
+| `break`, `continue`
+| Modifica el flujo de ejecución dentro de un bucle
+| `break` sale del bucle, `continue` pasa a la siguiente iteración
+|===
+
+==== Variables de entorno
+
+Las variables de entorno son un conjunto de valores dinámicos que pueden definirse en el sistema operativo.  
+Son utilizadas por el sistema y las aplicaciones para obtener información de configuración y definir comportamientos sin modificar el código fuente.
+
+Ejemplos de variables de entorno comunes:
+
+[source,bash]
+----
+$HOME       # Directorio home del usuario
+$USER       # Nombre del usuario actual
+$SHELL      # Shell predeterminado del usuario
+$PWD        # Directorio de trabajo actual
+$HOSTNAME   # Nombre del host
+$LANG       # Configuración de idioma
+----
+
+Más información en "/system_data/shell/shells.adoc"
+
+==== Pipes y redirecciones
+
+Las *pipes* o tuberías permiten usar la salida estándar de un comando como la entrada estándar de otro.
+
+Ejemplos prácticos:
+
+- Mostrar el número de usuarios que utilizan el shell `/bin/bash`:
+
+[source,bash]
+----
+cat /etc/passwd | grep /bin/bash | wc -l
+----
+
+- Evitar falsos positivos recortando el campo del shell y filtrando correctamente:
+
+[source,bash]
+----
+cat /etc/passwd | cut -d ':' -f 7 | grep /bin/bash | wc -l
+----
+
