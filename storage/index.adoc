@@ -36,7 +36,6 @@ include::commands/cfdisk.adoc[]
 include::commands/df.adoc[]
 include::commands/du.adoc[]
 include::commands/fdisk.adoc[]
-include::commands/free.adoc[]
 include::commands/lsblk.adoc[]
 include::commands/mkfs.adoc[]
 include::commands/partx.adoc[]
@@ -78,5 +77,4 @@ include::commands/lvscan.adoc[]
 
 == Comandos especializados
 include::commands/losetup.adoc[]
-include::commands/lsof.adoc[]
 

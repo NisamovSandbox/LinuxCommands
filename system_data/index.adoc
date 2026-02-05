@@ -27,7 +27,19 @@ include::in_out/cal.adoc[]
 include::in_out/date.adoc[]
 
 == Información de sistema
+include::system_info/uptime.adoc[]
+include::system_info/dmesg.adoc[]
+include::system_info/free.adoc[]
 include::system_info/hostname.adoc[]
+include::system_info/inxi.adoc[]
+include::system_info/ldd.adoc[]
+include::system_info/lscpu.adoc[]
+include::system_info/lshw.adoc[]
+include::system_info/lsmod.adoc[]
+include::system_info/lsscsi.adoc[]
+include::system_info/lstopo.adoc[]
+include::system_info/sensors.adoc[]
+include::system_info/vmstat.adoc[]
 
 === Alias
 include::shell/shells.adoc
@@ -40,7 +52,16 @@ include::environment/env.adoc[]
 include::environment/printenv.adoc[]
 include::environment/uname.adoc[]
 
+== Entorno gráfico
+include::graphics/glxinfo.adoc[]
+include::graphics/xdpyinfo.adoc[]
+include::graphics/xrandr.adoc[]
+include::graphics/xwininfo.adoc[]
+
 == Shell
 include::shell/alias.adoc[]
 include::shell/history.adoc[]
+
+== Estructura de directorios
+include::system_structure/dirs.adoc[]
 

@@ -1,0 +1,83 @@
+=== Estructura de Directorios en Linux
+
+* `/`:: Directorio raíz del sistema de archivos. Contiene todos los demás directorios.
+* `/bin`:: Comandos esenciales para todos los usuarios.
+* `/boot`:: Archivos necesarios para el arranque del sistema (kernel, initrd, grub).
+* `/dev`:: Archivos especiales que representan dispositivos.
+  * `/dev/null`:: Dispositivo de descarte.
+  * `/dev/zero`:: Dispositivo de bytes nulos.
+  * `/dev/random`:: Generador de números aleatorios.
+* `/etc`:: Archivos de configuración del sistema y aplicaciones.
+  * `/etc/cron.*`:: Directorios que ejecutan scripts automáticamente (hourly, daily, weekly, monthly).
+  * `/etc/profile`:: Variables de entorno para todos los usuarios.
+  * `/etc/fstab`:: Información sobre sistemas de archivos y puntos de montaje.
+  * `/etc/hostname`:: Nombre del host.
+  * `/etc/hosts`:: Hosts y direcciones IP conocidas.
+  * `/etc/resolv.conf`:: Servidores DNS.
+  * `/etc/modules`:: Módulos del kernel cargados al inicio.
+  * `/etc/rc.d/rc.local`:: Script ejecutado al final del arranque.
+  * `/etc/apache2/`:: Configuración del servidor Apache2.
+  * `/etc/nginx/`:: Configuración del servidor Nginx.
+  * `/etc/skel/`:: Plantilla para nuevos usuarios.
+  * `/etc/ssh/`:: Configuración del protocolo SSH.
+  * `/etc/samba/`:: Configuración de SAMBA.
+  * `/etc/default/`:: Configuraciones por defecto del sistema.
+  * `/etc/init.d/`:: Scripts de inicio de servicios.
+  * `/etc/systemd/`:: Unidades y configuraciones de systemd.
+* `/home`:: Directorios personales de los usuarios.
+  * `/home/user1`, `/home/user2`:: Directorios de usuario.
+* `/root`:: Directorio personal del superusuario.
+* `/lib`:: Bibliotecas compartidas esenciales.
+* `/lib64`:: Bibliotecas de 64 bits.
+* `/mnt`:: Montaje temporal de sistemas de archivos externos.
+  * `/mnt/backup`:: Copias de seguridad.
+  * `/mnt/data`:: Datos adicionales.
+* `/media`:: Montaje de dispositivos extraíbles.
+  * `/media/cdrom`:: CD/DVD.
+  * `/media/usb`:: Memorias USB.
+* `/opt`:: Software adicional y opcional.
+* `/proc`:: Sistema de archivos virtual que refleja procesos y kernel.
+* `/run`:: Archivos de ejecución del sistema.
+* `/sbin`:: Binarios esenciales para administración.
+* `/srv`:: Datos servidos por el sistema.
+  * `/srv/www`:: Contenido web.
+  * `/srv/ftp`:: Contenido FTP.
+* `/sys`:: Interfaz virtual del kernel.
+* `/tmp`:: Archivos temporales accesibles por todos los usuarios.
+* `/usr`:: Programas, librerías y documentación del sistema.
+  * `/usr/bin`:: Binarios de aplicaciones para usuarios.
+  * `/usr/sbin`:: Binarios de administración.
+  * `/usr/lib`:: Librerías compartidas.
+  * `/usr/local`:: Software instalado localmente.
+  * `/usr/share`:: Datos compartidos, documentación y recursos.
+  * `/usr/src`:: Código fuente, generalmente del kernel.
+* `/var`:: Archivos variables (logs, spool, cache, tmp).
+  * `/var/cache`:: Cachés de aplicaciones y sistema.
+  * `/var/log`:: Archivos de registro del sistema y aplicaciones.
+  * `/var/mail`:: Buzones de correo.
+  * `/var/run`:: Archivos de ejecución de servicios.
+  * `/var/spool`:: Directorios de cola para correo, impresión y otros servicios.
+  * `/var/tmp`:: Archivos temporales persistentes.
+  * `/var/lib`:: Datos internos de aplicaciones y servicios.
+  * `/var/www`:: Directorios de contenido web.
+    * `/var/www/html`:: Contenido HTML.
+    * `/var/www/logs`:: Logs de servidor web.
+* `/lost+found`:: Archivos recuperados después de errores de disco.
+* `/snap`:: Paquetes snap y sus datos.
+* `/boot/grub`:: Configuración de GRUB.
+* `/srv`:: Datos servidos por servicios (FTP, WWW, etc.).
+* `/run/lock`:: Bloqueos de recursos.
+* `/run/user`:: Archivos de ejecución por usuario.
+* `/root`:: Directorio home del superusuario.
+* `/etc/X11/`:: Configuraciones del sistema gráfico.
+* `/etc/init/`:: Scripts de inicio Upstart.
+* `/etc/systemd/system/`:: Unidades de systemd personalizadas.
+* `/var/lib/dpkg`:: Base de datos de paquetes Debian.
+* `/var/lib/rpm`:: Base de datos de paquetes RPM.
+* `/var/lib/apt`:: Información de APT.
+* `/var/log/apache2`:: Logs de Apache2.
+* `/var/log/nginx`:: Logs de Nginx.
+* `/media/floppy`:: Montaje de disquetes (si existe).
+* `.`:: Directorio actual.
+* `..`:: Directorio superior.
+
