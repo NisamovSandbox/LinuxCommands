@@ -1,0 +1,56 @@
+=== ¿Qué es eBPF?
+
+eBPF (*extended Berkeley Packet Filter*) es un motor de ejecución dentro del kernel de Linux que permite ejecutar programas seguros y *sandboxed*.
+
+Originalmente nació para el filtrado de paquetes (BPF clásico), pero actualmente su alcance es mucho mayor que el networking.
+
+eBPF se puede utilizar para:
+
+- Tracing (seguimiento de eventos)
+- Monitoreo de rendimiento
+- Seguridad (firewalls avanzados, auditoría)
+- Networking y filtrado de paquetes
+
+Es una tecnología exclusiva de Linux, aunque sistemas como FreeBSD y otros han implementado soluciones similares.
+
+==== Conceptos clave de eBPF
+
+[cols="2,5", options="header"]
+|===
+| Concepto | Descripción
+
+| Mapas BPF
+| Estructuras de datos compartidas entre el kernel y el espacio de usuario
+
+| Program Types
+| Tipos de programas eBPF como tracing, socket, XDP, cgroup, perf_event, kprobe y uprobe
+
+| Hooks
+| Puntos del kernel donde se engancha eBPF, como syscalls, networking o el scheduler
+
+| Sandbox
+| El kernel valida el programa antes de permitir su ejecución
+
+| Bytecode
+| Código compilado a un formato seguro que es interpretado por el kernel
+
+| bpftool
+| Herramienta oficial para cargar, inspeccionar y depurar programas eBPF
+|===
+
+==== Ejemplos de uso
+
+Contar llamadas a un *syscall*:
+
+[source,bt]
+----
+sudo bpftrace -e 'tracepoint:syscalls:sys_enter_openat { printf("%s abrió %s\n", comm, str(args->filename)); }'
+----
+
+Medir la frecuencia de ejecución de procesos:
+
+[source,bt]
+----
+sudo bpftrace -e 'profile:hz:99 { @[comm] = count(); }'
+----
+

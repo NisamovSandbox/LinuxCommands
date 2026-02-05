@@ -1,0 +1,42 @@
+=== Shells en sistemas Linux
+
+En Linux, un *shell* es el intérprete de comandos que permite al usuario interactuar con el sistema operativo. Existen distintos shells, cada uno con características y casos de uso específicos.
+
+[cols="1,2,4", options="header"]
+|===
+| Shell | Nombre completo | Características principales
+
+| bash
+| Bourne Again Shell
+| Muy popular, compatible POSIX, scripting avanzado, historial y autocompletado
+
+| sh
+| Bourne Shell
+| Shell clásico de Unix, minimalista, base del estándar POSIX
+
+| dash
+| Debian Almquist Shell
+| Minimalista y muy rápida, usada como `/bin/sh` en Debian y Ubuntu
+
+| zsh
+| Z Shell
+| Autocompletado avanzado, globbing potente, soporte de temas y plugins (Oh My Zsh)
+
+| ksh
+| Korn Shell
+| Compatible POSIX, scripting poderoso, soporte de arrays y funciones avanzadas
+
+| csh
+| C Shell
+| Sintaxis tipo C, scripting menos portable, uso limitado en sistemas modernos
+
+| tcsh
+| TENEX C Shell
+| Versión mejorada de C Shell, autocompletado e historial extendido
+
+| fish
+| Friendly Interactive Shell
+| Muy amigable, sintaxis simple, autocompletado y resaltado de sintaxis nativo
+|===
+
+

@@ -30,6 +30,7 @@ include::in_out/date.adoc[]
 include::system_info/hostname.adoc[]
 
 === Alias
+include::shell/shells.adoc
 include::shell/alias.adoc[]
 include::shell/history.adoc[]
 
