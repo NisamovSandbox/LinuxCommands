@@ -19,6 +19,5 @@ Sirve como base teórica para el resto de secciones del repositorio.
 
 <!-- AUTO-GENERATED-INDEX:START -->
 - [combination_keys](/fundamentals/combination_keys)
-- [system_structure](/fundamentals/system_structure)
 - [theory](/fundamentals/theory)
 <!-- AUTO-GENERATED-INDEX:END -->
