@@ -18,4 +18,6 @@ Incluye tanto conceptos teóricos como ejemplos prácticos.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
+- [commands](/group_management/commands)
+- [theory](/group_management/theory)
 <!-- AUTO-GENERATED-INDEX:END -->
