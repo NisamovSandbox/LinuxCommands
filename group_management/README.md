@@ -1,4 +1,4 @@
-# Networking
+# Group Management
 ### Grupos y configuración de los mismos en Linux
 
 Esta sección documenta la creación, configuración y eliminación de grupos en sistemas Linux.
