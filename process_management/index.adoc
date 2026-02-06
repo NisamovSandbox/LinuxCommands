@@ -1,4 +1,4 @@
-= Servicios
+= Administración de Procesos
 :toc:
 :toclevels: 3
 :icons: font
@@ -22,29 +22,11 @@ Este manual está pensado como guía de referencia para:
 == Teoría
 include::theory/theory.adoc[]
 
-== Comandos gestión de procesos
+== Comandos
 include::commands/top.adoc[]
 include::commands/htop.adoc[]
 include::commands/ps.adoc[]
-include::commands/pgrep.adoc[]
 include::commands/kill.adoc[]
-
-== Comandos gestión de servicios (Systemd)
-include::commands/systemctl.adoc[]
-include::commands/journalctl.adoc[]
-include::commands/systemd-analyze.adoc[]
-
-== Comandos gestión de servicios (SysVinit - Debian/Ubuntu)
-include::commands/service.adoc[]
-include::commands/update-rc.d.adoc[]
-
-== Comandos gestión de servicios (SysVinit - Red Hat)
-include::commands/chkconfig.adoc[]
-
-== Comandos gestión de servicios (Upstart)
-include::commands/initctl.adoc[]
-
-== Comandos gestión de servicios (OpenRC)
-include::commands/rc-service.adoc[]
-include::commands/rc-status.adoc[]
+include::commands/pgrep.adoc[]
+include::commands/lsof.adoc[]
 

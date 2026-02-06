@@ -1,0 +1,126 @@
+=== Usuarios de sistema por defecto en Linux
+
+Las distribuciones Linux incluyen, por defecto, una serie de usuarios de sistema.
+Estas cuentas no están destinadas al uso humano, sino a la ejecución de servicios, demonios y tareas internas del sistema.
+
+La lista exacta de usuarios puede variar según la distribución, la versión y los paquetes instalados, pero existen usuarios comunes en la mayoría de sistemas Linux.
+
+==== Características generales
+
+Los usuarios de sistema suelen cumplir las siguientes condiciones:
+
+- UID bajo (habitualmente < 1000).
+- No permiten inicio de sesión interactivo.
+- Shell asignada como `/usr/sbin/nologin` o `/bin/false`.
+- No tienen contraseña válida o la cuenta está bloqueada.
+- Están asociados a un servicio o función concreta.
+
+==== Usuarios de sistema comunes
+
+A continuación se muestra una lista de usuarios de sistema habituales y su función general:
+
+[cols="1,3", options="header"]
+|===
+| Usuario | Función
+
+| root
+| Usuario administrador del sistema con privilegios totales.
+
+| daemon
+| Usuario genérico para servicios antiguos o tareas del sistema.
+
+| bin
+| Propietario tradicional de binarios del sistema (uso histórico).
+
+| sys
+| Usuario histórico asociado a archivos del sistema.
+
+| sync
+| Permite sincronizar discos mediante el comando `sync`.
+
+| games
+| Usuario histórico para juegos del sistema.
+
+| man
+| Usuario utilizado por el sistema de páginas de manual.
+
+| lp
+| Usuario asociado al sistema de impresión.
+
+| mail
+| Usuario utilizado por servicios de correo.
+
+| news
+| Usuario histórico para servicios de noticias (NNTP).
+
+| uucp
+| Usuario histórico para transferencia de archivos UUCP.
+
+| proxy
+| Usuario utilizado por servicios de proxy.
+
+| www-data
+| Usuario utilizado por servidores web como Apache o Nginx (Debian/Ubuntu).
+
+| apache
+| Usuario utilizado por Apache en distribuciones Red Hat.
+
+| ftp
+| Usuario utilizado por servicios FTP.
+
+| nobody
+| Usuario sin privilegios usado para ejecutar procesos aislados.
+
+| systemd-network
+| Usuario usado por systemd para la gestión de red.
+
+| systemd-resolve
+| Usuario usado por systemd para resolución DNS.
+
+| systemd-timesync
+| Usuario encargado de la sincronización de hora.
+
+| messagebus
+| Usuario del servicio D-Bus.
+
+| avahi
+| Usuario del servicio Avahi (mDNS / Zeroconf).
+
+| postfix
+| Usuario del servidor de correo Postfix.
+
+| chrony
+| Usuario del servicio de sincronización de tiempo Chrony.
+
+| sshd
+| Usuario utilizado por el servicio SSH.
+
+| dbus
+| Usuario asociado al bus de mensajes del sistema.
+
+| polkitd
+| Usuario del servicio PolicyKit.
+
+| cups
+| Usuario del sistema de impresión CUPS.
+
+| backup
+| Usuario utilizado para procesos de copia de seguridad.
+|===
+
+==== Información adicional
+
+- No todos estos usuarios estarán presentes en todos los sistemas.
+- Algunos usuarios solo aparecen al instalar ciertos paquetes o servicios.
+- Eliminar usuarios de sistema sin conocer su función puede provocar fallos graves.
+- Es preferible bloquear o deshabilitar el login antes que eliminar la cuenta.
+
+==== Verificación en el equipo
+
+Para listar los usuarios de sistema existentes en un sistema concreto, se puede consultar el fichero `/etc/passwd`:
+
+[source,bash]
+----
+awk -F: '$3 < 1000 { print $1 " (UID=" $3 ")" }' /etc/passwd
+----
+

@@ -1,0 +1,63 @@
+=== Usuarios de sistema
+
+Los usuarios de sistema son cuentas creadas automáticamente por el sistema operativo o por la instalación de determinados servicios.
+No están destinados a ser utilizados por personas ni a permitir inicio de sesión interactivo, sino a ejecutar procesos y servicios de forma controlada y segura.
+
+==== Características de los usuarios de sistema
+
+Los usuarios de sistema suelen presentar las siguientes características:
+
+- No son creados manualmente por administradores para uso humano.
+- Normalmente tienen un UID bajo (habitualmente menor que 1000, dependiendo de la distribución).
+- No disponen de contraseña válida o tienen la cuenta bloqueada.
+- Su shell suele ser `/usr/sbin/nologin` o `/bin/false`.
+- Están asociados a servicios concretos del sistema.
+
+==== Ejemplos de usuarios de sistema
+
+Algunos usuarios de sistema habituales son:
+
+- `postfix`: utilizado por el servicio de correo Postfix.
+- `cdrom`: asociado al acceso a dispositivos ópticos.
+- `backup`: utilizado por procesos de copia de seguridad.
+- `ftp`: usado por servicios FTP antiguos o configuraciones específicas.
+
+Estos usuarios existen para evitar que los servicios se ejecuten como `root`, reduciendo el impacto de posibles vulnerabilidades.
+
+==== Seguridad y riesgos asociados
+
+En escenarios de ataque, los usuarios de sistema pueden ser un objetivo habitual. Los pasos más comunes de un ataque incluyen:
+
+- Intentos de inicio de sesión sobre usuarios del sistema:
+  - Mediante fuerza bruta.
+  - Aprovechando vulnerabilidades en servicios mal configurados.
+- Escalado de privilegios:
+  - Horizontal: acceso a otros usuarios del mismo nivel que tengan más permisos (por ejemplo, usuarios con acceso a `sudo`).
+  - Vertical: escalado hacia usuarios con privilegios superiores, como `root`.
+
+Por este motivo, es fundamental asegurarse de que los usuarios de sistema no permiten login interactivo y no disponen de privilegios innecesarios.
+
+==== Comprobación de la existencia de un usuario
+
+Una forma sencilla de comprobar si un usuario existe en el sistema es mediante el comando `id`:
+
+[source,bash]
+----
+id <usuario_a_comprobar> 1>/dev/null 2>&1 && echo "El usuario existe" || echo "El usuario no existe"
+----
+
+- `1>/dev/null`: redirige la salida estándar a `/dev/null`.
+- `2>&1`: redirige la salida de error al mismo destino que la salida estándar.
+- El operador `&&` ejecuta el segundo comando solo si el primero tiene éxito.
+- El operador `||` ejecuta el segundo comando si el primero falla.
+
+==== Consulta de usuarios en /etc/passwd
+
+El fichero `/etc/passwd` contiene información básica sobre todas las cuentas del sistema.
+Es posible comprobar la existencia de un usuario mediante herramientas de texto:
+
+[source,bash]
+----
+cat /etc/passwd | grep "alu04" | cut -d: -f1
+----
+

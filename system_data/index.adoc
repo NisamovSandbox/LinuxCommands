@@ -15,6 +15,10 @@
 == Introducción
 Este manual está pensado como guía de referencia para:
 
+* Ámbito escolar y formativo
+* Administradores de sistemas Linux
+* Usuarios técnicos en proceso de aprendizaje
+
 == Entrada y salida
 include::in_out/stdin_stdout_stderr.adoc[]
 include::in_out/redirections.adoc[]
@@ -27,9 +31,6 @@ include::in_out/cal.adoc[]
 include::in_out/date.adoc[]
 
 == Información de sistema
-include::system_info/uptime.adoc[]
-include::system_info/dmesg.adoc[]
-include::system_info/free.adoc[]
 include::system_info/hostname.adoc[]
 include::system_info/inxi.adoc[]
 include::system_info/ldd.adoc[]
@@ -38,8 +39,16 @@ include::system_info/lshw.adoc[]
 include::system_info/lsmod.adoc[]
 include::system_info/lsscsi.adoc[]
 include::system_info/lstopo.adoc[]
-include::system_info/sensors.adoc[]
-include::system_info/vmstat.adoc[]
+
+== Monitorización
+include::monitoring/dmesg.adoc[]
+include::monitoring/dstat[]
+include::monitoring/free.adoc[]
+include::monitoring/iostat.adoc[]
+include::monitoring/sensors.adoc[]
+include::monitoring/uptime.adoc[]
+include::monitoring/vmstat.adoc[]
+include::monitoring/watch.adoc[]
 
 === Alias
 include::shell/shells.adoc

@@ -72,5 +72,4 @@ include::commands/xz.adoc[]
 
 // Miscelánea
 include::commands/fortune.adoc[]
-include::commands/watch.adoc[]
 

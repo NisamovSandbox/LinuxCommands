@@ -1,4 +1,4 @@
-= Permission Management
+= Administración de Servicios
 :toc:
 :toclevels: 3
 :icons: font
@@ -22,14 +22,22 @@ Este manual está pensado como guía de referencia para:
 == Teoría
 include::theory/theory.adoc[]
 
-== Administración de Permisos
-include::commands/chmod.adoc[]
-include::commands/chown.adoc[]
-include::commands/sudo.adoc[]
-include::commands/umask.adoc[]
+== Comandos gestión de servicios (Systemd)
+include::commands/systemctl.adoc[]
+include::commands/journalctl.adoc[]
+include::commands/systemd-analyze.adoc[]
 
-== Listas de Acceso
-include::access_control_lists/acls.adoc[]
-include::access_control_lists/commands/setfacl.adoc[]
-include::access_control_lists/commands/getfacl.adoc[]
+== Comandos gestión de servicios (SysVinit - Debian/Ubuntu)
+include::commands/service.adoc[]
+include::commands/update-rc.d.adoc[]
+
+== Comandos gestión de servicios (SysVinit - Red Hat)
+include::commands/chkconfig.adoc[]
+
+== Comandos gestión de servicios (Upstart)
+include::commands/initctl.adoc[]
+
+== Comandos gestión de servicios (OpenRC)
+include::commands/rc-service.adoc[]
+include::commands/rc-status.adoc[]
 

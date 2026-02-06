@@ -1,4 +1,4 @@
-= Permission Management
+= Administración de usuarios
 :toc:
 :toclevels: 3
 :icons: font
@@ -21,15 +21,11 @@ Este manual está pensado como guía de referencia para:
 
 == Teoría
 include::theory/theory.adoc[]
+include::theory/account_files.adoc[]
 
-== Administración de Permisos
-include::commands/chmod.adoc[]
-include::commands/chown.adoc[]
-include::commands/sudo.adoc[]
-include::commands/umask.adoc[]
+== Usuarios de sistema
+include::system_users/users.adoc[]
 
-== Listas de Acceso
-include::access_control_lists/acls.adoc[]
-include::access_control_lists/commands/setfacl.adoc[]
-include::access_control_lists/commands/getfacl.adoc[]
+== Comandos
+
 
