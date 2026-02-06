@@ -54,6 +54,7 @@ El repositorio no pretende sustituir herramientas existentes como `man`, sino **
 La organización del repositorio está pensada para facilitar la navegación y el crecimiento progresivo del contenido:
 
 <!-- AUTO-GENERATED-INDEX:START -->
+
 <!-- AUTO-GENERATED-INDEX:END -->
 </details>
 
