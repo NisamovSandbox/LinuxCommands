@@ -1,62 +1,49 @@
 #!/usr/bin/env python3
-import re
 from pathlib import Path
+from typing import List
 
-EXCLUDED_DIRS={'.git','.github','__pycache__'}
-EXCLUDED_FILES={'README.md','CONTRIBUTING.md','INFO.md','KEYWORD.md','LICENSE'}
+ROOT = Path('.')
 
-ROOT=Path('.')
-START='<!-- AUTO-GENERATED-INDEX:START -->'
-END='<!-- AUTO-GENERATED-INDEX:END -->'
+EXCLUDED_DIRS = {
+    '.git',
+    '.github',
+    'docs',
+    '__pycache__'
+}
 
-def write_readme(path:Path,lines):
-    readme=path/'README.md'
-    block=f"{START}\n"+'\n'.join(lines)+f"\n{END}"
-    if readme.exists():
-        content=readme.read_text(encoding='utf-8')
-        if START in content and END in content:
-            content=re.sub(
-                re.escape(START)+'.*?'+re.escape(END),
-                block,
-                content,
-                flags=re.DOTALL
-            )
-        else:
-            content=content.rstrip()+"\n\n"+block
-    else:
-        content=f"# {path.name}\n\n{block}"
-    readme.write_text(content,encoding='utf-8')
+START = '<!-- AUTO-GENERATED-INDEX:START -->'
+END   = '<!-- AUTO-GENERATED-INDEX:END -->'
 
-def generate_root_readme():
-    lines=[
-        f"- [{d.name}](/{d.name})"
-        for d in sorted(ROOT.iterdir())
-        if d.is_dir() and d.name not in EXCLUDED_DIRS
-    ]
-    write_readme(ROOT,lines)
 
-def generate_section_readme(section:Path):
-    lines=[]
+def write_readme(lines: List[str]) -> None:
+    readme = ROOT / 'README.md'
 
-    for d in sorted(section.iterdir()):
-        if not d.is_dir() or d.name in EXCLUDED_DIRS:
-            continue
-        lines.append(f"- [{d.name}](/{d.as_posix()})")
-        for f in sorted(d.glob('*.md')):
-            if f.name in EXCLUDED_FILES:
-                continue
-            rel=f.relative_to(section).as_posix()
-            lines.append(f"  - [{rel}](/{f.as_posix()})")
+    if not readme.exists():
+        raise RuntimeError('README.md no encontrado en la raíz')
 
-    for f in sorted(section.glob('*.md')):
-        if f.name in EXCLUDED_FILES:
-            continue
-        lines.append(f"- [{f.name}](/{f.as_posix()})")
+    content = readme.read_text(encoding='utf-8')
 
-    write_readme(section,lines)
+    if START not in content or END not in content:
+        raise RuntimeError('Bloque AUTO-GENERATED-INDEX no encontrado')
 
-if __name__=='__main__':
-    generate_root_readme()
+    block = f"{START}\n" + "\n".join(lines) + f"\n{END}"
+
+    before, _, rest = content.partition(START)
+    _, _, after = rest.partition(END)
+
+    new_content = before + block + after
+    readme.write_text(new_content, encoding='utf-8')
+
+
+def generate_root_structure() -> None:
+    lines: List[str] = []
+
     for d in sorted(ROOT.iterdir()):
         if d.is_dir() and d.name not in EXCLUDED_DIRS:
-            generate_section_readme(d)
+            lines.append(f"- [{d.name}](/{d.name})")
+
+    write_readme(lines)
+
+
+if __name__ == '__main__':
+    generate_root_structure()

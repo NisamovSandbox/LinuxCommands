@@ -22,26 +22,30 @@ Ejemplo: "Añade sección de comandos de red avanzados"
 ---
 
 ## Secciones afectadas
+Marque las secciones que se han visto afectadas por los cambios aplicados al repositorio.
+
 - [ ] document_management/
 - [ ] fundamentals/
+- [ ] group_management/
 - [ ] networking/
 - [ ] permission_management/
 - [ ] process_tasks/
 - [ ] scripting/
 - [ ] security/
 - [ ] services/
+- [ ] service_management/
 - [ ] software_management/
 - [ ] storage/
 - [ ] system_data/
-- [ ] user_permissions/
+- [ ] user_management/
 - [ ] web_server/
 
 ---
 
-## Checklist
-- [ ] Los comandos documentados han sido revisados y validados
-- [ ] La estructura sigue el Modelo Base del repositorio
+## Comprobación de pull - No tocar
+- [ ] [Requerido] Los comandos documentados han sido revisados y validados
+- [ ] [Requerido] La estructura sigue el Modelo Base del repositorio
 - [ ] Se ha aplicado una corrección en la generación de documentos
-- [ ] Se ha verificado que no hay errores tipográficos o de sintaxis
+- [ ] [Requerido] Se ha verificado que no hay errores tipográficos o de sintaxis
 - [ ] Se han actualizado referencias cruzadas
 - [ ] Se han actualizado workflows

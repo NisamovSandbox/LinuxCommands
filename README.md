@@ -56,16 +56,17 @@ La organización del repositorio está pensada para facilitar la navegación y e
 <!-- AUTO-GENERATED-INDEX:START -->
 - [document_management](/document_management)
 - [fundamentals](/fundamentals)
+- [group_management](/group_management)
 - [networking](/networking)
 - [permission_management](/permission_management)
-- [process_tasks](/process_tasks)
+- [process_management](/process_management)
 - [scripting](/scripting)
 - [security](/security)
-- [services](/services)
+- [service_management](/service_management)
 - [software_management](/software_management)
 - [storage](/storage)
 - [system_data](/system_data)
-- [user_permissions](/user_permissions)
+- [user_management](/user_management)
 - [web_server](/web_server)
 <!-- AUTO-GENERATED-INDEX:END -->
 </details>
