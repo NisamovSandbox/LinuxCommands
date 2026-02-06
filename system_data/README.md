@@ -21,6 +21,7 @@ Sirve como referencia para consultas y análisis.
 - [environment](/system_data/environment)
 - [graphics](/system_data/graphics)
 - [in_out](/system_data/in_out)
+- [monitoring](/system_data/monitoring)
 - [shell](/system_data/shell)
 - [system_info](/system_data/system_info)
 - [system_structure](/system_data/system_structure)

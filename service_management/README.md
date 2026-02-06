@@ -18,6 +18,6 @@ Incluye comandos y fundamentos teóricos.
 ## Contenido disponible
 
 <!-- AUTO-GENERATED-INDEX:START -->
-- [commands](/services/commands)
-- [theory](/services/theory)
+- [commands](/service_management/commands)
+- [theory](/service_management/theory)
 <!-- AUTO-GENERATED-INDEX:END -->

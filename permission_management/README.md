@@ -20,4 +20,5 @@ Incluye tanto el modelo tradicional como extensiones avanzadas.
 <!-- AUTO-GENERATED-INDEX:START -->
 - [access_control_lists](/permission_management/access_control_lists)
 - [commands](/permission_management/commands)
+- [theory](/permission_management/theory)
 <!-- AUTO-GENERATED-INDEX:END -->
