@@ -1,0 +1,45 @@
+=== groupdel
+El comando `groupdel` permite eliminar grupos existentes del sistema Linux. Se debe usar con precaución, ya que no se puede eliminar un grupo que todavía tenga usuarios asignados.
+
+-Eliminar grupo básico::
+
+[source,bash]
+----
+# Eliminar el grupo llamado "developers"
+groupdel developers
+----
+
+-Verificar existencia de usuarios en el grupo antes de eliminar::
+
+[source,bash]
+----
+# Listar miembros del grupo "admins" antes de eliminarlo
+getent group admins
+# Esto ayuda a asegurarse de que no haya usuarios activos en el grupo
+----
+
+-Eliminar grupo de sistema::
+
+[source,bash]
+----
+# Eliminar un grupo de sistema llamado "systemgroup"
+groupdel systemgroup
+# Solo es posible si el grupo no tiene usuarios asignados
+----
+
+-Precaución::
+
+[source,bash]
+----
+# groupdel fallará si el grupo tiene usuarios activos
+# Se debe reasignar o eliminar usuarios antes de borrar el grupo
+----
+
+-Help:: Mostrar ayuda en pantalla
+
+[source,bash]
+----
+# groupdel --help
+# Muestra todas las opciones disponibles y la sintaxis de uso
+----
+

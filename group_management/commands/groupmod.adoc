@@ -1,0 +1,45 @@
+=== groupmod
+El comando `groupmod` permite modificar la información de un grupo existente en Linux, como su nombre o identificador (GID). Se debe usar con precaución para no afectar la asignación de permisos de los usuarios.
+
+-Cambiar nombre de grupo:: `-n`
+
+[source,bash]
+----
+# Cambiar el nombre del grupo "developers" a "devteam"
+groupmod -n devteam developers
+----
+
+-Cambiar GID del grupo:: `-g`
+
+[source,bash]
+----
+# Cambiar el GID del grupo "admins" a 2000
+groupmod -g 2000 admins
+----
+
+-Cambiar nombre y GID simultáneamente::
+
+[source,bash]
+----
+# Cambiar el nombre y GID de un grupo
+groupmod -n newname -g 3000 oldgroup
+# Útil para reorganización de grupos sin perder usuarios
+----
+
+-Precaución::
+
+[source,bash]
+----
+# Asegurarse de que el nuevo GID no exista ya
+# Revisar que no haya conflictos con permisos de archivos y directorios
+# groupmod no cambia automáticamente la pertenencia de usuarios si hay conflictos
+----
+
+-Help:: Mostrar ayuda en pantalla
+
+[source,bash]
+----
+# groupmod --help
+# Muestra todas las opciones disponibles y la sintaxis de uso
+----
+

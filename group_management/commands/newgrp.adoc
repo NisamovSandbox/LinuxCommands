@@ -1,0 +1,49 @@
+=== newgrp
+El comando `newgrp` permite cambiar temporalmente el grupo primario de un usuario en la sesión actual de Linux. Es útil para trabajar con archivos o directorios bajo permisos de otro grupo sin cerrar sesión.
+
+-Cambiar al grupo primario de otro grupo::
+
+[source,bash]
+----
+# Cambiar temporalmente al grupo "developers"
+newgrp developers
+# Después de ejecutar este comando, los archivos creados pertenecerán al grupo "developers"
+----
+
+-Verificar grupo actual::
+
+[source,bash]
+----
+# Mostrar el grupo primario actual
+id -gn
+# También se puede usar 'groups' para ver todos los grupos del usuario
+----
+
+-Salir del grupo temporal::
+
+[source,bash]
+----
+# Para volver al grupo primario original, cerrar la sesión de shell o usar 'exit'
+exit
+----
+
+-Usos prácticos::
+
+[source,bash]
+----
+# Trabajar con permisos de grupo en colaboración
+# Crear archivos en un directorio compartido de un grupo específico
+newgrp projectteam
+touch archivo_compartido.txt
+ls -l
+# El archivo pertenecerá al grupo "projectteam"
+----
+
+-Help:: Mostrar ayuda en pantalla
+
+[source,bash]
+----
+# newgrp --help
+# Muestra las opciones disponibles y la sintaxis de uso
+----
+

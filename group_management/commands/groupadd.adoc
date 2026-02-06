@@ -1,0 +1,51 @@
+=== groupadd
+El comando `groupadd` permite crear nuevos grupos en el sistema Linux, definiendo su nombre y opcionalmente su identificador único (GID) y otras propiedades.
+
+-Crear grupo básico::
+
+[source,bash]
+----
+# Crear un grupo llamado "developers"
+groupadd developers
+----
+
+-Especificar GID:: `-g`
+
+[source,bash]
+----
+# Crear un grupo "admins" con GID 1500
+groupadd -g 1500 admins
+----
+
+-Crear grupo con grupo de sistema:: `-r`
+
+[source,bash]
+----
+# Crear un grupo de sistema "systemgroup" (GID menor a 1000)
+groupadd -r systemgroup
+----
+
+-Especificar grupo base de usuarios:: `-f`
+
+[source,bash]
+----
+# Intentar crear un grupo "testgroup", no genera error si ya existe
+groupadd -f testgroup
+----
+
+-Crear grupo con plantilla de configuración:: `-K`
+
+[source,bash]
+----
+# Crear grupo usando parámetros de configuración del archivo /etc/login.defs
+groupadd -K UMASK=027 newgroup
+----
+
+-Help:: Mostrar ayuda en pantalla
+
+[source,bash]
+----
+# groupadd --help
+# Muestra todas las opciones disponibles y la sintaxis de uso
+----
+

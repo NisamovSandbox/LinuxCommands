@@ -1,0 +1,36 @@
+=== Grupos en Linux
+
+En Linux, los grupos son una forma de organizar usuarios que comparten permisos y recursos comunes.
+Cada usuario pertenece a un grupo primario y puede formar parte de varios grupos secundarios, lo que permite administrar de manera eficiente los accesos y la colaboración dentro del sistema.
+
+==== Concepto y estructura
+Un grupo se identifica mediante un nombre único y un identificador numérico (GID).
+La pertenencia a un grupo determina los permisos que un usuario tiene sobre archivos, directorios y otros recursos del sistema.
+Los grupos proporcionan una manera centralizada de gestionar permisos, evitando la necesidad de asignarlos individualmente a cada usuario.
+
+==== Tipos de grupos
+Existen distintos tipos de grupos en Linux:
+* Los grupos primarios, asignados por defecto a cada usuario
+* Los grupos secundarios, que permiten otorgar permisos adicionales o temporales.
+
+Esta distinción facilita la organización jerárquica y funcional de los usuarios dentro del sistema, asegurando que los recursos se compartan únicamente entre quienes deben tener acceso.
+
+==== Archivos de configuración
+La información de los grupos se almacena en archivos del sistema como /etc/group y /etc/gshadow.
+El primero contiene la lista de grupos, sus identificadores y los usuarios que pertenecen a ellos, mientras que el segundo almacena información sensible, como administradores de grupo y contraseñas asociadas.
+Estos archivos son esenciales para la administración de la seguridad y la coherencia en la gestión de usuarios.
+
+==== Función y buenas prácticas
+Los grupos permiten aplicar políticas de acceso de manera uniforme y centralizada.
+Para mantener la seguridad y la eficiencia del sistema, es importante revisar periódicamente la pertenencia de los usuarios, asegurarse de que cada grupo tenga un propósito claro y que los identificadores sean únicos.
+Los grupos secundarios deben utilizarse para permisos específicos o temporales, evitando otorgar accesos innecesarios a recursos críticos.
+
+==== Importancia en la seguridad
+La correcta gestión de los grupos es clave para proteger el sistema frente a accesos no autorizados.
+La segmentación de usuarios en grupos ayuda a limitar privilegios y facilita auditorías de seguridad. Mantener actualizada la información de grupos y supervisar quién pertenece a cada uno contribuye a la integridad y estabilidad del sistema.
+
+==== Relación con usuarios y permisos
+Los grupos son complementarios a los usuarios en el modelo de permisos de Linux.
+Mientras que los usuarios representan entidades individuales, los grupos permiten definir permisos colectivos.
+Esta relación hace posible la asignación de derechos de lectura, escritura y ejecución a conjuntos de usuarios, simplificando la administración y reduciendo errores al configurar accesos.
+
