@@ -1,0 +1,41 @@
+=== deluser
+Eliminar cuentas de usuario y opcionalmente sus archivos y configuraciones.
+
+[source,bash]
+----
+# Eliminar un usuario sin borrar su home
+deluser usuario
+----
+
+--remove-home:: `deluser --remove-home` Borrar usuario junto con su directorio personal
+
+[source,bash]
+----
+# Eliminar usuario y su directorio home
+deluser --remove-home usuario
+----
+
+--remove-all-files:: `deluser --remove-all-files` Borrar todos los archivos del usuario en el sistema
+
+[source,bash]
+----
+# Eliminar usuario y todos sus archivos en todo el sistema
+deluser --remove-all-files usuario
+----
+
+--group:: `deluser --group` Eliminar grupo asociado al usuario
+
+[source,bash]
+----
+# Eliminar usuario y su grupo primario
+deluser --group usuario
+----
+
+--backup:: `deluser --backup` Hacer copia de seguridad de archivos antes de eliminar
+
+[source,bash]
+----
+# Crear backup del home antes de borrar
+deluser --backup usuario
+----
+

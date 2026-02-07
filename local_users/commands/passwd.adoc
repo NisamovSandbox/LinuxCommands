@@ -1,0 +1,41 @@
+=== passwd
+Cambiar la contraseña de un usuario o administrar la expiración de la misma.
+
+[source,bash]
+----
+# Cambiar la contraseña del usuario actual
+passwd
+----
+
+usuario:: `passwd usuario` Cambiar contraseña de un usuario específico (requiere privilegios)
+
+[source,bash]
+----
+# Cambiar la contraseña de otro usuario como root
+passwd usuario
+----
+
+--expire:: `passwd --expire usuario` Forzar al usuario a cambiar la contraseña en el próximo inicio de sesión
+
+[source,bash]
+----
+# Expirar la contraseña para obligar al cambio
+passwd --expire usuario
+----
+
+--lock:: `passwd --lock usuario` Bloquear la cuenta del usuario
+
+[source,bash]
+----
+# Bloquear la cuenta de un usuario
+passwd --lock usuario
+----
+
+--unlock:: `passwd --unlock usuario` Desbloquear la cuenta del usuario
+
+[source,bash]
+----
+# Desbloquear la cuenta de un usuario
+passwd --unlock usuario
+----
+

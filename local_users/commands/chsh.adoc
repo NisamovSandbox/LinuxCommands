@@ -1,0 +1,33 @@
+=== chsh
+Cambiar el shell de inicio de sesión de un usuario.
+
+[source,bash]
+----
+# Cambiar el shell del usuario de forma interactiva
+chsh usuario
+----
+
+-s:: `chsh -s` Definir shell de login
+
+[source,bash]
+----
+# Establecer bash como shell de inicio
+chsh -s /bin/bash usuario
+----
+
+-l:: `chsh -l` Listar shells disponibles en el sistema
+
+[source,bash]
+----
+# Mostrar shells permitidos en el sistema
+chsh -l
+----
+
+--help:: `chsh --help` Mostrar ayuda del comando
+
+[source,bash]
+----
+# Mostrar opciones disponibles de chsh
+chsh --help
+----
+

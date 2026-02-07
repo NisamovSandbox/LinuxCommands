@@ -1,0 +1,65 @@
+=== chage
+Gestionar la caducidad de contraseñas y políticas de envejecimiento de cuentas de usuario.
+
+[source,bash]
+----
+# Mostrar información de caducidad del usuario
+chage usuario
+----
+
+-l:: `chage -l` Listar información de expiración
+
+[source,bash]
+----
+# Mostrar estado de la contraseña y la cuenta
+chage -l usuario
+----
+
+-M:: `chage -M` Días máximos antes de que caduque la contraseña
+
+[source,bash]
+----
+# Establecer caducidad de contraseña a 90 días
+chage -M 90 usuario
+----
+
+-m:: `chage -m` Días mínimos entre cambios de contraseña
+
+[source,bash]
+----
+# Forzar mínimo de 7 días entre cambios
+chage -m 7 usuario
+----
+
+-W:: `chage -W` Días de aviso antes de la caducidad
+
+[source,bash]
+----
+# Avisar 14 días antes de que caduque la contraseña
+chage -W 14 usuario
+----
+
+-I:: `chage -I` Días de inactividad tras caducar la contraseña
+
+[source,bash]
+----
+# Bloquear la cuenta tras 30 días de inactividad
+chage -I 30 usuario
+----
+
+-E:: `chage -E` Fecha de expiración de la cuenta
+
+[source,bash]
+----
+# Establecer fecha de expiración de la cuenta
+chage -E 2026-12-31 usuario
+----
+
+-d:: `chage -d` Establecer fecha del último cambio de contraseña
+
+[source,bash]
+----
+# Forzar cambio de contraseña en el próximo inicio de sesión
+chage -d 0 usuario
+----
+

@@ -1,0 +1,49 @@
+=== chfn
+Modificar la información personal asociada a una cuenta de usuario.
+
+[source,bash]
+----
+# Cambiar la información personal del usuario de forma interactiva
+chfn usuario
+----
+
+-f:: `chfn -f` Cambiar nombre completo
+
+[source,bash]
+----
+# Establecer nombre completo del usuario
+chfn -f "Juan Pérez" usuario
+----
+
+-o:: `chfn -o` Cambiar número de oficina
+
+[source,bash]
+----
+# Definir la oficina del usuario
+chfn -o "Oficina 2" usuario
+----
+
+-p:: `chfn -p` Cambiar teléfono de trabajo
+
+[source,bash]
+----
+# Establecer teléfono de trabajo
+chfn -p "912345678" usuario
+----
+
+-h:: `chfn -h` Cambiar teléfono particular
+
+[source,bash]
+----
+# Establecer teléfono personal
+chfn -h "600000000" usuario
+----
+
+-r:: `chfn -r` Cambiar información GECOS completa
+
+[source,bash]
+----
+# Definir todos los campos GECOS en una sola operación
+chfn -r "Juan Pérez,Oficina 2,912345678,600000000" usuario
+----
+

@@ -27,5 +27,12 @@ include::theory/account_files.adoc[]
 include::system_users/users.adoc[]
 
 == Comandos
-
+include::commands/su.adoc[]
+include::commands/adduser.adoc[]
+include::commands/deluser.adoc[]
+include::commands/useradd.adoc[]
+include::commands/passwd.adoc[]
+include::commands/chsh.adoc[]
+include::commands/chage.adoc[]
+include::commands/chfn.adoc[]
 
