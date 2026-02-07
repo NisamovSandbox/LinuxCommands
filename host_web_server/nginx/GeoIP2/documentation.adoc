@@ -1,36 +1,46 @@
-# Módulo GeoIP2
+=== Módulo GeoIP2
+// Documentado por Andrés Ruslan Abadías Otal (Nisamov)
 
-Módulo complementario de la guía [web nginx](/web_server/nginx/documentation.md)
-### Bloquear paises en el servidor web
-Instalación de dependencias:
-```sh
+Bloquear países en el servidor web::
+
+[source,bash]
+----
 sudo apt update && sudo apt upgrade -y
 sudo apt install libmaxminddb0 libmaxminddb-dev mmdb-bin nginx-module-geoip2 -y
-```
-Revisión existencia del módulo GeoIP^:
-```sh
-ls /usr/lib/nginx/modules/ | grep geoip
-#Debe devolver ngx_http_geoip2_module.so
-```
-Crear cuenta en MaxMind, generar una licencia y descargue la base de datos `GeoLite2-Country.mmdb`.
+----
 
-Reubicar la base de datos:
-```sh
+Verificar existencia del módulo GeoIP2::
+
+[source,bash]
+----
+ls /usr/lib/nginx/modules/ | grep geoip
+# Debe devolver ngx_http_geoip2_module.so
+----
+
+Crear cuenta en MaxMind, generar una licencia y descargar la base de datos `GeoLite2-Country.mmdb`.
+
+Mover la base de datos a su ubicación::
+
+[source,bash]
+----
 sudo mkdir -p /etc/nginx/geoip
 sudo cp GeoLite2-Country.mmdb /etc/nginx/geoip/
-```
-Asignar de permisos:
-```sh
 sudo chmod 644 /etc/nginx/geoip/GeoLite2-Country.mmdb
-```
-Aplicar módulo GeoIP:
-```sh
+----
+
+Aplicar módulo GeoIP en la configuración de NGINX::
+
+[source,bash]
+----
 sudo nano /etc/nginx/nginx.conf
-#Agregar la siguiente linea antes de events{}
+# Agregar antes de events{}
 load_module modules/ngx_http_geoip2_module.so;
-```
-Agregar el siguiente contenido dentro de `/etc/nginx/nginx.conf` en el `http {}` ya existente:
-```sh
+----
+
+Configurar GeoIP2 dentro de `http {}` en `/etc/nginx/nginx.conf`::
+
+[source,bash]
+----
 http {
     geoip2 /etc/nginx/geoip/GeoLite2-Country.mmdb {
         $geoip2_country_code source=$remote_addr country iso_code;
@@ -61,14 +71,19 @@ http {
     include /etc/nginx/conf.d/*.conf;
     include /etc/nginx/sites-enabled/*;
 }
-```
+----
 
-Editar la configuración de la página:
-```sh
+Editar la configuración de la página::
+
+[source,bash]
+----
 sudo nano /etc/nginx/sites-available/mipagina.es
-```
-Agregar lo siguiente, dentro de `server {}`:
-```sh
+----
+
+Agregar reglas de bloqueo dentro de `server {}`::
+
+[source,bash]
+----
 server {
     listen 80;
     server_name mipagina.duckdns.org www.mipagina.duckdns.org;
@@ -81,9 +96,13 @@ server {
         try_files $uri $uri/ =404;
     }
 }
-```
-Recarga de nginx y comprobación:
-```sh
+----
+
+Recargar NGINX y verificar la configuración::
+
+[source,bash]
+----
 sudo nginx -t
 sudo systemctl reload nginx
-```
+----
+

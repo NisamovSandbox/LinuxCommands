@@ -1,0 +1,33 @@
+=== su
+Cambiar de usuario en el sistema o ejecutar comandos con la identidad de otro usuario.
+
+usuario:: `su [usuario]` Cambiar a otro usuario (por defecto root)
+
+[source,bash]
+----
+# Cambiar al usuario root
+su
+# Cambiar a un usuario específico
+su usuario
+----
+
+-c:: `su -c "comando" usuario` Ejecutar un comando como otro usuario
+
+[source,bash]
+----
+# Ejecutar un comando como root
+su -c "apt update" 
+# Ejecutar un comando como otro usuario
+su -c "ls /home/usuario" usuario
+----
+
+-:: `su -` Iniciar sesión como otro usuario con su entorno completo
+
+[source,bash]
+----
+# Cambiar a root con entorno completo
+su -
+# Cambiar a otro usuario con su entorno
+su - usuario
+----
+

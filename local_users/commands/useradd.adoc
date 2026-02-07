@@ -1,0 +1,81 @@
+=== useradd
+Crear cuentas de usuario de bajo nivel mediante opciones explícitas (no interactivo).
+
+[source,bash]
+----
+# Crear un usuario básico
+useradd usuario
+----
+
+-m:: `useradd -m` Crear directorio personal
+
+[source,bash]
+----
+# Crear usuario con directorio home
+useradd -m usuario
+----
+
+-d:: `useradd -d` Definir directorio personal
+
+[source,bash]
+----
+# Crear usuario con home personalizado
+useradd -d /home/custom usuario
+----
+
+-s:: `useradd -s` Definir shell de inicio
+
+[source,bash]
+----
+# Asignar bash como shell de login
+useradd -s /bin/bash usuario
+----
+
+-g:: `useradd -g` Definir grupo principal
+
+[source,bash]
+----
+# Crear usuario con grupo principal específico
+useradd -g developers usuario
+----
+
+-G:: `useradd -G` Asignar grupos secundarios
+
+[source,bash]
+----
+# Añadir usuario a varios grupos
+useradd -G sudo,docker usuario
+----
+
+-u:: `useradd -u` Especificar UID
+
+[source,bash]
+----
+# Crear usuario con UID concreto
+useradd -u 1500 usuario
+----
+
+-e:: `useradd -e` Fecha de expiración de la cuenta
+
+[source,bash]
+----
+# Establecer fecha de expiración del usuario
+useradd -e 2026-12-31 usuario
+----
+
+-c:: `useradd -c` Comentario / información GECOS
+
+[source,bash]
+----
+# Definir información descriptiva del usuario
+useradd -c "Juan Pérez" usuario
+----
+
+-r:: `useradd -r` Crear usuario de sistema
+
+[source,bash]
+----
+# Crear usuario de sistema (daemon/servicio)
+useradd -r usuario_servicio
+----
+

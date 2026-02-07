@@ -1,4 +1,4 @@
-= Servidores de Almacenamiento Compartido en Linux
+= Servidores Web en Linux
 :toc:
 :toclevels: 3
 :icons: font
@@ -19,12 +19,13 @@ Este manual está pensado como guía de referencia para:
 * Administradores de sistemas Linux
 * Usuarios técnicos en proceso de aprendizaje
 
-== LDAP
-include::ldap/documentation.adoc[]
+== WordPress
+include::wordpress/documentation.adoc[]
 
-== Samba
-include::samba/documentation.adoc[]
+== Apache
+include::apache/documentation.adoc[]
 
-== NFS
-include::nfs/documentation.adoc[]
+== Nginx
+include::nginx/documentation.adoc[]
+include::nginx/GeoIP2/documentation.adoc[]
 

@@ -1,0 +1,264 @@
+=== Documentación Apache2
+//Documentado por Andrés Ruslan Abadías Otal (Nisamov)
+
+==== Instalación
+Actualizar paquetes del sistema (opcional):
+
+[source,bash]
+----
+sudo apt update && sudo apt upgrade -y
+----
+
+Instalación de Apache2:
+
+[source,bash]
+----
+sudo apt install apache2
+----
+
+==== Creación de la página
+Posicionarse en `/var/www/` y crear el directorio para el dominio:
+
+[source,bash]
+----
+cd /var/www/
+mkdir mipagina.es
+cd mipagina.es
+touch index.html
+----
+
+==== Edición de la página
+Editar el fichero `index.html`:
+
+[source,bash]
+----
+sudo nano index.html
+----
+
+Agregar estructura básica HTML5:
+
+[source,html]
+----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiPagina</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <p>Este es el contenido de tu pagina</p>
+    <u>He seguido la guia de github.com/Nisamov</u>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
+----
+
+==== Estructura de directorio
+Para mantener organización de estilos y scripts:
+
+[source,bash]
+----
+cd /var/www/mipagina.es
+mkdir styles scripts
+----
+
+Ejemplo de estructura:
+
+[source,bash]
+----
+var
+└── www
+    └── mipagina.es
+        ├── index.html
+        ├── styles
+        │   └── style.css
+        └── scripts
+            └── script.js
+----
+
+==== Estilos y JavaScript
+Crear archivo JS:
+
+[source,bash]
+----
+cd /var/www/mipagina.es/scripts
+nano script.js
+----
+
+Ejemplo de contenido JS:
+
+[source,js]
+----
+alert("El Codigo JavaScript Funciona correctamente");
+console.log("Correcto funcionamiento");
+----
+
+Crear archivo CSS:
+
+[source,bash]
+----
+cd /var/www/mipagina.es/styles
+nano style.css
+----
+
+Ejemplo de contenido CSS:
+
+[source,css]
+----
+body {
+  background-color: #fefbd8;
+}
+h1 {
+  background-color: #80ced6;
+}
+p {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  color: #ccc;
+  line-height: 18px;
+  margin-bottom: 20px;
+}
+----
+
+==== Habilitar HTTPS
+Instalar `openssl`:
+
+[source,bash]
+----
+sudo apt install openssl
+----
+
+Habilitar módulo SSL en Apache:
+
+[source,bash]
+----
+sudo a2enmod ssl
+----
+
+Reiniciar Apache:
+
+[source,bash]
+----
+sudo systemctl restart apache2
+----
+
+==== Configuración de Apache para la página
+Clonar archivo de configuración:
+
+[source,bash]
+----
+cd /etc/apache2/sites-available
+sudo cp 000-default.conf mipagina.es.conf
+sudo nano mipagina.es.conf
+----
+
+Agregar contenido del VirtualHost:
+
+[source,bash]
+----
+<VirtualHost *:80>
+ServerAdmin webmaster@localhost
+DocumentRoot /var/www/mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+ServerName www.mipagina.es
+Redirect permanent / http://www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName mipagina.es
+Redirect / http://www.mipagina.es
+</VirtualHost>
+
+<VirtualHost *:443>
+ServerName www.mipagina.es
+DocumentRoot /var/www/mipagina.es
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog /etc/apache2/sites-available/access.log
+SSLEngine on
+SSLCertificateFile /etc/apache2/certificate/apache-certificate/apache-certificate.crt
+SSLCertificateKeyFile /etc/apache2/certificate/apache.key
+</VirtualHost>
+----
+
+Habilitar el sitio:
+
+[source,bash]
+----
+sudo a2ensite mipagina.es
+----
+
+Editar `/etc/hosts` para asociar IP al dominio:
+
+[source,bash]
+----
+sudo nano /etc/hosts
+----
+
+Ejemplo:
+[source,bash]
+----
+127.0.0.1 localhost
+127.0.1.1 nisamov
+40.0.0.2 mipagina.es www.mipagina.es
+
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+----
+
+Configurar puertos en `/etc/apache2/ports.conf`:
+
+[source,bash]
+----
+sudo nano /etc/apache2/ports.conf
+Listen 80
+<IfModule ssl_module>
+        Listen 443
+</IfModule>
+<IfModule mod_gnutls.c>
+        Listen 443
+</IfModule>
+----
+
+Reiniciar Apache:
+
+[source,bash]
+----
+sudo systemctl restart apache2
+----
+
+Permitir sobrescribir directivas en HTTPS:
+
+[source,bash]
+----
+sudo nano /etc/apache2/apache2.conf
+<Directory /var/www/mipagina.es>
+AllowOverride All
+</Directory>
+----
+
+==== Certificados SSL
+Crear directorios y certificados:
+
+[source,bash]
+----
+cd /etc/apache2/sites-available
+mkdir certificado
+cd certificado
+sudo openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out apache-certificado.crt -keyout apache.key
+----
+
+Ingresar `Common name` como la IP fija de la página.
+
+Reiniciar Apache:
+
+[source,bash]
+----
+sudo service apache2 restart
+----
+

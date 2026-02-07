@@ -1,0 +1,65 @@
+=== adduser
+Crear y gestionar cuentas de usuario de forma interactiva.
+
+[source,bash]
+----
+# Crear un nuevo usuario con asistente interactivo
+adduser usuario
+----
+
+--home:: `adduser --home` Definir directorio personal
+
+[source,bash]
+----
+# Crear usuario con directorio home personalizado
+adduser --home /home/custom usuario
+----
+
+--shell:: `adduser --shell` Definir shell por defecto
+
+[source,bash]
+----
+# Crear usuario usando bash como shell
+adduser --shell /bin/bash usuario
+----
+
+--ingroup:: `adduser --ingroup` Asignar grupo principal
+
+[source,bash]
+----
+# Crear usuario con grupo principal específico
+adduser --ingroup developers usuario
+----
+
+--disabled-password:: `adduser --disabled-password` Crear usuario sin contraseña
+
+[source,bash]
+----
+# Crear usuario sin permitir login por contraseña
+adduser --disabled-password usuario
+----
+
+--gecos:: `adduser --gecos` Definir información del usuario
+
+[source,bash]
+----
+# Crear usuario definiendo nombre completo y datos
+adduser --gecos "Juan Pérez,Oficina 2,600000000" usuario
+----
+
+--uid:: `adduser --uid` Especificar UID manualmente
+
+[source,bash]
+----
+# Crear usuario con UID concreto
+adduser --uid 1500 usuario
+----
+
+--no-create-home:: `adduser --no-create-home` No crear directorio personal
+
+[source,bash]
+----
+# Crear usuario sin directorio home
+adduser --no-create-home usuario
+----
+

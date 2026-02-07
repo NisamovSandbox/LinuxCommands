@@ -1,0 +1,149 @@
+=== Documentación WordPress
+// Documentado por Andrés Ruslan Abadías Otal (Nisamov)
+Actualizar los paquetes de la máquina::
+
+[source,bash]
+----
+sudo apt upgrade && sudo apt update -y
+----
+
+Instalar las dependencias y paquetería necesarias::
+
+[source,bash]
+----
+sudo apt install apache2 php8.1 php8.1-bcmath php8.1-curl php8.1-gd php8.1-mbstring php8.1-mysql php8.1-pgsql php8.1-xml php8.1-zip mariadb-server mariadb-client wget
+----
+
+Instalación individual de paquetes::
+
+[source,bash]
+----
+sudo apt install apache2
+sudo apt install php7.4
+sudo apt install wget
+sudo apt install mariadb-server
+sudo apt install mariadb-client
+sudo apt install php8.1
+sudo apt install php8.1-mysql
+sudo apt install php8.1-curl
+sudo apt install php8.1-gd
+sudo apt install php8.1-bcmath
+sudo apt install php8.1-cgi
+sudo apt install php8.1-ldap
+sudo apt install php8.1-mbstring
+sudo apt install php8.1-xml
+sudo apt install php8.1-soap
+sudo apt install php8.1-xsl
+sudo apt install php8.1-zip
+#En caso de ser necesario:
+sudo apt install libapache2-mod-php php-mysql -y
+----
+
+Mover el directorio de WordPress a la ruta raíz::
+
+[source,bash]
+----
+sudo mv wordpress /wordpress
+----
+
+Otorgar permisos a los directorios::
+
+[source,bash]
+----
+cd /wordpress
+sudo chown www-data:www-data .
+sudo chown www-data:www-data -R *
+----
+
+Deshabilitar la configuración por defecto de Apache::
+
+[source,bash]
+----
+cd /etc/apache2/sites-available
+sudo a2dissite 000-default
+----
+
+Reiniciar Apache para aplicar cambios::
+
+[source,bash]
+----
+sudo service apache2 restart
+----
+
+Crear nuevo fichero de configuración::
+
+[source,bash]
+----
+sudo nano /etc/apache2/sites-available/wordpress.conf
+----
+
+Agregar la configuración del VirtualHost::
+
+[source,xml]
+----
+<VirtualHost *:80>
+  ServerAdmin webmaster@localhost
+  DocumentRoot /wordpress
+  <Directory /wordpress>
+    DirectoryIndex index.php
+    AllowOverride All
+    Require all granted
+  </Directory>
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+----
+
+Habilitar la página de WordPress::
+
+[source,bash]
+----
+sudo a2ensite wordpress
+sudo systemctl restart apache2
+----
+
+Crear la base de datos de WordPress::
+
+[source,sql]
+----
+sudo mysql -u root -p
+update mysql.user set plugin='mysql_native_password' WHERE user='root';
+flush privileges;
+create database wordpress;
+exit;
+----
+
+Instalar medidas básicas de seguridad de MySQL::
+
+[source,bash]
+----
+sudo mysql_secure_installation
+----
+
+Configurar `wp-config.php`::
+
+[source,php]
+----
+<?php
+define( 'DB_NAME', 'wordpress' );
+define( 'DB_USER', 'root' );
+define( 'DB_PASSWORD', 'andres' );
+define( 'DB_HOST', 'localhost' );
+define( 'DB_CHARSET', 'utf8mb4' );
+define( 'DB_COLLATE', '' );
+define( 'AUTH_KEY',         ']&eKuM6^mw^;,|:[-p?_[XJBkMr<E8&cJGR(.k|1v%bl-Q7szq|ipsgb411e4U}G' );
+define( 'SECURE_AUTH_KEY',  '7|6f^<J>F?4RR%}%k(IY;s)cqY%M4cW*Yp?qXroB[(jf9Zwfzx|r$G{$J3r86qf<' );
+define( 'LOGGED_IN_KEY',    ')xhXtUA|AkftoP@R-dPm|iI{?!i7^T>s~/*(@{,naV#9i kZ1pCK]|(31K5}u*J7' );
+define( 'NONCE_KEY',        '4$pu@PCrf|dBg^4K_Q>Iqaf| 5St~GU,n<#nl`2PghIU G55z/N]lcl%l68kfHd-' );
+define( 'AUTH_SALT',        'MD.SxW+}g`q3Ub}LN>!|,P<+Ya5QFR(vd1H2kE&U(|cl-hGUPq<I${#Ahaxl*H4J' );
+define( 'SECURE_AUTH_SALT', 'E^p{[?C4}/0ZG:}7V)OBakc~cL]M=}X.=:12sq `XM|O+]3](54sZZamq9g&/woy' );
+define( 'LOGGED_IN_SALT',   '4@p34O)[p)X}N KVsWu_l5<oaXRH>U/{XR,?d8;vRyI=,(Z8vNy%}yG$uH8)ht|9' );
+define( 'NONCE_SALT',       'a2u!6q:UrqN96JM,tWy-W==Z&[:!&0pNrbiC{XQ0DdG%! ip^N<F1&M0 Gx|AsE(' );
+$table_prefix = 'wp_';
+define( 'WP_DEBUG', false );
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+require_once ABSPATH . 'wp-settings.php';
+----
+
