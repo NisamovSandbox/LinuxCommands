@@ -22,23 +22,28 @@ Ejemplo: "Añade sección de comandos de red avanzados"
 ---
 
 ## Secciones afectadas
-Marque las secciones que se han visto afectadas por los cambios aplicados al repositorio.
+Marque "[X]" las secciones que se han visto afectadas por los cambios aplicados al repositorio.
+Deje sin marcar "[ ]" las secciones que no han recibido cambios.
 
-- [ ] document_management/
-- [ ] fundamentals/
-- [ ] group_management/
-- [ ] networking/
-- [ ] permission_management/
-- [ ] process_tasks/
-- [ ] scripting/
-- [ ] security/
-- [ ] services/
-- [ ] service_management/
-- [ ] software_management/
-- [ ] storage/
-- [ ] system_data/
-- [ ] user_management/
-- [ ] web_server/
+- [ ] .github/
+- [ ] docs/
+- [ ] host_shared_storage/
+- [ ] host_web_server/
+- [ ] linux_fundamentals/
+- [ ] local_filesystem/
+- [ ] local_group/
+- [ ] local_network/
+- [ ] local_permissions/
+- [ ] local_process/
+- [ ] local_scripts/
+- [ ] local_security/
+- [ ] local_services/
+- [ ] local_software/
+- [ ] local_storage/
+- [ ] local_system_data/
+- [ ] local_users/
+- [ ] LICENSE
+- [ ] README.md
 
 ---
 
