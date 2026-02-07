@@ -41,3 +41,6 @@ include::commands/initctl.adoc[]
 include::commands/rc-service.adoc[]
 include::commands/rc-status.adoc[]
 
+== Demonios
+include::daemons/daemons.adoc[]
+

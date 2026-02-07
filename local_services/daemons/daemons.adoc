@@ -1,0 +1,69 @@
+=== Demonoios
+Los daemons (Demonoios) son procesos que se ejecutan en segundo plano para realizar tareas específicas.
+Estos daemons pueden ser utilizados para gestionar servicios, realizar tareas programadas, o manejar eventos del sistema.
+
+Para crear un demonio, se debe seguir una estructura específica que incluye la creación de un script de inicio, la configuración de los niveles de ejecución y la gestión del servicio.
+Esta está dividida en varias partes:
+
+-Estructura:: Estructura de un demonio
+
+[source,bash]
+----
+# Directorio de instalación
+/lib/systemd/system/demonio.service
+# Estructura en formato árbol
+/lib
+  └── systemd
+         └── system
+                └── demonio.service
+----
+Dentro del archivo de servicio, se deben definir varias secciones, como [Unit], [Service] y [Install], que especifican la descripción del servicio, el comando a ejecutar, y cómo se debe iniciar el servicio.
+
+-Configuración:: Configuración de un demonio
+
+[source,bash]
+----
+[Unit] # Sección de unidad, donde se define la descripción y las dependencias del demonio
+Description=Descripción del demonio # Breve descripción del propósito del demonio
+After=network.target # Asegura que el demonio se inicie después de que la red esté disponible
+[Service] # Sección de servicio, donde se define cómo se ejecuta el demonio
+Type=simple # Tipo de servicio, puede ser simple, forking, etc.
+ExecStart=/ruta/al/ejecutable/demonio # Comando para iniciar el demonio
+WorkingDirectory=/ruta/de/trabajo/demonio # Directorio de trabajo del demonio
+User=root # Es recomendable ejecutar el demonio con un usuario no privilegiado para mejorar la seguridad
+ProtectSystem=full # Restringir el acceso al sistema de archivos, permitiendo solo acceso de lectura a la mayoría de los archivos del sistema
+ReadWritePaths=/ruta/de/trabajo/demonio # Permitir solo acceso de lectura y escritura a este directorio
+ProtectHome=read-only # Restringir el acceso a los directorios de usuario
+NoNewPrivileges=yes # Evitar que el demonio adquiera nuevos privilegios
+PrivateTmp=yes # Crear un espacio de trabajo temporal privado para el demonio
+ProtectKernelModules=yes # Restringir el acceso a los módulos del kernel
+ProtectKernelTunables=yes # Restringir el acceso a los módulos del kernel y a las configuraciones del kernel
+ProtectControlGroups=yes # Restringir el acceso a los grupos de control del sistema
+RestrictRealtime=yes # Restringir el acceso a recursos en tiempo real
+CapabilityBoundingSet=CAP_SYS_ADMIN CAP_NET_ADMIN CAP_SYS_RESOURCE CAP_KILL # Limitar las capacidades del demonio
+AmbientCapabilities=CAP_SYS_ADMIN CAP_NET_ADMIN CAP_SYS_RESOURCE CAP_KILL # Capacidades necesarias para el demonio
+CPUSchedulingPolicy=rr # Política de planificación de CPU en tiempo real
+CPUSchedulingPriority=99 # Prioridad alta para asegurar que el demonio tenga acceso a la CPU cuando sea necesario
+StandardOutput=append:/var/log/ssp/ssp.log # Redirigir la salida estándar a un archivo de log
+StandardError=append:/var/log/ssp/ssp_error.log # Redirigir la salida de error a un archivo de log
+Restart=always # Reiniciar el demonio automáticamente si se detiene
+[Install] # Sección de instalación, donde se define cómo se habilita el demonio
+WantedBy=multi-user.target # Especifica que el demonio debe iniciarse en el nivel de ejecución multiusuario
+----
+Una vez que el archivo de servicio esté configurado, se debe recargar el sistema de gestión de servicios para que reconozca el nuevo demonio, y luego habilitarlo para que se inicie automáticamente al arrancar el sistema.
+
+-Administración:: Administración de un demonio
+
+Para administrar un demonio, se pueden utilizar los siguientes comandos:
+[source,bash]
+----
+sudo systemctl daemon-reload # Recargar el sistema de gestión de servicios para reconocer el nuevo demonio
+sudo systemctl enable demonio.service # Habilitar el demonio para que se inicie automáticamente al arrancar el sistema
+sudo systemctl start demonio.service # Iniciar el demonio
+sudo systemctl status demonio.service # Verificar el estado del demonio
+sudo systemctl stop demonio.service # Detener el demonio
+sudo systemctl restart demonio.service # Reiniciar el demonio
+sudo journalctl -u demonio.service # Ver los logs del demonio
+----
+Es importante monitorear el rendimiento y la estabilidad del demonio, así como revisar los logs regularmente para detectar cualquier problema o error que pueda surgir durante su ejecución.
+
